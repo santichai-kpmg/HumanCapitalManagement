@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsOT" targetNamespace="http://tempuri.org/dsOT.xsd" xmlns:mstns="http://tempuri.org/dsOT.xsd" xmlns="http://tempuri.org/dsOT.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsOT" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsOT" msprop:Generator_UserDSName="dsOT">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsMain" msprop:Generator_TableClassName="dsMainDataTable" msprop:Generator_TableVarName="tabledsMain" msprop:Generator_RowChangedName="dsMainRowChanged" msprop:Generator_TablePropName="dsMain" msprop:Generator_RowDeletingName="dsMainRowDeleting" msprop:Generator_RowChangingName="dsMainRowChanging" msprop:Generator_RowEvHandlerName="dsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="dsMainRowDeleted" msprop:Generator_RowClassName="dsMainRow" msprop:Generator_UserTableName="dsMain" msprop:Generator_RowEvArgName="dsMainRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="month" msprop:Generator_ColumnVarNameInTable="columnmonth" msprop:Generator_ColumnPropNameInRow="month" msprop:Generator_ColumnPropNameInTable="monthColumn" msprop:Generator_UserColumnName="month" type="xs:string" minOccurs="0" />
+              <xs:element name="rate1" msprop:Generator_ColumnVarNameInTable="columnrate1" msprop:Generator_ColumnPropNameInRow="rate1" msprop:Generator_ColumnPropNameInTable="rate1Column" msprop:Generator_UserColumnName="rate1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rate2" msprop:Generator_ColumnVarNameInTable="columnrate2" msprop:Generator_ColumnPropNameInRow="rate2" msprop:Generator_ColumnPropNameInTable="rate2Column" msprop:Generator_UserColumnName="rate2" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rate3" msprop:Generator_ColumnVarNameInTable="columnrate3" msprop:Generator_ColumnPropNameInRow="rate3" msprop:Generator_ColumnPropNameInTable="rate3Column" msprop:Generator_UserColumnName="rate3" type="xs:decimal" minOccurs="0" />
+              <xs:element name="totalhrs" msprop:Generator_ColumnVarNameInTable="columntotalhrs" msprop:Generator_ColumnPropNameInRow="totalhrs" msprop:Generator_ColumnPropNameInTable="totalhrsColumn" msprop:Generator_UserColumnName="totalhrs" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="daily_wage" msprop:Generator_ColumnVarNameInTable="columndaily_wage" msprop:Generator_ColumnPropNameInRow="daily_wage" msprop:Generator_ColumnPropNameInTable="daily_wageColumn" msprop:Generator_UserColumnName="daily_wage" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

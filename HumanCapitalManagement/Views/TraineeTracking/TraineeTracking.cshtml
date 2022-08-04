@@ -1,0 +1,271 @@
+﻿
+@{
+
+
+    ViewBag.Title = "HCM | Trainee Tracking";
+    //Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Trainee Tracking
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row" id="search">
+                    @*<div class="form-group form-group-sm col-sm-4  col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">Group</span>
+                                @{ Html.RenderAction("CreateDivisionCode", "HCMMasterData", new
+                                    {
+                                        id = "ddlGroup",
+                                        databind = "group_code",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>*@
+                    <br />
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Trainee Name</span>
+                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" data-bind="value : name , valueUpdate: 'afterkeydown'" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4 hidden">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Trainee No.</span>
+                            <input type="text" id="txtSearchNo" name="txtSearchNo" class="form-control" data-bind="value : no , valueUpdate: 'afterkeydown'" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    @*<div class="form-group form-group-sm col-sm-4  col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">PM’s Name</span>
+                                <input type="text" id="txtSearchpm" name="txtSearchpm" class="form-control" data-bind="value : eva_name , valueUpdate: 'afterkeydown'" autocomplete="off" />
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">In-Charge/EM’s Name</span>
+                                <input type="text" id="txtSearchEm" name="txtSearchEm" class="form-control" data-bind="value : eva_ic_name , valueUpdate: 'afterkeydown'" autocomplete="off" />
+                            </div>
+                        </div>*@
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-xs-12  text-left">
+                        <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <div class="row ">
+                                <div class="col-md-12">
+
+
+
+                                    <div id="output" style="margin: 30px;"></div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                @*<input type="hidden" id="txtSess" name="txtSess" class="form-control" data-bind='value: session' />*@
+            </div>
+
+        </form>
+    </section>
+</div>
+<link rel="stylesheet" type="text/css" href="~/Scripts/plugins/pivottable-master/dist/pivot.css">
+@section Style{
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+    <link href="~/Scripts/plugins/pivottable-master/dist/pivot.css" rel="stylesheet" />
+    <style>
+
+        body {
+            font-family: Verdana;
+        }
+
+        .c3-line, .c3-focused {
+            stroke-width: 3px !important;
+        }
+
+        .c3-bar {
+            stroke: white !important;
+            stroke-width: 1;
+        }
+
+        .c3 text {
+            font-size: 12px;
+            color: grey;
+        }
+
+        .tick line {
+            stroke: white;
+        }
+
+        .c3-axis path {
+            stroke: grey;
+        }
+
+        .c3-circle {
+            opacity: 1 !important;
+        }
+
+        .c3-xgrid-focus {
+            visibility: hidden !important;
+        }
+    </style>
+}
+@section scripts{
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>var $j = jQuery.noConflict(true);</script>
+    @*    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>*@
+    <!-- PivotTable.js libs from ../dist -->
+
+    <script src="~/Scripts/plugins/pivottable-master/dist/pivot.js"></script>
+    <script src="~/Scripts/plugins/pivottable-master/dist/d3_renderers.js"></script>
+    <script type="text/javascript">
+
+        var objModel = @Html.Raw(Json.Encode(Model));
+
+        $(function () {
+
+
+
+        });
+
+       function Search() {
+           var lstSearch = ko.toJS(viewModel)
+
+                return lstSearch;
+        };
+
+
+    </script>
+
+
+    <script type="text/javascript">
+        // This example adds C3 chart renderers.
+
+        $(function () {
+
+            var derivers = $.pivotUtilities.derivers;
+            var renderers = $.extend($.pivotUtilities.renderers,
+                $.pivotUtilities.c3_renderers);
+            var json = [
+                { "Province": "Quebec", "Party": "NDP", "Age": 22, "Name": "Liu, Laurin", "Gender": "Female" },
+                { "Province": "Quebec", "Party": "Bloc Quebecois", "Age": 43, "Name": "Mourani, Maria", "Gender": "Female" },
+                { "Province": "Quebec", "Party": "NDP", "Age": "", "Name": "Sellah, Djaouida", "Gender": "Female" },];
+            $.getJSON(json, function (mps) {
+                $("#output").pivotUI(mps, {
+                    renderers: renderers,
+                    cols: ["Party"], rows: ["Province"],
+                    rendererName: "Horizontal Stacked Bar Chart",
+                    rowOrder: "value_z_to_a", colOrder: "value_z_to_a",
+                    rendererOptions: {
+                        c3: {
+                            data: {
+                                colors: {
+                                    Liberal: '#dc3912', Conservative: '#3366cc', NDP: '#ff9900',
+                                    Green: '#109618', 'Bloc Quebecois': '#990099'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+        }
+
+    </script>
+}
+<!-- /.content -->

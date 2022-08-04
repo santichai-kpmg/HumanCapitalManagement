@@ -1,0 +1,526 @@
+﻿
+
+@{
+    ViewBag.Title = "HCM | Edit Pool";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Edit Pool
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Detail</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Code</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtCode" name="txtCode" class="form-control" data-bind='value: code' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Pool Name HRIS</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNameHris" name="txtNameHris" class="form-control" data-bind='value: name_en_hris' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Pool Short Name HRIS</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtsNameHris" name="txtsNameHris" class="form-control" data-bind='value: short_name_en_hris' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Pool Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNewName" name="txtNewName" class="form-control" data-bind='value: name_en' />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Pool Short Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNewNameSh" name="txtNewNameSh" class="form-control" data-bind='value: short_name_en' />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Special Note</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtDes" cols="50" class="form-control" data-bind='value: description'></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-primary" onclick="SaveData();">Save</button>
+                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="box-body">
+                            @*Tab1*@
+                            <div class="col-md-3 pull-right">
+                                <!-- /. box -->
+                                <div class="box box-solid box-info">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Approver</h3>
+                                    </div>
+                                    <div class="box-body" id="divUser">
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <label>User</label>
+                                                <div class="input-group">
+                                                    <input type="text" id="txtID" name="txtID" class="form-control hidden" data-bind='value: Id' disabled />
+                                                    <input id="txtSearch" name="txtSearch" type="text" class="form-control input-sm" placeholder="Enter User">
+                                                    <div class="input-group-btn">
+                                                        <button id="add-new-event" onclick="SaveApprover()" type="button" class="btn btn-primary btn-flat btn-sm" style="background-color: rgb(57, 204, 204); border-color: rgb(57, 204, 204);">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group-sm">
+                                                    <label class="control-label nomallabel">UserName</label>
+                                                    <div class="">
+                                                        <input type="text" id="txtUserName" name="txtUserName" class="form-control input-sm" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group-sm">
+                                                    <label class=" control-label nomallabel">Group</label>
+                                                    <div class="">
+                                                        <input type="text" id="txtgroup" name="txtgroup" class="form-control input-sm" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <label>Special Note</label>
+                                                <textarea rows="3" id="txtDesuser" cols="50" class="form-control input-sm"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.col -->
+                            <div class="col-md-9">
+                                <div class="box box-solid box-info">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-text-width"></i>
+                                        <h3 class="box-title">List Approver</h3>
+                                        <div class="box-tools pull-right">
+                                            <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                <i class="fa fa-refresh"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                <thead>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- /. box -->
+                            </div>
+                        </div>
+                        @*<div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab">Approver</a></li>
+                                <li><a href="#tab_2" data-toggle="tab">Rank</a></li>
+
+                                <li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+
+
+                                </div>
+
+                                <div class="tab-pane" id="tab_2">
+
+
+                                </div>
+
+                            </div>
+
+                        </div>*@
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+    <script type="text/javascript">
+        var sUrlBack = '@Url.Action("PoolList", "Pool")';
+        var objMaxLength = [
+            { ctrlID: "txtNewName", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtNewNameSh", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 500 }];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            SetAutocom("txtSearch");
+        });
+
+        function SaveData (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                IsPass = false;
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param =  ko.toJS(viewModel);
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditPool", "Pool")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+                if (objModel.lstData != undefined && objModel.lstData != null && objModel.lstData.length > 0) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.lstData);
+                    $('#gvwData').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                    $('div[id$=divTable]').collapse("hide");
+                }
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtNewName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidatePopUp);
+            var objValidateUser = {};
+            objValidateUser[GetElementName("txtSearch", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser", objValidateUser);
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "UserName", "width": "25%", "className": "dt-left-ctm", "data": "emp_name" },
+                { "title": "Group", "width": "20%", "className": "dt-center-ctm", "data": "emp_group" },
+                { "title": "Position", "width": "20%", "className": "dt-center-ctm", "data": "emp_position" },
+                { "title": "Description", "width": "30%", "className": "dt-left-ctm", "data": "emp_dec" },
+            ];
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[1, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                   GetInputByID("txtgroup").val('');
+                   GetInputByID("txtUserName").val('');
+                   GetInputByID("txtID").val('');
+               });
+            var sID = ko.toJS(viewModel.IdEncrypt);
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        global: false,  // <-- this is the key!
+                        dataType: AjaxCall.dataType,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+
+                        url: '@Url.Action("UserAutoComplete", "Pool")',
+
+                        data: JSON.stringify({ SearchItem: request.term, sQueryID: sID }),
+        success: function (data) {
+               UnblockUI();
+               response($.map(data, function (item) {
+                   return {
+                       value: item.id,
+                       label: item.id + " : " + item.user_name ,
+                       user_id: item.user_id,
+                       user_no: item.id,
+                       user_name: item.user_name,
+                       user_last_name: item.user_last_name,
+                       unit_name: item.unit_name,
+                   }
+               }));
+           }
+                 });
+        },
+        minLength: 1,
+        select: function (event, ui) {
+               GetInputByID("txtUserName").val(ui.item.user_name);
+               GetInputByID("txtgroup").val(ui.item.unit_name);
+               GetInputByID("txtID").val(ui.item.user_no);
+           }
+
+        });
+        }
+
+
+        function SaveApprover(){
+            var IsPass = true;
+            var User = GetInputByID("txtID").val();
+            if (!CheckValidateBootstrap("divUser") || User + ""  == "") {
+                IsPass = false;
+                if (User + "" == "") {
+                    $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "INVALID");
+                }
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param = {
+                    IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                    emp_no: GetInputByID("txtID").val(),
+                    description: GetTextareaByID("txtDesuser").val(),
+            };
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditPoolApprover", "Pool")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearUser();
+
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }
+                });
+            }
+           }
+        function ClearUser() {
+            GetInputByID("txtgroup").val('');
+            GetInputByID("txtSearch").val('');
+            GetInputByID("txtUserName").val('');
+            GetInputByID("txtID").val('');
+            GetTextareaByID("txtDesuser").val('');
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "NOT_VALIDATED");
+        }
+        function Del(sVal) {
+            DialogConfirm(DialogHeader.Confirm, DialogMsg.ConfirmDel, function () {   $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("DelPoolApprover", "Pool")',
+                    data: JSON.stringify({ ItemData: sVal }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearUser();
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }
+                }); }, function () { });
+        }
+    </script>
+
+}

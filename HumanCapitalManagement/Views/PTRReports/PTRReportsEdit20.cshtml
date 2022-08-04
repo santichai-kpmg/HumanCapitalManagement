@@ -1,0 +1,1230 @@
+﻿@model HumanCapitalManagement.ViewModel.PESVM.vPTREvaluation_obj_save
+@{
+    ViewBag.Title = "PES | Performance Evaluation Form Report";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent)) Personal Evaluation Report
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">@Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent)) Personal Performance Evaluation</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <h4 class="">
+                                        Partner / Director<small> (Thailand / Myanmar / Laos) </small>
+                                    </h4>
+                                        <div class="bs-callout bs-callout-info  bs-callout-xl">
+                                            <h4 style="color: black;">Instruction</h4>
+                                            <p style="color: black;">Please complete the form and submit to your BU/Group Head, Practice Head for his/her evaluation and concurrence before submitting to CEO by <strong>11 September 2020.</strong> <br /><br /><strong style="color: red;">Important&nbsp;</strong>: The information to be provided by Audit Partner/Director will never include non-audit fees generated on KPMG audit clients. <br /><br /></p>
+                                            <p style="color: black;"><strong>Remarks</strong> : <span style="color: #000000;">This form is not required for candidate to be promoted to Shareholder, Partner and Director</span></p>
+                                        </div> 
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: sname' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: sgroup' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: srank' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Evaluation Status</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: status_name' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Other roles at office-wide level</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtOtherRole" name="txtOtherRole" class="form-control" data-bind='value: other_role' disabled />
+                                                    <span class="help-block" style="font-size:12px;">(i.e. Member of PPC, National Account Plans, other committee etc.)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Self - Evaluation</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: self_rating_id' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <dl class="dl-horizontal" style="margin-bottom: 0px; margin-top:-10px;font-size:12px;">
+                                                <dt>Notice :</dt>
+                                                <dd>Formal evaluation will be ultimately determined by Function Head and/or CEO that may not match with the your self-evaluation.</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <hr />
+
+                                </div>
+
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Submission & Approval Status</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataApprove" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.status_id == "8")
+                            {
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="box box-solid box-ctmPR">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Rating</h3>
+                                                <div class="box-tools pull-right">
+                                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <!-- form start -->
+                                            <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwDataFinal" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+
+                                                </div>
+
+                                            </div>
+                                            <!-- /.box-body -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Reference</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataFile" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-info" onclick="Print('pdf');">Print</button>
+                                    @*<button type="button" class="btn btn-info" onclick="Print('word');">Print to Word</button>*@
+                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Back</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">@Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent)) Performance Evaluation Form</a></li>
+
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Top 3 Priorities, Action Plans VS Achievements</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataQuestions" width="100%">
+                                                                                    <thead>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">KPIs</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataKPI" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+
+                                                                                            <th class="dt-center-ctm " rowspan="2">Financial</th>
+
+                                                                                            <th class="dt-center-ctm ptrHe1 " colspan="4">
+                                                                                                Practice/Group
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ptrHe2" colspan="4">
+                                                                                                Individual
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " rowspan="2">Remark</th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th class="dt-center-ctm ptrHe1">
+                                                                                                FY<br />2018
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ptrHe1">FY<br />2019</th>
+                                                                                            <th class="dt-center-ctm ptrHe1">
+                                                                                                Actual up to <br />31 Jul 2020
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ptrHe1">Target<br />FY2019</th>
+                                                                                            <th class="dt-center-ctm ptrHe2">
+                                                                                                FY<br />2018
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ptrHe2">FY<br />2019</th>
+                                                                                            <th class="dt-center-ctm ptrHe2">
+                                                                                                Actual up to <br />31 Jul 2020
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ptrHe2">Target<br />FY2020</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    <h3 class="box-title">Critical Incidents</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="callout " style="font-size: 14px;">
+                                                                        <p>
+                                                                            Please provide critical incidents in each of the KPIs stated below as supporting evidence for BU/Group Head, HOP and CEO’s evaluation as per guideline rating given
+                                                                            in the Appendix below.
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-10 col-md-offset-1">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwDataIncident" width="100%">
+                                                                                    <thead>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Appendix (for BU/Group Heads, HOPs and CEO)</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="callout " style="font-size: 14px;">
+                                                                        <p>
+                                                                            In addition to your achievements of Priorities set, the following KPIs will be used by BU/Group Heads, HOPs and CEO to evaluate your annual performance.
+                                                                        </p>
+                                                                        <br />
+                                                                        <p style="font-size:16px;">
+                                                                            <strong>Instruction for BU/Group Heads, HOPs and CEO</strong>
+                                                                        </p>
+                                                                        <p>
+                                                                            Please tick relevant boxes to use as guiding principle for conclusion of the evaluation.
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-8 col-md-offset-2">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwDataInScore" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+
+                                                                                            <th class="dt-center-ctm " rowspan="2">KPIs</th>
+                                                                                            <th class="dt-center-ctm " rowspan="2">
+                                                                                                Weighted Score
+                                                                                                (%)
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " rowspan="2">
+                                                                                                Excellent
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " colspan="3">
+                                                                                                Meet Expectations
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " rowspan="2">
+                                                                                                NI
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                High
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">Meet</th>
+                                                                                            <th class="dt-center-ctm ">Low</th>
+                                                                                        </tr>
+                                                                                    </thead>
+
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <input type="hidden" id="hfdSessFile" name="hfdSessFile" class="form-control" data-bind='value: Session' />
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/DataTables2/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/PESSite.css" rel="stylesheet" />
+    <style>
+        .dt-HeadGr-ctm {
+            background-color: #2952a3;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35);
+            color: rgb(0, 0, 0);
+            vertical-align: middle;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .ptrHe1 {
+            background-color: #ffb183 !important;
+        }
+
+        .ptrHe2 {
+            background-color: rgb(251, 234, 134) !important;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowReorder.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+    <script type="text/javascript">
+        var sUrlBack = '@Url.Action("PTRReportsList", "PTRReports")';
+        var Approve = "";
+        var objMaxLength = [
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 9999 }];
+       var objModel = @Html.Raw(Json.Encode(Model));
+
+        function GetData() {
+            //var lstQuestion = $('#gvwData').dataTable().fnGetData();
+            var lstSave = ko.toJS(viewModel);
+            //lstSave.lstQuestion = lstQuestion;
+            return lstSave;
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTableApprove() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nStep", "visible": false },
+                { "title": "Position", "width": "25%", "className": "dt-left-ctm", "data": "step_name", "searchable": false, "orderable": false },
+                { "title": "Name", "width": "35%", "className": "dt-left-ctm", "data": "app_name", "searchable": false, "orderable": false },
+                { "title": "Submitted/Approved<br/>Date ", "width": "35%", "className": "dt-center-ctm", "data": "approve_date", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "description", "searchable": false, "orderable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataApprove",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+
+        function LoadFile(sVal)
+        {
+            if (ko.toJS(viewModel.IdEncrypt) != undefined)
+            {
+
+                BlockUI();
+                window.open('@Url.Action("CreatPTREvaluationFile", "PTREvaluation")?id=' + sVal, '_blank');
+                setTimeout(function () { UnblockUI(); }, 500);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable, sRow) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            if (sRow == undefined || sRow == null) {
+                sRow = 3;
+            }
+
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='" + sRow + "' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+
+
+
+    </script>
+}
+@section scripts2{
+    <script type="text/javascript">
+            $(function () {
+
+            SetTableKPIs();
+            SetTableApprove();
+            SetTableQuestions();
+            SetTableFile();
+            @if (Model.status_id == "8")
+            {
+             <text>
+                SetTableFinal();
+             </text>
+
+            }
+
+
+            SetTableKPIsEva2();
+            SetTableKPIsEva();
+
+             BindData(objModel);
+             ko.applyBindings(viewModel);
+
+             SetMaxLeangthJS(objMaxLength);
+            @if (Request.QueryString["bUrl"] != null)
+            {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+            }
+                     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwDataQuestions').DataTable().columns.adjust().draw();
+                    $('#gvwDataKPI').DataTable().columns.adjust().draw();
+                }
+                  });
+            });
+            var currentYear = @Model.yearcurrent;
+            var currentone = @Model.yearone;
+            var currenttwo = @Model.yeartwo;
+            var currentthree = @Model.yearthree;
+
+
+
+    </script>
+
+    <script type="text/javascript">
+        function SetTableFile() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "File Name", "width": "35%", "className": "dt-left-ctm", "data": "file_name", "searchable": false, "orderable": false },
+                { "title": "Description", "width": "55%", "className": "dt-left-ctm", "data": "description", "searchable": false, "orderable": false },
+                { "title": "", "width": "10%", "className": "dt-center-ctm", "data": "View", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFile",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+                columnDefs: [
+                    //{
+                    //    "targets": 1,
+                    //              "render": function (data, type, row, meta) {
+                    //                               return row.Edit +" "+data;
+                    //                        }
+                    //                    } ,
+
+                ],
+                //nRunningNumber: ["true", 0],
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTableKPIs() {
+            var objHeadClRequest = [
+                { "width": "11%", "className": "dt-left-ctm dt-mid-ctm", "data": "sname", "searchable": false, "orderable": false, },
+                { "width": "6%", "className": "dt-center-ctm dt-mid-ctm", "data": "group_yeartwo", "searchable": false, "orderable": false, },
+                { "width": "6%", "className": "dt-center-ctm dt-mid-ctm", "data": "group_yearone", "searchable": false, "orderable": false, },
+                { "width": "8%", "className": "dt-center-ctm dt-mid-ctm", "data": "group_actual", "searchable": false, "orderable": false, },
+                { "width": "7%", "className": "dt-center-ctm dt-mid-ctm", "data": "target_group", "searchable": false, "orderable": false, },
+                { "width": "5%", "className": "dt-center-ctm dt-mid-ctm", "data": "yeartwo", "searchable": false, "orderable": false, },
+                { "width": "5%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearone", "searchable": false, "orderable": false, },
+                { "width": "8%", "className": "dt-center-ctm dt-mid-ctm", "data": "actual", "searchable": false, "orderable": false, },
+                { "width": "7%", "className": "dt-center-ctm dt-mid-ctm", "data": "target_data", "searchable": false, "orderable": false, },
+                { "width": "37%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false, },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "IdEncrypt", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sdisable", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "stype", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "howto", "visible": false },
+            ];
+            //var objHeadClRequest = [
+
+            //    {  "className": "dt-left-ctm dt-mid-ctm", "data": "sname", "searchable": false, "orderable": false, },
+            //    {  "width": "0%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearthree", "searchable": false, "orderable": false, "visible": false },
+            //    {"width": "6%", "className": "dt-center-ctm dt-mid-ctm", "data": "yeartwo", "searchable": false, "orderable": false, },
+            //    { "width": "6%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearone", "searchable": false, "orderable": false, },
+            //    {  "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "group_actual", "searchable": false, "orderable": false, },
+            //    {  "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "actual", "searchable": false, "orderable": false, },
+            //    {  "width": "8%", "className": "dt-center-ctm dt-mid-ctm", "data": "target_group", "searchable": false, "orderable": false, },
+            //    {  "width": "8%", "className": "dt-center-ctm dt-mid-ctm", "data": "target_data", "searchable": false, "orderable": false, },
+            //    {"width": "37%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false, },
+            //    {  "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "IdEncrypt", "visible": false },
+            //    {  "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sdisable", "visible": false },
+            //    {  "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "stype", "visible": false },
+            //    { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "howto", "visible": false },
+            //];
+
+            var objTableRe = {
+                sTableID: "gvwDataKPI",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[10, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    {
+                        "targets": 1,
+                        "render": function (data, type, row) {
+                            //if (row.stype == "N") {
+                            //    data = StringtomoneyDecimal(data);
+
+                            //}
+                            return GenarateKPI(data, row.sbu, row.su, row.stype);
+                        },
+                    },
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row) {
+                            //if (row.stype == "N") {
+                            //    data = StringtomoneyDecimal(data);
+
+                            //}
+                            return GenarateKPI(data, row.sbu, row.su, row.stype);
+                        },
+                    },
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row) {
+                            //if (row.stype == "N") {
+                            //    data = StringtomoneyDecimal(data);
+
+                            //}
+                            return GenarateKPI(data, row.sbu, row.su, row.stype);
+                        },
+                    },
+                    {
+                        "targets": 5,
+                        "render": function (data, type, row) {
+                            if (row.stype == "N") {
+                                data = StringtomoneyDecimal(data);
+                            }
+                            return data;
+                        },
+                    },
+                    {
+                        "targets": 6,
+                        "render": function (data, type, row) {
+                            if (row.stype == "N") {
+                                data = StringtomoneyDecimal(data);
+                            }
+                            return data;
+                        },
+                    },
+                    {
+                        "targets": 7,
+                        "render": function (data, type, row) {
+                            if (row.stype == "N") {
+                                data = StringtomoneyDecimal(data);
+                            }
+                            return data;
+                        },
+                    },
+                    {
+                        "targets": 9,
+                        "render": function (data, type, row) {
+                            var shtml = "";
+                            if (row.howto != undefined && row.howto != "") {
+                                shtml = "<strong>How to</strong> :<br/>" + (row.howto + "").replace("\n", "<br/>"); + "<br/>" + "";
+                            }
+                            if (shtml != "") {
+                                shtml += "<br/><hr/>";
+                            }
+                            shtml += "<strong>Remark</strong> :<br/>" + (row.remark + "").replace("\n", "<br/>") + "";
+                            return shtml;
+                        },
+                    }
+                ],
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+
+        }
+
+        function SetTableQuestions() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "header", "visible": false },
+                { "title": "Question", "width": "38%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "question", },
+                { "title": "Answer", "width": "62%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sgroup", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sdisable", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataQuestions",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[6, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        sHtml = "<strong>" + row.header + "</strong><br/>" + data;
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (data != undefined && data != "") {
+                            shtml = (data + "").replace("\n", "<br/>");
+                        }
+                        return shtml;
+                    }
+                }],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }
+                , rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm"  colspan="2" ><strong style="font-size: 16px;">' + group + '</strong></td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'sgroup'
+                }
+
+
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function SetTableKPIsEva2() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "KPIs", "width": "38%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "header", },
+                { "title": "Critical Incidents", "width": "62%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sgroup", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sdisable", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataIncident",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "asc"]],
+                columnDefs: [{
+                    "targets": 1,
+                    "render": function (data, type, row) {
+                        sHtml = "<strong>" + row.nSeq + ". " + data + "</strong><br/>";
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (data != undefined && data != "") {
+                            shtml = (data + "").replace("\n", "<br/>");
+                        }
+                        return shtml;
+                    }
+                }],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+
+            CreatTableJS(objTableRe);
+        }
+        function SetTableKPIsEva() {
+            var objHeadClRequest = [
+
+                { "width": "34%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "header" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nscore" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sExcellent" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sHigh" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sMeet" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sLow" },
+                { "width": "11%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sNI" },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "isCurrent", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nrate", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sgroup", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nstep", "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataInScore",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[12, "asc"], [7, "asc"]],
+                columnDefs: [{
+                    "targets": 0,
+                    "render": function (data, type, row) {
+                        sHtml = "<strong>" + row.nSeq + ". " + data + "</strong><br/>";
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 1,
+                    "render": function (data, type, row) {
+                        sHtml = data + "%";
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        shtml = CreateCheckIcon(data);
+                        return shtml;
+                    }
+                }
+                    , {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        shtml = CreateCheckIcon(data);
+                        return shtml;
+                        //return CreateCustomCheckBox(row.id + "", data + "", "2");
+                    }
+                }
+                    , {
+                    "targets": 4,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        shtml = CreateCheckIcon(data);
+                        return shtml;
+                        //  return CreateCustomCheckBox(row.id + "", data + "", "3");
+                    }
+                }
+                    , {
+                    "targets": 5,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        shtml = CreateCheckIcon(data);
+                        return shtml;
+                        //  return CreateCustomCheckBox(row.id + "", data + "", "3");
+                    }
+                }
+                    , {
+                    "targets": 6,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        shtml = CreateCheckIcon(data);
+                        return shtml;
+                        //  return CreateCustomCheckBox(row.id + "", data + "", "4");
+                    }
+                }],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }, rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm"  colspan="7" ><strong style="font-size: 16px;">' + group + '</strong></td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'sgroup'
+                }
+            };
+
+            CreatTableJS(objTableRe);
+
+        }
+
+        function CreateCheckIcon(sVal) {
+            shtml = "";
+            if (sVal != undefined && sVal == "Y") {
+                shtml = '<i class="fa fa-check"></i>';
+            }
+            return shtml;
+        }
+
+
+
+
+    </script>
+    <script type="text/javascript">
+
+
+
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+                if (objModel.lstApprove != undefined && objModel.lstApprove != null && objModel.lstApprove.length > 0) {
+                    $('#gvwDataApprove').DataTable().clear().draw();
+                    $('#gvwDataApprove').dataTable().fnAddData(objModel.lstApprove);
+                    $('#gvwDataApprove').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataApprove').DataTable().columns.adjust().draw();
+                        $('#gvwDataApprove').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataApprove').DataTable().clear().draw();
+                    $('#gvwDataApprove').dataTable().fnDraw();
+                }
+
+                if (objModel.lstFile != undefined && objModel.lstFile != null && objModel.lstFile.length > 0) {
+                    $('#gvwDataFile').DataTable().clear().draw();
+                    $('#gvwDataFile').dataTable().fnAddData(objModel.lstFile);
+                    $('#gvwDataFile').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataFile').DataTable().columns.adjust().draw();
+                        $('#gvwDataFile').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataFile').DataTable().clear().draw();
+                    $('#gvwDataFile').dataTable().fnDraw();
+
+                }
+
+                if (objModel.lstKPIs != undefined && objModel.lstKPIs != null && objModel.lstKPIs.length > 0) {
+                    $('#gvwDataKPI').DataTable().clear().draw();
+                    $('#gvwDataKPI').dataTable().fnAddData(objModel.lstKPIs);
+                    $('#gvwDataKPI').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataKPI').DataTable().columns.adjust().draw();
+                        $('#gvwDataKPI').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataKPI').DataTable().clear().draw();
+                    $('#gvwDataKPI').dataTable().fnDraw();
+
+                }
+                if (objModel.lstAnswer != undefined && objModel.lstAnswer != null && objModel.lstAnswer.length > 0) {
+                    $('#gvwDataQuestions').DataTable().clear().draw();
+                    $('#gvwDataQuestions').dataTable().fnAddData(objModel.lstAnswer);
+                    $('#gvwDataQuestions').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataQuestions').DataTable().columns.adjust().draw();
+                        $('#gvwDataQuestions').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataQuestions').DataTable().clear().draw();
+                    $('#gvwDataQuestions').dataTable().fnDraw();
+
+                }
+
+
+
+
+                if (objModel.lstIncidents != undefined && objModel.lstIncidents != null && objModel.lstIncidents.length > 0) {
+                    $('#gvwDataIncident').DataTable().clear().draw();
+                    $('#gvwDataIncident').dataTable().fnAddData(objModel.lstIncidents);
+                    $('#gvwDataIncident').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataIncident').DataTable().columns.adjust().draw();
+                        $('#gvwDataIncident').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataIncident').DataTable().clear().draw();
+                    $('#gvwDataIncident').dataTable().fnDraw();
+
+                }
+                if (objModel.lstIncidents_score != undefined && objModel.lstIncidents_score != null && objModel.lstIncidents_score.length > 0) {
+                    $('#gvwDataInScore').DataTable().clear().draw();
+                    $('#gvwDataInScore').dataTable().fnAddData(objModel.lstIncidents_score);
+                    $('#gvwDataInScore').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataInScore').DataTable().columns.adjust().draw();
+                        $('#gvwDataInScore').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataInScore').DataTable().clear().draw();
+                    $('#gvwDataInScore').dataTable().fnDraw();
+
+                }
+
+
+             @if ( Model.status_id == "8")
+             {
+                 <text>
+                if (objModel.lstFinal != undefined && objModel.lstFinal != null && objModel.lstFinal.length > 0) {
+                    $('#gvwDataFinal').DataTable().clear().draw();
+                    $('#gvwDataFinal').dataTable().fnAddData(objModel.lstFinal);
+                    $('#gvwDataFinal').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataFinal').DataTable().columns.adjust().draw();
+                        $('#gvwDataFinal').DataTable().columns.adjust().responsive.recalc();
+
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataFinal').DataTable().clear().draw();
+                    $('#gvwDataFinal').dataTable().fnDraw();
+
+                }
+                 </text>
+            }
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function SetTableFinal() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "Position", "width": "28%", "className": "dt-left-ctm", "data": "position", "searchable": false, "orderable": false },
+                { "title": "Rating", "width": "27%", "className": "dt-center-ctm", "data": "status", "searchable": false, "orderable": false },
+                { "title": "Feedback", "width": "45%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFinal",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+           function Print(Val)
+        {
+           var sVal = ko.toJS(viewModel.IdEncrypt);
+            BlockUI();
+               window.open('@Url.Action("ExpEvaluationForm2020", "rpPESExport")?qryStr=' + sVal + '&sMode=' + Val, '_blank');
+            setTimeout(function () { UnblockUI(); }, 500);
+        }
+
+    </script>
+
+}

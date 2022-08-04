@@ -1,0 +1,786 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Staff Movement";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Staff Movement
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row">
+                    @*<div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">FY Year</span>
+
+                            @{ Html.RenderAction("CreateddlFYPlanActiveYear", "FYPlan", new
+                                {
+                                    id = "ddlFYYear",
+                                    databind = "fy_year",
+                                    value = ""
+
+                                }); }
+
+                        </div>
+                    </div>*@
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Month</span>
+                            <input ID="txtDateStart" class="form-control text-center" type="text" name="txtDateStart"
+                                   ToolTip="Start Date" placeholder="-- / ----" data-bind='value: mtd_start' autocomplete="off" disabled />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group form-group-sm col-xs-12  text-left">
+                        @*<button type="button" class="btn btn-info" onclick="LoadData();">Search</button>*@
+                        <button type="button" id="btnExport" class="btn btn-default" onclick="LoadExcel('xlxs');"><img src="~/Image/filetype_xls.png" alt="" height="30"></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    @*<div class="box box-primary">
+                            <div class="box-header with-border">
+                                Search Results
+                                <div class="box-tools pull-right">
+                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="button" id="btnExport" class="btn btn-default" onclick="LoadExcel();"><img src="~/Image/filetype_xls.png" height="30"></button>
+                                    </div>
+                                </div>
+                                <div class="row ">
+                                    <div class="col-lg-12 ">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwData" width="100%">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th class="dt-center-ctm He1" rowspan="2">Group</th>
+                                                        <th class="dt-center-ctm He2" colspan="6">
+                                                            Staff movement (Includes secondment and contractors)
+                                                        </th>
+                                                        <th class="dt-center-ctm He1" rowspan="2">Ending HC<br>as of<br>this report<br>(estimated) </th>
+                                                        <th class="dt-center-ctm He1" rowspan="2">FY<span data-bind="text: full_last_year"></span><br>HC Plan</th>
+                                                        <th class="dt-center-ctm He1" rowspan="2">Overplan/<br>Underplan headcount<br>(+/-)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th class="dt-center-ctm He3">
+                                                            Actual Starting FY<span data-bind="text: fysh_year"></span><br>
+                                                            NOT include new joiners on 1st Oct-<span data-bind="text: full_last_year"></span>
+                                                        </th>
+                                                        <th class="dt-center-ctm He3">Current Staff<br>as of this report</th>
+                                                        <th class="dt-center-ctm He3">To be<br>new joiner(s)</th>
+                                                        <th class="dt-center-ctm He3">To be<br>resigned</th>
+                                                        <th class="dt-center-ctm He3">To be<br>transferred in</th>
+                                                        <th class="dt-center-ctm He3">To be<br>transferred out</th>
+                                                    </tr>
+                                                </thead>
+                                                <tfoot>
+                                                    <tr>
+                                                        <th colspan="7"></th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>*@
+                </div>
+
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Staff movement</a></li>
+                            <li><a href="#tab_2" data-toggle="tab"> Overplan/Underplan</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- general form elements -->
+                                            <!-- form start -->
+                                            <div class="box box-primary">
+                                                <div class="box-header with-border">
+                                              
+                                                    <div class="box-tools pull-right">
+                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                            <i class="fa fa-refresh"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <!-- form start -->
+                                                <div class="box-body">
+                                                    <div class="row ">
+                                                        <div class="col-lg-12 ">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwData" width="100%">
+                                                                    <thead>
+                                                                        <tr>
+
+                                                                            <th class="dt-center-ctm He1" rowspan="2">Group</th>
+                                                                            <th class="dt-center-ctm He2" colspan="6">
+                                                                                Staff movement (Includes secondment and contractors)
+                                                                            </th>
+                                                                            <th class="dt-center-ctm He1" rowspan="2">Ending HC<br>as of<br>this report<br>(estimated) </th>
+                                                                            <th class="dt-center-ctm He1" rowspan="2">FY <span data-bind="text: fysh_year"></span><br>HC Plan</th>
+                                                                            <th class="dt-center-ctm He1" rowspan="2">Overplan/<br>Underplan headcount<br>(+/-)</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th class="dt-center-ctm He3">
+                                                                                Actual Starting FY<span data-bind="text: fysh_year"></span><br>
+                                                                                NOT include new joiners on 1st Oct-<span data-bind="text: full_last_year"></span>
+                                                                            </th>
+                                                                            <th class="dt-center-ctm He3">Current Staff<br>as of this report</th>
+                                                                            <th class="dt-center-ctm He3">To be<br>new joiner(s)</th>
+                                                                            <th class="dt-center-ctm He3">To be<br>resigned</th>
+                                                                            <th class="dt-center-ctm He3">To be<br>transferred in</th>
+                                                                            <th class="dt-center-ctm He3">To be<br>transferred out</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <th colspan="7"></th>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                    <tbody></tbody>
+                                                                </table>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
+                                            <!-- /. box -->
+                                            <!-- /.box-body -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="tab_2">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="box box-primary">
+                                            <div class="box-header with-border">
+                                         
+                                                <div class="box-tools pull-right">
+                                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <!-- form start -->
+                                            <div class="box-body">
+                                                <div class="row ">
+                                                    <div class="col-lg-12 ">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwData2" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th colspan="11"></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="hidden" id="txtSess" name="txtSess" class="form-control" data-bind='value: session' />
+            </div>
+        </form>
+    </section>
+</div>
+
+@section style{
+    <style>
+        .dt-HeadGr-ctm {
+            background-color: #2952a3;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35);
+            color: rgb(0, 0, 0);
+            vertical-align: middle;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    @*<script src="~/Scripts/plugins/DataTables2/FixedHeader-3.1.2/js/dataTables.fixedHeader.min.js"></script>*@
+    <script src="~/Scripts/plugins/DataTables2/jquery.dataTables.rowGrouping.js"></script>
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTable();
+            SetTable2();
+            //setDatePickerFromTo($("input[id$=txtDateStart]"), $("input[id$=txtDateTo]"));
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            SetMonthYearPicker($("input[id$=txtDateStart]"));
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                  
+                }
+                else if (e.target.hash == '#tab_2') {
+                    $('#gvwData2').DataTable().columns.adjust().draw();
+                 
+                }
+            });
+        });
+
+        function Search() {
+            var lstSearch = { n_month: ko.toJS(viewModel.mtd_start) };
+            return lstSearch;
+        };
+        function LoadData() {
+            var Param = Search();
+            BlockUI();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadStaffMovement", "rStaffMovement")',
+                dataType: "json",
+                data: { SearchItem: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        var lstData = response.result.lstData;
+                        console.log(response.result);
+                        BindData(response.result);
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+            });
+        }
+        function Cancel() {
+            window.location.reload();
+        }
+
+        function SetTable() {
+            var objHeadClRequest = [
+
+                { "width": "16%", "className": "dt-left-ctm", "data": "sgroup", "orderable": false },
+                { "width": "15  %", "className": "dt-right-ctm", "data": "ac_starting", "orderable": false },
+                { "width": "13%", "className": "dt-right-ctm", "data": "current_hc", "orderable": false},
+                { "width": "8%", "className": "dt-right-ctm", "data": "new_join", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "resigned", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "transferred_in", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "transferred_out", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "ending", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "plan", "orderable": false },
+                { "width": "8%", "className": "dt-right-ctm", "data": "over_under", "orderable": false },
+                { "width": "0%", "className": "dt-center-ctm", "data": "division", "searchable": false, "visible": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[10, "asc"]],
+                //columnDefs: [],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm" colspan="10">' + group + '</td>');
+                    }
+                    ,
+                    'endRender': function (rows, group) {
+                        var nplan = 0;
+                        var nstart = 0;
+                        var ncurrent = 0;
+                        var nnewh = 0;
+                        var nresign = 0;
+                        var nnewjoin = 0;
+                        var ntransin = 0;
+                        var ntranout = 0;
+                        var nending = 0;
+                        var noverunder = 0;
+
+                        //var amount = rows
+                        //    .data();
+
+                        //$.each(amount, function (key, value) {
+                        //    nplan = (nplan + StringtoInt(value.plan + ""));
+                        //    nstart = (nstart + StringtoInt(value.ac_starting + ""));
+                        //    ncurrent = (ncurrent + StringtoInt(value.current_hc + ""));
+                        //    nnewh = (nnewh + StringtoInt(value.ac_new_hires + ""));
+                        //    nresign = (nresign + StringtoInt(value.ac_resign + ""));
+                        //});
+                        //return $('<tr/>')
+                        //    .append('<td class="dt-total-ctm dt-left-ctm" >Total ' + group + '</td>')
+                        //    .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nplan) + '</td>')
+                        //    .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nstart) + '</td>')
+                        //    .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(ncurrent) + '</td>')
+                        //    .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nnewh) + '</td>')
+                        //    .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nresign) + '</td>');
+                        var objSum = Enumerable.From(objModel.lstData).Where(function (w) { return w.division == group }).ToArray();
+                        if (objSum != null && objSum.length >0) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm" >Total ' + group + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.ac_starting })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.current_hc })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.new_join })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.resigned })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.transferred_in })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.transferred_out })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.ending })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.plan })) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(Enumerable.From(objSum).Sum(function (s) { return s.over_under })) + '</td>');
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm" >Total ' + group + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+
+                    },
+                    'dataSrc': 'division'
+                },
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var nplan = 0;
+                    var nstart = 0;
+                    var ncurrent = 0;
+                    var nnewh = 0;
+                    var nresign = 0;
+                    var nnewjoin = 0;
+                    var ntransin = 0;
+                    var ntranout = 0;
+                    var nending = 0;
+                    var noverunder = 0;
+
+                    $.each(objModel.lstData, function (key, value) {
+                        nplan = (nplan + StringtoInt(value.plan + ""));
+                        nstart = (nstart + StringtoInt(value.ac_starting + ""));
+                        ncurrent = (ncurrent + StringtoInt(value.current_hc + ""));
+                        nresign = (nresign + StringtoInt(value.resigned + ""));
+                        nnewjoin = (nnewjoin + StringtoInt(value.new_join + ""));
+                        ntransin = (ntransin + StringtoInt(value.transferred_in + ""));
+                        ntranout = (ntranout + StringtoInt(value.transferred_out + ""));
+                        nending = (nending + StringtoInt(value.ending + ""));
+                        noverunder = (noverunder + StringtoInt(value.over_under + ""));
+
+                    });
+                    // Update footer
+                    var sFood = $(tfoot).find('th').eq(0).parent();
+                    sFood.html('');
+                    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" >Total Thailand</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nstart) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ncurrent) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nnewjoin) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nresign) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ntransin) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ntranout) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nending) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(noverunder) + '</th>');
+
+                }
+            };
+
+            CreatTableJS(objTableRe);
+        }
+        function SetTable2() {
+            var objHeadClRequest = [
+                { "title": "Group", "width": "15%", "className": "dt-left-ctm", "data": "sgroup", "orderable": false },
+                { "title": "Type", "width": "9%", "className": "dt-right-ctm", "data": "type_name", "orderable": false},
+                { "title": "PTR", "width": "9%", "className": "dt-right-ctm", "data": "ptr", "orderable": false },
+                { "title": "DIR", "width": "8%", "className": "dt-right-ctm", "data": "dir", "orderable": false },
+                { "title": "AD", "width": "8%", "className": "dt-right-ctm", "data": "ad", "orderable": false },
+                { "title": "MGR", "width": "8%", "className": "dt-right-ctm", "data": "mgr", "orderable": false },
+                { "title": "AM", "width": "8%", "className": "dt-right-ctm", "data": "am", "orderable": false },
+                { "title": "SR", "width": "8%", "className": "dt-right-ctm", "data": "sr", "orderable": false },
+                { "title": "AA", "width": "8%", "className": "dt-right-ctm", "data": "aa", "orderable": false },
+                { "title": "PARA", "width": "9%", "className": "dt-right-ctm", "data": "para", "orderable": false },
+                { "title": "Total", "width": "10%", "className": "dt-right-ctm", "data": "total", "orderable": false},
+                { "title": "", "width": "0%", "className": "dt-right-ctm", "data": "division", "searchable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData2",
+                nDis: [],
+                sProperty: "<'top col-md-6'B>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[11, "asc"], [0, "asc"], [1, "desc"]],
+                //columnDefs: [],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                rowGroup: {
+                    'startRender': null
+                        //function (rows, group) {
+                        //return $('<tr/>')
+                        //    .append('<td class="dt-HeadGr-ctm dt-center-ctm" colspan="11">' + group + '</td>');
+                        //}
+                    ,
+                    'endRender': function (rows, group) {
+                        var npara = 0;
+                        var naa = 0;
+                        var nsr = 0;
+                        var nam = 0;
+                        var nmgr = 0;
+                        var nad = 0;
+                        var ndir = 0;
+                        var nptr = 0;
+                        var ntotal = 0;
+
+                        var nparaplan = 0;
+                        var naaplan = 0;
+                        var nsrplan = 0;
+                        var namplan = 0;
+                        var nmgrplan = 0;
+                        var nadplan = 0;
+                        var ndirplan = 0;
+                        var nptrplan = 0;
+                        var ntotalplan = 0;
+
+                        var amount = rows
+                            .data();
+
+                        $.each(amount, function (key, value) {
+                            if (value.type_name + "" == "Current HC") {
+                                npara = (npara + StringtoInt(value.para + ""));
+                                naa = (naa + StringtoInt(value.aa + ""));
+                                nsr = (nsr + StringtoInt(value.sr + ""));
+                                nam = (nam + StringtoInt(value.am + ""));
+                                nmgr = (nmgr + StringtoInt(value.mgr + ""));
+                                nad = (nad + StringtoInt(value.ad + ""));
+                                ndir = (ndir + StringtoInt(value.dir + ""));
+                                nptr = (nptr + StringtoInt(value.ptr + ""));
+                                ntotal = (ntotal + StringtoInt(value.total + ""));
+                            }
+                            else {
+
+                                nparaplan = (nparaplan + StringtoInt(value.para + ""));
+                                naaplan = (naaplan + StringtoInt(value.aa + ""));
+                                nsrplan = (nsrplan + StringtoInt(value.sr + ""));
+                                namplan = (namplan + StringtoInt(value.am + ""));
+                                nmgrplan = (nmgrplan + StringtoInt(value.mgr + ""));
+                                nadplan = (nadplan + StringtoInt(value.ad + ""));
+                                ndirplan = (ndirplan + StringtoInt(value.dir + ""));
+                                nptrplan = (nptrplan + StringtoInt(value.ptr + ""));
+                                ntotalplan = (ntotalplan + StringtoInt(value.total + ""));
+                            }
+
+
+
+
+
+                        });
+                        return $('<tr/>')
+                            .append('<td class="dt-total-ctm dt-left-ctm"  colspan="2" >Difference : ' + group + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nptrplan - nptr) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(ndirplan - ndir) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nadplan - nad) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nmgrplan - nmgr) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(namplan - nam) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nsrplan - nsr) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(naaplan - naa) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nparaplan- npara) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(ntotalplan-ntotal) + '</td>');
+                    },
+                    'dataSrc': 'sgroup'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var npara = 0;
+                    var naa = 0;
+                    var nsr = 0;
+                    var nam = 0;
+                    var nmgr = 0;
+                    var nad = 0;
+                    var ndir = 0;
+                    var nptr = 0;
+                    var ntotal = 0;
+
+                    var nparaplan = 0;
+                    var naaplan = 0;
+                    var nsrplan = 0;
+                    var namplan = 0;
+                    var nmgrplan = 0;
+                    var nadplan = 0;
+                    var ndirplan = 0;
+                    var nptrplan = 0;
+                    var ntotalplan = 0;
+
+                    $.each(objModel.lstPlan, function (key, value) {
+                        if (value.type_name + "" == "Current HC") {
+                            npara = (npara + StringtoInt(value.para + ""));
+                            naa = (naa + StringtoInt(value.aa + ""));
+                            nsr = (nsr + StringtoInt(value.sr + ""));
+                            nam = (nam + StringtoInt(value.am + ""));
+                            nmgr = (nmgr + StringtoInt(value.mgr + ""));
+                            nad = (nad + StringtoInt(value.ad + ""));
+                            ndir = (ndir + StringtoInt(value.dir + ""));
+                            nptr = (nptr + StringtoInt(value.ptr + ""));
+                            ntotal = (ntotal + StringtoInt(value.total + ""));
+                        }
+                        else {
+
+                            nparaplan = (nparaplan + StringtoInt(value.para + ""));
+                            naaplan = (naaplan + StringtoInt(value.aa + ""));
+                            nsrplan = (nsrplan + StringtoInt(value.sr + ""));
+                            namplan = (namplan + StringtoInt(value.am + ""));
+                            nmgrplan = (nmgrplan + StringtoInt(value.mgr + ""));
+                            nadplan = (nadplan + StringtoInt(value.ad + ""));
+                            ndirplan = (ndirplan + StringtoInt(value.dir + ""));
+                            nptrplan = (nptrplan + StringtoInt(value.ptr + ""));
+                            ntotalplan = (ntotalplan + StringtoInt(value.total + ""));
+                        }
+                    });
+                    // Update footer
+                 
+                    var sFood = $(tfoot).find('th').eq(0).parent().parent();
+                    var sFoodtr = $(tfoot).find('tfoot');
+                    sFood.html('');
+                    sFood.html('<tr><th class=" dt-totalAll-ctm " style="text-align: left;"   colspan="2" >Total HC Plan</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nptrplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ndirplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nadplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nmgrplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(namplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nsrplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(naaplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nparaplan) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ntotalplan) + '</th></tr>'
+                        + '<tr><th class=" dt-totalAll-ctm " style="text-align: left;"   colspan="2" >Total Current HC</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nptr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ndir) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nad) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nmgr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nam) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nsr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(naa) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(npara) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ntotal) + '</th></tr>'
+                        + '<tr><th class=" dt-totalAll-ctm " style="text-align: left;"   colspan="2" >Total Difference</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nptrplan - nptr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ndirplan - ndir) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nadplan - nad) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nmgrplan - nmgr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(namplan - nam) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nsrplan - nsr) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(naaplan - naa) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(nparaplan - npara) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + StringtoCount(ntotalplan - ntotal) + '</th></tr>'
+                    );
+
+                }
+            };
+
+            CreatTableJS(objTableRe);
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            objModel = value;
+            if (viewModel.fy_year == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+            //$($('#gvwData').DataTable().columns(1).header()).html('Forecast Headcount <br/>Target Plan<br>FY 18');
+            //$($('#gvwData').DataTable().columns(2).header()).html('Forecast Headcount <br/>Target Plan<br>FY 18');
+            //$($('#gvwData').DataTable().columns(3).header()).html('Forecast Headcount <br/>Target Plan<br>FY 18');
+
+            if (value.lstData != undefined && value.lstData != null) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(value.lstData);
+                $('#gvwData').dataTable().fnDraw();
+
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+            }
+            // result.lstPlan
+            if (value.lstPlan != undefined && value.lstPlan != null) {
+                $('#gvwData2').DataTable().clear().draw();
+                $('#gvwData2').dataTable().fnAddData(value.lstPlan);
+                $('#gvwData2').dataTable().fnDraw();
+
+            }
+            else {
+                $('#gvwData2').DataTable().clear().draw();
+                $('#gvwData2').dataTable().fnDraw();
+            }
+            setTimeout(function () {
+                $('#gvwData').DataTable().columns.adjust().draw();
+                $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                $('#gvwData2').DataTable().columns.adjust().draw();
+                $('#gvwData2').DataTable().columns.adjust().responsive.recalc();
+            }, 500);
+        }
+        $(function () {
+            $(window).bind('beforeunload', function () {
+
+                var aSession = [$('input[id$=txtSess]').val()];
+
+                //var sValHdf = $('input[id$=hfdSess]').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ClearSession", "Base")',
+                    cache: false,
+                    dataType: "html",
+                    data: {
+                        sVal: encodeURIComponent(aSession)
+                    },
+                    complete: function (jqXHR, status) {//finaly
+                    }
+                });
+            });
+        });
+
+
+        function LoadExcel(Val)
+        {
+            if(viewModel.session != undefined)
+            {
+                var sVal =  ko.toJS(viewModel.session);
+                BlockUI();
+                window.open('@Url.Action("ExpStaffMove", "rpStaffMovement")?qryStr=' + sVal +'&sMode='+Val, '_blank');
+                setTimeout(function () { UnblockUI(); }, 500);
+            }
+            else {
+                DialogWarning(DialogHeader.Warning,"Error please try again.");
+            }
+        }
+    </script>
+}
+<!-- /.content -->

@@ -1,0 +1,1152 @@
+﻿
+
+@{
+    ViewBag.Title = "HCM | Give Mini Heart";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Give Mini Heart
+    </h1>
+    <div class="row" hidden>
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row" id="search">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="collapse in">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+
+
+                        </div>
+
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        @*<li id="li_1"><a href="#tab_1" data-toggle="tab">Instruction</a></li>*@
+                                        <li id="li_2"><a href="#tab_2" data-toggle="tab"><strong style="color:#ff8080;"><i class="btn btn-sm fa fa-heart"></i> Give Mini Heart to Colleague </strong></a></li>
+                                        <li class="active" id="li_3"><a href="#tab_3" data-toggle="tab"><strong style="color:#8ac6d1;"><i class="btn btn-sm fa fa-user"></i> Profile</strong></a></li>
+                                        <li id="li_5"><a href="~/Image/Mini Heart - User Guide.pdf" target="_blank"><strong style="color:#b590ca;"><i class="btn btn-sm fa fa-file-pdf-o"></i><span> User Guide</span></strong></a></li>
+                                        @*<li id="li_4" style="display:none;"><a href="#tab_4" data-toggle="tab">Certificate</a></li>*@
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane " id="tab_1">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="col-md-1">
+
+                                                    </div>
+                                                    <div class="col-md-10 " style="border:3px solid #C6007E;border-radius:20px;padding:20px;">
+                                                        <p><strong><u>Let&rsquo;s see all the mini hearts you have received!</u></strong></p>
+                                                        <ul>
+                                                            <li>Click on the &lsquo;Certificate&rsquo; tab.</li>
+                                                            <li>Within the &lsquo;Certificate&rsquo; tab, you will be able to see all the mini hearts sent to you from January-April 2020.</li>
+                                                            <li>Each mini heart will be linked to how you have demonstrated our &lsquo;<a href="https://intra.aspac.kpmg.com/sites/TH/HR/OpenPD/OpenPDDocuments/Everyone%20a%20Leader%20Framework.pdf">Everyone a Leader</a>&rsquo; behavior (January-February 2020) and how you have lived our <a href="https://intra.aspac.kpmg.com/sites/TH/PPC/KPMGValues/Documents/Vote%20Your%20Champions.xlsm">KPMG values</a> (March-April 2020).</li>
+                                                            <li>Together, we can foster a constructive feedback culture by showing our appreciation and recognition to others.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_2">
+                                            <div class="row" id="search">
+                                                <br />
+                                              
+                                                <div class="row">
+                                                    <div class="col-xs-10 col-xs-offset-1">
+                                                        <div class="row">
+                                                            <div class="col-sm-4 text-center">
+
+                                                                <img id="imgProfile" src="~/Image/ic_noimage.png" height="230" style="margin:20px; border:2px solid white;border-radius:10px;box-shadow:4px 3px 5px 0px #0000001f;" />
+                                                                <img id="imgUpMiniHeart" src="~/Image/mini_heart.png" width="50" style="position: absolute; margin-left: -45px; margin-top: 190px;" />
+                                                            </div>
+
+                                                            <div class="col-sm-8">
+                                                                <div class="col-lg-12">
+                                                                    <div class="box box-solid" style="background-color:white;border: 3px solid #beebe9;">
+                                                                        <div class="box-header with-border" style="background-color:#beebe9;color:cadetblue;">
+
+                                                                            <h3 class="box-title"><span class="fa fa-users"></span> Please Select Staff</h3>
+                                                                        </div>
+                                                                        <!-- /.box-header -->
+                                                                        <!-- form start -->
+                                                                        <div class="box-body">
+
+                                                                            <div class="row">
+
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group form-group-sm">
+                                                                                        <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group form-group-sm">
+                                                                                        <label class="col-md-4 control-label text-right require">Staff (Name/ID)</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                                                                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group form-group-sm">
+                                                                                        <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" id="txtgroup" name="txtgroup" class="form-control" disabled />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <br />
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group form-group-sm">
+                                                                                        <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" id="txtposition" name="txtposition" class="form-control" disabled />
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- /.box-body -->
+
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*<div class="row">
+                                                        <div class="col-xs-10 col-xs-offset-1">
+                                                            <div class="text-center">
+                                                                <a class="btn btn-success btn-toolbar" href="https://intra.aspac.kpmg.com/sites/TH/PPC/KPMGValues" target="_blank" style="width:100%;">Click here to find out more about our values</a>
+
+                                                            </div>   <br />
+                                                        </div>
+                                                    </div>*@
+                                                <div class="row">
+                                                    <div class="col-xs-10 col-xs-offset-1">
+                                                        <div class="box box-solid" style="background-color:white;border: 3px solid #ffb6b9;">
+                                                            <div class="box-header with-border" style="background-color:#ffb6b9;color:#d8345f;">
+                                                                <h3 class="box-title"><span class="fa fa-list"></span> What do you want to say to your colleagues ?</h3>
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <!-- form start -->
+                                                            <div class="box-body" style="padding:0px !important;">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                                                <thead>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.box-body -->
+
+                                                        </div>
+                                                        <div class="box box-solid" style="background-color:white;border: 3px solid #b6e6bd;">
+                                                            <div class="box-header with-border" style="background-color:#b6e6bd;color:green;">
+                                                                <h3 class="box-title"><span class="fa fa-envelope"></span> What do you want to tell this person ?</h3>
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <!-- form start -->
+                                                            <div class="box-body">
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-12">
+
+                                                                        <textarea id="txtReason" rows="5" class="form-control"></textarea>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /.box-body -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="divforbtnSubmit" class="row">
+
+
+                                                    <div class="form-group form-group-sm text-center">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group form-group-sm">
+                                                                    <input id="concludeY" type="checkbox" name="chkconclude" value="Y" class="square-green"><span style="color:#bc658d;"> Show your name to the recipient.</span>
+                                                                    <br /><br />
+                                                                    <button id="btnGive" type="button" class="btn btn-success" onclick="GiveMiniHeart();" style="width:150px;">Give</button>
+                                                                    <button id="btnRequest" type="button" class="btn btn-danger" onclick="location.reload();" style="width:150px;">Cancel</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @*<div class="col-xs-10 col-xs-offset-1" style="border:1px solid gray;border-radius:10px;">
+
+                                                        <p style="margin-top:-20px; padding:10px; color:white;background-color:lightpink;border-radius:10px;">Received mini heart</p>
+                                                        <div id="forMyMiniHeartReceived">
+
+                                                        </div>
+
+                                                    </div>*@
+
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane active" id="tab_3">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-8 col-xs-offset-2 text-center">
+                                                            <div class="col-xs-12 text-center">
+                                                                <img id="imgMyProfile" src="~/Image/ic_noimage.png" width="150" class="forimg" />
+                                                            </div>
+                                                            <hr />
+
+                                                            @*<div class="col-xs-4 text-center">
+                                                                <p style="margin-top:-20px; padding:10px; color:white;background-color:#a94442;border-radius: 10px 10px 0 0;">Remaining Mini Heart</p>
+                                                                <p id="pRemain" style="border: 1px solid #a94442; padding: 10px; margin-top: -10px; border-radius: 0 0 10px 10px;">0</p>
+                                                            </div>*@
+                                                            <div class="col-xs-6 text-center">
+                                                                <p style="margin-top:-20px; padding:10px; color:#d8345f;background-color:#ffbbcc;border-radius: 10px 10px 0 0;"><span class="fa fa-arrow-circle-left"></span> Given Mini Heart</p>
+                                                                <p id="pGave" style="border: 1px solid #ffbbcc; padding: 10px; margin-top: -10px; border-radius: 0 0 10px 10px; color:#d8345f;">0</p>
+                                                            </div>
+                                                            <div class="col-xs-6 text-center">
+                                                                <p style="margin-top:-20px; padding:10px; color:green;background-color:#9fdfcd;border-radius: 10px 10px 0 0;"><span class="fa fa-arrow-circle-o-right"></span> Received Mini Heart</p>
+                                                                <p id="pReceived" style="border: 1px solid #9fdfcd; padding: 10px; margin-top: -10px; border-radius: 0 0 10px 10px;color:green;">0</p>
+                                                            </div>
+                                                            @*<div id="forMyMiniHeart">
+                                                                </div>*@
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <hr />
+                                                    @*Use for 14 feb to 29 feb*@
+                                                    <div id="uesforgiveper" style="display:none;">
+                                                        <div class="col-xs-10 col-xs-offset-1">
+                                                            <div class="col-xs-3 text-right">
+                                                                <img src="http:\\www.app.th.kworld.kpmg.com\KPMG-THStaffImages\K00403_CharoenP.jpg" height="250" style="margin:20px; border:2px solid white;border-radius:10px;box-shadow:4px 3px 5px 0px #0000001f;">
+                                                                <img src="../Image/mini_heart.png" width="50" style="position: absolute;  margin-top: -95px;">
+
+                                                            </div>
+
+                                                            <div class="col-xs-9">
+                                                                <div id="reasonceo" style="padding:20px;"></div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-xs-12">
+
+                                                            <div class="box box-solid box-Give-valantine">
+                                                                <div class="box-header with-border">
+                                                                    <h3 class="box-title"><span class="fa fa-arrow-circle-left"></span> Given Mini Heart Detail</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button type="button" class="btn btn-box-tool" data-widget="collapses">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <!-- form start -->
+                                                                <div class="box-bodys">
+                                                                    <br />
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-lg-12" style="display: table!important;" id="forShowAll">
+
+                                                                        </div>
+
+
+                                                                    </div><br />
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="uesforgiveperCEO" style="display:none;">
+                                                        <div class="col-xs-10 col-xs-offset-1">
+                                                            <h3 style="width: 100%;background-color: pink;padding: 5px; color: white;border-radius: 10px;" class="text-center"> Miniheart given to all staff.</h3>
+                                                            <div class="col-xs-3 text-right">
+                                                                <img src="http:\\www.app.th.kworld.kpmg.com\KPMG-THStaffImages\K00403_CharoenP.jpg" height="250" style="margin:20px; border:2px solid white;border-radius:10px;box-shadow:4px 3px 5px 0px #0000001f;">
+                                                                <img src="../Image/mini_heart.png" width="50" style="position: absolute;  margin-top: -95px;">
+
+                                                            </div>
+
+                                                            <div class="col-xs-9">
+                                                                <div id="reasonceo" style="padding:20px;">
+                                                                    <h4 style="padding: 20px;border: 1px solid pink;border-radius: 50px 0px;background-color: #fff7f9;">
+                                                                        “In our KPMG family, we strive to make the world a better place with our culture of collaboration,
+                                                                        flexibility, and diversity. Thank you for all your contributions. You make a difference with
+                                                                        all the passion you bring to work. Happy Valentine's Day!” <span class="fa fa-heart text-danger"></span>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="uesforMarch">
+                                                        <div class="col-xs-12">
+
+                                                            <div class="box box-solid box-Give">
+                                                                <div class="box-header with-border">
+                                                                    <h3 class="box-title"><span class="fa fa-arrow-circle-left"></span> Given Mini Heart Detail</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button type="button" class="btn btn-box-tool" data-widget="collapses">
+                                                                            <i class="fa fa-minus"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <!-- form start -->
+                                                                <div class="box-bodys">
+                                                                    <br />
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="row">
+
+                                                                                <div class="col-lg-12" style="display: table!important;" id="forShowMarch">
+
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div><br />
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <hr />
+                                                    <div class="col-xs-12">
+                                                        <div class="box box-solid box-Received">
+                                                            <div class="box-header with-border">
+                                                                <h3 class="box-title"><span class="fa fa-arrow-circle-o-right"></span> Received Mini Heart Detail</h3>
+                                                                <div class="box-tools pull-right">
+                                                                    <button type="button" class="btn btn-box-tool" data-widget="collapses">
+                                                                        <i class="fa fa-minus"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.box-header -->
+                                                            <!-- form start -->
+                                                            <div class="box-bodys">
+                                                                <br />
+                                                                <div class="row">
+                                                                    <div id="lstreason" class="col-md-12"></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+
+
+
+                                                    <div class="col-xs-10 col-xs-offset-1 text-center" style="padding:10px;display:none;">
+                                                        <button id="btnReason" type="button" class="btn btn-primary" onclick="ReciveReason();" style="width:150px;">Received Reasons</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</div>
+
+<div id="PopupReason" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Received Reasons</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p id="pGroup"></p>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .emojiicon {
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+    .numberforrun {
+        padding: 5px 15px;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        color: white;
+        /* border: 1px #989898 solid; */
+        border-radius: 50px;
+        box-shadow: inset 4px 3px 5px 0px #717171;
+    }
+
+    .n1 {
+        font-size: 40px;
+        background-color: #23af00;
+    }
+
+    .n2 {
+        font-size: 20px;
+        background-color: #00af4e;
+    }
+
+    .n3 {
+        font-size: 40px;
+        background-color: #045ca7;
+    }
+
+    .n4 {
+        font-size: 20px;
+        background-color: #0085ad;
+    }
+
+    .n5 {
+        background-color: #ff00e0;
+    }
+
+    .emojiicon:hover {
+        font-size: 50px;
+        transition: .3s ease-in-out;
+    }
+
+    .forloadmanual {
+        padding: 5px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        background-color: beige;
+        margin: 10px;
+        box-shadow: inset -2px -3px 4px 1px #9895ca;
+    }
+
+    .forimg {
+        margin: 20px;
+        border: 10px solid #99e1e5;
+        border-radius: 10px;
+        box-shadow: 4px 3px 5px 0px #d2d6de;
+       
+    }
+
+    thead, .dataTables_scrollHead {
+        display: none;
+    }
+
+    tr > td {
+        font-size: 15px;
+        font-weight: 900;
+    }
+
+
+    .box.box-Give {
+        border-top-color: #ffbbcc;
+    }
+
+    .box.box-solid.box-Give {
+        border: 1px solid #ffbbcc;
+    }
+
+        .box.box-solid.box-Give > .box-header {
+            color: #d8345f;
+            background: #ffbbcc;
+            background-color: #ffbbcc;
+        }
+
+            .box.box-solid.box-Give > .box-header a,
+            .box.box-solid.box-Give > .box-header .btn {
+                color: #d8345f;
+            }
+
+
+    .box.box-Received {
+        border-top-color: #9fdfcd;
+    }
+
+    .box.box-solid.box-Received {
+        border: 1px solid #9fdfcd;
+    }
+
+        .box.box-solid.box-Received > .box-header {
+            color: green;
+            background: #9fdfcd;
+            background-color: #9fdfcd;
+        }
+
+            .box.box-solid.box-Received > .box-header a,
+            .box.box-solid.box-Received > .box-header .btn {
+                color: green;
+            }
+
+    .box.box-Give-valantine {
+        border-top-color: #ea4eba;
+    }
+
+    .box.box-solid.box-Give-valantine {
+        border: 1px solid #ea4eba;
+    }
+
+        .box.box-solid.box-Give-valantine > .box-header {
+            color: #ffffff;
+            background: #ea4eba;
+            background-color: #ea4eba;
+        }
+
+            .box.box-solid.box-Give-valantine > .box-header a,
+            .box.box-solid.box-Give-valantine > .box-header .btn {
+                color: #ffffff;
+            }
+
+    .tooltip {
+        display: none;
+        background-color: #ffa;
+        border: 1px solid #cc9;
+        padding: 3px;
+        font-size: 13px;
+        -moz-box-shadow: 2px 2px 11px #666;
+        -webkit-box-shadow: 2px 2px 11px #666;
+    }
+
+    .cols-container {
+        display: table; /* Make the container element behave like a table */
+        width: 100%; /* Set full-width to expand the whole page */
+    }
+
+    .cols {
+        display: table-cell; /* Make elements inside the container behave like table cells */
+    }
+    td > span {
+        color: #b590ca;
+    }
+</style>
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/jquery.dataTables.rowGrouping.js"></script>
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+
+        var nowdate =moment( moment(new Date()).format('DD-MM-YYYY'));
+        var startdate = moment(moment("2021-02-01T10:00:00").format('DD-MM-YYYY'));
+        var enddate = moment(moment("2021-02-25T10:00:00").format('DD-MM-YYYY'));
+
+        $("[data-widget='collapses']").click(function () {
+            //Find the box parent........
+            var box = $(this).parents(".box").first();
+            //Find the body and the footer
+            var bf = box.find(".box-bodys, .box-footer");
+            if (!$(this).children().hasClass("fa-plus")) {
+                $(this).children(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+                bf.slideUp();
+            } else {
+                //Convert plus into minus
+                $(this).children(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+                bf.slideDown();
+            }
+        });
+
+
+        $(function () {
+            if (moment(objModel.maindata.End_Peroid) <= moment()) {
+
+                $('#li_4').show();
+
+                //$('#li_1').hide();
+                $('#li_2').hide();
+                //$('#li_3').hide();
+            }
+            else
+            {
+                //$('#li_1').show();
+                $('#li_2').show();
+                //$('#li_3').show();
+
+                $('#li_4').hide();
+            }
+
+
+            SetAutocom("txtSearch");
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ReciveReason();
+
+            $(".box-bodys").slideUp();
+            $("[data-widget='collapses']").children(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+            $("#imgMyProfile").attr("src", objModel.maindata.image_path);
+            $("#imgMyProfilecer").attr("src", objModel.maindata.image_path);
+            $("#txtfornamecer").text(objModel.maindata.emp_name);
+            $("#txtforcostcer").text(objModel.maindata.emp_costcenter);
+
+            var getremin = parseInt(objModel.maindata.Remaining_Rights);
+
+            if (nowdate >= startdate && nowdate <= enddate) {
+                if(objModel.maindata.MiniHeart_Detail != null)
+                {
+                    if (objModel.maindata.Emp_No == "00001445")
+                    {
+                        getremin = 0;
+                        $("#uesforgiveperCEO").show();
+                    }
+                    else
+                    {
+                        var getallgive = objModel.maindata.MiniHeart_Detail.length;
+                        getremin = 10 - getallgive;
+                        $("#uesforgiveper").show();
+                    }
+                }
+                else
+                {
+                    getremin = 10;
+                    $("#uesforgiveper").show();
+                }
+
+            }
+            else
+            {
+                $("#uesfornormal").hide();
+            }
+            var i;
+            var text = "";
+            for (i = 0; i < getremin; i++)
+            {
+                text += "<img src='/application/HR/HumanCapitalManagement/Image/mini_heart.png' width='40' />";
+            }
+            if (getremin <= 0)
+            {
+                $("#divforbtnSubmit").hide();
+            }
+
+            $("#forMyMiniHeart").html(text);
+
+            var setnewhtml = "";
+
+            Enumerable.From(objModel.maindata.MiniHeart_Detail).ForEach(function (ed)
+            {
+                if (ed.Rank_Level == "Hight")
+                {
+                    $("#imgUpProfile").attr("src", ed.Img_Emp);
+                    $("#forShowUp").show();
+                    $("#nameUpMiniHeart").text(ed.Emp_Name);
+                    $("#groupUpMiniHeart").text(" : "+ed.Group_Text);
+                    $("#reasonUpMiniHeart").text(" : "+ed.Reason);
+                }
+                else if (ed.Rank_Level == "Same") {
+                    $("#imgEquarProfile").attr("src", ed.Img_Emp);
+                    $("#forShowEquar").show();
+                    $("#nameEquarMiniHeart").text(ed.Emp_Name);
+                    $("#groupEquarMiniHeart").text(" : " +ed.Group_Text);
+                    $("#reasonEquarMiniHeart").text(" : " +ed.Reason);
+                }
+                else if (ed.Rank_Level == "Lower") {
+                    $("#imgDownProfile").attr("src", ed.Img_Emp);
+                    $("#forShowDown").show();
+                    $("#nameDownMiniHeart").text(ed.Emp_Name);
+                    $("#groupDownMiniHeart").text(" : " +ed.Group_Text);
+                    $("#reasonDownMiniHeart").text(" : " +ed.Reason);
+                }
+
+
+                var setnew = ' <div class="col-xs-12" style="padding: 10px 3px;display: table-cell!important;">'
+                setnew +='    <div class="col-xs-12" style="border: 1px solid #b590ca;box-shadow: 0px 7px 9px 0px #909090;background-color:white;">'
+                setnew += '        <p class="text-center" style="padding: 4px;background-color: #b590ca;color: white;border-radius: 0px 0px 20px 20px;margin: 0px -15px;box-shadow: 0px 4px 9px 0px #909090;">Mini hearts given to ' + ed.Emp_Name+'</p>'
+                setnew += '        <div class="col-xs-3"><img src="' + ed.Img_Emp + '" width="150" style="margin: 10px;border: 10px solid white;border-radius: 10px;box-shadow: 4px 3px 5px 0px #d2d6de;" />'
+                setnew+='        <img src="../Image/mini_heart.png" width="30" style="position: absolute; margin-left: -40px; margin-top: 180px;" />'
+                setnew +='        </div> <div class="col-xs-9" style="margin-top: 10px;"><div style="border: 2px solid #ffecc7;border-radius: 5px 5px 0 0;text-align: left;padding: 10px 10px;    margin: 0px;">'
+
+                setnew +='            <span style="font-weight:900;color:#f67280;font-size: 18px;"> ' + ed.Group_Text +'</span>'
+           
+                setnew+='        </div>'
+                setnew +='        <div style="border: 2px solid #ffecc7;border-radius:0 0 5px 5px;text-align: left;padding: 2px 10px;    margin: 0px;">'
+                setnew +='            <span style="color:#f69e7b;padding: 5px;border: 3px solid #ffecc7;border-radius: 0 0 5px 5px;">Your Message</span>'
+                setnew += '            <p style="color:#f67280;padding: 5px;" > : ' + ed.Reason +'</p>'
+                if (ed.Show_Name == "Y")
+                    setnew += '    <p style="color:#8bcdcd;font-size: 10px" ><span class="fa fa-check"></span> Show your name.</p>    '
+
+                setnew += '        </div></div>'
+               
+
+                setnew += '    </div>'
+                setnew += '</div>';
+
+                var setnews = '<div class="cols" style="background-color:blueviolet;color:white;width:50%;vertical-align: middle;" >' + ed.Group_Text +'</div>';
+                setnewhtml += setnew;
+
+
+                return ed.statusvalue = GetValueChkGroupSingelValue(ed.Id + "");
+
+
+                $('[data-toggle="tooltip"]').tooltip();
+
+            });
+            $("#forShowAll").html(setnewhtml);
+            $("#forShowMarch").html(setnewhtml);
+
+            //text = "";
+            //for (i = 0; i < objModel.maindata.receive; i++) {
+            //    text += "<img src='/application/HR/HumanCapitalManagement/Image/mini_heart.png' width='40' />";
+            //}
+
+            //$("#forMyMiniHeartReceived").html(text);
+            if (objModel.maindata.Remaining_Rights != null)
+            {
+                var forremain = objModel.maindata.Remaining_Rights;
+                if (nowdate >= startdate && nowdate <= enddate) {
+                    if(objModel.maindata.MiniHeart_Detail != null)
+                    {
+                        var getallgive = objModel.maindata.MiniHeart_Detail.length;
+                        forremain = 10 - getallgive;
+
+
+                    }
+                    else
+                    {
+                        forremain = 10;
+                    }
+                }
+                if (nowdate >= startdate && nowdate <= enddate && objModel.maindata.Emp_No == "00001445")
+                {
+                    $("#pRemain").text("0");
+                }
+                else
+                {
+                    $("#pRemain").text(forremain);
+                }
+            }
+            if (objModel.maindata.MiniHeart_Detail != null) {
+                if (nowdate >= startdate && nowdate <= enddate && objModel.maindata.Emp_No == "00001445")
+                {
+                    $("#pGave").text("2106");
+                }
+                else {
+                    $("#pGave").text(objModel.maindata.MiniHeart_Detail.length);
+                }
+            }
+            if (objModel.maindata.receive != null) {
+                $("#pReceived").text(objModel.maindata.receive);
+            }
+            var getquestion =  objModel.lstDataquestion;
+            if (getquestion != undefined && getquestion != null && getquestion.length > 0) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(getquestion);
+                $('#gvwData').dataTable().fnDraw();
+                $('#gvwData').DataTable().columns.adjust().draw();
+            }
+
+            SetICheck();
+
+        });
+
+
+        function ClearMGR(vName, vGroup, vPosition, vID) {
+            GetInputByID("txtName").val(vName);
+            GetInputByID("txtgroup").val(vGroup);
+            GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+        }
+
+
+
+        function getimage(empno) {
+            BlockUI();
+
+            $.ajax({
+                dataType: AjaxCall.dataType,
+                type: AjaxCall.type,
+                contentType: AjaxCall.contentType,
+                url: '@Url.Action("getImageEmp", "MiniHeart2021")',
+                data: JSON.stringify({ empNo: empno }),
+                success: function (respone) {
+
+                    $("#imgProfile").attr("src", respone.result.path);
+                },
+                error: AjaxCall.error,
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+            });
+        }
+        function ReciveReason() {
+            //$("#PopupReason").modal();
+            var reason = "";
+            var i = 1;
+            var fromceo = "";
+
+            if(objModel.maindata != null ){
+                Enumerable.From(objModel.maindata.MiniHeart_Reason).ForEach(function (ed) {
+                    if (ed.Emp_No != '00001445') {
+                        reason += '<div class="col-xs-6"><div style="background-color: white;border: 2px solid #f6cd90;border-radius: 5px; padding: 10px; margin: 2px;box-shadow: 1px 3px 5px 0px #d2d6de;border-left: 15px solid #f6cd90;">'
+                        reason += '<img  src="/application/HR/HumanCapitalManagement/Image/mini_heart.png" width="30" style="margin: -15px -29px;position: absolute;">';
+                        reason += '&nbsp;&nbsp;<label style="color:#d291bc"> ' + (i++) + '.What the sender wanted to say to you  </label> <br><span style="color:#6886c5"> : ' + ed.Group_Text+'</span> <br> <hr>';
+                        reason += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="color:#d291bc">His/her message  </label><br><span style="color:#6886c5"> : ' + ed.Reason + '</span> <br> <hr>';
+                        if (ed.Show_Name == "Y")
+                        {
+                            reason += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="color:#d291bc">Sender  </label>  <span style="color:#6886c5"> : ' + ed.Stamp_Name + '</span>';
+                        }
+                        reason += '</div></div>';
+
+                    }
+                    else
+                    {
+                        fromceo += '<h4 style="padding: 20px;border: 1px solid pink;border-radius: 50px 0px;background-color: #fff7f9;">' + ed.Reason + '<br><br><b class="text-right"> Charoen Phosamritlert </b><br><b>CEO</b></h4>';
+                    }
+                });
+                $('#lstreason').html(reason);
+                $("#reasonceo").html(fromceo);
+            }
+            if (objModel.maindata.MiniHeart_Certificate != null) {
+                if (objModel.maindata.MiniHeart_Certificate.length > 0) {
+                    var reasonCerUp = "";
+                    var reasonCerSame = "";
+                    var reasonCerDown = "";
+                    Enumerable.From(objModel.maindata.MiniHeart_Certificate).ForEach(function (ed) {
+                        if (ed.Rank_Level == "Hight") {
+                            reasonCerUp += '<div class="col-xs-12" style="padding:0px;    border: 2px solid #6D2077;box-shadow: 1px 3px 5px 0px #d2d6de;"><div style="background-color: white; padding: 10px; margin: 2px;">'
+                            reasonCerUp += '<label style="padding: 2px;background: #6D2077;color: white;border: 1px solid #6D2077;width: 100%;">Most Standout Behavior/Value  </label> <br><p style="border: 1px solid #9c9c9c;padding: 2px;margin-top: -6px;"> : ' + ed.Group_Text + ' </p>';
+                            reasonCerUp += '<label style="">Reason  </label><br><p> : ' + ed.Reason + '</p></div></div>';
+                        }
+                        else if (ed.Rank_Level == "Same") {
+                            reasonCerSame += '<div class="col-xs-12" style="padding:0px;  border: 2px solid #005EB8;box-shadow: 1px 3px 5px 0px #d2d6de;"><div style="background-color: white; padding: 10px; margin: 2px;">'
+                            reasonCerSame += '<label style="padding: 2px;background: #005EB8;color: white;border: 1px solid #005EB8;width: 100%;">Most Standout Behavior/Value  </label> <br><p style="border: 1px solid #9c9c9c;padding: 2px;margin-top: -6px;"> : ' + ed.Group_Text + '</p>';
+                            reasonCerSame += '<label style="">Reason  </label><br><p > : ' + ed.Reason + '</p></div></div>';
+                        }
+                        else if (ed.Rank_Level == "Lower") {
+                            reasonCerDown += '<div class="col-xs-12" style="padding:0px; border: 2px solid #00BAB3;box-shadow: 1px 3px 5px 0px #d2d6de;"><div style="background-color: white; padding: 10px; margin: 2px;">'
+                            reasonCerDown += '<label style="padding: 2px;background: #00BAB3;color: white;border: 1px solid #00BAB3;width: 100%;">Most Standout Behavior/Value  </label> <br><p style="border: 1px solid #9c9c9c;padding: 2px;margin-top: -6px;"> : ' + ed.Group_Text + ' </p>';
+                            reasonCerDown += '<label style="">Reason  </label><br><p > : ' + ed.Reason + '</p></div></div>';
+                        }
+                    });
+                } else {
+                    $('#divforcer').hide();
+                }
+            }
+
+            $('#lstreasonCerUp').html(reasonCerUp);
+            $('#lstreasonCerSame').html(reasonCerSame);
+            $('#lstreasonCerDown').html(reasonCerDown);
+
+
+        }
+
+        function GiveMiniHeart() {
+            if ($('#txtMGID').val() == "") {
+                DialogWarning(DialogHeader.Warning, "Please fill in the staff information.");
+                return false;
+            } else if (GetValRadioListNotValidate("chkGroup") == "") {
+                DialogWarning(DialogHeader.Warning, "What do you want to say to your colleagues ?");
+                return false;
+
+
+            } else if (GetValRadioListNotValidate("chkGroup") == "6" && $('#txtReason').val() == "") {
+                DialogWarning(DialogHeader.Warning, "What do you want to tell this person ?");
+                return false;
+            }
+
+            var includecb = GetValCheckBox('concludeY');
+
+            var param = ko.toJS(objModel);
+            $.ajax({
+                dataType: AjaxCall.dataType,
+                type: AjaxCall.type,
+                contentType: AjaxCall.contentType,
+                url: '@Url.Action("Save_Give_MiniHeart2021", "MiniHeart2021")',
+                data: JSON.stringify({ main_id: objModel.maindata.Id, emp_no: $('#txtMGID').val(), reason: $('#txtReason').val(), group: GetValRadioListNotValidate("chkGroup"), showname: includecb}),
+                success: function (respone) {
+                    if (respone.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Login", "Login")');
+                    }
+                    else if (respone.result.Status == SysProcess.Success) {
+                        DialogSuccessOk(DialogHeader.Info, "Your Mini Heart has been sent.", 'func', function () {
+                            window.location.href = '@Url.Action("MiniHeartView2021", "MiniHeart2021")';
+                        });
+                    }
+                    else {
+                        DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                    }
+                },
+                error: AjaxCall.error,
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+            });
+
+
+        }
+        function SetTable() {
+            var objHeadClRequest = [
+
+                { "title": "", "width": "40%", "className": "dt-center-ctm", "data": "Group", "searchable": false, "orderable": false, },
+                { "title": "Group", "width": "0%", "className": "dt-left-ctm", "data": "Group", "searchable": false, "orderable": false, },
+                { "title": "Topic", "width": "60%", "className": "dt-left-ctm", "data": "Topic", "searchable": false, "orderable": false, },
+
+            ];
+            var groupColumn = 1;
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    { "visible": false, "targets": groupColumn },
+                    {
+                        "targets": 0,
+                        "render": function (data, type, row)  {
+                            if (data == "") {
+                                return "";
+                            }
+                            else {
+                                return CreateRadioOfMassTIF(row.Id, row.Id, "", data);
+                            }
+                        }
+                    },
+
+                ]
+       //, rowGroup: {
+       //            'startRender': function (data, rows, group) {
+       //                var settext = "";
+       //                if (rows == "1") {
+       //                    settext = "Deliver Impact";
+       //                }
+       //                else if (rows == "2") {
+       //                    settext =  "Seek Growth";
+       //                }
+       //                else if (rows == "3") {
+       //                    settext =  "Inspire Trust";
+       //                }
+       //                else if (rows == "4") {
+       //                    settext =  "Other";
+       //                }
+       //                return $('<tr/>')
+       //                    .append('<td class="dt-total-ctm dt-left-ctm"  colspan="2"> ' + settext + ' </td>');
+       //
+       //            },
+       //            'endRender': function (rows, group) {
+       //
+       //                return $('');
+       //            },
+       //            'dataSrc': 'Group'
+       //        },
+            };
+
+            CreatTableJS(objTableRe);
+
+        }
+        function CreateRadioOfMassTIF(sID, sVal, sText, sSeletc) {
+            var sChecked = "";
+            var sHtml = "";
+            if (sID != undefined && sID != "" && sVal != undefined && sVal != "") {
+                if (sSeletc != undefined && sSeletc == sVal) {
+                    sChecked = "checked";
+                }
+                sHtml = '<input type="radio" id="chkX' + sID + '-chkRow" name="chkGroup"  class="square-green" value="' + sVal + '" ' + sChecked + '   />&nbsp;<strong>' + sText + "</strong>";
+            }
+            else {
+                sHtml = "";
+            }
+            return sHtml;
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+
+        }
+        function ClearAuto(vName, vGroup, vPosition, vID) {
+            GetInputByID("txtName").val(vName);
+            GetInputByID("txtgroup").val(vGroup);
+            GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+            $('.nameget').text(vName);
+            if (vID != "") {
+                getimage(vID);
+            }
+            else
+            {
+                $("#imgProfile").attr("src", "../Image/ic_noimage.png" );
+            }
+        }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                //ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        autoFocus:true,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+        function SetICheck() {
+
+
+            $('.square-green input[type="checkbox"],.square-green input[type="radio"]').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            $('input[type="checkbox"].square-green,input[type="radio"].square-green').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+        }
+
+    </script>
+}

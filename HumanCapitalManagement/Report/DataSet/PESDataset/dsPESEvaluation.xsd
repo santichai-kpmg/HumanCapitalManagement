@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPESEvaluation" targetNamespace="http://tempuri.org/dsPESEvaluation.xsd" xmlns:mstns="http://tempuri.org/dsPESEvaluation.xsd" xmlns="http://tempuri.org/dsPESEvaluation.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsPESEvaluation" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsPESEvaluation" msprop:Generator_UserDSName="dsPESEvaluation">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsMain" msprop:Generator_TableClassName="dsMainDataTable" msprop:Generator_TableVarName="tabledsMain" msprop:Generator_RowChangedName="dsMainRowChanged" msprop:Generator_TablePropName="dsMain" msprop:Generator_RowDeletingName="dsMainRowDeleting" msprop:Generator_RowChangingName="dsMainRowChanging" msprop:Generator_RowEvHandlerName="dsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="dsMainRowDeleted" msprop:Generator_RowClassName="dsMainRow" msprop:Generator_UserTableName="dsMain" msprop:Generator_RowEvArgName="dsMainRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" type="xs:string" minOccurs="0" />
+              <xs:element name="emp_no" msprop:Generator_ColumnVarNameInTable="columnemp_no" msprop:Generator_ColumnPropNameInRow="emp_no" msprop:Generator_ColumnPropNameInTable="emp_noColumn" msprop:Generator_UserColumnName="emp_no" type="xs:string" minOccurs="0" />
+              <xs:element name="fy_year" msprop:Generator_ColumnVarNameInTable="columnfy_year" msprop:Generator_ColumnPropNameInRow="fy_year" msprop:Generator_ColumnPropNameInTable="fy_yearColumn" msprop:Generator_UserColumnName="fy_year" type="xs:string" minOccurs="0" />
+              <xs:element name="eva_status" msprop:Generator_ColumnVarNameInTable="columneva_status" msprop:Generator_ColumnPropNameInRow="eva_status" msprop:Generator_ColumnPropNameInTable="eva_statusColumn" msprop:Generator_UserColumnName="eva_status" type="xs:string" minOccurs="0" />
+              <xs:element name="self_eva" msprop:Generator_ColumnVarNameInTable="columnself_eva" msprop:Generator_ColumnPropNameInRow="self_eva" msprop:Generator_ColumnPropNameInTable="self_evaColumn" msprop:Generator_UserColumnName="self_eva" type="xs:string" minOccurs="0" />
+              <xs:element name="final_eva" msprop:Generator_ColumnVarNameInTable="columnfinal_eva" msprop:Generator_ColumnPropNameInRow="final_eva" msprop:Generator_ColumnPropNameInTable="final_evaColumn" msprop:Generator_UserColumnName="final_eva" type="xs:string" minOccurs="0" />
+              <xs:element name="sgroup" msprop:Generator_ColumnVarNameInTable="columnsgroup" msprop:Generator_ColumnPropNameInRow="sgroup" msprop:Generator_ColumnPropNameInTable="sgroupColumn" msprop:Generator_UserColumnName="sgroup" type="xs:string" minOccurs="0" />
+              <xs:element name="sbu" msprop:Generator_ColumnVarNameInTable="columnsbu" msprop:Generator_ColumnPropNameInRow="sbu" msprop:Generator_ColumnPropNameInTable="sbuColumn" msprop:Generator_UserColumnName="sbu" type="xs:string" minOccurs="0" />
+              <xs:element name="spractice" msprop:Generator_ColumnVarNameInTable="columnspractice" msprop:Generator_ColumnPropNameInRow="spractice" msprop:Generator_ColumnPropNameInTable="spracticeColumn" msprop:Generator_UserColumnName="spractice" type="xs:string" minOccurs="0" />
+              <xs:element name="sceo" msprop:Generator_ColumnVarNameInTable="columnsceo" msprop:Generator_ColumnPropNameInRow="sceo" msprop:Generator_ColumnPropNameInTable="sceoColumn" msprop:Generator_UserColumnName="sceo" type="xs:string" minOccurs="0" />
+              <xs:element name="srank" msprop:Generator_ColumnVarNameInTable="columnsrank" msprop:Generator_ColumnPropNameInRow="srank" msprop:Generator_ColumnPropNameInTable="srankColumn" msprop:Generator_UserColumnName="srank" type="xs:string" minOccurs="0" />
+              <xs:element name="bu_eva" msprop:Generator_ColumnVarNameInTable="columnbu_eva" msprop:Generator_ColumnPropNameInRow="bu_eva" msprop:Generator_ColumnPropNameInTable="bu_evaColumn" msprop:Generator_UserColumnName="bu_eva" type="xs:string" minOccurs="0" />
+              <xs:element name="practice_eva" msprop:Generator_ColumnVarNameInTable="columnpractice_eva" msprop:Generator_ColumnPropNameInRow="practice_eva" msprop:Generator_ColumnPropNameInTable="practice_evaColumn" msprop:Generator_UserColumnName="practice_eva" type="xs:string" minOccurs="0" />
+              <xs:element name="final_comment" msprop:Generator_ColumnVarNameInTable="columnfinal_comment" msprop:Generator_ColumnPropNameInRow="final_comment" msprop:Generator_ColumnPropNameInTable="final_commentColumn" msprop:Generator_UserColumnName="final_comment" type="xs:string" minOccurs="0" />
+              <xs:element name="bu_comment" msprop:Generator_ColumnVarNameInTable="columnbu_comment" msprop:Generator_ColumnPropNameInRow="bu_comment" msprop:Generator_ColumnPropNameInTable="bu_commentColumn" msprop:Generator_UserColumnName="bu_comment" type="xs:string" minOccurs="0" />
+              <xs:element name="practice_comment" msprop:Generator_ColumnVarNameInTable="columnpractice_comment" msprop:Generator_ColumnPropNameInRow="practice_comment" msprop:Generator_ColumnPropNameInTable="practice_commentColumn" msprop:Generator_UserColumnName="practice_comment" type="xs:string" minOccurs="0" />
+              <xs:element name="p_d" msprop:Generator_ColumnVarNameInTable="columnp_d" msprop:Generator_ColumnPropNameInRow="p_d" msprop:Generator_ColumnPropNameInTable="p_dColumn" msprop:Generator_UserColumnName="p_d" type="xs:string" minOccurs="0" />
+              <xs:element name="last_update" msprop:Generator_ColumnVarNameInTable="columnlast_update" msprop:Generator_ColumnPropNameInRow="last_update" msprop:Generator_ColumnPropNameInTable="last_updateColumn" msprop:Generator_UserColumnName="last_update" type="xs:string" minOccurs="0" />
+              <xs:element name="ceoe" msprop:Generator_ColumnVarNameInTable="columnceoe" msprop:Generator_ColumnPropNameInRow="ceoe" msprop:Generator_ColumnPropNameInTable="ceoeColumn" msprop:Generator_UserColumnName="ceoe" type="xs:string" minOccurs="0" />
+              <xs:element name="ceoe_comment" msprop:Generator_ColumnVarNameInTable="columnceoe_comment" msprop:Generator_ColumnPropNameInRow="ceoe_comment" msprop:Generator_ColumnPropNameInTable="ceoe_commentColumn" msprop:Generator_UserColumnName="ceoe_comment" type="xs:string" minOccurs="0" />
+              <xs:element name="ceoe_eva" msprop:Generator_ColumnVarNameInTable="columnceoe_eva" msprop:Generator_ColumnPropNameInRow="ceoe_eva" msprop:Generator_ColumnPropNameInTable="ceoe_evaColumn" msprop:Generator_UserColumnName="ceoe_eva" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

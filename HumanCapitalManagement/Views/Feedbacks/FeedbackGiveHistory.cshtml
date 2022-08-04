@@ -1,0 +1,393 @@
+﻿
+@{
+    ViewBag.Title = "HCM | 360 Feedback";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        My Feedback
+    </h1>
+    <div class="row" hidden>
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row" id="search">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="col-md-12">
+                                <div class="nav-tabs-custom">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab_1" data-toggle="tab">Instruction</a></li>
+                                        <li><a href="#tab_2" data-toggle="tab"><strong class="text-danger">Feedback Received</strong></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_1">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-8 col-md-offset-2" style="border: 1px solid #00aaaa;border-radius: 20px;padding:20px 50px;">
+                                                        <h2><span style="color: #000080;"><strong>How to receive feedback?</strong></span></h2>
+                                                        <p>&nbsp; Receiving feedback is an important skill and just as important as being able to ask for and provide feedback.</p>
+                                                        <p>&nbsp; The aim of receiving feedback is to open yourself to a broad range of perspectives that can help you gain a better understanding of yourself and continue to learn and grow.</p>
+                                                        <p>&nbsp; Skillfully receiving feedback helps strengthen the relationship between the provider and the receiver and help you to fully understand it and consider how to use it.</p>
+                                                        <p>Some key considerations that will help you be open to receiving feedback</p>
+                                                        <p>include:</p>
+                                                        <ul>
+                                                            <li>Approach it with a growth mindset &ndash; be open and see genuine value in different views/opinions.</li>
+                                                        </ul>
+                                                        <ul>
+                                                            <li>See feedback as an opportunity to maximize your ability to deliver impact, seek growth and inspire trust.</li>
+                                                        </ul>
+                                                        <ul>
+                                                            <li>Remind yourself of your expectations &ndash; what are you trying to get out of the feedback?</li>
+                                                        </ul>
+                                                        <ul>
+                                                            <li>Ask to discuss further where clarification is required. Take the time to decide what action you want to take because of the feedback. Feedback is only valuable if it is acted on and you try to do something differently.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-8 col-md-offset-2 text-center">
+                                                        <br />  <p> More details :</p>
+
+                                                        <a href="~/Manual/munual360/Receiving feedback.pdf" target="_blank" class="btn btn-success">
+                                                            <span class="" title="Download">
+                                                                <span class="fa fa-download"></span> Receiving feedback
+                                                            </span>
+                                                        </a>
+                                                        <a href="~/Manual/munual360/Adopting a growth mindset.pdf" target="_blank" class="btn btn-success">
+                                                            <span class="" title="Download">
+                                                                <span class="fa fa-download"></span> Adopting a growth mindset
+                                                            </span>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane" id="tab_2">
+                                            <div class="row">
+                                                <div class="form-group form-group-sm col-sm-12 text-center">
+                                                    
+
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+</div>
+
+<style>
+    .emojiicon {
+        font-size: 40px;
+        cursor: pointer;
+    }
+
+    .numberforrun {
+        padding: 5px 15px;
+        width: 60px;
+        height: 60px;
+        text-align: center;
+        color: white;
+        /* border: 1px #989898 solid; */
+        border-radius: 50px;
+        font-size: 40px;
+        box-shadow: inset 4px 3px 5px 0px #0000001f;
+    }
+
+    .n1 {
+        background-color: #1bff00b0;
+    }
+
+    .n2 {
+        background-color: #ffd400b0;
+    }
+
+    .n3 {
+        background-color: #00d0ffb0;
+    }
+
+    .n4 {
+        background-color: #6e00ffb0;
+    }
+
+    .n5 {
+        background-color: #ff00e0b0;
+    }
+
+    .forloadmanual {
+        padding: 5px;
+        border: 1px solid #999;
+        border-radius: 5px;
+        background-color: beige;
+        margin: 10px;
+        box-shadow: inset -2px -3px 4px 1px #9895ca;
+    }
+
+
+</style>
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+
+
+    <script type="text/javascript">
+var objModel = @Html.Raw(Json.Encode(Model));
+
+              $(window).bind("load", function () {
+            $('#gvwData').DataTable().columns.adjust().draw();
+        });
+
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            if (e.target.hash == '#tab_1') {
+
+            }
+            else if (e.target.hash == '#tab_2') {
+                $('#gvwData').DataTable().columns.adjust().draw();
+            }
+        });
+        $(function () {
+
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            $('#gvwData').DataTable().columns.adjust().draw();
+            if (objModel != null) {
+
+
+
+
+
+            var getdata =  objModel.lstData;
+            if (getdata != undefined && getdata != null && getdata.length > 0) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(getdata);
+                $('#gvwData').dataTable().fnDraw();
+
+                $('#gvwData').DataTable().columns.adjust().draw();
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+            }
+    }
+        });
+
+
+        function SetTable() {
+
+            var objHeadClRequest = [
+                { "title": "", "width": "2%", "className": "dt-center-ctm" },
+                //{ "title": " Name", "width": "15%", "className": "dt-center-ctm", "data": "Given_User" },
+                { "title": " View", "width": "10%", "className": "dt-center-ctm", "data": "Edit" },
+                { "title": " Date", "width": "10%", "className": "dt-center-ctm", "data": "Create_Date" },
+                { "title": " Rate", "width": "10%", "className": "dt-center-ctm", "data": "Icon" },
+                //{ "title": " No. 1", "width": "15%", "className": "dt-left-ctm", "data": "Positive" },
+                //{ "title": " No. 1.1", "width": "15%", "className": "dt-left-ctm", "data": "Strength" },
+                //{ "title": " No. 2", "width": "15%", "className": "dt-left-ctm", "data": "Need_Improvement" },
+                //{ "title": " No. 2.1", "width": "10%", "className": "dt-left-ctm", "data": "Recommendations" },
+                //{ "title": " Status", "width": "10%", "className": "dt-center-ctm", "data": "Status" }
+
+
+            ];
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+
+                EmptyTable: EmptyTable,
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                //rowGroup: {
+                //    dataSrc: 'Test_name_en'
+                //},
+                columnDefs: [
+                    {
+
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        },
+                        "targets": 0
+                    },
+
+
+                    {
+                        "render": function (data, type, row) {
+                            return data == "1" ? "<span style='font-size: 20px;'>&#128528;</span>" : data == "2" ? "<span style='font-size: 20px;'>&#128522;</span>" : data == "3" ? "<span style='font-size: 20px;'>&#128515;</span>" : "";
+                        },
+                        "targets": 3
+                    }
+                ]
+            };
+            CreatTableJS(objTableRe);
+        }
+
+
+
+
+
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+
+        }
+        function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+            $('.nameget').text(vName);
+            if (vID != "")
+            {
+                getimage(vID);
+            }
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                    global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+    </script>
+}
+<!-- /.content -->

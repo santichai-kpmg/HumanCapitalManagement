@@ -1,0 +1,438 @@
+﻿@{
+    ViewBag.Title = "ConsentForm_MainForm";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Consent Form - @Model.UserName
+    </h1>
+</section>
+
+<div class="collapse in">
+    <div class="content no-pad-top">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12" style="margin-top:10px;">
+                    <div class="box box-success p-10" style="padding: 15px;">
+                        <div class="box-header text-center">
+                            <h1 class="box-title" style="font-weight:bolder">
+                                @Model.Name
+                            </h1>
+                        </div>
+
+                        @*<button onclick="checkAll()">Check all</button>*@
+                    <div class='db-checkbox skills_options select_all'>
+                        <input type='checkbox' id='checker'>
+                        <label style="margin-left:10px;font-weight: bold; margin-bottom: 0px; font-size: medium; color:#c6007E">Accept all consent</label>
+                    </div>
+
+
+                        @foreach (var item in Model.lstData_display)
+                        {
+                            <br>
+                            <p style="font-weight: bold; margin-bottom: 0px; font-size: medium; color: #00338D">
+                                <i class="fa fa-fw fa-chevron-circle-right" style="font-size:large; color:#c6007E"></i>
+                                @item.Topic
+                            </p>
+
+                            foreach (var obj in item.lstSub)
+                            {
+                                @Html.Raw(obj.Content)<br>
+                            }
+                            <hr class="new1">
+                        }
+
+                    </div>
+
+                    <div class="box box-warning p-10" style="padding:15px;">
+                        <div class="row JustifyCenter" style="padding: 15px;">
+                            <div class="row">
+                                <div class="col-sm-4" style="font-weight:bold;margin-bottom: 0px ; color:#00338D;">
+                                    <p><i class="fa fa-fw fa-user" style="font-size:large; margin-right:10px"></i>Name:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p style="font-weight: bold; margin-bottom: 0px; color: #6D2077">@Model.UserName</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4" style="font-weight:bold;margin-bottom: 0px ; color:#00338D;">
+                                    <p><i class="fa fa-fw fa-laptop" style="font-size: large; margin-right: 10px"></i>Employee number:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p style="font-weight:bold;margin-bottom: 0px;color: #6D2077 ">@Model.EmployeeNo</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4" style="font-weight:bold;margin-bottom: 0px ; color:#00338D;">
+                                    <p><i class="fa fa-fw fa-calendar-check-o" style="font-size: large; margin-right: 10px"></i>Consent date:</p>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p style="font-weight:bold;margin-bottom: 0px; color: #6D2077">@Model.Consent_date</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group form-group-sm col-xs-12  text-center">
+                            <button type="button" class="btn btn-success" style="width:150px" onclick="SaveTest();">Save</button>
+                            <button type="button" class="btn btn-danger" style="width:150px" onclick="Cancel();">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="AllYes" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" onclick="Cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="col-md-12 text-center">
+                                    <label class="control-label" id="lblAccept"></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group text-center">
+
+                                <i class="fa fa-fw fa-check-circle" style="font-size: xxx-large; color: #43B02A; margin-bottom:10px"></i>
+                                <label class="col-md-12 ">All Accept</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="SubmitYesAll()" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="HaveNo" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <form id="consent_form" action="" method="post">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div>
+                                        <p class="col-md-12 text-center" style="font-weight: bolder; color: #BC204B; margin-bottom: 5px; font-size: medium;">
+                                            Please provide the reason for not providing the consent. (required)
+                                        </p>
+                                    </div>
+                                    <div id="display_content" style="padding-left:10px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="submit" onclick="SubmitYesAll(); return false;" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-default" onclick="Cancel()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+    <script src="~/Scripts/SystemFunc/sysUploadFileActionPlan.js"></script>
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var sUrlBack = '@Url.Action("ConsentForm", "Consent")';
+        @*var checkedValue = document.querySelector('.messageCheckbox:checked').value;*@
+        var checkedValue = $('.messageCheckbox:checked').val();
+
+        var listAnswer = [];
+
+        var checkboxAnsYes = {
+            "flexCheck": []
+        };
+        var checkboxAnsNo = {
+            "flexCheck": []
+        };
+
+        checkboxAnsNoContent = {
+            "Id": [],
+            "Content": []
+        };
+
+        checkboxAnsYesContent = {
+            "Id": [],
+            "Content": []
+        };
+        checkboxAnsNoContent2 = {
+        };
+        checkboxAnsNoContent3 = {
+        };
+        checkboxAnsYesContent2 = {
+        };
+
+        let checker = document.getElementById('checker');
+        let col = document.querySelectorAll('.pl');
+
+        checker.addEventListener('click', function (e) {
+            col.forEach(n => n.checked = this.checked);
+            select = col.length;
+        });
+
+        var select = 0;
+        col.forEach(n => {
+            select = 0;
+            n.addEventListener('click', function (e) {
+                if (!this.checked && checker.checked) checker.checked = false;
+
+                if (this.checked) {
+                   select++;
+                };
+                if (!this.checked) {
+                    select--;
+                };
+                
+                if (select == col.length) {
+                    checker.checked = true;
+                };
+            })
+        });
+        
+        
+
+        function Cancel() {
+            $("#HaveNo").modal('hide');
+            $("#AllYes").modal('hide');
+            listAnswer = [];
+        }
+@*        function CloseModal() {
+            $("#WarningValidate").modal().hide();
+        }*@
+
+        // this function check checkbox
+        var check = 0;
+        function checkTest() {
+            for (var i = 0; i < listAnswer.length; i++) {
+                if (!listAnswer[i].checked) {
+                    check++;
+                }
+            }
+        }
+
+        
+        function SaveTest() {
+            listAnswer = [];
+            var sbox = Array.from(document.getElementsByName("flexCheck"));
+            sbox.forEach(function (v) {
+                var tmp = {
+                    Id: v.id,
+                    answer: v.checked ? "-" : v.value,
+                    checked: v.checked ? true : false,
+                };
+                listAnswer.push(tmp);
+            });
+
+            check = 0;
+            checkTest();
+            //modal checked all
+            if (check == 0) {
+                $("#AllYes").modal();
+            }
+
+            //modal uncheck
+            if (check > 0) {
+                $("#display_content").empty();
+                $("#HaveNo").modal();
+                const uncheckedForm = listAnswer.filter(i => i.answer);
+
+                for (let item of uncheckedForm) {
+                    if (!item.checked) {
+                        var element = document.createElement("p");
+                        element.innerHTML = item.answer;
+                        @* element.id = item.Id;*@
+                    var elementtxt = document.createElement("textarea");
+                        elementtxt.id = `txt_${item.Id}`
+                        elementtxt.required = true;
+                        elementtxt.placeholder = "Provide the reason for not consent";
+                        $("#display_content").append(element);
+                        $("#display_content").append(elementtxt);
+                    }
+                }
+            }
+
+        }
+
+        function GetData() {
+            var lstData = objModel;
+            lstData.objGet.lstAnswer =[];
+            checkboxAnsNoContent3 = lstData.objGet.lstAnswer;
+            listAnswer.forEach((value) => {
+                var objAdd = {
+                    Id: value.Id,
+                    Answer: value.answer,
+                    Description: GetTextareaByID('txt_' + value.Id).val()
+                };
+                checkboxAnsNoContent3.push(objAdd);
+            });
+            lstData.objGet.lstAnswer = checkboxAnsNoContent3;
+            @*lstData.lstData_display.objGetYes = checkboxAnsYesContent;*@
+            return lstData;
+        }
+
+        function SubmitYesAll() {
+            var IsPass = true;
+            if (IsPass) {
+                @*$("#consent_form").validate();*@
+                BlockUI();
+                check = 0;
+                var checkDes = 0;
+
+                checkTest();
+                if (check > 0) {
+                    var mmessage = '';
+                    
+                    $("#consent_form textarea").each(function (index, value) {
+                        var gindex = index;
+                        var gvalue = value;
+                        var gthis = $(this);
+                        if (value.value == '') {
+                            checkDes += 1;
+                            alert("Please provide the reason for not consent =>" + $("#" + $(this)[0].id.replace('txt_', '')).val());
+                            UnblockUI();
+                            return false;
+                        } else {
+                            check = 0;
+                        }
+                    });
+                }
+
+                if (check == 0) {
+                    var Param = GetData();
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("ConsentFrom_Save", "Consent")',
+                        data: JSON.stringify({ ItemData: Param }),
+                        success: function (respone) {
+
+                            if (respone.result.Status == SysProcess.SessionExpired) {
+                                PopupLogin('@Url.Action("Index", "Home")');
+                            } else if (respone.result.Status == SysProcess.Success) {
+                                DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+                                        window.location.href = '@Url.Action("ConsentForm", "Consent")';
+                                });
+                            }
+
+                            else {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                        },
+                        error: AjaxCall.error,
+                        complete: function (jqXHR, status) {//finaly
+                            $("#AllYes").modal('hide');
+                            $("#HaveNo").modal('hide');
+                            UnblockUI();
+                        }
+                    });
+                }
+                else {
+                    UnblockUI();
+                    return false;
+                }
+                UnblockUI();
+            }
+        }
+    </script>
+}
+<style>
+    hr.new1 {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #1 {
+        color: #F68D2E;
+    }
+
+    #2 {
+        color: #43B02A;
+    }
+
+    #3 {
+        color: #c6007E;
+    }
+
+    textarea {
+        border: solid 1px #999999;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    input[type=checkbox] {
+        position: relative;
+        cursor: pointer;
+        @*display:none;*@
+    }
+
+        input[type=checkbox]:before {
+            content: "";
+            @*display: block;*@
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            @*top: 0;
+            left: 0;*@
+            border: 2px solid #00bab3;
+            border-radius: 3px;
+            background-color: white;
+        }
+
+        input[type=checkbox]:checked:after {
+            content: "";
+            display: block;
+            width: 5px;
+            height: 10px;
+            border: solid #00bab3;-->-->
+            background-color: #00bab3;
+            border-width: 0 2px 2px 0;
+            -webkit-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            top: 2px;
+            left: 6px;
+        }
+</style>

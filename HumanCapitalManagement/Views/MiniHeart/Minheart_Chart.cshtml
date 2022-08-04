@@ -1,0 +1,106 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using DevExpress.Web.Mvc.UI;
+@using DevExpress.Web.Mvc;
+@using DevExpress.XtraCharts;
+@using DevExpress.Utils;
+@using System.Drawing;
+
+@Html.DevExpress().Chart(settings => {
+    ChartControlSettings options = new ChartControlSettings();
+    settings.Name = "chart";
+    settings.BorderOptions.Visibility = DefaultBoolean.False;
+    settings.Height = 500;
+    settings.Width = 920;
+    settings.PaletteName = "Office";
+    //settings.RenderFormat = RenderFormat.Svg;
+
+    settings.Legends.Default(l => {
+        l.AlignmentHorizontal = LegendAlignmentHorizontal.Center;
+        l.AlignmentVertical = LegendAlignmentVertical.BottomOutside;
+        l.Direction = LegendDirection.LeftToRight;
+        l.MaxHorizontalPercentage = 50;
+        l.Border.Visibility = DefaultBoolean.False;
+    });
+    //settings.Legend.AlignmentHorizontal = LegendAlignmentHorizontal.RightOutside;
+    Series series = new Series("Counties", DevExpress.XtraCharts.ViewType.Pie);
+    //Series series = new Series("Counties", DevExpress.XtraCharts.ViewType.Line);
+    series.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+    ((PieSeriesLabel)series.Label).Position = PieSeriesLabelPosition.TwoColumns;
+    //if (options.ValueAsPercent)
+    // {           
+    series.Label.TextPattern = "{A}: {VP:P2}";
+    //series.Label.TextPattern = "{A}: {V:G}";
+    // }
+    // else
+    //{
+    //    series.Label.TextPattern = "{A}: {V:G}";
+    //}
+    series.ArgumentDataMember = "Name";
+    series.ValueDataMembers[0] = "Value";
+    settings.Series.Add(series);
+    //settings.Series.Add(s =>
+    //{
+    //    settings.Name = "Counties";
+    //    s.ArgumentDataMember = "Name";
+    //    s.ValueDataMembers[0] = "Area";
+    //    s.LabelsVisibility = options.ShowLabels ? DefaultBoolean.True : DefaultBoolean.False;
+    //    s.Views().PieSeriesView(v =>
+    //    {
+    //        v.Titles.Add(t =>
+    //        {
+    //            t.Text = "Total: {TV:#.##}M km²";
+    //            t.Dock = ChartTitleDockStyle.Bottom;
+    //        });
+    //        v.SeriesLabel(l =>
+    //        {
+    //            l.Position = options.LabelPosition;
+    //            l.TextPattern = options.ValueAsPercent ? "{A}: {VP:P0}" : "{A}: {V:G}";
+    //            l.TextColor = Color.Black;
+    //            l.BackColor = Color.Transparent;
+    //            l.Font = new Font("Tahoma", 8, FontStyle.Bold);
+    //            l.LineVisibility = DefaultBoolean.True;
+    //            l.Border.Visibility = DefaultBoolean.False;
+    //        });
+    //    });
+    //});
+
+    //settings.BoundDataChanged = (s, e) =>
+    //{
+    //    MVCxChartControl chart = (MVCxChartControl)s;
+    //    chart.Series[0].Views().PieSeriesView(v =>
+    //    {
+    //        if (options.ExplodePoint != null)
+    //        {
+    //            SeriesPoint explodedPoint = null;
+    //            foreach (SeriesPoint point in chart.Series[0].Points)
+    //            {
+    //                if (point.Argument == options.ExplodePoint)
+    //                {
+    //                    explodedPoint = point;
+    //                    break;
+    //                }
+    //            }
+    //            if (explodedPoint != null)
+    //                v.ExplodedPoints.Add(explodedPoint);
+    //        }
+    //        else
+    //            v.ExplodeMode = options.ExplodeMode;
+    //    });
+    //};
+    series.Label.TextColor = Color.Black;
+    series.Label.BackColor = Color.Transparent;
+    series.Label.Font = new Font("Tahoma", 8, FontStyle.Bold);
+    series.Label.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
+    series.Label.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
+    settings.Titles.Add(new ChartTitle() {
+        Font = new System.Drawing.Font("Tahoma", 18),
+        Text = "Area of Countries"
+    });
+    settings.Titles.Add(new ChartTitle() {
+        Alignment = StringAlignment.Far,
+        Dock = ChartTitleDockStyle.Bottom,
+        Font = new Font("Tahoma", 8),
+        TextColor = Color.Gray,
+        Text = "From www.nationmaster.com"
+    });
+}).Bind(Model).GetHtml()

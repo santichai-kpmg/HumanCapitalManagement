@@ -1,0 +1,506 @@
+﻿
+@{
+    ViewBag.Title = "Activites MasterList";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Activites MasterList
+    </h1>
+    <br />
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="row">
+                <div class="form-group form-group-sm col-xs-12  text-left">
+
+                    <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+                    <button type="button" class="btn btn-primary" onclick="AddData();">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                            <thead>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </section>
+</div>
+
+
+<!-- Modal AddActivity-->
+<div id="ModalAddUser" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #605ca8;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Add Activity</b></span>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" autocomplete="off">
+                    <div id="divAddData">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right require">Activity Name</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group form-inline col-sm-10" style="float: left;">
+                                            <input ID="Activities_name_en" class="form-control text-center" type="text" name="Activities_name_en"
+                                                   ToolTip="Activity Name EN" placeholder="Activity Name EN" required autofocus />                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right require">Status</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group form-inline col-md-12 " style="float: left;">
+                                            <label class="control-label">
+                                                <input type="radio" name="Add_Status" id="add_rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y" checked>Active<br>
+                                            </label>
+                                            <label class="control-label">
+                                                <input type="radio" name="Add_Status" id="add_rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="submit" onclick="Add();" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The End Modal AddActivity-->
+<!-- Modal EditActivity-->
+<div id="ModalEdit" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #605ca8;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Edit Date</b></span>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="contact_form" autocomplete="off">
+                    <div id="divEditData">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right nomallabel">Activity Name</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group form-inline col-sm-10" style="float: left;">
+                                            <input ID="Activities_name_en_edit" class="form-control text-center" type="text" name="Activities_name_en"
+                                                   ToolTip="Activity Name EN" placeholder="Activity Name EN" required autofocus />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right require">Status</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group form-inline col-md-12 " style="float: left;">
+                                            <label class="control-label">
+                                                <input type="radio" name="Status" id="edit_rdlStatus_Yes" class="flat-green radio radio-inline" value="Y">Active<br>
+                                            </label>
+                                            <label class="control-label">
+                                                <input type="radio" name="Status" id="edit_rdlStatus_No" class="flat-green radio radio-inline" value="N">Inactive<br>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="submit" onclick="Update();" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- The End Modal EditActivity-->
+
+@section scripts{
+
+    @*<script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>*@
+    @*<script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>*@
+    <script src="~/Scripts/SystemFunc/sysFunction.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var lstData = [];
+        var type = "";
+
+        $(function () {
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+        });
+
+        function GetDataEdit() {
+
+            objModel.lstsave.Activities_name_en = GetValTextBox("Activities_name_en_edit");
+            objModel.lstsave.active_status = $('input[name=Status]:checked').val();
+        }
+        function AddData() {
+            $('#ModalAddUser').modal({ backdrop: 'static', keyboard: false });
+            $('#ModalAddUser').modal('show');
+            @*window.location.href = '@Url.Action("TIFFormCreate", "PreTrainee_MasterData")';*@
+        }
+        function GetDataAdd() {
+            objModel.lstsave.Activities_name_en = GetValTextBox("Activities_name_en");
+            objModel.lstsave.active_status = $('input[name=Add_Status]:checked').val();
+        }
+        function CleanInputAdd() {
+            $("#Activities_name_en").val("");
+        }
+
+        function View(sVal) {
+
+            $('#ModalEdit').modal({ backdrop: 'static', keyboard: false });
+
+               $.ajax({
+               type: "POST",
+               url: '@Url.Action("EditActivites_Master", "PreTrainee_MasterData")',
+               dataType: "json",
+               data: { Id: sVal },
+               success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        $('#ModalEdit').modal('show');
+                        objModel.lstsave = response.result.lstsave;
+
+                        //#Set Data Edit
+                        $("#Activities_name_en_edit").val(objModel.lstsave.Activities_name_en);
+                        if (objModel.lstsave.active_status == "Active") {
+                            $('[id=edit_rdlStatus_Yes]').iCheck('check');
+                            //$('[id=edit_rdlStatus_Yes]').iCheck('uncheck');
+
+                        } else {
+                            $('[id=edit_rdlStatus_No]').iCheck('check');
+                            //$('[id=edit_rdlStatus_No]').iCheck('uncheck');
+
+                        }
+                    }
+               },
+               complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+               }
+               });
+
+        }
+        function LoadData() {
+
+            $('div[id$=divTable]').collapse("show");
+            $('#gvwData').DataTable().columns.adjust().draw();
+            var Param = Search();
+            BlockUI();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadActivites_MasterList", "PreTrainee_MasterData")',
+                dataType: "json",
+                data: { ItemSave: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        lstData = response.result.lstDataMaster;
+                        objModel.lstDataMaster = response.result.lstDataMaster;
+                        BindDataInViewModel(response.result.lstDataMaster);
+
+
+                        if (lstData == undefined || lstData.length <= 0) {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                        else {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnAddData(lstData);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+        }
+
+        function Add() {
+
+            GetDataAdd();
+            var Param = objModel.lstsave;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddActivitesMasterList", "PreTrainee_MasterData")',
+                dataType: "json",
+                data: { ItemSave: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        CleanInputAdd();
+                        if (response.result.Status == "Success") {
+                            $('#ModalAddUser').modal('hide');
+                            LoadData();
+                            DialogSuccessOk(DialogHeader.success, "Saving Completed.");
+
+                        } else {
+                            $('#ModalAddUser').modal('hide');
+                            DialogWarning(DialogHeader.Warning, "Not Completed.");
+
+                        }
+                   
+
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+
+            CleanInputAdd();
+        }
+
+        function Search() {
+            var lstSearch = ko.toJS(viewModel);
+            return lstSearch;
+        }
+
+
+        function Cancel() {
+            window.location.reload();
+        }
+        function Update()
+        {
+            GetDataEdit();
+            var Param = objModel.lstsave;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("UpdateActivitesMasterList", "PreTrainee_MasterData")',
+                dataType: "json",
+                data: { ItemSave: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        if (response.result.Status == "Success") {
+                            $('#ModalEdit').modal('hide');
+                            LoadData();
+                            DialogSuccessOk(DialogHeader.success, "Update Completed.");
+
+                        } else {
+                            $('#ModalEdit').modal('hide');
+                            DialogWarning(DialogHeader.Warning, "Not Completed.");
+
+                        }
+
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+        }
+
+        function SetTable() {
+
+            var objHeadClRequest = [
+                { "title": "View", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "View" },
+                { "title": "Activities Name", "width": "37%", "className": "dt-left-ctm", "data": "Activities_name_en" },
+                { "title": "Status", "width": "10%", "className": "dt-center-ctm", "data": "active_status" },
+                { "title": "Created Date", "width": "13%", "className": "dt-center-ctm", "data": "create_date" },
+                { "title": "Created by", "width": "11%", "className": "dt-center-ctm", "data": "create_user" },
+                { "title": "Update Date", "width": "13%", "className": "dt-center-ctm", "data": "update_date" },
+                { "title": "Update By", "width": "11%", "className": "dt-center-ctm", "data": "update_user" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "desc"]],
+                columnDefs: [{
+                    "targets": 3,
+                    "type": "date-th",
+                }, {
+                    "targets": 5,
+                    "type": "date-th",
+                }],
+                objBeforeClRender: false,
+            };
+
+            var table = CreatTableJS(objTableRe);
+            //new $.fn.dataTable.FixedHeader($('#gvwData'));
+        }
+
+
+    </script>
+
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                //$("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                //$("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+
+            if (objModel.lstDataMaster != undefined && objModel.lstDataMaster != null) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(objModel.lstDataMaster);
+                $('#gvwData').dataTable().fnDraw();
+
+                setTimeout(function () {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                }, 500);
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+                $('div[id$=divTable]').collapse("hide");
+            }
+
+        }
+
+        function BindDataInViewModel(value) {
+
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+        }
+
+    </script>
+}

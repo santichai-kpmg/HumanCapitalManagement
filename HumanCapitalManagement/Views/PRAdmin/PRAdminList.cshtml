@@ -1,0 +1,633 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Edit PR (after hiring & completion status only)";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Edit PR @*(after hiring & completion status only)<br/><small style="color:red;">*Can change info 5 fields : Rank, Position, JD, Special Note, PR Status</small>*@
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row">
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Group</span>
+                            @{ Html.RenderAction("CreateDivisionCode", "HCMMasterData", new
+                                {
+                                    id = "ddlGroup",
+                                    databind = "group_code",
+                                    value = ""
+                                });}
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">SubGroup</span>
+                            <select id="ddlSupGroup" name="ddlSupGroup" class="form-control" data-bind="options: lstSubGroup, optionsText: 'name', optionsValue: 'id',
+                                               value: sub_group_id,
+                                               valueAllowUnset: true"></select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Position</span>
+                            <select id="ddlPosition" name="ddlPosition" class="form-control" data-bind="options: lstPosition, optionsText: 'name', optionsValue: 'id',
+                                               value: position_id,
+                                               valueAllowUnset: true"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @*<div class="form-group form-group-sm col-sm-4  col-xs-4">
+                <div class="input-group">
+                    <span class="input-group-addon nomallabel">PR Status</span>
+                    @{ Html.RenderAction("CreateddlPRStatus", "HCMMasterData2", new
+                        {
+                            id = "ddlStatus",
+                            databind = "pr_status",
+                            value = ""
+                        });}
+                </div>
+            </div>*@
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Ref No.</span>
+                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" data-bind="value : ref_no , valueUpdate: 'afterkeydown'" />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Name</span>
+                            <input type="text" id="txtSearchName" name="txtSearchName" class="form-control" data-bind="value : name , valueUpdate: 'afterkeydown'" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-sm-6 col-xs-6">
+                        <div class="col-md-8" style=" margin-top:5px;">
+                            <span class=" nomallabel">Any Changes</span>
+                            <label class="control-label">
+                                <input type="radio" name="hasedit" id="rdlstatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: has_edit}' value="N">Yes<br>
+                            </label>
+                            <label class="control-label">
+                                <input type="radio" name="hasedit" id="rdlstatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: has_edit}' value="M">No<br>
+                            </label>
+                            <label class="control-label">
+                                <input type="radio" name="hasedit" id="rdlstatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: has_edit}' value="">All<br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-xs-12  text-left">
+                        <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                            <thead>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                @*<input type="hidden" id="txtSess" name="txtSess" class="form-control" data-bind='value: session' />*@
+            </div>
+        </form>
+        @*<%--[modal] Detail--%>*@
+        <div id="PopupDetail" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg  widthPOP">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #00c0ef;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title"><b style="color: white;"><label id="lblDetail" class="control-label"></label></b></span>
+                    </div>
+                    <div id="divPopupDetail">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
+@section style{
+    <style>
+        .img-icon {
+            image-rendering: auto;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+
+            //setDatePickerFromTo($("input[id$=txtDateStart]"), $("input[id$=txtDateTo]"));
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+            $("select[id$=ddlGroup]").on("change", function () {
+                ActionddlGroup($(this).val());
+
+            });
+        });
+
+          function Edit(sVal) {
+                BlockUI();
+                window.location.href = '@Url.Action("PRAdminEdit", "PRAdmin")?qryStr=' + sVal;
+            }
+        function Search() {
+            var lstSearch = ko.toJS(viewModel)
+            if (lstSearch != null) {
+                lstSearch.has_edit = GetValRadioListNotValidate("hasedit");
+            }
+            return lstSearch;
+        };
+        function LoadData() {
+            $('div[id$=divTable]').collapse("show");
+            $('#gvwData').DataTable().columns.adjust().draw();
+            var Param = Search();
+            BlockUI();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadPRAdminList", "PRAdmin")',
+                dataType: "json",
+                data: { SearchItem: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {1
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+                        var lstData = response.result.lstData;
+                        if (lstData == undefined || lstData.length <= 0) {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                        else {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnAddData(lstData);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+        }
+
+        function Cancel() {
+            window.location.reload();
+        }
+
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "request_date", "visible": false, "searchable": false },
+                { "title": "", "width": "5%", "className": "dt-chk-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "Status", "width": "10%", "className": "dt-center-ctm", "data": "pr_status" }, 
+                { "title": "Any Changes", "width": "10%", "className": "dt-center-ctm", "data": "any_changes" },
+                { "title": "Ref No.", "width": "8%", "className": "dt-center-ctm", "data": "refno" },
+                { "title": "PR Approval<br/>Date", "width": "9%", "className": "dt-center-ctm", "data": "approve_date" },
+                { "title": "Type of Request", "width": "10%", "className": "dt-center-ctm", "data": "request_type" },
+                { "title": "Position Title", "width": "12%", "className": "dt-left-ctm", "data": "position" },
+                { "title": "Group", "width": "10%", "className": "dt-center-ctm", "data": "sgroup" },
+                { "title": "SubGroup", "width": "10%", "className": "dt-center-ctm", "data": "sub_group" },
+                { "title": "Rank", "width": "5%", "className": "dt-center-ctm", "data": "rank" },
+                { "title": "HC", "width": "5%", "className": "dt-center-ctm", "data": "hc" },
+                //{ "title": "Request By", "width": "15%", "className": "dt-center-ctm", "data": "request_by" },
+                { "title": "Candidate Pipeline for<br/>BU's interview", "width": "8%", "className": "dt-center-ctm", "data": "no_select" },
+                { "title": "Successful<br/>Candidate", "width": "8%", "className": "dt-center-ctm", "data": "no_accept" },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "pr_status_id", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "IdEncrypt", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "pr_status_seq", "searchable": false, "orderable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[15, "asc"], [3, "desc"]],
+                columnDefs: [
+                //{
+                //    "targets": 8,
+                //    "render": function (data, type, row, meta) {
+                //        return data + "<br/>(" + row.request_date + ")";
+                //    }
+                //},
+                {
+                    "targets": 4,
+                    "type": "date-th2",
+                    }
+                    , {
+                           "targets":12,
+                           "render": function (data, type, row, meta) {
+                               return '<a href="#" onclick="viewSelect(\'' + row.IdEncrypt + '\');return false;" tooltip="Detail" flow="right">' + data + ' <img src="@Url.Content("~/Image/id-card.png")" class="img-icon" width="34" height="34" />' + "</a>";
+                        }
+                    }
+                        , {
+                           "targets": 13,
+                           "render": function (data, type, row, meta) {
+                               return '<a href="#" onclick="viewAccept(\'' + row.IdEncrypt + '\');return false;" tooltip="Detail" flow="right">' + data + ' <img src="@Url.Content("~/Image/employee.png")"  class="img-icon"  width="34" height="34" />' + "</a>";
+                        }
+                    }
+                ],
+                objBeforeClRender: false,
+                fixedHeader: {
+                    header: true,
+                },
+                createdRow: function (row, data, index) {
+                    if (data["pr_status_id"] + "" == "2") {
+                        $('td', row).eq(1).addClass('dt-status-wait');
+                    }
+                    else if (data["pr_status_id"] + "" == "3") {
+                        $('td', row).eq(1).addClass('dt-status-suss');
+                    }
+                    else if (data["pr_status_id"] + "" == "5" || data["pr_status_id"] + "" == "6") {
+                        $('td', row).eq(1).addClass('dt-status-cl');
+                    }
+                    else if (data["pr_status_id"] + "" == "4" ) {
+                        $('td', row).eq(1).addClass('dt-status-comp');
+                    }
+                    else {
+                        $('td', row).eq(1).addClass('dt-status-nol');
+                    }
+                    $('td', row).eq(10).addClass('dt-status-nol');
+                    $('td', row).eq(11).addClass('dt-status-nol');
+                }
+            };
+
+            var table = CreatTableJS(objTableRe);
+            //new $.fn.dataTable.FixedHeader($('#gvwData'));
+        }
+        function viewSelect(sVal) {
+            EditMapping(sVal, "S");
+            GetLabelByID("lblDetail").text("Candidate Pipeline for BU's interview");
+        }
+        function viewAccept(sVal) {
+            EditMapping(sVal, "A");
+            GetLabelByID("lblDetail").text("Successful Candidate");
+        }
+        function EditMapping(sVal, sMode) {
+            $('#divPopupDetail').html('');
+            var Param = {
+                IdEncrypt: sVal,
+                sMode: sMode,
+            };
+            $("#PopupDetail").modal();
+
+            $.ajax({
+                url: '@Url.Action("DetailRCM", "RCMTracking")',
+                dataType: 'html',
+                cache: false,
+                data: Param
+                , success: function (data) {
+                    $('#divPopupDetail').html(data);
+                 }, complete: function (jqXHR, status) {//finaly
+
+                    setTimeout(function () {
+                        $('#gvwDetail').DataTable().columns.adjust().draw();
+                        $('#gvwDetail').DataTable().columns.adjust().responsive.recalc();
+                    }, 200);
+
+                }
+            });
+        }
+
+        function ActionddlGroup(val) {
+
+            var Param = val;
+            if (Param != "") {
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("GetGroupDetailForSearch", "PersonnelRequest")',
+                    data: JSON.stringify({ SearchItem: Param }),
+                    success: function (respone) {
+                        if (respone != undefined) {
+                            var newList = ko.toJS(viewModel);
+                            if (newList.group_code != undefined) {
+                                newList.sub_group_id = respone.sub_group_id + '';
+                                newList.position_id = respone.position_id + '';
+                                newList.lstSubGroup = respone.lstSubGroup;
+                                newList.lstPosition = respone.lstPosition;
+                                BindData(newList);
+                            }
+
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            } else {
+                var newList = ko.toJS(viewModel);
+                if (newList.group_code != undefined) {
+                    newList.sub_group_id =  '';
+                    newList.position_id = '';
+                    newList.lstSubGroup =[{ id: "", name: " - Select - " }];
+                    newList.lstPosition = [{ id: "", name: " - Select - " }];
+                    BindData(newList);
+                }
+            }
+
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.group_code == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=hasedit][value=" + value.has_edit + "]").iCheck('check');
+                if (objModel.lstData != undefined && objModel.lstData != null && objModel.lstData.length > 0) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.lstData);
+                    $('#gvwData').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                    $('div[id$=divTable]').collapse("hide");
+                }
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=hasedit][value=" + value.has_edit + "]").iCheck('check');
+            }
+
+
+
+        }
+        function arrayContainsAnotherArray(needle, haystack) {
+            for (var i = 0; i < needle.length; i++) {
+                if (haystack.indexOf(needle[i]) === -1)
+                    return false;
+            }
+            return true;
+        }
+        function CreatTableJSX(objOption) {
+            var dTable2;
+
+            if (objOption.objHeadCl != undefined
+                && objOption.sTableID != undefined && objOption.sTableID != ""
+                && objOption.objHeadCl != null && objOption.objHeadCl != "") {
+                //add render text
+                var bRender = true;
+                if (objOption.objBeforeClRender != undefined && !objOption.objBeforeClRender == true) {
+                    bRender = objOption.objBeforeClRender;
+                }
+                var aColumnotText = ["sview", "edit", "view", "chk", "submit"]
+                var aColumnDef = [];
+                if (objOption.columnDefs == undefined) {
+                    objOption.columnDefs = [];
+
+                }
+                else {
+                    aColumnDef = objOption.columnDefs.map(function (a) { return a.targets; });
+                    if (contains(aColumnDef, "_all")) {
+                        bRender = false;
+                    }
+                }
+
+                if (objOption.objHeadClRender != undefined) {
+                    aColumnotText = objOption.objHeadClRender;
+                }
+                if (bRender) {
+
+                    $.each(objOption.objHeadCl, function (key, data) {
+                        if (!contains(aColumnotText, data.data.toLowerCase()) && !containsNumber(aColumnDef, key)) {
+                            if (!data.hasOwnProperty("render")) {
+                                objOption.objHeadCl[key]["render"] = $.fn.dataTable.render.text();
+                            }
+                        }
+                    });
+                }
+
+                //Option FixHeader
+                var bFixHeader = true;
+                var nFixHeadder = 0;
+                var bProcess = false;
+                var bScorllY = false;
+                var bScorllX = false;
+                var srowGroup = {};
+                var sfixedHeader = {
+                    header: false,
+                    footer: false,
+                };
+                var sfooter = null;
+                var sresponsive = false;
+
+                if (objOption.processing != undefined) { bProcess = true; }
+
+                if (objOption.createdRow == undefined) { objOption.createdRow = function () { }; }
+                if (objOption.nHeadFix != undefined && objOption.nHeadFix > 0) {
+                    bFixHeader = true;
+                    bScorllX = true;
+                    nFixHeadder = objOption.nHeadFix;
+                }
+                if (objOption.nDis != undefined && objOption.nDis == "") { nDis = []; }
+                var lengthMenu = [[50, 100, 150, -1], [50, 100, 150, "All"]];
+                if (objOption.lengthMN != undefined) {
+                    lengthMenu = objOption.lengthMN;
+                }
+                if (objOption.bFixHeader != undefined) {
+                    bFixHeader = objOption.bFixHeader;
+                    bScorllX = true;
+                }
+                if (objOption.rowGroup != undefined) {
+                    srowGroup = objOption.rowGroup;
+                }
+                if (objOption.fixedHeader != undefined) {
+                    sfixedHeader = objOption.fixedHeader;
+                }
+
+                if (objOption.footerCallback != undefined) {
+                    sfooter = objOption.footerCallback;
+                }
+
+                if (objOption.responsive != undefined) {
+                    sresponsive = objOption.responsive;
+                }
+
+
+                if (objOption.scrollY != undefined) {
+                    if (objOption.scrollY) {
+                        bScorllY = objOption.scrollY;
+                    }
+                }
+
+
+                var dTable = $('#' + objOption.sTableID).DataTable({
+                    "ajax": {
+                        "url":'@Url.Action("LoadPRAdminListTest", "PRAdmin")',
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "serverSide": "true",
+                    "data": objOption.objDataSet != undefined ? objOption.objDataSet : [],
+                    "bFilter": false,
+                    "dom": objOption.sProperty != undefined ? objOption.sProperty : "",
+                    "language": {
+                        "emptyTable": objOption.EmptyTable,
+                    },
+                    "zeroRecords": "No matching records found",
+                    "scrollX": bScorllX,
+                    "scrollY": bScorllY,
+                    "scrollCollapse": bFixHeader,
+                    "fixedColumns": {
+                        "leftColumns": nFixHeadder
+                    },
+                    "fixedHeader": sfixedHeader,
+                    "columns": objOption.objHeadCl,
+                    "columnDefs": objOption.columnDefs,
+                    "createdRow": objOption.createdRow,
+                    "order": objOption.order,
+                    "lengthMenu": lengthMenu,
+                    "bRetrieve": true,
+                    "drawCallback": function () {
+
+                        if (objOption.drawCallback != undefined) {
+
+                            objOption.drawCallback();
+                        }
+                        //$("table >tbody input[type=checkbox] ").iCheck({
+                        //    checkboxClass: 'icheckbox_flat-green',
+                        //    radioClass: 'iradio_flat-green'
+                        //});
+                    },
+                    //"fnDrawCallback": function () {
+                    //    //EDIT OFFICE FORM
+                    //    // SetICheck();
+                    //    UnCheckCheckBoxHeader("ckbAll");
+
+                    //    //$("div[id$=" + objOption.sTableID + "_wrapper]   input[type=checkbox]").iCheck({
+                    //    //    checkboxClass: 'icheckbox_flat-green',
+                    //    //    radioClass: 'iradio_flat-green'
+                    //    //});
+                    //    // SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "fix");
+                    "processing": bProcess,
+                    //"initComplete": function (settings, json) {
+                    //    setTimeout(function () {
+                    //        $('#' + objOption.sTableID).DataTable().columns.adjust().draw()
+                    //    }, 500);
+                    //}
+                    //},
+                    "rowGroup": srowGroup,
+                    "responsive": sresponsive,
+                    "bAutoWidth": true,
+                    "footerCallback": sfooter
+
+                });
+
+                //dTable.dataTable
+                if (objOption.nRunningNumber != undefined && objOption.nRunningNumber[0] == "true") {
+                    dTable.on('order.dt search.dt', function () {
+                        dTable.column(objOption.nRunningNumber[1], { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+                            cell.innerHTML = i + 1;
+                        });
+                    }).draw();
+                }
+                dTable2 = dTable;
+                //$('#' + objOption.sTableID + "_info").addClass("col-md-6");
+                //$('#' + objOption.sTableID + "_paginate").addClass("col-md-6 text-right");
+            }
+            return dTable2;
+        };
+    </script>
+}
+<!-- /.content -->

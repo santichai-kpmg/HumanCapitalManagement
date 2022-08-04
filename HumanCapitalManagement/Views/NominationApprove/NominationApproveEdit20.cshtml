@@ -1,0 +1,2510 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "PES | 2020 Shareholder, Partner, Director Nomination Form";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+<section class="content-header">
+    <h1>
+        @if (Model.type_id == "3")
+        {
+            <text>2020 Shareholder Nomination Form</text>
+        }
+        else
+        {
+            <text>2020 Nomination Form</text>
+
+        }
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal" autocomplete="off">
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        @if (Model.type_id == "3")
+                                        {
+                                            <text>2020 Shareholder Nomination Form</text>
+                                        }
+                                        else
+                                        {
+                                            <text>2020 Nomination Form</text>
+
+                                        }
+                                    </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body" id="divPersonal">
+                                    <h4 class="">
+                                        Shareholder / Partner / Director<small> (Thailand / Myanmar / Laos) </small>
+                                    </h4>
+                                    @if (Model.type_id == "3")
+                                    {
+                                        <div class="bs-callout bs-callout-info  bs-callout-xl p-label-12">
+                                            <h4 style="color:black;">Instruction</h4>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    This form is used to nominate an individual who will be considered for an admission to Shareholder.
+
+                                                </li>
+                                            </ul>
+                                            <br />
+                                            <p style="color:black;">
+                                                <strong>
+                                                    Notice
+                                                </strong> : The information to be provided will never include non-audit fees generated on KPMG audit clients.
+                                                <br />
+                                            </p>
+                                            <p>
+                                                In addition to this form, the individual candidate is required to present his/her business case to Nominating Committee in person, covering these questions;
+                                            </p>
+                                            <br />
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <ol>
+                                                        <li>According to the Firm’s Global Strategy and Collective Priorities, how do you see yourself shaping change in the role as shareholder?</li>
+                                                        <li>Based on your knowledge of where the Firm has been over the last few years, and where we are today, what concern do you have for the Firm and how you would like to address these concern to make our Firm better?</li>
+                                                    </ol>
+                                                </li>
+                                            </ul>
+                                            <br />
+                                            @*<a href="#"><u><strong>FY2020 Shareholder Nomination Timeline</strong></u></a>*@
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="bs-callout bs-callout-info  bs-callout-xl p-label-12">
+                                            <h4 style="color:black;">Instruction</h4>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    This form is used to nominate an individual who is considered for a promotion from
+                                                    <ul>
+                                                        <li>Associate Director to Director</li>
+                                                        <li>Director to Partner</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <br />
+                                            <p style="color:black;">
+                                                <strong>
+                                                    Notice
+                                                </strong> : The information to be provided will never include non-audit fees generated on KPMG audit clients.
+                                                <br />
+                                            </p>
+                                            <p>
+                                                In addition to this form, the individual candidate is required to present his/her business
+                                                case to Nominating Committee in person, covering these questions;
+                                            </p>
+                                            <br />
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <ol>
+                                                        <li>According to the Firm’s Global Strategy and Collective Priorities, how do you seeyourself shaping change in the role as Partner/Director?</li>
+                                                        <li>Based on your knowledge of where the Firm has been over the last few years, and where we are today, what concern do you have for the Firm and how you would like to address these concern to make our Firm better?</li>
+                                                    </ol>
+                                                </li>
+                                            </ul>
+                                            <br />
+                                            @*<a href="#"> <u><strong>FY2020 Partner/Director Nomination Timeline</strong></u></a>*@
+                                        </div>
+                                    }
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">The candidate is proposed for</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: type_name' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: sname' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: sgroup' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: srank' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Status</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: status_name' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Year joined KPMG</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group form-inline" style="float: left;">
+                                                        <input ID="txtYear_joined_KPMG" name="txtYear_joined_KPMG" class="form-control " data-bind="value : Year_joined_KPMG, valueUpdate: 'afterkeydown' " type="text" disabled
+                                                               ToolTip="To" placeholder="-- / -- / ----" />
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Years of working with KPMG</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtworking_with_KPMG" name="txtworking_with_KPMG" data-bind="value : working_with_KPMG, valueUpdate: 'afterkeydown' " disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Years of working outside KPMG</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtworking_outside_KPMG" name="txtworking_outside_KPMG" data-bind="value : working_outside_KPMG, valueUpdate: 'afterkeydown' " disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">
+                                                    Years of being AD or Director
+                                                    as at 30 September 2020
+                                                </label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtbeing_ADDirector" name="txtbeing_ADDirector" data-bind="value : being_ADDirector, valueUpdate: 'afterkeydown' " disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @*<div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-md-4 control-label text-right require">
+                                                        Years of being AD or Director
+                                                        as at 30 September 2018
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <div class="input-group form-inline" style="float: left;">
+                                                            <input ID="txtbeing_AD_Director" name="txtbeing_AD_Director" class="form-control " data-bind="value : being_AD_Director, valueUpdate: 'afterkeydown' " type="text"
+                                                                   ToolTip="To" placeholder="-- / -- / ----" />
+                                                            <span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Professional Qualifications</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtProfessional_Qualifications" name="txtProfessional_Qualifications" data-bind="value : Professional_Qualifications, valueUpdate: 'afterkeydown' " disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Submission & Approval Status</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataApprove" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">FY 2020 Annual Rating</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataApproveRate" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.status_id == "2" || Model.status_id == "4")
+                            {
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="box box-solid box-ctmPR">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">For Approval</h3>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <!-- form start -->
+                                            <div class="box-body  " id="divContent">
+                                                @if (Model.step_id != "5")
+                                                {<div class="row">
+                                                        <div class="col-md-12 ">
+                                                            <p style="font-size:12px"> @*<strong>Remarks</strong> :*@Please provide comments on the candidate or the nomination form, If any.</p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                @if (Model.step_id == "3" || Model.step_id == "4" || Model.step_id == "8" || Model.step_id == "9")
+                                                {
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right require">Rating</label>
+                                                                <div class="col-md-8">
+                                                                    @{ Html.RenderAction("CreateddlEvaRating2019", "PESMasterData", new
+                                                                        {
+                                                                            id = "ddlEvaRating",
+                                                                            databind = "approve_rating_id",
+                                                                            value = ""
+                                                                        });}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                }
+
+                                                @if (Model.step_id != "5")
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right require">Comment</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea rows="3" id="txtDes" name="txtDes" cols="50" class="form-control" data-bind="value: approve_remark, valueUpdate: 'afterkeydown'"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <!-- /.box-body -->
+                                            <div class="box-footer">
+
+                                                <div class="row">
+                                                    <div class="col-md-12 text-center">
+
+                                                        @if (Model.is_update_by_approval != "Y")
+                                                        {
+                                                            if (Model.step_id != "5")
+                                                            {
+                                                                <button type="button" class="btn btn-primary" onclick="Save('Y','Y');">Agree</button>
+                                                                <button type="button" class="btn btn-primary" onclick="Save('Y','N');">Disagree</button>
+
+                                                                if (Model.step_id == "3" || Model.step_id == "6" || Model.step_id == "4" || Model.step_id == "8" || Model.step_id == "9")
+                                                                {
+                                                                    <button type="button" class="btn btn-warning" onclick="Save('N','N');">Revise</button>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                <button type="button" class="btn btn-primary" onclick="Save('Y','Y');">Acknowledge</button>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="button" class="btn btn-primary" onclick="Save('Y','Y');">Submit</button>
+                                                        }
+
+                                                        <button type="button" class="btn btn-danger" onclick="Cancel();">Back</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Supporting Evidence (if any)</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            @if (Model.status_id == "1" || Model.status_id == "3")
+                                            {
+                                                @*<div class="row">
+                                                        <div class="col-md-12 " id="divUploadDoc">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-2 control-label text-right nomallabel">Upload File</label>
+                                                                <div class="col-md-8  form-inline">
+                                                                    <div class="input-group input-group-sm">
+                                                                        <label class="input-group-btn">
+                                                                            <span class="btn btn-primary">
+                                                                                Browse&hellip;
+                                                                                <input type="file" id="btnUpload3" multiple name="files[]" style="display: none;" accept="application/msword, application/pdf" />
+                                                                            </span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control" readonly />
+                                                                    </div>
+                                                                    <span class="help-block">Support pdf,docx, Only</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Description</label>
+                                                                <div class="col-md-8">
+                                                                    <textarea rows="2" id="txtAnnotationDocu" cols="50" class="form-control"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 text-center">
+                                                            <button id="btnAddFile" type="button" class="btn btn-primary">Upload</button>
+                                                        </div>
+                                                    </div>*@
+                                            }
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataFile" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">Personal Competencies</a></li>
+                                    <li class=""><a href="#tab_2" data-toggle="tab">Risk Management</a></li>
+                                    <li class=""><a href="#tab_3" data-toggle="tab">Financial Information</a></li>
+                                    <li class=""><a href="#tab_4" data-toggle="tab">Summary of Development Areas</a></li>
+                                    <li class=""><a href="#tab_5" data-toggle="tab">Annual Performance</a></li>
+                                    <li class=""><a href="#tab_6" data-toggle="tab">Rating Summary</a></li>
+                                </ul>
+                                <div class="tab-content ">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    @*<h3 class="box-title">Personal Performance Evaluation</h3>*@
+                                                                    <h3 class="box-title">Personal Competencies</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body  ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <p class="p-label-12">
+                                                                                Comment on past and present performance of the candidate against each of the competencies with examples which support the comments and relevant judgements (favourable or otherwise) extracted from recent appraisal forms or client correspondence.  Include comments on the judgements made during performance appraisal sessions and include any action taken as well as the results of the action.
+                                                                            </p>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Client responsiveness</b>
+                                                                            <p class="p-label-12">
+                                                                                Perceives needs and perspective of clients, both meeting internal demands as well as external; adaptive to different clients; establishes rapport and builds long term relationship with key decision-makers; demonstrates empathy and support for client concerns; enjoys client contact.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtClient_Q1" name="txtClient_Q1" cols="50" class="form-control" data-bind="value : Client_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Feedback from clients (Identify critical evidence)</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtClient_Q2" name="txtClient_Q2" cols="50" class="form-control" data-bind="value : Client_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>New engagements acquired (Name /Fee not including referrals)</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtClient_Q3" name="txtClient_Q3" cols="50" class="form-control" data-bind="value : Client_Q3 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Lost Accounts</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtClient_Q4" name="txtClient_Q4" cols="50" class="form-control" data-bind="value : Client_Q4 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Business Skills</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>1. Commerciality</b>
+                                                                            <p class="p-label-12">
+                                                                                Demonstrates a thorough and comprehensive understanding of how businesses operate; identifies broad business implications and potential commercial  risks; considers and provides solutions which have long term business impact and immediate pay-offs; applies sound judgment to business decisions on behalf of clients and internally.
+                                                                            </p>
+                                                                            <b>2. Business Development</b>
+                                                                            <p class="p-label-12">
+                                                                                Identifies business development opportunities; initiates and develops business contacts from a wide range of sources; acts as an effective ambassador for KPMG; actively sells KPMG’s products and services.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Commerciality</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtBusiness_Skills_Q1" name="txtBusiness_Skills_Q1" cols="50" class="form-control" data-bind="value : Business_Skills_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Business Development </b>
+                                                                            <p class="p-label-12">
+                                                                                (Own efforts, maximization of existing clients, works to other practices, successful sale pitch).
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtBusiness_Skills_Q2" name="txtBusiness_Skills_Q2" cols="50" class="form-control" data-bind="value : Business_Skills_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @if (Model.type_id == "3")
+                                                                    {
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <b>Alignment of Firm Strategy</b>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-group form-group-sm">
+                                                                                    <div class="col-md-12" style="margin-top:5px;">
+                                                                                        <textarea rows="10" id="txtBusiness_Skills_Q3" name="txtBusiness_Skills_Q3" cols="50" class="form-control" data-bind="value : Business_Skills_Q3 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    <h3 class="box-title">Management & Leadership</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>1. Leadership Skills</b>
+                                                                            <p class="p-label-12">
+                                                                                Controls the process of delivery to the clients to meet efficiency and effectiveness targets; manages individuals and teams effectively to achieve results; inspires others by own positive qualities; respected and emulated; motivates staff.
+                                                                            </p>
+                                                                            <b>2. Team Skills</b>
+                                                                            <p class="p-label-12">
+                                                                                Encourages openness and cooperative working strategies; develops mutually supportive relationships; builds effective teams; communicates openly and honestly with others.
+                                                                            </p>
+                                                                            <b>3. People Development</b>
+                                                                            <p class="p-label-12">
+                                                                                Provides appropriate direction, counselling, coaching and support for each subordinate; establishes objectives and gives accurate and timely feedback; and invests time to the development of junior staff.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Leadership Skills</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtManagement_Leadership_Q1" name="txtManagement_Leadership_Q1" cols="50" class="form-control" data-bind="value : Management_Leadership_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Team Skills</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtManagement_Leadership_Q2" name="txtManagement_Leadership_Q2" cols="50" class="form-control" data-bind="value : Management_Leadership_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>People Development</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtManagement_Leadership_Q3" name="txtClient_Q1" cols="50" class="form-control" data-bind="value : Management_Leadership_Q3 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Social Skills</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>1. Communication Skills</b>
+                                                                            <p class="p-label-12">
+                                                                                Listens attentively and emphatically; explains complex and/or technical matters clearly, accurately and concisely; is well understood by staff and clients; can sell, convince, reassure persuade and negotiate whenever necessary
+                                                                            </p>
+                                                                            <b>2. Self-Confidence</b>
+                                                                            <p class="p-label-12">
+                                                                                Acts in a confident and self-assured manner; comes across as credible to clients; has a positive impact and influence on clients; knows when to consult for advice; looks for and responds to feedback; is prepared to adapt; takes responsibility for decisions made; inspires others with confidence; takes calculated risks; speaks up for own views.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Communication skills</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtSocial_Skills_Q1" name="txtSocial_Skills_Q1" cols="50" class="form-control" data-bind="value : Social_Skills_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Self-Confidence</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtSocial_Skills_Q2" name="txtSocial_Skills_Q2" cols="50" class="form-control" data-bind="value : Social_Skills_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Thinking Skills</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>1. Analytical Judgement</b>
+                                                                            <p class="p-label-12">
+                                                                                Analyzes complex data and extracts essentials; identifies the crux of the problem and establishes priorities; demonstrates independence by maintaining own views; takes into account a variety of factors before reaching decisions and weighs them appropriately; anticipates complications and formulates contingency plans to confront them; adopts a critical and challenging approach as appropriate; demonstrate ability to think on the feet.
+                                                                            </p>
+                                                                            <b>2. Innovation</b>
+                                                                            <p class="p-label-12">
+                                                                                Spots opportunities; generates new ideas and fresh approaches; initiates change both internally and in delivering client solutions; shows creativity.
+                                                                            </p>
+                                                                            <b>3. Vision</b>
+                                                                            <p class="p-label-12">
+                                                                                Demonstrates breadth of views; considers medium to long term issues; exercises imaginative flair; demonstrates ability to communicate and translate own vision into action.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Analytical Judgement</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtThinking_Skills_Q1" name="txtThinking_Skills_Q1" cols="50" class="form-control" data-bind="value : Thinking_Skills_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Innovation</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtThinking_Skills_Q2" name="txtThinking_Skills_Q2" cols="50" class="form-control" data-bind="value : Thinking_Skills_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <b>Vision</b>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtThinking_Skills_Q3" name="txtThinking_Skills_Q3" cols="50" class="form-control" data-bind="value : Thinking_Skills_Q3 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Technical Competence</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>Technical Competence</b>
+                                                                            <p class="p-label-12">
+                                                                                Comment of the candidate’s competence in his or her specific discipline.  Please include comments from the relevant partners concerned.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtTechnical_Competence_Q1" name="txtTechnical_Competence_Q1" cols="50" class="form-control" data-bind="value : Technical_Competence_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @if (Model.type_id == "3")
+                                                                    {
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <b>KPMG Story and KPMG Way</b>
+                                                                                <p class="p-label-12">
+                                                                                    (How the candidate has demonstrated)
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-group form-group-sm">
+                                                                                    <div class="col-md-12" style="margin-top:5px;">
+                                                                                        <textarea rows="10" id="txtTechnical_Competence_Q2" name="txtTechnical_Competence_Q2" cols="50" class="form-control" data-bind="value : Technical_Competence_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <b>Entrepreneurship </b>
+                                                                                <p class="p-label-12">
+                                                                                    (How the candidate has engaged with Firm/People)
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-group form-group-sm">
+                                                                                    <div class="col-md-12" style="margin-top:5px;">
+                                                                                        <textarea rows="10" id="txtTechnical_Competence_Q3" name="txtTechnical_Competence_Q3" cols="50" class="form-control" data-bind="value : Technical_Competence_Q3 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_2">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-8 col-md-offset-2">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    @*<h3 class="box-title">Personal Performance Evaluation</h3>*@
+                                                                    <h3 class="box-title">Risk Management</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <p class="p-label-12">
+                                                                                Comment on the candidate’s strengths / weaknesses in managing risks.  Support the judgement with specific examples wherever possible, including details of association with any engagement which has given rise to a PI claim or which received a less than adequate assessment during an inter-office review in recent years.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtRISK_MANAGEMENT_Q1" name="txtRISK_MANAGEMENT_Q1" cols="50" class="form-control" data-bind="value : RISK_MANAGEMENT_Q1 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <b>Results from QPR / SEC/ RCP reviews  (Issues identified, actions taken)</b>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtRISK_MANAGEMENT_Q2" name="txtRISK_MANAGEMENT_Q2" cols="50" class="form-control" data-bind="value : RISK_MANAGEMENT_Q2 , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_3">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-md-offset-1">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    @*<h3 class="box-title">Personal Performance Evaluation</h3>*@
+                                                                    <h3 class="box-title">Financial Information</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <p class="p-label-12">
+                                                                                Financial statistics for this person to be completed by the sponsoring partner.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataKPI" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+
+                                                                                            <th class="dt-center-ctm " rowspan="2">KPIs</th>
+                                                                                            <th class="dt-center-ctm " colspan="2">
+                                                                                                FY @Html.Raw(HttpUtility.HtmlDecode(Model.yearthree))
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " colspan="2">
+                                                                                                FY @Html.Raw(HttpUtility.HtmlDecode(Model.yeartwo))
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " colspan="2">
+                                                                                                FY @Html.Raw(HttpUtility.HtmlDecode(Model.yearone))
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm " colspan="2">
+                                                                                                FY @Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent))
+                                                                                                <br /> (as of 31 Jul 20)
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                Actual
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">Budget</th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                Actual
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">Budget</th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                Actual
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">Budget</th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                Actual
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">Budget</th>
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                                @*<p style="color:red; font-size:12px"> <strong>Remarks</strong> : *Please indicate Fee generated (MB) from FY16 to FY19  new clients personally acquired not including referrals.</p>*@
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /. box -->
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-body -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane " id="tab_4">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-8 col-md-offset-2">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Summary of Development Areas</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12 ">
+                                                                            <p class="p-label-12">
+                                                                                To become a successful leader, the candidate is expected to focus and develop self in what areas, i.e. personality, attitude, innovation, knowledge, etc.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-xs-12">
+                                                                            <div class="form-group form-group-sm">
+                                                                                <div class="col-md-12" style="margin-top:5px;">
+                                                                                    <textarea rows="10" id="txtDEVELOPMENT_AREAS" name="txtDEVELOPMENT_AREAS" cols="50" class="form-control" data-bind="value : DEVELOPMENT_AREAS , valueUpdate: 'afterkeydown'" disabled></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_5">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-10 col-md-offset-1">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+                                                                    @*<h3 class="box-title">Personal Performance Evaluation</h3>*@
+                                                                    <h3 class="box-title">Annual Performance</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <table class="table table-striped table-bordered table-hover  dataTable" cellspacing="0" id="gvwRating" width="100%" style="width: 100%;">
+                                                                                <thead>
+                                                                                    <tr role="row" style="height: 0px;">
+                                                                                        <th>September @Html.Raw(HttpUtility.HtmlDecode(Model.yearthree))</th>
+                                                                                        <th>September @Html.Raw(HttpUtility.HtmlDecode(Model.yeartwo))</th>
+                                                                                        <th>September @Html.Raw(HttpUtility.HtmlDecode(Model.yearone))</th>
+                                                                                        <th>Jul @Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent))</th>
+                                                                                        <th> Self Rating  <br />Jul @Html.Raw(HttpUtility.HtmlDecode(Model.yearcurrent))</th>
+                                                                                    </tr>
+
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_6">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-ctmPR">
+                                                                <div class="box-header with-border">
+
+                                                                    <h3 class="box-title">Rating Summary</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-8 col-md-offset-2">
+                                                                            <div class="bs-callout bs-callout-info  bs-callout-xl p-label-14">
+                                                                                <h4><u>Rating</u></h4>
+                                                                                <p>
+                                                                                    <strong>1</strong> : <em>Excellently exceed expectations</em><br />
+                                                                                    <strong>2</strong> : <em>Meet expectations(High/Low)</em><br />
+                                                                                    <strong>3</strong> : <em>Need Improvement</em><br />
+                                                                                    <strong>4</strong> : <em>N/A</em><br />
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-8 col-md-offset-2">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover " cellspacing="0" id="gvwDataInScore" width="100%">
+                                                                                    <thead>
+                                                                                        <tr>
+
+                                                                                            <th class="dt-center-ctm ">Competencies</th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                1
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                2
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                3
+                                                                                            </th>
+                                                                                            <th class="dt-center-ctm ">
+                                                                                                4
+                                                                                            </th>
+                                                                                        </tr>
+
+                                                                                    </thead>
+
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center" id="lblSaveapp">Do you want to approve this Nomination form?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupReject" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Enter reason/area you would like the candidate to revise</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 text-center">Enter </label>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <br />
+                        <div class="row">
+                            <div class="form-group form-group-sm">
+                                <label class="col-md-4 control-label text-right require">Comment</label>
+                                <div class="col-md-8">
+                                    <textarea rows="3" id="txtDesrevise" cols="50" class="form-control" data-bind="value: revise_remark , valueUpdate: 'afterkeydown'"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row text-center">
+                            <div><span style="color: #ff0000;">Important</span> : This comment will be sent to the candidate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Send</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hfdSessFile" name="hfdSessFile" class="form-control" data-bind='value: Session' />
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/DataTables2/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Content/PESSite.css" rel="stylesheet" />
+    <style>
+        .dt-HeadGr-ctm {
+            background-color: #2952a3;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35);
+            color: rgb(0, 0, 0);
+            vertical-align: middle;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .box-body-white {
+            background-color: white;
+        }
+
+        .p-label-14 {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        .p-label-12 {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 12px;
+            line-height: 1.32;
+            color: #333;
+        }
+
+        b {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        td.details-control {
+            background: url('@Url.Content("~/Image/details_open.png")') no-repeat center center;
+            cursor: pointer;
+        }
+
+        tr.details td.details-control {
+            background: url('@Url.Content("~/Image/details_close.png")') no-repeat center center;
+        }
+           .can-inactive {
+         text-decoration: line-through;
+        }
+       .dt-answer {
+            white-space: pre
+        }
+    </style>
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowReorder.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+
+
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+    <script type="text/javascript">
+        var sUrlBack = '@Url.Action("NominationApproveList", "NominationApprove")';
+        var Approve = "";
+        var Agree = "";
+        var objMaxLength = [
+            { ctrlID: "txtworking_with_KPMG", ctrlType: "txt", MaxLength: 10 },
+            { ctrlID: "txtworking_outside_KPMG", ctrlType: "txt", MaxLength: 10 },
+            { ctrlID: "txtbeing_ADDirector", ctrlType: "txt", MaxLength: 10 },
+            { ctrlID: "txtProfessional_Qualifications", ctrlType: "txt", MaxLength: 500 },
+
+            { ctrlID: "txtClient_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtClient_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtClient_Q3", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtClient_Q4", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtBusiness_Skills_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtBusiness_Skills_Q2", ctrlType: "area", MaxLength: 99999 },
+
+            { ctrlID: "txtManagement_Leadership_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtManagement_Leadership_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtManagement_Leadership_Q3", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtSocial_Skills_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtSocial_Skills_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtThinking_Skills_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtThinking_Skills_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtThinking_Skills_Q3", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtTechnical_Competence_Q1", ctrlType: "area", MaxLength: 99999 },
+
+
+            { ctrlID: "txtRISK_MANAGEMENT_Q1", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtRISK_MANAGEMENT_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtDEVELOPMENT_AREAS", ctrlType: "area", MaxLength: 99999 },
+
+            { ctrlID: "txtBusiness_Skills_Q3", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtTechnical_Competence_Q3", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtTechnical_Competence_Q2", ctrlType: "area", MaxLength: 99999 },
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 99999 },
+        ];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var currentYear_rate = '@Model.yearcurrent_rate';
+        var currentYear_selfrate = '@Model.yearcurrent_selfrate';
+        var currentone_rate = '@Model.yearone_rate';
+        var currenttwo_rate = '@Model.yeartwo_rate';
+        var currentthree_rate = '@Model.yearthree_rate';
+        var canEdit = "N";
+        var form_type = '@Model.type_id';
+
+
+        function GetData() {
+            //var lstQuestion = $('#gvwData').dataTable().fnGetData();
+            var lstSave = ko.toJS(viewModel);
+            if (lstSave != undefined) {
+            }
+            //lstSave.lstQuestion = lstQuestion;
+            return lstSave;
+        }
+        function CreateCustomCheckBox(sID, sValue,sDefault) {
+            var sHtml = "";
+            var sChecked = "No";
+            if (sID != undefined && sID != "") {
+                if (sValue != undefined && sDefault != undefined && sValue == "Y") {
+                    sHtml = '<input type="checkbox" id="chkX' + sID + '-chkRow" name="chk' + sID + '"  checked class="flat-green"   value="' + sDefault + '"   />';
+                }
+                else {
+                    sHtml = '<input type="checkbox" id="chkX' + sID + '-chkRow" name="chk' + sID + '"   class="flat-green"   value="' + sDefault + '"   />';
+                }
+            }
+            else {
+                sHtml = "";
+            }
+            return sHtml;
+        }
+        function SetCheckBox() {
+            $('input[id*=chk]').unbind('ifChecked');
+            $('input[id*=chk]').bind('ifChecked', function (event) {
+                //debugger
+                var $box = $(this);
+                var IsNo = $box.data("text");
+                if ($box.is(':checked')) {
+                    // the name of the box is retrieved using the .attr() method
+                    // as it is assumed and expected to be immutable
+                    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                    // the checked state of the group/box on the other hand will change
+                    // and the current value is retrieved using .prop() method
+                    $(group).parent().removeClass("checked").attr("aria-checked", false);
+                    $(group).prop('checked', false);
+                    $box.parent().addClass("checked").attr("aria-checked", true);
+                    $box.prop('checked', true);
+                } else {
+                    $box.parent().removeClass("checked").attr("aria-checked", false);
+                    $box.prop('checked', false);
+                }
+            });
+        }
+        function SetCheckBoxRateing() {
+            $('input[id*=selfRate]').unbind('ifChecked');
+            $('input[id*=selfRate]').bind('ifChecked', function (event) {
+                //debugger
+                var $box = $(this);
+                var IsNo = $box.data("text");
+                if ($box.is(':checked')) {
+                    // the name of the box is retrieved using the .attr() method
+                    // as it is assumed and expected to be immutable
+                    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                    // the checked state of the group/box on the other hand will change
+                    // and the current value is retrieved using .prop() method
+                    $(group).parent().removeClass("checked").attr("aria-checked", false);
+                    $(group).prop('checked', false);
+                    $box.parent().addClass("checked").attr("aria-checked", true);
+                    $box.prop('checked', true);
+                } else {
+                    $box.parent().removeClass("checked").attr("aria-checked", false);
+                    $box.prop('checked', false);
+                }
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        function Authorized() {
+            var sID = ko.toJS(viewModel.IdEncrypt);
+            if (sID != undefined && sID != "") {
+                var myWindow = window.open('@Url.Action("PTRAuthorizedPersonEva", "PTRMasterData")?qryStr=' + sID, 'Preview', 'height=850,width=800');
+            }
+            else {
+
+            }
+        }
+    </script>
+
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTableApprove() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "details-control", "searchable": false, "orderable": false, "data": "nStep" },
+                { "title": "Role", "width": "5%", "className": "dt-left-ctm", "data": "short_step_name", "searchable": false, "orderable": false },
+                { "title": "Name", "width": "25%", "className": "dt-left-ctm", "data": "app_name", "searchable": false, "orderable": false },
+                { "title": "Status<br/>Agree/Disagree", "width": "10%", "className": "dt-center-ctm", "data": "agree_status", "searchable": false, "orderable": false },
+                { "title": "Comment", "width": "55%", "className": "dt-left-ctm", "data": "description", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "nStep", "searchable": false, "orderable": false, "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "approve_date", "searchable": false, "orderable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataApprove",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "asc"],[2, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+                 columnDefs: [
+                {
+                    "targets": 0,
+                    "render": function (data, type, row) {
+                        return "";
+                    }
+                     },
+                     {
+                         "targets": 4,
+                         "render": function (data, type, row) {
+                             var shtml = "";
+                             if (data != undefined && data != null && data != "") {
+                                 var nL = data.length;
+                                 if (nL > 70) {
+                                     shtml = (data + "").substring(0, 67) + "...";
+                                 }
+                                 else {
+                                     shtml = data;
+                                 }
+                             }
+
+                             return shtml;
+                         }
+                     }
+                ],
+            };
+            var table = CreatTableJS(objTableRe);
+            var detailRows = [];
+
+            $('#gvwDataApprove tbody').on('click', 'tr td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+                var idx = $.inArray(tr.attr('id'), detailRows);
+
+                if (row.child.isShown()) {
+                    tr.removeClass('details');
+                    row.child.hide();
+
+                    // Remove from the 'open' array
+                    detailRows.splice(idx, 1);
+                }
+                else {
+                    tr.addClass('details');
+                    row.child(format(row.data())).show();
+
+                    // Add to the 'open' array
+                    if (idx === -1) {
+                        detailRows.push(tr.attr('id'));
+                    }
+                }
+            });
+
+            // On each draw, loop over the `detailRows` array and show any child rows
+            table.on('draw', function () {
+                $.each(detailRows, function (i, id) {
+                    $('#' + id + ' td.details-control').trigger('click');
+                });
+            });
+        }
+        function SetTableApproveRate() {
+            var objHeadClRequest = [
+                { "title": "Role", "width": "40%", "className": "dt-left-ctm", "data": "short_step_name", "searchable": false, "orderable": false },
+                { "title": "Rating", "width": "60%", "className": "dt-left-ctm", "data": "annual_rating", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "nStep", "searchable": false, "orderable": false, "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "data": "approve_date", "searchable": false, "orderable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataApproveRate",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[2, "asc"], [0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+            };
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function format(d) {
+            var html = "";
+            if (d.description != undefined && d.description != null && d.description != "") {
+                html = (d.description + "").replace("\n", "<br/>")
+            }
+            return 'Comment: ' + html;
+        }
+
+        function LoadFile(sVal)
+        {
+            if (ko.toJS(viewModel.IdEncrypt) != undefined)
+            {
+
+                BlockUI();
+                window.open('@Url.Action("CreatNominationFormFile", "NominationForm")?id=' + sVal, '_blank');
+                setTimeout(function () { UnblockUI(); }, 500);
+            }
+        }
+
+    </script>
+    <script type="text/javascript">
+
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable, sRow) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            if (sRow == undefined || sRow == null) {
+                sRow = 3;
+            }
+
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='" + sRow + "' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+
+
+
+    </script>
+
+}
+
+@section scripts2{
+    <script type="text/javascript">
+            $(function () {
+
+
+
+            SetTableKPIs();
+                SetTableApprove();
+                SetTableApproveRate();
+                SetTableFile();
+                SetTableKPIsEva();
+                SetTableRating();
+
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+                //ValidateForm();
+
+                InputMaskDecimal(GetInputByID("txtworking_with_KPMG"), 2, 0);
+                InputMaskDecimal(GetInputByID("txtworking_outside_KPMG"), 2, 0);
+                InputMaskDecimal(GetInputByID("txtbeing_ADDirector"), 2, 0);
+
+               // setDatePickerFromTo(, GetInputByID("txtDatePeriodTo"));
+                SetDatePicker(GetInputByID("txtYear_joined_KPMG"));
+                //SetDatePicker(GetInputByID("txtbeing_AD_Director"));
+
+
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+
+                }
+                else if (e.target.hash == '#tab_2') {
+                }
+                else if (e.target.hash == '#tab_3') {
+                    $('#gvwDataKPI').DataTable().columns.adjust().draw();
+                    $('#gvwDataKPI').DataTable().columns.adjust().responsive.recalc();
+                }
+                else if (e.target.hash == '#tab_4') {
+
+                }
+                else if (e.target.hash == '#tab_5') {
+                    $('#gvwRating').DataTable().columns.adjust().draw();
+                    $('#gvwRating').DataTable().columns.adjust().responsive.recalc();
+                }
+                else if (e.target.hash == '#tab_6') {
+                    $('#gvwDataInScore').DataTable().columns.adjust().draw();
+                    $('#gvwDataInScore').DataTable().columns.adjust().responsive.recalc();
+                }
+                }
+                );
+
+        });
+
+
+            var currentYear = '@Model.yearcurrent';
+            var currentone = '@Model.yearone';
+            var currenttwo = '@Model.yeartwo';
+            var currentthree = '@Model.yearthree';
+
+
+    </script>
+    <script type="text/javascript">
+        function SetTableFile() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "File Name", "width": "35%", "className": "dt-left-ctm", "data": "file_name", "searchable": false, "orderable": false },
+                { "title": "Description", "width": "55%", "className": "dt-left-ctm", "data": "description", "searchable": false, "orderable": false },
+                { "title": "", "width": "10%", "className": "dt-center-ctm", "data": "View", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFile",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+                columnDefs: [
+                    //{
+                    //    "targets": 1,
+                    //              "render": function (data, type, row, meta) {
+                    //                               return row.Edit +" "+data;
+                    //                        }
+                    //                    } ,
+
+                ],
+                //nRunningNumber: ["true", 0],
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTableRating() {
+            var objHeadClRequest = [
+                { "width": "20%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th1" },
+                { "width": "20%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th2" },
+                { "width": "20%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th3" },
+                { "width": "20%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th4" },
+                { "width": "20%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th6" },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th5", "visible": false },
+            ];
+            var objRate = [
+                {
+                    "th1": "Excellently exceed  expectations", "th2": "Excellently exceed  expectations", "th3": "Excellently exceed  expectations", "th4": "Excellently exceed  expectations", "th5": "1", "th6": "Excellently exceed  expectations"
+                }
+                , { "th1": "Meet expectations", "th2": "Meet expectations", "th3": "Meet expectations", "th4": "Meet expectations", "th5": "2", "th6": "" }
+                , { "th1": "Need Improvement", "th2": "Need Improvement", "th3": "Need Improvement", "th4": "Need Improvement", "th5": "3", "th6": "Need Improvement" }
+            ]
+            var objTableRe = {
+                sTableID: "gvwRating",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: objRate, //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+                columnDefs: [
+                    {
+                        "targets": 0,
+                        "render": function (data, type, row, meta) {
+                            if (currentthree_rate == row.th5) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else if (row.th5 == 2 && currentthree_rate == 4) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else {
+                                return "<i class='fa fa-lg fa-square-o'></i> " + data;
+                            }
+
+                        }
+                    },
+                    {
+                        "targets": 1,
+                        "render": function (data, type, row, meta) {
+                            if (currenttwo_rate == row.th5) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else if (row.th5 == 2 && currenttwo_rate == 4) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else {
+                                return "<i class='fa fa-lg fa-square-o'></i> " + data;
+                            }
+                        }
+                    },
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row, meta) {
+                            if (currentone_rate == row.th5) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else if (row.th5 == 2 && currentone_rate == 4) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            }
+                            else {
+                                return "<i class='fa fa-lg fa-square-o'></i> " + data;
+                            }
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row, meta) {
+                            if (currentYear_rate == row.th5 && (currentYear_rate != "4" && currentYear_rate != "5" && currentYear_rate != "2")) {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            } else if ((currentYear_rate == "4" || currentYear_rate == "5" || currentYear_rate == "2") && row.th5 == "2") {
+                                if (currentYear_rate == "4") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-check-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                                }
+                                else if (currentYear_rate == "5") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-check-square-o'></i> Low";
+                                }
+                                else if (currentYear_rate == "2") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-check-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                                }
+                            } else if (row.th5 == "2" && (currentYear_rate != "4" && currentYear_rate != "5" && currentYear_rate != "2")) {
+
+                                return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                            }
+                            else {
+                                return "<i class='fa fa-lg fa-square-o'></i> " + data;
+
+                            }
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "render": function (data, type, row, meta) {
+                            if (currentYear_selfrate == row.th5 && row.th5 != "2") {
+                                return "<i class='fa fa-lg fa-check-square-o'></i> " + data;
+                            } else if ((currentYear_selfrate == "4" || currentYear_selfrate == "5" || currentYear_selfrate == "2") && row.th5 == "2") {
+                                if (currentYear_selfrate == "4") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-check-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                                }
+                                else if (currentYear_selfrate == "5") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-check-square-o'></i> Low";
+                                }
+                                else if (currentYear_selfrate == "2") {
+                                    return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-check-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                                }
+                            } else if (row.th5 == "2" && (currentYear_selfrate != "4" && currentYear_selfrate != "5" || currentYear_selfrate != "2")) {
+
+                                return "Meet expectations<br/><i class='fa fa-lg fa-square-o'></i> High<br/><i class='fa fa-lg fa-square-o'></i> Meet<br/><i class='fa fa-lg fa-square-o'></i> Low";
+                            }
+                            else {
+                                return "<i class='fa fa-lg fa-square-o'></i> " + data;
+
+                            }
+
+                        }
+                    }
+                ],
+                //nRunningNumber: ["true", 0],
+            };
+            var table = CreatTableJS(objTableRe);
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+                SetICheck();
+                SetCheckBoxRateing();
+            });
+        }
+        function SetTableKPIs() {
+            var objHeadClRequest = [
+
+                { "width": "20%", "className": "dt-left-ctm dt-mid-ctm", "data": "sname", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearthree", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearthreeTar", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yeartwo", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yeartwoTar", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearone", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "yearoneTar", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "actual", "searchable": false, "orderable": false, },
+                { "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "target_data", "searchable": false, "orderable": false, },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sdisable", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "stype", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "howto", "visible": false },
+                { "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "IdEncrypt", "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataKPI",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[12, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    {
+                        "targets": 1,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyearthree" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    },
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyearthreeTar" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyeartwo" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 4,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyeartwoTar" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 5,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyearone" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 6,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtyearoneTar" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 7,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txtactual" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+                    ,
+                    {
+                        "targets": 8,
+                        "render": function (data, type, row) {
+                            if (row.sdisable != "Y") {
+                                return CreatTextbox("txttarget_data" + row.IdEncrypt, 50, data, true);
+                            }
+                            else {
+                                return data;
+                            }
+
+                        },
+                    }
+
+                ],
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+            //$('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+            //    $("div[id$=" + objTableRe.sTableID + "_wrapper] div.icheckbox_flat-green input[id$=chkRow]").iCheck('uncheck');
+            //    $('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper ').height($('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper div.dataTables_scroll').height());
+            //    SetInputMark();
+            //});
+        }
+        function SetInputMark() {
+            $("input[id*=txtTarget]").each(function () {
+                InputMaskDecimal($(this), 4, 2);
+                //$(this).unbind();
+                //$(this).bind("keyup", function () {
+                //    var sID =  $(this)[0].id;
+                //    ChangeVal(sID);
+                //});
+                //$(this).keyup(function () {
+                //    var sID = $(this)[0].id;
+                //    ChangeVal(sID);
+                //});
+            });
+        }
+
+
+        function SetTableKPIsEva() {
+            var objHeadClRequest = [
+
+                { "width": "35%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "header" },
+                { "width": "13%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sExcellent" },
+                { "width": "13%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sHigh" },
+                { "width": "13%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sLow" },
+                { "width": "13%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sNI" },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "isCurrent", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nrate", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "sgroup", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nstep", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "question", "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataInScore",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[6, "asc"]],
+
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }, rowGroup: {
+                    enable: false
+                },
+                columnDefs: [{
+                    "targets": 0,
+                    "render": function (data, type, row) {
+                        sHtml = "<strong>" + data + "</strong><br/>";
+                        //sHtml = "<strong>" /*+ row.nSeq + ". "*/ + data + "</strong><br/>";
+                        if (row.question != undefined && row.question != null && row.question != "") {
+                            sHtml += row.question;
+                        }
+
+
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 1,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (row.isCurrent + "" == "Y") {
+
+                            shtml = CreateCustomCheckBox(row.id + "", data + "", "1");
+                        }
+                        else {
+                            shtml = CreateCheckIcon(data);
+                        }
+                        return shtml;
+                    }
+                }
+                    , {
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (row.isCurrent + "" == "Y") {
+                            shtml = CreateCustomCheckBox(row.id + "", data + "", "2");
+                        }
+                        else {
+                            shtml = CreateCheckIcon(data);
+                        }
+                        return shtml;
+                        //return CreateCustomCheckBox(row.id + "", data + "", "2");
+                    }
+                }
+                    , {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (row.isCurrent + "" == "Y") {
+                            shtml = CreateCustomCheckBox(row.id + "", data + "", "3");
+                        }
+                        else {
+                            shtml = CreateCheckIcon(data);
+                        }
+                        return shtml;
+                        //  return CreateCustomCheckBox(row.id + "", data + "", "3");
+                    }
+                }
+                    , {
+                    "targets": 4,
+                    "render": function (data, type, row) {
+                        var shtml = "";
+                        if (row.isCurrent + "" == "Y") {
+                            shtml = CreateCustomCheckBox(row.id + "", data + "", "4");
+                        }
+                        else {
+                            shtml = CreateCheckIcon(data);
+                        }
+                        return shtml;
+                        //  return CreateCustomCheckBox(row.id + "", data + "", "4");
+                    }
+                }],
+            };
+
+            CreatTableJS(objTableRe);
+
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+                SetICheck();
+                SetCheckBox();
+
+
+            });
+        }
+        function CreateCheckIcon(sVal) {
+            shtml = "";
+            if (sVal != undefined && sVal == "Y") {
+                shtml = '<i class="fa fa-check "></i>';
+            }
+            return shtml;
+        }
+
+    </script>
+    <script type="text/javascript">
+
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("ddlEvaRating", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidatePopUp);
+        }
+
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+                if (objModel.lstApprove != undefined && objModel.lstApprove != null && objModel.lstApprove.length > 0) {
+                    $('#gvwDataApprove').DataTable().clear().draw();
+                    $('#gvwDataApprove').dataTable().fnAddData(objModel.lstApprove);
+                    $('#gvwDataApprove').dataTable().fnDraw();
+                    setTimeout(function () {
+                        $('#gvwDataApprove').DataTable().columns.adjust().draw();
+                        $('#gvwDataApprove').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                    $('#gvwDataApproveRate').DataTable().clear().draw();
+                    $('#gvwDataApproveRate').dataTable().fnAddData(Enumerable.From(objModel.lstApprove).Where(function (w) { return w.nStep == 1 || w.nStep == 3 || w.nStep == 5 || w.nStep == 8 || w.nStep == 9 }).ToArray());
+                    $('#gvwDataApproveRate').dataTable().fnDraw();
+                    setTimeout(function () {
+                        $('#gvwDataApproveRate').DataTable().columns.adjust().draw();
+                        $('#gvwDataApproveRate').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataApprove').DataTable().clear().draw();
+                    $('#gvwDataApprove').dataTable().fnDraw();
+                    $('#gvwDataApproveRate').DataTable().clear().draw();
+                    $('#gvwDataApproveRate').dataTable().fnDraw();
+                }
+
+                if (objModel.lstFile != undefined && objModel.lstFile != null && objModel.lstFile.length > 0) {
+                    $('#gvwDataFile').DataTable().clear().draw();
+                    $('#gvwDataFile').dataTable().fnAddData(objModel.lstFile);
+                    $('#gvwDataFile').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataFile').DataTable().columns.adjust().draw();
+                        $('#gvwDataFile').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataFile').DataTable().clear().draw();
+                    $('#gvwDataFile').dataTable().fnDraw();
+
+                }
+
+                if (objModel.lstKPIs != undefined && objModel.lstKPIs != null && objModel.lstKPIs.length > 0) {
+                    $('#gvwDataKPI').DataTable().clear().draw();
+                    $('#gvwDataKPI').dataTable().fnAddData(objModel.lstKPIs);
+                    $('#gvwDataKPI').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataKPI').DataTable().columns.adjust().draw();
+                        $('#gvwDataKPI').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataKPI').DataTable().clear().draw();
+                    $('#gvwDataKPI').dataTable().fnDraw();
+
+                }
+                if (objModel.lstRating_Summary != undefined && objModel.lstRating_Summary != null && objModel.lstRating_Summary.length > 0) {
+                    $('#gvwDataInScore').DataTable().clear().draw();
+                    $('#gvwDataInScore').dataTable().fnAddData(objModel.lstRating_Summary);
+                    $('#gvwDataInScore').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataInScore').DataTable().columns.adjust().draw();
+                        $('#gvwDataInScore').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataInScore').DataTable().clear().draw();
+                    $('#gvwDataInScore').dataTable().fnDraw();
+
+                }
+
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function SetTableFinal() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "Position", "width": "28%", "className": "dt-left-ctm", "data": "position", "searchable": false, "orderable": false },
+                { "title": "Rating", "width": "27%", "className": "dt-center-ctm", "data": "status", "searchable": false, "orderable": false },
+                { "title": "Feedback", "width": "45%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFinal",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+    </script>
+    @if (Model.status_id == "2" || Model.status_id == "4")
+    {
+        <script type="text/javascript">
+            function Save(sVal, sVal2) {
+                Approve = sVal;
+                Agree = sVal2;
+                var $Accept = GetLabelByID("lblSaveapp");
+            var IsPass = false;
+
+            if (Approve + "" == "Y") {
+                    $Accept.text('Do you want to Agree this Nomination form?');
+                IsPass = true;
+            }
+            else if (Approve + "" == "N") {
+                    $Accept.text('Do you want to Disagree this Nomination form?');
+                IsPass = true;
+            }
+            else {
+                DialogError(DialogHeader.Error, "Error,Place Call Admin.");
+                return;
+            }
+            if (IsPass && Approve + "" == "Y") {
+
+              $("#PopupSave").modal();
+            }
+            else if (IsPass && Approve + "" == "N") {
+                $("#PopupReject").modal();
+            }
+
+        }
+        function SaveData() {
+            var IsPass = true;
+
+            var Check = GetValTextArea("txtDesrevise");
+            if (Check + "" != "" || Approve != "N") {
+                IsPass = true;
+            }
+            else {
+                IsPass = false;
+                DialogWarning(DialogHeader.Warning, "Comment sent to candidate");
+            }
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                $("#PopupReject").modal('hide');
+                BlockUI();
+                var Param = ko.toJS(viewModel);
+
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("ApproveNomination", "NominationApprove")',
+                    data: JSON.stringify({ ItemData: Param, sMode: Approve, sAgree: Agree }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+        </script>
+    }
+}

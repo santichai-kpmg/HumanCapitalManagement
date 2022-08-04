@@ -1,0 +1,58 @@
+﻿@model HumanCapitalManagement.ViewModel.CommonVM.vSelectBox
+
+@if (Model != null)
+{
+
+    string sdis = "";
+    if (Model.disable)
+    {
+        sdis = "disabled";
+    }
+
+    <select id="@Model.id" name="@Model.id" class="form-control" multiple='multiple' @sdis>
+        @if (Model.lstData != null && Model.lstData.Any())
+        {
+            var sGroup = Model.lstData.OrderBy(o => o.Vgroup).Select(s => s.Vgroup).Distinct().ToArray();
+            foreach (var G in sGroup)
+            {
+                <optgroup label='@G'>
+                    @foreach (var lst in Model.lstData.Where(w => w.Vgroup == G).OrderBy(t => t.text))
+                    {
+                        if (Model.avalue != null && Model.avalue.Contains(lst.value))
+                        {
+                            @*if (lst.nFix + "" == "Y")
+                                {
+                                    <option value="@lst.value" selected disabled>@lst.text</option>
+                                }
+                                else
+                                {
+                                    <option value="@lst.value" selected>@lst.text</option>
+                                }*@
+                            <option value="@lst.value" selected>@lst.text</option>
+
+                        }
+                        else
+                        {
+                            <option value="@lst.value">@lst.text</option>
+
+                        }
+                    }
+                </optgroup>
+            }
+        }
+    </select>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#@Model.id').multiSelect({
+                selectableOptgroup: true,
+                selectableHeader: "<div class='form-control text-center'>Lists</div>",
+                selectionHeader: "<div class='form-control text-center'>Selected Lists</div>",
+            });
+        });
+
+
+    </script>
+
+}
+

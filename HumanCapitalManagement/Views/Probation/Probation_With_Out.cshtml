@@ -1,0 +1,596 @@
+﻿
+@{
+    ViewBag.Title = "HCM | People Without Probationt";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        People Without Probation
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="col-xs-12">
+                    <div class="row" id="search">
+                        <div class="col-xs-12">
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Staff (Name/ID)</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtgroup" name="txtgroup" class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtposition" name="txtposition" class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-sm col-xs-12  text-left">
+                            <button type="button" class="btn btn-success" onclick="Save('');" style="width:150px;">Add</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Start</span>
+                                    <input ID="startDateUntil" name="startDateUntil" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">End</span>
+                                    <input ID="endDateUntil" name="endDateUntil" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm col-xs-12  text-left">
+                                <button type="button" class="btn btn-primary" onclick="LoadData('');" style="width:150px;">Search</button>
+
+                            </div>
+
+
+                            <div class="col-md-12">
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+</div>
+
+<div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-12 text-center">
+                                    Do you want to confirm save ?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="SaveData();" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PopupDelete" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #d9534f;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Delete Confirmation</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-12 text-center">
+                                    Do you want to confirm Delete ?
+
+                                </label>
+                                <p id="delid"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="DeleteData();" class="btn btn-danger">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/dataTables.buttons.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.print.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.html5.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.bootstrap.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.flash.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.colVis.js"></script>
+    <script type="text/javascript">
+var objModel = @Html.Raw(Json.Encode(Model));
+
+        var objlstData = [];
+
+
+        $(window).bind("load", function () {
+            $('#gvwData').DataTable().columns.adjust().draw();
+
+        });
+
+        $(function () {
+
+            $('#startDateUntil,#endDateUntil').datepicker({
+                format: "dd MM yyyy",
+        format: "MM yyyy",
+            viewMode: 'months',
+            minViewMode: "months",
+                autoclose: true
+            });
+
+            SetAutocom("txtSearch");
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+                        //var getdata = objModel.lstData;
+                        //if (getdata != undefined && getdata != null && getdata.length > 0) {
+
+                        //    $('#gvwData').DataTable().clear().draw();
+
+                        //    $('#gvwData').dataTable().fnAddData(getdata);
+                        //    $('#gvwData').dataTable().fnDraw();
+                        //    $('#gvwData').DataTable().columns.adjust().draw();
+                        //}
+                        //else {
+                        //    $('#gvwData').DataTable().clear().draw();
+                        //    $('#gvwData').dataTable().fnDraw();
+                        //}
+
+
+        });
+
+
+         function LoadData(type) {
+             
+            var startDateUntiltxt = $('#startDateUntil').val();
+            var endDateUntiltxt = $('#endDateUntil').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Search_Probation_With_Out", "Probation")',
+                dataType: "json",
+                data: {
+                    startUntil: startDateUntiltxt,
+                   endUntil: endDateUntiltxt
+                },
+                success: function (respone) {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+
+                        var getdata = respone.result.lstData;
+                    if (getdata != undefined && getdata != null && getdata.length > 0) {
+
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnAddData(getdata);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+
+
+
+                            objlstData = getdata;
+                        }
+                        else {
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+
+                            objlstData = [];
+                        }
+
+
+                },
+                complete: function (jqXHR, status) {//finaly
+                    UnCheckCheckBoxHeader("ckbAll");
+                    SetICheck();
+                    SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "fix");
+                    UnblockUI();
+                }
+            });
+        }
+
+
+        function SetTable() {
+
+            var objHeadClRequest = [
+
+                { "title": " ", "width": "5%", "className": "dt-center-ctm", "data": "Edit" },
+                { "title": " Staff No.", "width": "5%", "className": "dt-right-ctm", "data": "Staff_No" },
+                { "title": " Name", "width": "20%", "className": "dt-left-ctm", "data": "Staff_Name" },
+                { "title": " Join Date", "width": "10%", "className": "dt-center-ctm", "data": "Join_Date" },
+                { "title": " Company Code", "width": "5%", "className": "dt-center-ctm", "data": "Company" },
+                { "title": " Cost Center", "width": "10%", "className": "dt-center-ctm", "data": "Cost_Center" },
+                { "title": " Create Date", "width": "10%", "className": "dt-center-ctm", "data": "Create_Date"}
+
+
+            ];
+            var objTableRe = {
+                sTableID: "gvwData",
+
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                EmptyTable: EmptyTable,
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                order: [[0, "desc"]],
+        columnDefs: [
+         {
+                        "type": "date",
+                        "targets": 3
+                    }, {
+                        "type": "date",
+                        "targets":6
+                    }
+        ]
+            };
+            CreatTableJS(objTableRe);
+        }
+         function Save() {
+            $("#PopupSave").modal();
+        }
+        function Delete(nid) {
+            $("#PopupDelete").modal();
+            $("#delid").val(nid);
+        }
+
+        function SaveData(){
+        $("#PopupSave").hide();
+            var IsPass = true;
+            if (IsPass) {
+                BlockUI();
+                var tpm_no = $('#txtSearch').val();
+
+                    if(tpm_no == "" || tpm_no == null)
+                    {
+                        DialogWarning(DialogHeader.Warning, "Please Select Staff.");
+                         UnblockUI();
+                        return false;
+                    }
+                    else
+                    {
+                            $.ajax({
+                                dataType: AjaxCall.dataType,
+                                type: AjaxCall.type,
+                                contentType: AjaxCall.contentType,
+                                url:'@Url.Action("Save_People_With_Out", "Probation")',
+                                data: JSON.stringify({ Staff_No : tpm_no}),
+                                success: function (respone) {
+                                    if (respone.result.Status == SysProcess.SessionExpired) {
+                                        PopupLogin();
+                                    } else if (respone.result.Status == SysProcess.Success) {
+                                        DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+                                        location.reload();
+                                        });
+                                    }
+                                    else if (respone.result.Status == SysProcess.Failed)
+                                    {
+                                        DialogWarning(DialogHeader.Warning, respone.result.Msg);
+
+                                    }
+                                    else {
+                                        DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                                    }
+                                },
+                                error: AjaxCall.error,
+                                complete: function (jqXHR, status) {//finaly
+                                    UnblockUI();
+                                }
+                            });
+                    }
+                }
+        }
+
+        function DeleteData(){
+         $("#PopupDelete").hide();
+                BlockUI();
+                 $.ajax({
+                     dataType: AjaxCall.dataType,
+                     type: AjaxCall.type,
+                     contentType: AjaxCall.contentType,
+                     url:'@Url.Action("Delete_People_With_Out", "Probation")',
+                     data: JSON.stringify({ nid : $('#delid').val()}),
+                     success: function (respone) {
+                         if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin();
+                         } else if (respone.result.Status == SysProcess.Success) {
+                             DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+                             location.reload();
+                             });
+                         }
+                         else if (respone.result.Status == SysProcess.Failed)
+                         {
+                             DialogWarning(DialogHeader.Warning, respone.result.Msg);
+
+                         }
+                         else {
+                             DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                         }
+                     },
+                     error: AjaxCall.error,
+                     complete: function (jqXHR, status) {//finaly
+                         UnblockUI();
+                     }
+                 });
+
+        }
+
+        function GetData() {
+            var lstData = "";
+            Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ForEach(function (ed) {
+                lstData += ed.Id + ",";
+            });
+
+            return lstData;
+        }
+
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+
+        }
+        function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+            $('.nameget').text(vName);
+            if (vID != "")
+            {
+                getimage(vID);
+            }
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+
+
+
+           function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+    </script>
+}
+<!-- /.content -->

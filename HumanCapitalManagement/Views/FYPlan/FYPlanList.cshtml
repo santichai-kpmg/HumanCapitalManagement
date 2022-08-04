@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "FYPlanList";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        FY Plan 
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row" id="search">
+                    <div class="form-group form-group-sm col-sm-6  col-xs-6">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Name</span>
+                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" data-bind="value : name , valueUpdate: 'afterkeydown'" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-xs-12  text-left">
+                        <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+                        <button type="button" class="btn btn-primary" onclick="AddData();">Create</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupUpdate" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #605ca8;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Create Plan</b></span>
+                </div>
+                <div id="divUpdatePopUp">
+                    <div class="modal-body">
+                        <form class="form-horizontal" autocomplete="off">
+                            <div id="pvUpCandidate">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label text-right require">FY Year</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group form-inline" style="float: left;">
+                                                    <input ID="txtDateEva" name="txtDateEva" class="form-control " type="text"
+                                                           ToolTip="Year" placeholder="-- / -- / ----" />
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnUpdate" type="button" onclick="CreateNew()" class="btn btn-primary">Create</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

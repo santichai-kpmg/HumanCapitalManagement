@@ -1,0 +1,287 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vCandidate_university_onchange
+
+<form class="form-horizontal">
+
+    <div id="pvCandidateEducationHistory">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">University / School<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+
+                        @*@{ Html.RenderAction("CreateddlUniversity", "HCMMasterData", new
+                            {
+                                id = "ddlBachelorUniversity",
+                                databind = "university_id",
+                                value = ""
+                            });}*@
+                        <input type="text" id="txtUniversity_id" name="txtUniversity_id" class="form-control hidden" />
+                        <input id="txtUniversity_Name" name="txtUniversity_Name" class="form-control" type="search" list="university_lst" data-bind='value: university_id' />
+
+                        <datalist id="university_lst"></datalist>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right nomallabel">Faculty<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+
+                        <select id="ddlFaculty" name="ddlFaculty" class="form-control" data-bind="options: lstFaculty, optionsText: 'name', optionsValue: 'id',
+                                                                           value: faculty_id,
+                                                                           valueAllowUnset: true"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right nomallabel">Major<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+
+                        <select id="ddlMajor" name="ddlMajor" class="form-control" data-bind="options: lstMajor, optionsText: 'name', optionsValue: 'id',
+                                                                           value: major_id,
+                                                                           valueAllowUnset: true"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Degree<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+
+                        @{ Html.RenderAction("CreateddlDegreeEdu", "HCMMasterData", new
+                            {
+                                id = "ddlDegree",
+                                databind = "degree",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Grade<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <input type="text" id="txtGrade" name="txtGrade" class="form-control" data-bind='value: grade' />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Start/End Date<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <div class="input-daterange input-group" id="datepicker">
+                            <input type="text" class="input-sm form-control" ID="txtEduStart_Date" name="txtEduStart_Date" data-bind="value: start_date , valueUpdate: 'afterkeydown' " />
+                            <span class="input-group-addon">to</span>
+                            <input type="text" class="input-sm form-control" ID="txtEdu_EndDate" name="txtEdu_EndDate" data-bind="value: end_date  , valueUpdate: 'afterkeydown' " />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            setDatePickerFromTo(GetInputByID("txtEduStart_Date"), GetInputByID("txtEdu_EndDate"));
+
+            //$('.input-daterange').datepicker({
+            //    format: "dd-M-yyyy",
+            //    autoclose: true,
+            //    todayHighlight: true
+            //});
+        </script>
+
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right require ">Start Date<font color=red>*</font> :</label>
+                        <div class="col-md-8">
+                            <div class="input-group form-inline" style="float: left;">
+                                <input ID="txtEduStart_Date" name="txtEduStart_Date" class="form-control text-center" type="text"
+                                       ToolTip="Start Date" placeholder="-- / -- / ----" data-bind="value: start_date , valueUpdate: 'afterkeydown' " />
+
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right require ">End Date<font color=red>*</font> :</label>
+                        <div class="col-md-8">
+                            <div class="input-group form-inline" style="float: left;">
+                                <input ID="txtEdu_EndDate" name="txtEdu_EndDate" class="form-control text-center" type="text"
+                                       ToolTip="End Date" placeholder="-- / -- / ----" data-bind="value: end_date  , valueUpdate: 'afterkeydown' " />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Description<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <input type="text" id="txtEduHistoryDescription" name="txtEduHistoryDescription" class="form-control" data-bind="value: education_history_description" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Degree related to job<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            <input type="radio" name="rdlRelatedToJob" id="rdlRelatedToJob" class="flat-green radio radio-inline" data-bind='iCheck: { checked: Ref_Cert_ID}' value="N" checked="checked"> Non-related to job<br>
+                        </label>
+                        <label class="control-label">
+                            <input type="radio" name="rdlRelatedToJob" id="rdlRelatedToJob" class="flat-green radio radio-inline" data-bind='iCheck: { checked: Ref_Cert_ID}' value="R"> Related to job<br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</form>
+
+<script type="text/javascript">
+    var objModelPVEdu = @Html.Raw(Json.Encode(Model));
+    @* var viewModelPVEdu = {
+
+        };
+
+        function BindDataPVEdu(value2) {
+            if (viewModelPVEdu.faculty_id == undefined) {
+                viewModelPVEdu = ko.mapping.fromJS(value2);
+            }
+            else {
+                ko.mapping.fromJS(value2, {}, viewModelPVEdu);
+            }
+        }*@
+
+
+    $(function () {
+        ValidateFormPVEdu();
+
+        //SetDatePicker(GetInputByID("txtEduStart_Date"));
+        $("input[id$=txtEduStart_Date]").change(function () {
+            $('#pvCandidateEducationHistory').bootstrapValidator('revalidateField', GetElementName("txtEduStart_Date", objControl.txtbox));
+        }).keydown(function (e) {
+            if (e.which == 8 || e.which == 46) {
+                $('#pvCandidateEducationHistory').bootstrapValidator('updateStatus', GetElementName("txtEduStart_Date", objControl.txtbox), "INVALID");
+
+            }
+        });
+
+
+        //SetDatePicker(GetInputByID("txtEdu_EndDate"));
+        $("input[id$=txtEdu_EndDate]").change(function () {
+            $('#pvCandidateEducationHistory').bootstrapValidator('revalidateField', GetElementName("txtEdu_EndDate", objControl.txtbox));
+        }).keydown(function (e) {
+            if (e.which == 8 || e.which == 46) {
+                $('#pvCandidateEducationHistory').bootstrapValidator('updateStatus', GetElementName("txtEdu_EndDate", objControl.txtbox), "INVALID");
+
+            }
+            });
+
+
+        $("input[id$=txtUniversity_Name]").on("change", function () {
+
+            ActionddlBachelorUniversity($(this).val());
+
+            
+        });
+
+
+        $("select[id$=ddlFaculty]").on("change", function() {
+
+            ActionddlFaculty($(this).val());
+        });
+
+
+    });
+
+
+    function ValidateFormPVEdu() {
+        var objValidatePopUp = {};
+        objValidatePopUp[GetElementName("txtUniversity_Name", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("ddlBachelorUniversity", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlFaculty", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlMajor", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlDegree", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtGrade", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtEduStart_Date", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtEdu_EndDate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtEduHistoryDescription", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("rdlRelatedToJob", objControl.radio)] = addValidate_notEmpty("This value is not valid");
+        BindValidateBootstrap("pvCandidateEducationHistory", objValidatePopUp);
+    }
+    $.ajax({
+    dataType: AjaxCall.dataType,
+    type: AjaxCall.type,
+    contentType: AjaxCall.contentType,
+    url:'@Url.Action("GetGroupUniversity", "Candidates")',
+    data: JSON.stringify({ ItemData : "" }),
+        success: function (respone) {
+
+            var str = ''; // variable to store the options
+            var newdata = new Array(respone.lstUniversity);
+            for (var i = 0; i < newdata[0].length; ++i) {
+                str += '<option id="' + newdata[0][i].id+'" value="' + newdata[0][i].name + '" />'; // Storing options in variable
+            }
+            var my_list = document.getElementById("university_lst");
+            my_list.innerHTML = str;
+
+    },
+    error: AjaxCall.error,
+    complete: function (jqXHR, status) {//finaly
+        UnblockUI();
+
+    }
+    });
+</script>
+
+
+

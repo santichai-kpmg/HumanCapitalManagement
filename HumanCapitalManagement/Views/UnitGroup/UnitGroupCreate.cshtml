@@ -1,0 +1,307 @@
+﻿@model HumanCapitalManagement.ViewModel.vUnitGroup_obj_save
+@{
+    ViewBag.Title = "HCM | Create Unit Group";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Create Unit Group
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Detail</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Group</label>
+                                        <div class="col-md-8">
+                                            @{ Html.RenderAction("CreateGroupFromHRIS", "HCMMasterData", new
+                                                {
+                                                    id = "ddlPool",
+                                                    databind = "code",
+                                                    value = ""
+                                                });}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Pool Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtPoolname" name="txtPoolname" class="form-control" data-bind='value: pool_name' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Group Name HRIS</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNameHris" name="txtNameHris" class="form-control" data-bind='value: name_en_hris' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Group Short Name HRIS</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtsNameHris" name="txtsNameHris" class="form-control" data-bind='value: short_name_en_hris' disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Group Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNewName" name="txtNewName" class="form-control" data-bind='value: name_en' />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Group Short Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNewNameSh" name="txtNewNameSh" class="form-control" data-bind='value: short_name_en' />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Special Note</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtDes" cols="50" class="form-control" data-bind='value: description'></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-primary" onclick="SaveData();">Save</button>
+                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+    <script type="text/javascript">
+        var sUrlBack = '@Url.Action("UnitGroupList", "UnitGroup")';
+        var objMaxLength = [
+            { ctrlID: "txtNewName", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtNewNameSh", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 500 }];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function(){
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            $("select[id$=ddlPool]").on("change", function () {
+                ActionddlPool($(this).val());
+
+            });
+        });
+        function ActionddlPool(val) {
+            var Param = val;
+            if (Param != "") {
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("GetUnitDetail", "UnitGroup")',
+                    data: JSON.stringify({ SearchItem: Param }),
+                    success: function (respone) {
+
+                        if (respone != undefined) {
+                            var newList = ko.toJS(viewModel);
+                            if (newList.Id != undefined) {
+                                newList.pool = respone.pool_id + '';
+                                newList.pool_name = respone.pool_name + '';
+                                newList.name_en_hris = respone.group_name_hr + '';
+                                newList.short_name_en_hris = respone.group_sh_name_hr + '';
+                                newList.name_en = respone.group_name_hr + '';
+                                newList.short_name_en = respone.group_sh_name_hr + '';
+                                BindData(newList);
+                            }
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            } else {
+                var newList = ko.toJS(viewModel);
+                if (newList.Id != undefined) {
+                    newList.pool =  '';
+                    newList.pool_name ='';
+                    newList.name_en_hris =  '';
+                    newList.short_name_en_hris =  '';
+                    newList.name_en =  '';
+                    newList.short_name_en = '';
+                    BindData(newList);
+                }
+            }
+
+        }
+
+        function SaveData (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                IsPass = false;
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param =  ko.toJS(viewModel);
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("CreateUnitGroup", "UnitGroup")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        debugger
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtNewName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidatePopUp[GetElementName("ddlPool", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidatePopUp);
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+
+    </script>
+
+}

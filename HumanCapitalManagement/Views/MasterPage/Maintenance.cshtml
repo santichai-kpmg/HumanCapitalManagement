@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Maintenance";
+    Layout = "~/Views/Shared/_LPMasterError.cshtml";
+}
+<!-- Content Header (Page header) -->
+
+<!-- Main content -->
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-yellow"><i class="fa fa-warning text-yellow"></i></h2>
+        <div class="error-content">
+            <h3 class=" text-red">Website Under Maintenance</h3>
+            <p>
+                @*<label class="control-label" data-bind='value: msg'></label>
+                We could not find the page you were looking for.
+                Meanwhile, you may....*@
+            </p>
+        </div>
+        <!-- /.error-content -->
+    </div>
+    <!-- /.error-page -->
+</section>
+<!-- /.content -->
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var lstObj = [];
+        $(function () {
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+        });
+        var viewModel = {
+        };
+        function BindData(value) {
+            if (viewModel.page == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+    </script>
+}

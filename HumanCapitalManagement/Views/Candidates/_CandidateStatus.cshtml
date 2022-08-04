@@ -1,0 +1,58 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vCandidates_obj_update
+
+<form class="form-horizontal">
+    <div id="pvCandidate">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover display" id="gvwDataUpdate" width="100%">
+                        <thead>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    var objModelUpdate = @Html.Raw(Json.Encode(Model));
+    function SetTableUpdate() {
+        var objHeadClRequest = [
+
+            { "title": "", "width": "5%", "className": "details-control", "searchable": false, "orderable": false, "data": "Id", },
+            { "title": "Name", "width": "15%", "className": "dt-left-ctm", "data": "candidate_name", "searchable": false },
+        ];
+
+        var objTable = {
+            sTableID: "gvwDataUpdate",
+            nDis: [],
+            sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",//length pangging
+            objHeadCl: objHeadClRequest,//Table Headder
+            objDataSet: [], //dataset
+            nHeadFix: 0,// fix clr
+            EmptyTable: EmptyTable,
+            order: [[1, "asc"]],
+            objBeforeClRender: false,
+            columnDefs: [{
+                "targets": 1,
+                "render": function (data, type, row) {
+
+                    return data;
+                }
+            }
+            ],
+            fixedHeader: {
+                header: false,
+                footer: false
+            }
+        };
+        var table = CreatTableJS(objTable);
+    }
+</script>

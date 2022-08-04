@@ -1,0 +1,416 @@
+﻿@model HumanCapitalManagement.ViewModel.EduVM.vUniversityMajor_obj_save
+@{
+    ViewBag.Title = "HCM | Edit University Major";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Edit University Major
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">University Detail</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">University Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNameEn" name="txtNameEn" class="form-control" data-bind="value : name_en , valueUpdate: 'afterkeydown'" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Faculty Name</label>
+                                        <div class="col-md-8">
+                                            @{ Html.RenderAction("CreateddlFacultyByUniver", "EduMasterData", new
+                                                {
+                                                    id = "ddlFaculty",
+                                                    value = Model.IdEncrypt,
+                                                });}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Major Name</label>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                @{ Html.RenderAction("CreateddlMajor", "EduMasterData", new
+                                                    {
+                                                        id = "ddlMajor",
+                                                        value = ""
+                                                    });}
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-sm btn-info btn-flat" tooltip="Copy Faculty Name" flow="right" onclick="CopyMajor()">
+                                                        <icon class="fa fa-fw fa-copy"></icon>
+                                                    </button>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Major Display Name</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtMajorName" name="txtMajorName" class="form-control" />
+                                            <input type="text" id="txtMajorid" name="txtMajorid" class="form-control hidden" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Major Special Note</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtMajorDes" name="txtMajorDes" cols="50" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Status</label>
+                                        <div class="col-md-8">
+                                            <label class="control-label">
+                                                <input type="radio" name="rdlStatusMajor" id="rdlStatusMajor" class="flat-green radio radio-inline" checked value="Y">Active<br>
+                                            </label>
+                                            <label class="control-label">
+                                                <input type="radio" name="rdlStatusMajor" id="rdlStatusMajor" class="flat-green radio radio-inline" value="N">Inactive<br>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-primary" onclick="SaveMajor();">Add Major</button>
+                                    <button type="button" class="btn btn-warning" onclick="ClearMajor();">Clear</button>
+                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Back</button>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box box-solid box-ctmPR4">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Major List Data</h3>
+                                            <div class="box-tools pull-right">
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataFaculty" width="100%">
+                                                    <thead>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /. box -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sUrlBack ='@Url.Action("UniversityMajorList", "UniversityMajor")';
+        var objMaxLength = [
+            { ctrlID: "txtMajorName", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtMajorDes", ctrlType: "area", MaxLength: 450 }
+        ];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTableFaculty();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+        });
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+                //Table param
+                if (objModel.lstMajor != undefined && objModel.lstMajor != null && objModel.lstMajor.length > 0) {
+                    $('#gvwDataFaculty').DataTable().clear().draw();
+                    $('#gvwDataFaculty').dataTable().fnAddData(objModel.lstMajor);
+                    $('#gvwDataFaculty').dataTable().fnDraw();
+                }
+                else {
+                    $('#gvwDataFaculty').DataTable().clear().draw();
+                    $('#gvwDataFaculty').dataTable().fnDraw();
+                }
+                setTimeout(function () {
+                    $('#gvwDataFaculty').DataTable().columns.adjust().draw();
+                    $('#gvwDataFaculty').DataTable().columns.adjust().responsive.recalc();
+                }, 500);
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidateFaculty = {};
+            objValidateFaculty[GetElementName("ddlFaculty", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidateFaculty[GetElementName("ddlMajor", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidateFaculty[GetElementName("txtMajorName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidateFaculty);
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTableFaculty() {
+            var objHeadClRequest = [
+                { "title": "Edit", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "Faculty ", "width": "21%", "className": "dt-left-ctm", "data": "fa_display_name" },
+                { "title": "Major Name", "width": "20%", "className": "dt-left-ctm", "data": "ma_name" },
+                { "title": "Major Display Name", "width": "20%", "className": "dt-left-ctm", "data": "ma_display_name" },
+                { "title": "Status", "width": "10%", "className": "dt-center-ctm", "data": "active_status" },
+                { "title": "Update Date", "width": "13%", "className": "dt-center-ctm", "data": "update_date" },
+                { "title": "Update By", "width": "11%", "className": "dt-center-ctm", "data": "update_user" },
+            ];
+            var objTableRe = {
+                sTableID: "gvwDataFaculty",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "desc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [{
+                    "targets": 5,
+                    "type": "date-th",
+                }],
+            };
+            CreatTableJS(objTableRe);
+        }
+    </script>
+    <script type="text/javascript">
+        function GetDataFaculty() {
+            var lstData = {
+                id: GetValueTextBox("txtMajorid"),
+                IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                fa_name_id: GetValDropdown("ddlFaculty"),
+                ma_name_id: GetValDropdown("ddlMajor"),
+                ma_display_name: GetValueTextBox("txtMajorName"),
+                decs: GetValTextArea("txtMajorDes"),
+                active_status: GetValRadioListICheck("rdlStatusMajor"),
+            }
+            return lstData;
+        }
+        function SaveMajor (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                FocusValidateBootstrap("divContent");
+                IsPass = false;
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param = GetDataFaculty();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("CreateUniversityMajor", "UniversityMajor")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearMajor();
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwDataFaculty').DataTable().clear().draw();
+                                $('#gvwDataFaculty').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwDataFaculty').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwDataFaculty').DataTable().clear().draw();
+                                $('#gvwDataFaculty').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwDataFaculty').DataTable().columns.adjust().draw();
+                        $('#gvwDataFaculty').DataTable().columns.adjust().responsive.recalc();
+                    }
+                });
+            }
+        }
+        function CopyMajor() {
+            var _getValue = GetValDropdown("ddlMajor");
+            if (_getValue != undefined && _getValue != "") {
+                var GetText = GetTextDropdownText("ddlMajor");
+                GetInputByID("txtMajorName").val(GetText);
+                $('#divContent').bootstrapValidator('revalidateField', GetElementName("txtMajorName", objControl.txtbox));
+            }
+        }
+        function EditMajor(sVal) {
+            ClearMajor();
+            BlockUI();
+            var Param = {
+                IdEncrypt: sVal, IdEncrypt_Uni_Id: ko.toJS(viewModel.IdEncrypt) };
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("LoadUniversityMajor", "UniversityMajor")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            SetObjectFaculty(respone.result.objData);
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            ClearMajor();
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        function ClearMajor() {
+            GetSelectByID("ddlFaculty").val('');
+            GetSelectByID("ddlMajor").val('');
+            GetInputByID("txtMajorName").val('');
+            GetInputByID("txtMajorid").val('');
+            GetTextareaByID("txtMajorDes").val('');
+            $("input[id*=rdlStatusMajor][value='Y']").iCheck('check');
+            $('#divContent').bootstrapValidator('updateStatus', GetElementName("ddlFaculty", objControl.dropdown), "NOT_VALIDATED");
+            $('#divContent').bootstrapValidator('updateStatus', GetElementName("ddlMajor", objControl.dropdown), "NOT_VALIDATED");
+            $('#divContent').bootstrapValidator('updateStatus', GetElementName("txtMajorName", objControl.txtbox), "NOT_VALIDATED");
+        }
+        function Major() {
+            BlockUI();
+            ClearMajor();
+            setTimeout(function () {
+                UnblockUI();
+            }, 500);
+        }
+        function SetObjectFaculty(objData) {
+            if (objData != undefined) {
+                GetSelectByID("ddlFaculty").val(objData.fa_name_id);
+                GetSelectByID("ddlMajor").val(objData.ma_name_id);
+                GetInputByID("txtMajorName").val(objData.ma_display_name);
+                GetInputByID("txtMajorid").val(objData.id);
+                GetTextareaByID("txtMajorDes").val(objData.decs);
+                $("input[id*=rdlStatusMajor][value='" + objData.active_status+"']").iCheck('check');
+            }
+        }
+    </script>
+}

@@ -1,0 +1,42 @@
+﻿@model HumanCapitalManagement.ViewModel.CommonVM.vSelectBox
+
+@if (Model != null)
+{
+
+    string sdis = "";
+    if (Model.disable)
+    {
+        sdis = "disabled";
+    }
+
+    <select id="@Model.id" name="@Model.id" class="form-control" multiple='multiple' @sdis>
+        @if (Model.lstData != null && Model.lstData.Any())
+        {
+            foreach (var lst in Model.lstData)
+            {
+                if (Model.avalue != null && Model.avalue.Contains(lst.value))
+                {
+                    <option value="@lst.value" selected>@lst.text</option>
+                }
+                else
+                {
+                    <option value="@lst.value">@lst.text</option>
+
+                }
+            }
+        }
+    </select>
+    <script type="text/javascript">
+        $(function () {
+
+            $('#@Model.id').multiSelect({
+                selectableHeader: "<div class='form-control text-center'>Lists</div>",
+                selectionHeader: "<div class='form-control text-center'>Selected Lists</div>",
+            });
+        });
+
+
+    </script>
+
+}
+

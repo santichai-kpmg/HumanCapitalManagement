@@ -1,0 +1,537 @@
+﻿@using HumanCapitalManagement.Models.OldTable
+@model Candidate
+
+@{
+    List<SelectListItem> interviews = ViewBag.interviewLst;
+    List<SelectListItem> hiring = ViewBag.HiringProcess;
+    List<SelectListItem> canStat = ViewBag.CandidateStatus;
+    List<SelectListItem> onboards = ViewBag.onboardLst;
+    List<SelectListItem> HROwners = ViewBag.HROwner;
+
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="background-color:#005EB8;">
+        <tr>
+            <td align="right"></td>
+        </tr>
+        <tr>
+            <td align="Center" style="font-family:'KPMG'; font-size:40pt;color:white;">
+                @Html.Label("Candidate")
+            </td>
+            <td style="width: 50px; vertical-align: top;">
+                <input type="button" id="btnCloseMailEdit" class="btn btn-danger btn-sm" onclick="closeCandidate();" value="Close">
+            </td>
+        </tr>
+    </table>
+
+    if (Model == null)
+    {
+        using (Html.BeginForm("addCandidate", "PR", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" id="hdPRadd" name="hdPRadd" value="@ViewBag.prid" />
+            <div id="divCandidateForm" style=" height:500px;">
+                @*width:800px; margin:auto; overflow-y:scroll;*@
+                <br />
+                <dl class="dl-horizontal" style="width:700px">
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            ID :
+                        </dt>
+                        <dd >
+                            @Html.TextBox("txtCanID", null, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Name :
+                    </dt>
+                    <dd>
+                        <div id="divCanName">
+                            @Html.TextBox("txtCanName", null, new { @class = "form-control", @style = "width : 89%;" })
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rank :
+                    </dt>
+                    <dd>
+                        <div id="divCanRnk">
+                            @Html.TextBox("txtCanRnk", null, new { @class = "form-control", @style = "width : 89%;" })
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rank Grade :
+                    </dt>
+                    <dd>
+                        <div id="divCanFullRnk">
+                            @Html.TextBox("txtCanFullRnk", null, new { @class = "form-control", @style = "width : 89%;" })
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Contact No :
+                    </dt>
+                    <dd>
+                        @Html.TextBox("txtCanContactNo", null, new { @class = "form-control", @style = "width : 89%;", placeholder = "0XX-XXXXXXX" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        BU Interview Status :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlInterview", interviews, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Selected Date by BU :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanBUDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanBUDate" name="dpCanBUDate" type="text" class="form-control" width="400px" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanBUDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanBUDate" name="dpCanBUDate" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Hiring Process :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlHiringProcess", hiring, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            Candidate Status :
+                        </dt>
+                        <dd >
+                            @Html.DropDownList("ddlCandidateStatus", canStat, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Offering Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanOfferDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanOfferDate" name="dpCanOfferDate" type="text" class="form-control" width="400px" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanOfferDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanOfferDate" name="dpCanOfferDate" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Accept Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divAcceptDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpAcceptDate" name="dpAcceptDate" type="text" class="form-control" width="400px" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divAcceptDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpAcceptDate" name="dpAcceptDate" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rejected/Turned Down Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanRejectedDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanRejectedDate" name="dpCanRejectedDate" type="text" class="form-control" width="400px" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+                        <div id="divCanRejectedDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanRejectedDate" name="dpCanRejectedDate" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Start Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanStartDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanStartDate" name="dpCanStartDate" type="text" class="form-control" width="400px" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+                        <div id="divCanStartDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanStartDate" name="dpCanStartDate" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            End Date :
+                        </dt>
+                        <dd >
+                            <div id="divCanEndDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanEndDate" name="dpCanEndDate" type="text" class="form-control" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </dd>*@
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            On board Status :
+                        </dt>
+                        <dd >
+                            @Html.DropDownList("ddlOnboard", onboards, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Remark/Reasons :
+                    </dt>
+                    <dd>
+                        @*@Html.TextBox("txtCanRemark", null, new { @class = "form-control", @style = "width : 89%;" })*@
+                        @Html.TextArea("txtCanRemark", null, new { @class = "form-control", @rows = 5, @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        HR Owner :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlOwner", HROwners, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                </dl>
+            </div>
+            <br /><br />
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div style="color : red; width : 600px; font-size:smaller;">
+                            Remark:<br />
+                            &ndash; Reject Date  = No signing contract appointment<br />
+                            &ndash; Decline Date = Already made signing contract appointment, but rejected our offer later<br />
+                            &ndash; Turn Down Date = Rejected our offer “after” the employment agreement is signed
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="23%">&nbsp;</td>
+                    <td>
+                        <input type="submit" id="btnAddCandidate" value="Add" class="btn btn-success btn-lg" onclick="return validateAddEdit();" />
+                    </td>
+                </tr>
+            </table>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("editCandidate", "PR", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="hidden" id="hdPRedit" name="hdPRedit" value="@ViewBag.prid" />
+            <input type="hidden" id="hdCanId" name="hdCanId" value="@Model.Id" />
+            <div id="divCandidateForm" style=" height:500px;">
+                <br />
+                <dl class="dl-horizontal" style="width:700px;">
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            ID :
+                        </dt>
+                        <dd >
+                            @Html.TextBox("txtCanID", Model.Id, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Name :
+                    </dt>
+                    <dd>
+                        @Html.TextBox("txtCanName", Model.CandidateName, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rank :
+                    </dt>
+                    <dd>
+                        @Html.TextBox("txtCanRnk", Model.rank, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rank Grade :
+                    </dt>
+                    <dd>
+                        @Html.TextBox("txtCanFullRnk", Model.fullRank, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Contact No :
+                    </dt>
+                    <dd>
+                        @Html.TextBox("txtCanContactNo", Model.ContactNo, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        BU Interview Status :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlInterview", interviews, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Selected Date by BU :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanBUDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanBUDate" name="dpCanBUDate" type="text" class="form-control" width="400px" value="@Model.DateByBUDesc()" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanBUDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanBUDate" name="dpCanBUDate" value="@Model.DateByBUDesc()" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Hiring Process :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlHiringProcess", hiring, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Offering Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanOfferDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanOfferDate" name="dpCanOfferDate" type="text" class="form-control" width="400px" value="@Model.OfferingDateDesc()" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanOfferDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanOfferDate" name="dpCanOfferDate" value="@Model.OfferingDateDesc()" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Accept Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divAcceptDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpAcceptDate" name="dpAcceptDate" type="text" class="form-control" width="400px" value="@Model.AcceptDateDesc()" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divAcceptDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpAcceptDate" name="dpAcceptDate" value="@Model.AcceptDateDesc()" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+
+
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            Candidate Status :
+                        </dt>
+                        <dd >
+                            @Html.DropDownList("ddlCandidateStatus", canStat, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Rejected/Turned Down Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanRejectedDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanRejectedDate" name="dpCanRejectedDate" type="text" class="form-control" width="400px" value="@Model.rejectDateDesc()" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanRejectedDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanRejectedDate" name="dpCanRejectedDate" value="@Model.rejectDateDesc()" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Start Date :
+                    </dt>
+                    <dd>
+                        @*<div id="divCanStartDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanStartDate" name="dpCanStartDate" type="text" class="form-control" width="400px" value="@Model.StartDateDesc()" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>*@
+
+                        <div id="divCanStartDate" class="input-group form-inline">
+                            <input type="text" class="form-control" id="dpCanStartDate" name="dpCanStartDate" value="@Model.StartDateDesc()" data-date-language="th-th">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </dd>
+
+
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            End Date :
+                        </dt>
+                        <dd >
+                            <div id="divCanEndDate" class="input-group date" data-provide="datepicker" data-date-format='dd-M-yyyy'>
+                                <input id="dpCanEndDate" name="dpCanEndDate" type="text" class="form-control" value="@Model.EndDate" readonly>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </div>
+                            </div>
+                        </dd>*@
+                    @*<dt style="vertical-align:middle; width : 200px;">
+                            On board :
+                        </dt>
+                        <dd >
+                            @Html.DropDownList("ddlOnboard", onboards, new { @class = "form-control", @style = "width : 89%;" })
+                        </dd>*@
+                    <dt style="vertical-align:middle; width : 200px;">
+                        Remark/Reasons :
+                    </dt>
+                    <dd>
+                        @*@Html.TextBox("txtCanRemark", Model.Remark, new { @class = "form-control", @style = "width : 89%;" })*@
+                        @Html.TextArea("txtCanRemark", Model.Remark, new { @class = "form-control", @rows = 5, @style = "width : 89%;" })
+                    </dd>
+                    <dt style="vertical-align:middle; width : 200px;">
+                        HR Owner :
+                    </dt>
+                    <dd>
+                        @Html.DropDownList("ddlOwner", HROwners, new { @class = "form-control", @style = "width : 89%;" })
+                    </dd>
+                </dl>
+            </div>
+            <br /><br />
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td width="23%">&nbsp;</td>
+                    <td>
+                        <input type="submit" id="btnEditCandidate" value="Save" class="btn btn-success btn-lg" onclick="return validateAddEdit();" />
+                    </td>
+                </tr>
+            </table>
+
+        }
+    }
+}
+
+<script src="~/Scripts/plugins/jquery-inputmask/inputmask/inputmask.js"></script>
+<script src="~/Scripts/plugins/jquery-inputmask/inputmask/inputmask.extensions.js"></script>
+<script src="~/Scripts/plugins/jquery-inputmask/inputmask/jquery.inputmask.js"></script>
+<script>
+    //$('.datepicker').datepicker({
+    //    dateFormat: 'dd-mm-yy',
+    //    todayHighlight: true,
+    //    autoclose: true
+    //}).on('changeDate', function (e) {
+    //    // Revalidate the date field
+    //    $('#eventForm').formValidation('revalidateField', 'date');
+    //});
+
+
+    //$.fn.datepicker.defaults.autoclose = true;
+    //$.fn.datepicker.defaults.todayHighlight = true;
+
+    $(function () {
+
+        $("input[id$=txtCanContactNo]").inputmask({ "mask": "999-9999999" });
+        SetDatePicker($('#dpCanBUDate'));
+
+        SetDatePicker($('#dpCanStartDate'));
+        SetDatePicker($('#dpCanRejectedDate'));
+        SetDatePicker($('#dpAcceptDate'));
+        SetDatePicker($('#dpCanOfferDate'));
+
+    });
+
+
+    //function SetDatePicker($txtDate, $startDate, $endDate) {
+    //    //var sDateDef = $('input[id$=hdfDate]').val();
+    //    $txtDate.datepicker({
+    //        format: 'dd-M-yyyy',
+    //        autoclose: true,
+    //        startDate: ($startDate === undefined ? -Infinity : $startDate),
+    //        endDate: ($endDate === undefined ? Infinity : $endDate),
+    //        todayHighlight: true,
+    //        /* blur needed to correctly handle placeholder text */
+    //        onSelect: function (dateText, inst) {
+    //            $(this).blur().change();
+    //        }
+    //    })
+    //        .keydown(function (e) {
+    //            //48-57 = "0-9" บนคีย์บอร์ด //96-105 = "0-9" คีย์ตัวเลข // 111 191 = "/" //8 46 = Del
+    //            if (!(e.which >= 48 && e.which <= 57) && !(e.which >= 96 && e.which <= 105) && e.which != 111 && e.which != 191 && e.which == 8 && e.which == 46) {
+    //                $('#eventForm').formValidation('revalidateField', 'dpPeriod');
+    //                return false;
+    //            }
+    //            if (e.which == 8 || e.which == 46) {
+    //                $txtDate.val('');
+    //            }
+    //        });
+
+    //    $txtDate.next().click(function () { $txtDate.focus(); });
+
+    //}
+    var tryNumber = 0;
+    jQuery('input[type=submit]').click(function (event) {
+        var self = $(this);
+
+        if (self.closest('form').valid()) {
+            if (tryNumber > 0) {
+                tryNumber++;
+                //alert('Candidate has been already submited. please');
+                return false;
+            }
+            else {
+                tryNumber++;
+            }
+        };
+    });
+
+    function validateAddEdit() {
+        var name = $("#txtCanName").val();
+        var rank = $("#txtCanRnk").val();
+        var rankfull = $("#txtCanFullRnk").val();
+
+        var valAdd = "";
+        if (name == "") {
+            valAdd += "\n- Candidate Name";
+            //form-control has-error
+            $("#divCanName").addClass("has-error");
+        }
+        if (rank == "") {
+            valAdd += "\n- Rank";
+            //form-control has-error
+            $("#divCanRnk").addClass("has-error");
+        }
+        //if (rankfull == "") {
+        //    valAdd += "\n- Full Rank";
+        //    //form-control has-error
+        //    $("#divCanFullRnk").addClass("has-error");
+        //}
+
+        if (valAdd == "") {
+            return true;
+        } else {
+            alert("Please fill in :" + valAdd);
+            return false;
+        }
+    }
+</script>
+
+

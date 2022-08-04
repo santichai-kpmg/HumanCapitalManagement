@@ -1,0 +1,475 @@
+﻿
+
+
+
+.tableHeader {
+    background-color: rgba(153, 204, 255, 0.74) !important;
+}
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hidden-md {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .hidden-lg {
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .visible-xs-inline {
+        display: inline;
+    }
+
+    .hidden-xs-inline {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .visible-xs-inline {
+        display: none;
+    }
+
+    .hidden-xs-inline {
+        display: inline;
+    }
+}
+
+.newsContent {
+    padding: 0 20px 20px 0;
+}
+
+ul.redDot {
+    list-style-type: none;
+}
+
+    ul.redDot li {
+        padding-left: 1em;
+    }
+
+        ul.redDot li:before {
+            content: "\2022";
+            color: red;
+            font-size: 20px;
+            line-height: 15px;
+            margin-left: -10px;
+        }
+
+.radio-inline,
+.checkbox-inline {
+    margin-bottom: 10px;
+}
+
+hr.hrInBody {
+    border-top-color: #808080;
+    margin-bottom: 5px;
+}
+
+.radio label, .checkbox label {
+    padding-left: 5px;
+}
+
+select.form-control {
+    padding: 3px 12px;
+}
+
+.dataTables_empty {
+    text-align: center;
+    color: red;
+}
+
+.table thead,
+.table th {
+    text-align: center;
+}
+
+.dt-center-ctm {
+    text-align: center;
+}
+
+.dt-left-ctm {
+    text-align: left;
+}
+
+.dt-right-ctm {
+    text-align: right;
+}
+
+.dt-money-ctm {
+    text-align: right;
+}
+
+.dt-chk-ctm {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.dt-mid-ctm {
+    vertical-align: middle !important;
+}
+
+.dt-status-nol {
+    vertical-align: middle !important;
+    font-weight: bold !important;
+}
+
+.dt-status-suss {
+    vertical-align: middle !important;
+    color: white !important;
+    background-color: #92c755;
+    font-weight: bold !important;
+}
+
+.dt-status-wait {
+    vertical-align: middle !important;
+    color: #6b8ab7 !important;
+    background-color: #ffd500;
+    font-weight: bold !important;
+}
+
+.dt-status-cl {
+    vertical-align: middle !important;
+    color: white !important;
+    background-color: #ff5600;
+    font-weight: bold !important;
+}
+
+.dt-status-comp {
+    vertical-align: middle !important;
+    color: black !important;
+    background-color: #dad9e2;
+    font-weight: bold !important;
+}
+
+
+.dt-total-ctm {
+    background-color: #c9dfef;
+}
+
+.panel-heading {
+    font-weight: bold;
+}
+
+.dataTable > thead > tr > th {
+    background-color: rgba(153, 204, 255, 0.74);
+    color: rgb(6, 69, 161);
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.He1 {
+    background-color: #c9dfef !important;
+}
+
+.He2 {
+    background-color: rgb(254, 225, 108) !important;
+}
+
+.He3 {
+    background-color: rgb(255, 190, 128) !important;
+}
+
+.dataTable > tbody > tr > td {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+}
+
+[class*=dataTables_] {
+    font-size: 12px;
+}
+
+
+/* START TOOLTIP STYLES */
+[tooltip] {
+    position: relative; /* opinion 1 */
+}
+
+    /* Applies to all tooltips */
+    [tooltip]::before,
+    [tooltip]::after {
+        text-transform: none; /* opinion 2 */
+        font-size: .9em; /* opinion 3 */
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        position: absolute;
+        display: none;
+        opacity: 0;
+    }
+
+    [tooltip]::before {
+        content: '';
+        border: 5px solid transparent; /* opinion 4 */
+        z-index: 1001; /* absurdity 1 */
+    }
+
+    [tooltip]::after {
+        content: attr(tooltip); /* magic! */
+        /* most of the rest of this is opinion */
+        font-family: Helvetica, sans-serif;
+        text-align: center;
+        /* 
+    Let the content set the size of the tooltips 
+    but this will also keep them from being obnoxious
+    */
+        min-width: 3em;
+        max-width: 21em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 1ch 1.5ch;
+        border-radius: .3ch;
+        box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+        background: #333;
+        color: #fff;
+        z-index: 1000; /* absurdity 2 */
+    }
+
+    /* Make the tooltips respond to hover */
+    [tooltip]:hover::before,
+    [tooltip]:hover::after {
+        display: block;
+    }
+
+/* don't show empty tooltips */
+[tooltip='']::before,
+[tooltip='']::after {
+    display: none !important;
+}
+
+/* FLOW: UP */
+[tooltip]:not([flow])::before,
+[tooltip][flow^="up"]::before {
+    bottom: 100%;
+    border-bottom-width: 0;
+    border-top-color: #333;
+}
+
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::after {
+    bottom: calc(100% + 5px);
+}
+
+[tooltip]:not([flow])::before,
+[tooltip]:not([flow])::after,
+[tooltip][flow^="up"]::before,
+[tooltip][flow^="up"]::after {
+    left: 50%;
+    transform: translate(-50%, -.5em);
+}
+
+/* FLOW: DOWN */
+[tooltip][flow^="down"]::before {
+    top: 100%;
+    border-top-width: 0;
+    border-bottom-color: #333;
+}
+
+[tooltip][flow^="down"]::after {
+    top: calc(100% + 5px);
+}
+
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+    left: 50%;
+    transform: translate(-50%, .5em);
+}
+
+/* FLOW: LEFT */
+[tooltip][flow^="left"]::before {
+    top: 50%;
+    border-right-width: 0;
+    border-left-color: #333;
+    left: calc(0em - 5px);
+    transform: translate(-.5em, -50%);
+}
+
+[tooltip][flow^="left"]::after {
+    top: 50%;
+    right: calc(100% + 5px);
+    transform: translate(-.5em, -50%);
+}
+
+/* FLOW: RIGHT */
+[tooltip][flow^="right"]::before {
+    top: 50%;
+    border-left-width: 0;
+    border-right-color: #333;
+    right: calc(0em - 5px);
+    transform: translate(.5em, -50%);
+}
+
+[tooltip][flow^="right"]::after {
+    top: 50%;
+    left: calc(100% + 5px);
+    transform: translate(.5em, -50%);
+}
+
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+    to {
+        opacity: .9;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes tooltips-horz {
+    to {
+        opacity: .9;
+        transform: translate(0, -50%);
+    }
+}
+
+/* FX All The Things */
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+    animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+    animation: tooltips-horz 300ms ease-out forwards;
+}
+
+.box.box-ctmPR {
+    border-top-color: rgb(60, 141, 188);
+}
+
+.box.box-solid.box-ctmPR {
+    border: 1px solid rgb(60, 141, 188);
+}
+
+    .box.box-solid.box-ctmPR > .box-header {
+        color: #ffffff;
+        background: rgb(60, 141, 188);
+        background-color: rgb(60, 141, 188);
+    }
+
+        .box.box-solid.box-ctmPR > .box-header a,
+        .box.box-solid.box-ctmPR > .box-header .btn {
+            color: #ffffff;
+        }
+
+.box.box-ctmPR2 {
+    border-top-color: rgb(0, 31, 63);
+}
+
+.box.box-solid.box-ctmPR2 {
+    border: 1px solid rgb(0, 31, 63);
+}
+
+    .box.box-solid.box-ctmPR2 > .box-header {
+        color: #ffffff;
+        background: rgb(0, 31, 63);
+        background-color: rgb(0, 31, 63);
+    }
+
+        .box.box-solid.box-ctmPR2 > .box-header a,
+        .box.box-solid.box-ctmPR2 > .box-header .btn {
+            color: #ffffff;
+        }
+
+.box.box-ctmPR3 {
+    border-top-color: rgb(96, 92, 168);
+}
+
+.box.box-solid.box-ctmPR3 {
+    border: 1px solid rgb(96, 92, 168);
+}
+
+    .box.box-solid.box-ctmPR3 > .box-header {
+        color: #ffffff;
+        background: rgb(96, 92, 168);
+        background-color: rgb(96, 92, 168);
+    }
+
+        .box.box-solid.box-ctmPR3 > .box-header a,
+        .box.box-solid.box-ctmPR3 > .box-header .btn {
+            color: #ffffff;
+        }
+
+.box.box-ctmPR4 {
+    border-top-color: rgb(0, 166, 90);
+}
+
+.box.box-solid.box-ctmPR4 {
+    border: 1px solid rgb(0, 166, 90);
+}
+
+    .box.box-solid.box-ctmPR4 > .box-header {
+        color: #ffffff;
+        background: rgb(0, 166, 90);
+        background-color: rgb(0, 166, 90);
+    }
+
+        .box.box-solid.box-ctmPR4 > .box-header a,
+        .box.box-solid.box-ctmPR4 > .box-header .btn {
+            color: #ffffff;
+        }
+
+input[type="date"].input-sm,
+input[type="time"].input-sm,
+input[type="datetime-local"].input-sm,
+input[type="month"].input-sm,
+.input-group-sm input[type="date"],
+.input-group-sm input[type="time"],
+.input-group-sm input[type="datetime-local"],
+.input-group-sm input[type="month"] {
+    line-height: 30px;
+}
+
+.input-sm {
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+select.input-sm {
+    height: 30px;
+    line-height: 30px;
+}
+
+textarea.input-sm,
+select[multiple].input-sm {
+    height: auto;
+}
+
+.input-sm + .form-control-feedback,
+.input-group-sm + .form-control-feedback,
+.form-group-sm .form-control + .form-control-feedback {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.input-group-addon.input-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+}

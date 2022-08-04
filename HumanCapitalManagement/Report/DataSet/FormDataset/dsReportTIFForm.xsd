@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportTIFForm" targetNamespace="http://tempuri.org/dsReportTIFForm.xsd" xmlns:mstns="http://tempuri.org/dsReportTIFForm.xsd" xmlns="http://tempuri.org/dsReportTIFForm.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportTIFForm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReportTIFForm" msprop:Generator_UserDSName="dsReportTIFForm">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsMain" msprop:Generator_TableClassName="dsMainDataTable" msprop:Generator_TableVarName="tabledsMain" msprop:Generator_TablePropName="dsMain" msprop:Generator_RowDeletingName="dsMainRowDeleting" msprop:Generator_RowChangingName="dsMainRowChanging" msprop:Generator_RowEvHandlerName="dsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="dsMainRowDeleted" msprop:Generator_UserTableName="dsMain" msprop:Generator_RowChangedName="dsMainRowChanged" msprop:Generator_RowEvArgName="dsMainRowChangeEvent" msprop:Generator_RowClassName="dsMainRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nSeq" msprop:Generator_ColumnVarNameInTable="columnnSeq" msprop:Generator_ColumnPropNameInRow="nSeq" msprop:Generator_ColumnPropNameInTable="nSeqColumn" msprop:Generator_UserColumnName="nSeq" type="xs:int" minOccurs="0" />
+              <xs:element name="squestion" msprop:Generator_ColumnVarNameInTable="columnsquestion" msprop:Generator_ColumnPropNameInRow="squestion" msprop:Generator_ColumnPropNameInTable="squestionColumn" msprop:Generator_UserColumnName="squestion" type="xs:string" minOccurs="0" />
+              <xs:element name="sheader" msprop:Generator_ColumnVarNameInTable="columnsheader" msprop:Generator_ColumnPropNameInRow="sheader" msprop:Generator_ColumnPropNameInTable="sheaderColumn" msprop:Generator_UserColumnName="sheader" type="xs:string" minOccurs="0" />
+              <xs:element name="sremark" msprop:Generator_ColumnVarNameInTable="columnsremark" msprop:Generator_ColumnPropNameInRow="sremark" msprop:Generator_ColumnPropNameInTable="sremarkColumn" msprop:Generator_UserColumnName="sremark" type="xs:string" minOccurs="0" />
+              <xs:element name="srating" msprop:Generator_ColumnVarNameInTable="columnsrating" msprop:Generator_ColumnPropNameInRow="srating" msprop:Generator_ColumnPropNameInTable="sratingColumn" msprop:Generator_UserColumnName="srating" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsRating" msprop:Generator_TableClassName="dsRatingDataTable" msprop:Generator_TableVarName="tabledsRating" msprop:Generator_TablePropName="dsRating" msprop:Generator_RowDeletingName="dsRatingRowDeleting" msprop:Generator_RowChangingName="dsRatingRowChanging" msprop:Generator_RowEvHandlerName="dsRatingRowChangeEventHandler" msprop:Generator_RowDeletedName="dsRatingRowDeleted" msprop:Generator_UserTableName="dsRating" msprop:Generator_RowChangedName="dsRatingRowChanged" msprop:Generator_RowEvArgName="dsRatingRowChangeEvent" msprop:Generator_RowClassName="dsRatingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sratingname" msprop:Generator_ColumnVarNameInTable="columnsratingname" msprop:Generator_ColumnPropNameInRow="sratingname" msprop:Generator_ColumnPropNameInTable="sratingnameColumn" msprop:Generator_UserColumnName="sratingname" type="xs:string" minOccurs="0" />
+              <xs:element name="sratingdes" msprop:Generator_ColumnVarNameInTable="columnsratingdes" msprop:Generator_ColumnPropNameInRow="sratingdes" msprop:Generator_ColumnPropNameInTable="sratingdesColumn" msprop:Generator_UserColumnName="sratingdes" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsReq" msprop:Generator_TableClassName="dsReqDataTable" msprop:Generator_TableVarName="tabledsReq" msprop:Generator_TablePropName="dsReq" msprop:Generator_RowDeletingName="dsReqRowDeleting" msprop:Generator_RowChangingName="dsReqRowChanging" msprop:Generator_RowEvHandlerName="dsReqRowChangeEventHandler" msprop:Generator_RowDeletedName="dsReqRowDeleted" msprop:Generator_UserTableName="dsReq" msprop:Generator_RowChangedName="dsReqRowChanged" msprop:Generator_RowEvArgName="dsReqRowChangeEvent" msprop:Generator_RowClassName="dsReqRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

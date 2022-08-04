@@ -1,0 +1,852 @@
+﻿
+@{
+    ViewBag.Title = "KPMG Trainee | Evaluation Edit";
+    Layout = "~/Views/Shared/_TPJMaster.cshtml";
+}
+<div class="breadcrumb-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i>Profile</li>
+            <li class="breadcrumb-item"><a href="@Url.Action("EvaluationList", "Evaluation", null)">Evaluation Form</a></li>
+            <li class="breadcrumb-item active"><a href="#" onclick="Back();return false;">Detail</a></li>
+            <li class="breadcrumb-item active">Edit</li>
+        </ol>
+    </div>
+</div>
+<div id="page-start"></div>
+<!-- section end -->
+<!-- section -->
+<!-- ================ -->
+<div class="main-container  light-translucent-bg background-img-7">
+    <div class="container " id="divContent">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fa fa-list-alt pr-10"></i>Trainee Self - Evaluation
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Trainee Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-sm" id="txtName" data-bind='value: trainee_name' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Group</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-sm" id="txtGroup" data-bind='value: group_name' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Trainee No.</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-sm" id="txtNoEva" data-bind='value: trainee_no' autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Start Date</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group form-inline" style="float: left;">
+                                            <input ID="txtDateAction" name="txtDateAction" class="form-control " type="text"
+                                                   ToolTip="To" placeholder="-- / -- / ----" data-bind="value : target_start, valueUpdate: 'afterkeydown' " autocomplete="off" disabled />
+                                            <span class="input-group-addon" style="height:  40px;">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Nickname</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-sm" id="txtnickName" data-bind='value: nick_name' autocomplete="off" disabled>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">End Date</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group form-inline" style="float: left;">
+                                            <input ID="txtDateActionEnd" name="txtDateActionEnd" class="form-control " type="text"
+                                                   ToolTip="To" placeholder="-- / -- / ----" data-bind="value : target_end, valueUpdate: 'afterkeydown' " autocomplete="off" disabled />
+                                            <span class="input-group-addon" style="height:  40px;">
+                                                <i class="fa fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="callout callout-warning ">
+                                    <h4 style="color:white;"><u>Performance Rating Criteria:</u></h4>
+                                    <p>
+                                        <strong>1</strong> : <em>Outstanding : Overall performance is consistently of a superb standard and normally exceeds the expectations of the role.</em><br />
+                                        <strong>2</strong> : <em>Highly effective : Overall performance is consistently of a very high standard and often exceeds the expectations of the role.</em><br />
+                                        <strong>3</strong> : <em>Effective: Overall performance is consistenly of a high standard and fully meets and sometimes exceeds the expectations of the role.</em><br />
+                                        <strong>4</strong> : <em>Inconsistent: Overall performance occassionally fails to meet the expectations of the role. </em><br />
+                                        <strong>5</strong> : <em>Unsatisfactory: Overall performance often fails to meet the expectations of the role.</em><br />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered" id="gvwData" width="100%">
+                                        <thead>
+                                        </thead>
+                                        @*<tfoot>
+                                                <tr>
+                                                    <th colspan="4"></th>
+                                                </tr>
+                                            </tfoot>*@
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12"><h3>Please share information (English / Thai)</h3></div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">What have you learned from having an internship with KPMG? (สิ่งที่ได้เรียนรู้จากการฝึกงาน)</label>
+                                    <div class="col-sm-6">
+                                        <textarea rows="4" id="txtcomment" name="txtcomment" cols="50" class="form-control" data-bind='value: comment'
+                                                  @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">Please identify what you have done well during internship period (สิ่งที่คิดว่าทำได้ดี)</label>
+                                    <div class="col-sm-6">
+                                        <textarea rows="4" id="txtcomment" name="txtcomment" cols="50" class="form-control" data-bind='value: comment2'
+                                                  @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right">What are your developmental areas ?<br />(สิ่งที่คิดว่าต้องพัฒนาเพิ่มมากขึ้น)</label>
+                                    <div class="col-sm-6">
+                                        <textarea rows="4" id="txtcomment" name="txtcomment" cols="50" class="form-control" data-bind='value: comment3'
+                                                  @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="nav nav-tabs style-3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#h3tab1" role="tab" data-toggle="tab">
+                                            <h4 style="color: rgb(60, 141, 188);">Performance Manager</h4>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" role="tabpanel" id="h3tab1">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtNameMG" name="txtNameMG" data-bind='value: mgr_user_name' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Name / ID</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtSearchMG" name="txtSearchMG" value="@Model.mgr_user_no"
+                                                               @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Group</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtgroupMG" name="txtgroupMG" data-bind='value: mgr_unit_name' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Rank</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtpositionMG" name="txtpositionMG" data-bind='value: mgr_user_rank' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h6>
+                                                    Remark: For Audit, please check your PM with Resource Planning.
+                                                    &nbsp;
+                                                    <br />
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <ul class="nav nav-tabs style-3" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#h3tab2" role="tab" data-toggle="tab">
+                                            <h4 style="color: rgb(60, 141, 188);">In-Charge / Engagement Manager</h4>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div class="tab-pane show active" role="tabpanel" id="h3tab2">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtNameIC" name="txtNameIC" data-bind='value: ic_user_name' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Name / ID</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtSearchIC" name="txtSearchIC" value="@Model.ic_user_no"
+                                                               @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Group</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtgroupIC" name="txtgroupIC" data-bind='value: ic_unit_name' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group form-group-sm row">
+                                                    <label class="col-sm-4 col-form-label nomallabel text-right">Rank</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control input-sm" id="txtpositionIC" name="txtpositionIC" data-bind='value: ic_user_rank' disabled>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h6>
+                                                    Remark: For Audit, please choose the In-Charge you have worked with the most. You can check the information from I-Retain system.
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-sm-4 col-form-label nomallabel text-right" style="color: rgb(60, 141, 188);">Key Contact Evaluator</label>
+                                    <div class="col-sm-8">
+                                        <select class="form-control" id="ddlTypeApprove" name="ddlTypeApprove" data-bind='value: type_approve'
+                                                @Html.Raw(HttpUtility.HtmlDecode(Model.status + "" == "Y" ? "disabled" : ""))>
+                                            <option value="M">
+                                                Performance Manager
+                                            </option>
+                                            <option value="I">
+                                                In-Charge / Engagement Manager
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <h6 style="color:red;">
+                                    For All, please check with your PM who your “Key Contact Evaluator” is.<br />
+                                    “Key Contact Evaluator” is the person who both gathers all trainee performance for evaluation & submits result to HR via system.
+                                    This person could be PM / In-Charge / Engagement Manager.
+
+                                </h6>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer text-center">
+                        @*<button type="button" class="btn btn-primary" onclick="Save('Draft');">SaveDraft</button>*@
+                        @if (Model.status != "Y")
+                        {
+                            <button type="button" class="btn btn-primary" onclick="Save('Draft');">Save Draft</button>
+                            <button type="button" class="btn btn-primary" onclick="Save('Submit');">Submit</button>
+                        }
+                        <button type="button" class="btn btn-warning" onclick="Back();">Back</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Saving confirmation.</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-12 text-center">Do you want to submit Evaluation?</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section style{
+    <style>
+        div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dt-HeadGr-ctm {
+            background-color: #2952a3 !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35) !important;
+            color: rgb(0, 0, 0) !important;
+            vertical-align: middle !important;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var sUrlBack = '@Url.Action("EvaluationView", "Evaluation")';
+        var sMode = '@Model.status';
+        $(function () {
+            SetActiveMenu("2");
+
+            SetTable();
+           BindData(objModel);
+            ko.applyBindings(viewModel);
+
+        });
+
+        function Back() {
+             BlockUI();
+            window.location.href = '@Url.Action("EvaluationView", "Evaluation")?qryStr=' + ko.toJS(viewModel.IdEncryptBack);
+        }
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "10%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id" },
+                { "title": "Descriptions", "width": "70%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "question", },
+                { "title": "Trainee's<br/>self-evaluation rating", "width": "20%", "className": "dt-left-ctm", "data": "rating", "searchable": false, "orderable": false },
+                { "title": "Incharge's comment<br/>Please specify the incident", "width": "40%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "orderable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'><'col-sm-6'>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'><'col-sm-7'>>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                nRunningNumber: ["true", 1],
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        return (data + "").replace("(", "<br/>(");
+                    }
+                },
+                {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        var sHtml = "";
+                        if (objModel.objtifform.lstRating != undefined && objModel.objtifform.lstRating != null && objModel.objtifform.lstRating.length > 0) {
+                            sHtml = CreatSelect("ddlRating" + row.id, JSON.stringify(objModel.objtifform.lstRating), data, sMode);
+                        }
+                        return sHtml;
+                    },
+                }
+                ],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm" style="height: 25px;font-size: 16px;" colspan="4">' + group + '</td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'sgroup'
+                },
+                //footerCallback: function (tfoot, data, start, end, display) {
+                //    var api = this.api(), data;
+                //    // Update footer
+                //    var sFood = $(tfoot).find('th').eq(0).parent();
+                //    sFood.html('');
+                //    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="2" >Performance result</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;"><label id="lblSumTrainee" style=" padding-top: 5px; " >0</label></th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;"></th>');
+
+                //}
+            };
+            var table = CreatTableJS(objTableRe);
+            //new $.fn.dataTable.FixedHeader($('#gvwData'));
+            //$('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+            //    $('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper ').height($('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper div.dataTables_scroll').height());
+            //    SetSelectChange();
+            //});
+        }
+        function SetSelectChange() {
+            $("select[id*=ddlRating]").each(function () {
+                $(this) .change(function () {
+                    var sID = $(this)[0].id;
+
+                    ChangeVal(sID);
+                });
+            });
+        }
+
+
+
+
+
+    </script>
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.IdEncrypt == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                if (objModel.objtifform != undefined && objModel.objtifform != null && objModel.objtifform.lstQuestion != undefined && objModel.objtifform.lstQuestion != null && objModel.objtifform.lstQuestion.length > 0) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.objtifform.lstQuestion);
+                    $('#gvwData').dataTable().fnDraw();
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        // $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                }
+                SetSelectChange();
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+        }
+
+        function ChangeVal(sID) {
+
+            var nID = sID.replace("ddlRating", "");
+            var sValue = GetValDropdown(sID);
+            var nPoint = 0;
+            if (sValue + "" != "") {
+                nPoint = Enumerable.From(objModel.objtifform.lstRating).Where(function (w) { return w.value == sValue }).Select(function (s) { return s.point }).FirstOrDefault();
+            }
+            Enumerable.From(objModel.objtifform.lstQuestion).Where(function (w) { return w.id == nID }).ForEach(function (ed) {
+                return ed.rating = nPoint + "";
+            });
+            SumTotal();
+        }
+        function SumTotal() {
+            var nSum = Enumerable.From(objModel.objtifform.lstQuestion).Sum(function (s) { return StringtoInt(s.rating + ""); });
+            $('label[id=lblSumTrainee]').text(nSum);
+        }
+    </script>
+}
+@if (Model.status != "Y")
+{
+    @section scripts2{
+        <script type="text/javascript">
+            $(function () {
+                if (GetInputByID("txtSearchMG") != undefined) {
+                    SetAutocomMGR("txtSearchMG");
+                }
+                if (GetInputByID("txtSearchIC") != undefined) {
+                    SetAutocomIC("txtSearchIC");
+                }
+                ValidateForm();
+            });
+            function ValidateForm() {
+                var objValidatePopUp = {};
+                objValidatePopUp[GetElementName("txtcomment", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+                BindValidateBootstrap("divContent", objValidatePopUp);
+            }
+
+             function SetAutocomMGR(txtTarget) {
+                        $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                            var newList = ko.toJS(viewModel);
+                            if (newList.IdEncrypt != undefined) {
+                                newList.mgr_user_name = '';
+                                newList.mgr_unit_name = '';
+                                newList.mgr_user_id = '';
+                                newList.mgr_user_rank = '';
+                                BindData(newList);
+                            }
+                        });
+                        $("input[id$=" + txtTarget + "]").autocomplete({
+                            //disabled: true,
+                            source: function (request, response) {
+                                $.ajax({
+                                    dataType: AjaxCall.dataType,
+                                    type: AjaxCall.type,
+                                    contentType: AjaxCall.contentType,
+                                    url: '@Url.Action("UserAutoCompleteAll", "TraineeMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name ,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                        minLength: 1,
+                        select: function (event, ui) {
+                        var newList = ko.toJS(viewModel);
+                        if (newList.IdEncrypt != undefined) {
+                            newList.mgr_user_name = ui.item.user_name;
+                            newList.mgr_unit_name = ui.item.unit_name;
+                            newList.mgr_user_id = ui.item.user_id;
+                            newList.mgr_user_no = ui.item.user_no;
+                            newList.mgr_user_rank = ui.item.user_rank;
+                            BindData(newList);
+                        }
+
+                        }
+
+                        });
+         }
+              function SetAutocomIC(txtTarget) {
+                        $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                            var newList = ko.toJS(viewModel);
+                            if (newList.IdEncrypt != undefined) {
+                                newList.ic_user_name = '';
+                                newList.ic_unit_name = '';
+                                newList.ic_user_id = '';
+                                newList.ic_user_rank = '';
+                                BindData(newList);
+                            }
+                        });
+                        $("input[id$=" + txtTarget + "]").autocomplete({
+                            //disabled: true,
+                            source: function (request, response) {
+                                $.ajax({
+                                    dataType: AjaxCall.dataType,
+                                    type: AjaxCall.type,
+                                    contentType: AjaxCall.contentType,
+                                    url: '@Url.Action("UserAutoCompleteAll", "TraineeMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name ,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                        minLength: 1,
+                        select: function (event, ui) {
+                        var newList = ko.toJS(viewModel);
+                        if (newList.IdEncrypt != undefined) {
+                            newList.ic_user_name = ui.item.user_name;
+                            newList.ic_unit_name = ui.item.unit_name;
+                            newList.ic_user_id = ui.item.user_id;
+                            newList.ic_user_no = ui.item.user_no;
+                            newList.ic_user_rank = ui.item.user_rank;
+                            BindData(newList);
+                        }
+
+                        }
+
+                        });
+            }
+            function Save(sVal) {
+                var Acceptlst = [];
+                var IsPass = true;
+
+                if (sVal != "Draft") {
+                    if (!CheckValidateBootstrap("divContent")) {
+                        IsPass = false;
+                        FocusValidateBootstrap("divContent");
+                    }
+
+                }
+                if (IsPass) {
+                    //set value to rating
+                    Enumerable.From(objModel.objtifform.lstQuestion).ForEach(function (ed) {
+                        return ed.rating = GetValDropdown("ddlRating" + ed.id);
+                    });
+
+                    Acceptlst = Enumerable.From(objModel.objtifform.lstQuestion).ToArray();
+                    ko.mapping.fromJS(Acceptlst, {}, viewModel.objtifform.lstQuestion);
+                    var $Accept = GetLabelByID("lblAccept");
+
+                    if (Acceptlst.length == 0) {
+                        DialogWarning(DialogHeader.Warning, "Please select at least one item.");
+                    }
+                    else {
+
+                        //check validate ref no
+                        var lstRatingAws = Enumerable.From(objModel.objtifform.lstQuestion).Where(function (w) { return w.rating + "" == "" }).ToArray();
+                        if ((lstRatingAws.length > 0) && sVal != "Draft") {
+                            if (lstRatingAws.length > 0) {
+                                var sfirst = Enumerable.From(lstRatingAws).FirstOrDefault();
+                                DialogWarning(DialogHeader.Warning, "Please select rating. " + sfirst.question);
+                                GetSelectByID("ddlRating" + sfirst.id).focus();
+                                return false;
+                            }
+                        }
+                        else if (sVal == "Submit") {
+                            //check validate devit
+                            if (Acceptlst.length > 0) {
+                                //var AcceptNumber = Enumerable.From(Acceptlst).Sum(function (s) { return ConvertToIntNotnull(s.AMOUNT_AMT) });
+                                var strReturnAccept = 'Do you want to save?';
+                                $Accept.text(strReturnAccept);
+                            }
+                            else {
+                                $Accept.text('Not specify.');
+                            }
+                            $("#PopupSave").modal();
+                        }
+                        else if (sVal == "Draft") {
+                            SaveDraft();
+                        }
+                    }
+                }
+
+            }
+              function SaveDraft() {
+            var IsPass = true;
+            if (IsPass) {
+
+                BlockUI();
+                var Param = GetData();// ko.toJS(viewModel);
+
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("SaveEditEvaluation", "Evaluation")',
+                    data: JSON.stringify({ ItemData: Param}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+            }
+            function GetData() {
+            var lstData = ko.toJS(viewModel);
+            if (lstData != null && lstData.objtifform.lstQuestion != undefined && lstData.objtifform.lstQuestion != null) {
+
+                Enumerable.From(lstData.objtifform.lstQuestion).ForEach(function (ed) {
+                    return ed.question = "";
+                });
+                Enumerable.From(lstData.objtifform.lstQuestion).ForEach(function (ed) {
+                    return ed.sgroup = "";
+                });
+                lstData.objtifform.lstRating = null;
+
+            }
+            return lstData;
+        }
+        function SaveData() {
+            var IsPass = true;
+            if (IsPass) {
+                BlockUI();
+                var Param = GetData();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("EditEvaluatuinForm", "Evaluation")',
+                    data: JSON.stringify({ ItemData: Param}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack; + '?qryStr=' + ko.toJS(viewModel.IdEncryptBack);
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=' + ko.toJS(viewModel.IdEncryptBack);
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $("#PopupSave").modal('hide');
+                    }
+                });
+            }
+        }
+        </script>
+
+    }
+}

@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanCapitalManagement", "HumanCapitalManagement\HumanCapitalManagement.csproj", "{CDA0031A-6738-45F6-B569-24023DDE54BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanCapitalManagement.Data", "HumanCapitalManagement.Data\HumanCapitalManagement.Data.csproj", "{8F393E39-0B76-4D5A-9A08-D220A2F40494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanCapitalManagement.Models", "HumanCapitalManagement.Models\HumanCapitalManagement.Models.csproj", "{17011C0A-20AF-4CA0-96DC-EF7745842F74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanCapitalManagement.Service", "HumanCapitalManagement.Service\HumanCapitalManagement.Service.csproj", "{120211BB-ED29-4F97-9948-2C250971BF6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TraineeManagement", "TraineeManagement\TraineeManagement.csproj", "{6D4BBD3B-1A05-40A4-A021-E8B333277402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDA0031A-6738-45F6-B569-24023DDE54BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA0031A-6738-45F6-B569-24023DDE54BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDA0031A-6738-45F6-B569-24023DDE54BC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDA0031A-6738-45F6-B569-24023DDE54BC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{8F393E39-0B76-4D5A-9A08-D220A2F40494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F393E39-0B76-4D5A-9A08-D220A2F40494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F393E39-0B76-4D5A-9A08-D220A2F40494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F393E39-0B76-4D5A-9A08-D220A2F40494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17011C0A-20AF-4CA0-96DC-EF7745842F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17011C0A-20AF-4CA0-96DC-EF7745842F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17011C0A-20AF-4CA0-96DC-EF7745842F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17011C0A-20AF-4CA0-96DC-EF7745842F74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120211BB-ED29-4F97-9948-2C250971BF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120211BB-ED29-4F97-9948-2C250971BF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120211BB-ED29-4F97-9948-2C250971BF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120211BB-ED29-4F97-9948-2C250971BF6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D4BBD3B-1A05-40A4-A021-E8B333277402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4BBD3B-1A05-40A4-A021-E8B333277402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4BBD3B-1A05-40A4-A021-E8B333277402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4BBD3B-1A05-40A4-A021-E8B333277402}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6228F043-ACE3-49D7-BD8F-B354EC343CE6}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://thbkkapp46:8080/tfs/hr
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HumanCapitalManagement.Data\\HumanCapitalManagement.Data.csproj
+		SccProjectName1 = HumanCapitalManagement.Data
+		SccLocalPath1 = HumanCapitalManagement.Data
+		SccProjectUniqueName2 = HumanCapitalManagement.Models\\HumanCapitalManagement.Models.csproj
+		SccProjectName2 = HumanCapitalManagement.Models
+		SccLocalPath2 = HumanCapitalManagement.Models
+		SccProjectUniqueName3 = HumanCapitalManagement.Service\\HumanCapitalManagement.Service.csproj
+		SccProjectName3 = HumanCapitalManagement.Service
+		SccLocalPath3 = HumanCapitalManagement.Service
+		SccProjectUniqueName4 = HumanCapitalManagement\\HumanCapitalManagement.csproj
+		SccProjectName4 = HumanCapitalManagement
+		SccLocalPath4 = HumanCapitalManagement
+		SccProjectUniqueName5 = TraineeManagement\\TraineeManagement.csproj
+		SccProjectName5 = TraineeManagement
+		SccLocalPath5 = TraineeManagement
+	EndGlobalSection
+EndGlobal

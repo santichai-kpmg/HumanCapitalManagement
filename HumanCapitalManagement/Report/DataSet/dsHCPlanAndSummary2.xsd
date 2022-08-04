@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHCPlanAndSummary2" targetNamespace="http://tempuri.org/dsHCPlanAndSummary2.xsd" xmlns:mstns="http://tempuri.org/dsHCPlanAndSummary2.xsd" xmlns="http://tempuri.org/dsHCPlanAndSummary2.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHCPlanAndSummary2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHCPlanAndSummary2" msprop:Generator_UserDSName="dsHCPlanAndSummary2">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tbMain" msprop:Generator_TableClassName="tbMainDataTable" msprop:Generator_TableVarName="tabletbMain" msprop:Generator_RowChangedName="tbMainRowChanged" msprop:Generator_TablePropName="tbMain" msprop:Generator_RowDeletingName="tbMainRowDeleting" msprop:Generator_RowChangingName="tbMainRowChanging" msprop:Generator_RowEvHandlerName="tbMainRowChangeEventHandler" msprop:Generator_RowDeletedName="tbMainRowDeleted" msprop:Generator_RowClassName="tbMainRow" msprop:Generator_UserTableName="tbMain" msprop:Generator_RowEvArgName="tbMainRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="division" msprop:Generator_ColumnVarNameInTable="columndivision" msprop:Generator_ColumnPropNameInRow="division" msprop:Generator_ColumnPropNameInTable="divisionColumn" msprop:Generator_UserColumnName="division" type="xs:string" minOccurs="0" />
+              <xs:element name="sgroup" msprop:Generator_ColumnVarNameInTable="columnsgroup" msprop:Generator_ColumnPropNameInRow="sgroup" msprop:Generator_ColumnPropNameInTable="sgroupColumn" msprop:Generator_UserColumnName="sgroup" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

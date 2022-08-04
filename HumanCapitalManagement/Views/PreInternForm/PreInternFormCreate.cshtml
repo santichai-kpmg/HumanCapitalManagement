@@ -1,0 +1,477 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Create Pre Intern Form";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Create Pre Intern Form Question(Non-Audit)
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Detail</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Question Form No.</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNameEn" name="txtNameEn" class="form-control" data-bind="value : code " disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right require">Active Date</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtNameEn" name="txtNameEn" class="form-control" data-bind="value : action_date" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Special Note</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtDes" cols="50" class="form-control" data-bind='value: description'></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-primary" onclick="SaveData();">Create</button>
+                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <!-- /.col -->
+                            <div class="col-md-9">
+                                <div class="box box-solid box-info">
+                                    <div class="box-header with-border">
+                                        <i class="fa fa-text-width"></i>
+                                        <h3 class="box-title">List Features used in evaluation</h3>
+                                        <div class="box-tools pull-right">
+                                            <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                <i class="fa fa-refresh"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                <thead>
+                                                </thead>
+                                                <tbody></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /. box -->
+                            </div>
+                            <div class="col-md-3">
+                                <!-- /. box -->
+                                <div class="box box-solid box-info">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Add Features used in evaluation</h3>
+                                    </div>
+                                    <div class="box-body" id="divUser">
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <label>Header</label>
+                                                <div class="input-group">
+                                                    <input id="txtSearch" name="txtSearch" type="text" class="form-control input-sm" placeholder="Enter Header">
+                                                    <div class="input-group-btn">
+                                                        <button id="add-new-event" onclick="AddQuestion()" type="button" class="btn btn-primary btn-flat btn-sm" style="background-color: rgb(57, 204, 204); border-color: rgb(57, 204, 204);">Add</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <label>Topic</label>
+                                                <div class="input-group">
+                                                    <textarea rows="1" id="txttopic" name="txttopic" cols="50" class="form-control input-sm"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-md-12">
+                                                <label>Question</label>
+                                                <div class="input-group">
+                                                    <textarea rows="3" id="txtDesuser" name="txtDesuser" cols="50" class="form-control input-sm"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <label class="control-label" id="lblAccept"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to save?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/DataTables2/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <style>
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowReorder.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sUrlBack ='@Url.Action("PreInternFormList", "PreInternForm")';
+        var objMaxLength = [
+            { ctrlID: "txtSearch", ctrlType: "txt", MaxLength: 250 },
+           
+            { ctrlID: "txtDesuser", ctrlType: "txt", MaxLength: 950 }];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+        });
+        function GetData() {
+            var lstQuestion = $('#gvwData').dataTable().fnGetData();
+            var lstSave = ko.toJS(viewModel);
+            lstSave.lstQuestion = lstQuestion;
+            return lstSave;
+        }
+        function Save() {
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal();
+            }
+
+        }
+        function SaveData (){
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var Param = GetData();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("CreatePreInternForm", "PreInternForm")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+        function AddQuestion() {
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divUser") ) {
+                IsPass = false;
+                   // $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "INVALID");
+            }
+            if (IsPass) {
+                var lstNowRea = $('#gvwData').dataTable().fnGetData();
+                var objAddData = {
+                    nID: 1,
+                    header: GetInputByID("txtSearch").val(),
+                    topic: GetTextareaByID("txttopic").val(),
+                    question: GetTextareaByID("txtDesuser").val(),
+                };
+
+                if (lstNowRea != undefined && lstNowRea.length > 0) {
+                    var nMax = Enumerable.From(lstNowRea).Max(function (x) { return x.nID }) + 1;
+                    objAddData.nID = nMax;
+                    lstNowRea.push(objAddData);
+                }
+                else {
+                    lstNowRea = objAddData;
+                }
+                BindQuestion(lstNowRea);
+                ClearText();
+            }
+        }
+        function ClearText() {
+            GetInputByID("txtSearch").val('');
+     
+            GetTextareaByID("txtDesuser").val('');
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "NOT_VALIDATED");
+          $('#divUser').bootstrapValidator('updateStatus', GetElementName("txttopic", objControl.txtarea), "NOT_VALIDATED");
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtDesuser", objControl.txtarea), "NOT_VALIDATED");
+        }
+        function BindQuestion(lstObjData) {
+            if (!$.fn.DataTable.isDataTable('#gvwData')) {
+                SetTable();
+
+            }
+            if (lstObjData == undefined || lstObjData.length <= 0) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(lstObjData);
+                $('#gvwData').dataTable().fnDraw();
+            }
+            $('#gvwData').DataTable().columns.adjust().draw()
+        }
+        function ValidateForm() {
+            var objValidateUser = {};
+            objValidateUser[GetElementName("txtSearch", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+         
+            objValidateUser[GetElementName("txtDesuser", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser", objValidateUser);
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nID" },
+                { "title": "Header", "width": "15%", "className": "dt-left-ctm reorderable", "data": "header", "searchable": false, "orderable": false, },
+                { "title": "Topic", "width": "15%", "className": "dt-left-ctm", "data": "topic", "searchable": false, "orderable": false, },
+                { "title": "Question", "width": "65%", "className": "dt-left-ctm", "data": "question", "searchable": false, "orderable": false, },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+            };
+
+            var table = CreatTableJSRowRender(objTableRe);
+
+        }
+        function CreatTableJSRowRender(objOption) {
+            if (objOption.objHeadCl != undefined
+                && objOption.sTableID != undefined && objOption.sTableID != ""
+                && objOption.objHeadCl != null && objOption.objHeadCl != "") {
+                var aColumnDef = [];
+                var aColumnotText = ["sview", "edit", "view", "chk"]
+                if (objOption.columnDefs == undefined) {
+                    objOption.columnDefs = [];
+
+                }
+                else {
+                    aColumnDef = objOption.columnDefs.map(function (a) { return a.targets; });
+                }
+                if (objOption.objHeadClRender != undefined) {
+                    aColumnotText = objOption.objHeadClRender;
+                }
+                $.each(objOption.objHeadCl, function (key, data) {
+
+                    if (!contains(aColumnotText, data.data.toLowerCase()) && !containsNumber(aColumnDef, key)) {
+                        if (!data.hasOwnProperty("render")) {
+                            //var xx = objOption.objHeadCl[key];
+                            objOption.objHeadCl[key]["render"] = $.fn.dataTable.render.text();
+                        }
+                    }
+                });
+                //Option FixHeader
+                var bFixHeader = true;
+                var nFixHeadder = 0;
+
+                if (objOption.createdRow == undefined) { objOption.createdRow = []; }
+                if (objOption.nHeadFix != undefined && objOption.nHeadFix > 0) {
+                    bFixHeader = true;
+                    nFixHeadder = objOption.nHeadFix;
+                }
+                if (objOption.nDis != undefined && objOption.nDis == "") { nDis = []; }
+                var lengthMenu = [[25, 50, 100, 150, 200, -1], [25, 50, 100, 150, 200, "All"]];
+                if (objOption.lengthMN != undefined) {
+                    lengthMenu = objOption.lengthMN;
+                }
+                var dTable = $('#' + objOption.sTableID).DataTable({
+                    "data": objOption.objDataSet != undefined ? objOption.objDataSet : [],
+                    "bFilter": false,
+                    "dom": objOption.sProperty != undefined ? objOption.sProperty : "",
+                    "language": {
+                        "emptyTable": objOption.EmptyTable,
+                    },
+                    "scrollX": bFixHeader,
+                    "scrollY": false,
+                    "scrollCollapse": bFixHeader,
+                    "fixedColumns": {
+                        "leftColumns": nFixHeadder
+                    },
+                    "columns": objOption.objHeadCl,
+                    "columnDefs": objOption.columnDefs,
+                    "order": objOption.order,
+                    "lengthMenu": lengthMenu,
+                    "bRetrieve": true,
+                    "oLanguage": {
+                        "sZeroRecords": "Data Not Found.",
+                        "sEmptyTable": "Data Not Found.",
+                        "sInfo": "Showing _START_ to _END_ (_TOTAL_ item(s))",
+                        "sLengthMenu": "List _MENU_ items",
+                    },
+                    "rowReorder": {
+                        dataSrc: 'nID',
+                        selector: 'td:nth-child(2)'
+                    },
+                    select: true,
+                });
+            }
+
+        };
+    </script>
+
+}

@@ -1,0 +1,935 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Edit Mail Content";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Edit Mail Content
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Mail Detail</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Step Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtCode" name="txtCode" class="form-control" data-bind='value: name_en' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Mail Header</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtmailHeader" name="txtmailHeader" class="form-control" data-bind='value: mail_header' />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Sender Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" id="txtsendname" name="txtsendname" class="form-control" data-bind='value: sender_name' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- /.box-body -->
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+
+                                            <button type="button" class="btn btn-primary" onclick="Save();">Submit</button>
+                                            <button type="button" class="btn btn-danger" onclick="Cancel();">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <!-- general form elements -->
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="box box-solid box-ctmPR3">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Value list Data</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataList" width="100%">
+                                                    <thead>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Content</h3>
+                            <div class="col-md-6 pull-right">
+                                <div class="input-group ">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="text" id="txtmail" name="txtmail" class="form-control" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info btn-flat" onclick="Preview()">Preview</button>
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <div class="col-md-12">
+                                            <textarea rows="3" id="txtDes" cols="50" class="form-control" data-bind="value: content">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <!-- /.box-footer -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_1" data-toggle="tab">Employee</a></li>
+                            <li><a href="#tab_2" data-toggle="tab">By Group Mail</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_1">
+                                <div class="box-body">
+                                    <div class="col-md-9">
+                                        <div class="box box-solid box-info">
+                                            <div class="box-header with-border">
+                                                <i class="fa fa-text-width"></i>
+                                                <h3 class="box-title">List Cc</h3>
+                                                <div class="box-tools pull-right">
+                                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                        <thead>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /. box -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!-- /. box -->
+                                        <div class="box box-solid box-info">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Add Cc</h3>
+                                            </div>
+                                            <div class="box-body" id="divUser">
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label>User</label>
+                                                        <div class="input-group">
+                                                            <input type="text" id="txtID" name="txtID" class="form-control hidden" disabled />
+                                                            <input id="txtSearch" name="txtSearch" type="text" class="form-control input-sm" placeholder="Enter User">
+                                                            <div class="input-group-btn">
+                                                                <button id="add-new-event" onclick="SaveApprover()" type="button" class="btn btn-primary btn-flat btn-sm" style="background-color: rgb(57, 204, 204); border-color: rgb(57, 204, 204);">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group-sm">
+                                                            <label class="control-label nomallabel">UserName</label>
+                                                            <div class="">
+                                                                <input type="text" id="txtUserName" name="txtUserName" class="form-control input-sm" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group-sm">
+                                                            <label class=" control-label nomallabel">Group</label>
+                                                            <div class="">
+                                                                <input type="text" id="txtgroup" name="txtgroup" class="form-control input-sm" disabled />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Special Note</label>
+                                                        <textarea rows="3" id="txtDesuser" cols="50" class="form-control input-sm"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane" id="tab_2">
+                                <div class="box-body">
+                                    <div class="col-md-9">
+                                        <div class="box box-solid box-ctmPR4">
+                                            <div class="box-header with-border">
+                                                <i class="fa fa-text-width"></i>
+                                                <h3 class="box-title">List Cc By E-mail</h3>
+                                                <div class="box-tools pull-right">
+                                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered table-hover display" id="gvwDataEmail" width="100%">
+                                                        <thead>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /. box -->
+                                    </div>
+                                    <div class="col-md-3">
+                                        <!-- /. box -->
+                                        <div class="box box-solid box-ctmPR4">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Add E-mail Cc </h3>
+                                            </div>
+                                            <div class="box-body" id="divEmail">
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label>User</label>
+                                                        <div class="input-group">
+                                                            <input id="txtEmilCC" name="txtEmilCC" type="text" class="form-control input-sm" placeholder="Enter E-mail">
+                                                            <div class="input-group-btn">
+                                                                <button id="add-new-event" onclick="SaveEmail()" type="button" class="btn btn-primary btn-flat btn-sm" style="background-color: rgb(0, 166, 90); border-color: rgb(0, 166, 90);">Add</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label>Special Note</label>
+                                                        <textarea rows="3" id="txtDesmail" cols="50" class="form-control input-sm"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <label class="control-label" id="lblAccept"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to save?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/ckeditor_4.9/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/plugins/ckeditor_4.9/ckeditor/adapters/jquery.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sUrlBack ='@Url.Action("MailContentList", "MailContent")';
+        var objMaxLength = [
+            { ctrlID: "txtNameEn", ctrlType: "txt", MaxLength: 230 },
+            { ctrlID: "txtNewNameSh", ctrlType: "txt", MaxLength: 50 },];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTable();
+            SetTableEmail();
+            SetTableParam();
+            SetAutocom("txtSearch");
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+
+
+            CKEDITOR.replace('txtDes', {
+                height: 400,
+            });
+            CKEDITOR.plugins.setLang('lineheight', 'en', {
+                title: 'Line Height'
+            });
+            //$('#txtDes').ckeditor();
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                }
+                if (e.target.hash == '#tab_2') {
+                    $('#gvwDataEmail').DataTable().columns.adjust().draw();
+                }
+
+            });
+        });
+        function Save() {
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                IsPass = false;
+                FocusValidateBootstrap("divContent");
+            }
+            if (IsPass) {
+                $("#PopupSave").modal();
+            }
+
+        }
+
+        function GetData() {
+            var Param = {
+                IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                sender_name : GetValTextBox("txtsendname"),
+                mail_header : GetValTextBox("txtmailHeader"),
+                content: CKEDITOR.instances['txtDes'].getData(),
+            };
+            return Param;
+        }
+        function SaveData (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                FocusValidateBootstrap("divContent");
+                IsPass = false;
+            }
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var Param = GetData();
+                Param.lstData = null;
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditMailContent", "MailContent")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                //Table CC by User
+                if (objModel.lstData != undefined && objModel.lstData != null) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.lstData);
+                    $('#gvwData').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                    $('div[id$=divTable]').collapse("hide");
+                }
+                //Table CC by mail
+                if (objModel.lstData_mail != undefined && objModel.lstData_mail != null) {
+                    $('#gvwDataEmail').DataTable().clear().draw();
+                    $('#gvwDataEmail').dataTable().fnAddData(objModel.lstData_mail);
+                    $('#gvwDataEmail').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataEmail').DataTable().columns.adjust().draw();
+                        $('#gvwDataEmail').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataEmail').DataTable().clear().draw();
+                    $('#gvwDataEmail').dataTable().fnDraw();
+
+                }
+                //Table param
+                if (objModel.lstData_param != undefined && objModel.lstData_param != null) {
+                    $('#gvwDataList').DataTable().clear().draw();
+                    $('#gvwDataList').dataTable().fnAddData(objModel.lstData_param);
+                    $('#gvwDataList').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwDataList').DataTable().columns.adjust().draw();
+                        $('#gvwDataList').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwDataList').DataTable().clear().draw();
+                    $('#gvwDataList').dataTable().fnDraw();
+
+                }
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtmailHeader", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidatePopUp);
+            var objValidateUser = {};
+            objValidateUser[GetElementName("txtSearch", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser", objValidateUser);
+            var objValidateMail = {};
+            objValidateMail[GetElementName("txtEmilCC", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divEmail", objValidateMail);
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+
+    </script>
+    <script type="text/javascript">
+        function Preview() {
+            var IsPass = true;
+            var Getmail = GetValTextBox("txtmail");
+            if (Getmail == "") {
+                IsPass = false;
+                DialogWarning(DialogHeader.Warning, "Place input Email.");
+            }
+
+            if (IsPass) {
+                BlockUI();
+                var Param = {
+                    mail_to:GetValTextBox("txtmail"),
+                    sender_name: GetValTextBox("txtsendname"),
+                    mail_header: GetValTextBox("txtmailHeader"),
+                    content: CKEDITOR.instances['txtDes'].getData(),
+                };
+                Param.lstData = null;
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("PreviewMailContent", "MailContent")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, "Send mail complect.");
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+        function SetTableParam() {
+            var objHeadClRequest = [
+                { "title": "Name", "width": "35%", "className": "dt-left-ctm", "data": "name" },
+                { "title": "Description", "width": "65%", "className": "dt-left-ctm", "data": "description" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataList",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+            };
+
+           CreatTableJS(objTableRe);
+
+        }
+    </script>
+    <script type="text/javascript">
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "UserName", "width": "25%", "className": "dt-left-ctm", "data": "emp_name" },
+                { "title": "Group", "width": "20%", "className": "dt-center-ctm", "data": "emp_group" },
+                { "title": "Position", "width": "20%", "className": "dt-center-ctm", "data": "emp_position" },
+                { "title": "Description", "width": "30%", "className": "dt-left-ctm", "data": "emp_dec" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[1, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+         function SetAutocom(txtTarget) {
+               $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                   GetInputByID("txtgroup").val('');
+                   GetInputByID("txtUserName").val('');
+                   GetInputByID("txtID").val('');
+               });
+               var sID = ko.toJS(viewModel.IdEncrypt);
+               $("input[id$=" + txtTarget + "]").autocomplete({
+                   //disabled: true,
+                   source: function (request, response) {
+                       $.ajax({
+                           global: false,  // <-- this is the key!
+                           dataType: AjaxCall.dataType,
+                           type: AjaxCall.type,
+                           contentType: AjaxCall.contentType,
+
+                           url: '@Url.Action("UserAutoComplete", "MailContent")',
+
+                           data: JSON.stringify({ SearchItem: request.term, sQueryID: sID }),
+           success: function (data) {
+               UnblockUI();
+               response($.map(data, function (item) {
+                   return {
+                       value: item.id,
+                       label: item.id + " : " + item.user_name ,
+                       user_id: item.user_id,
+                       user_no: item.id,
+                       user_name: item.user_name,
+                       user_last_name: item.user_last_name,
+                       unit_name: item.unit_name,
+                   }
+               }));
+           }
+                    });
+           },
+           minLength: 1,
+           select: function (event, ui) {
+               GetInputByID("txtUserName").val(ui.item.user_name);
+               GetInputByID("txtgroup").val(ui.item.unit_name);
+               GetInputByID("txtID").val(ui.item.user_no);
+           }
+
+           });
+        }
+        function SaveApprover(){
+            var IsPass = true;
+            var User = GetInputByID("txtID").val();
+            if (!CheckValidateBootstrap("divUser") || User + ""  == "") {
+                IsPass = false;
+                if (User + "" == "") {
+                    $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "INVALID");
+                }
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param = {
+                    IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                    emp_no: GetInputByID("txtID").val(),
+                    description: GetTextareaByID("txtDesuser").val(),
+            };
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditMailContentCC", "MailContent")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearUser();
+
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }
+                });
+            }
+           }
+        function ClearUser() {
+            GetInputByID("txtgroup").val('');
+            GetInputByID("txtSearch").val('');
+            GetInputByID("txtUserName").val('');
+            GetInputByID("txtID").val('');
+            GetTextareaByID("txtDesuser").val('');
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "NOT_VALIDATED");
+        }
+        function Del(sVal) {
+            DialogConfirm(DialogHeader.Confirm, DialogMsg.ConfirmDel, function () {   $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("DelMailContentCC", "MailContent")',
+                    data: JSON.stringify({ ItemData: sVal }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearUser();
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwData').DataTable().clear().draw();
+                                $('#gvwData').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }
+                }); }, function () { });
+        }
+    </script>
+    <script type="text/javascript">
+        function SetTableEmail() {
+            var objHeadClMail = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "Email", "width": "15%", "className": "dt-center-ctm", "data": "mail_cc" },
+                { "title": "Update Date", "width": "15%", "className": "dt-center-ctm", "data": "mail_update" },
+                { "title": "Update By", "width": "15%", "className": "dt-center-ctm", "data": "mail_update_by" },
+                { "title": "Description", "width": "30%", "className": "dt-left-ctm", "data": "mail_dec" },
+            ];
+
+            var objTableMail = {
+                sTableID: "gvwDataEmail",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClMail,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[2, "desc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [{
+                    "targets": 2,
+                    "type": "date-th",
+                }],
+            };
+
+            CreatTableJS(objTableMail);
+
+        }
+
+        function SaveEmail(){
+            var IsPass = true;
+
+            if (!CheckValidateBootstrap("divEmail")) {
+                IsPass = false;
+                    $('#divEmail').bootstrapValidator('updateStatus', GetElementName("txtEmilCC", objControl.txtbox), "INVALID");
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param = {
+                    IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                    emp_no: GetInputByID("txtEmilCC").val(),
+                    description: GetTextareaByID("txtDesmail").val(),
+            };
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditMailContentCCBymail", "MailContent")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearMail();
+
+                            if (respone.result.lstData_mail != undefined && respone.result.lstData_mail != null && respone.result.lstData_mail.length > 0) {
+                                $('#gvwDataEmail').DataTable().clear().draw();
+                                $('#gvwDataEmail').dataTable().fnAddData(respone.result.lstData_mail);
+                                $('#gvwDataEmail').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwDataEmail').DataTable().clear().draw();
+                                $('#gvwDataEmail').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwDataEmail').DataTable().columns.adjust().draw();
+                        $('#gvwDataEmail').DataTable().columns.adjust().responsive.recalc();
+                    }
+                });
+            }
+           }
+        function ClearMail() {
+            GetInputByID("txtEmilCC").val('');
+            GetTextareaByID("txtDesmail").val('');
+            $('#divEmail').bootstrapValidator('updateStatus', GetElementName("txtEmilCC", objControl.txtbox), "NOT_VALIDATED");
+        }
+        function DelEmail(sVal) {
+            DialogConfirm(DialogHeader.Confirm, DialogMsg.ConfirmDel, function () {   $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("DelMailContentCCBymail", "MailContent")',
+                    data: JSON.stringify({ ItemData: sVal }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearMail();
+                            if (respone.result.lstData_mail != undefined && respone.result.lstData_mail != null && respone.result.lstData_mail.length > 0) {
+                                $('#gvwDataEmail').DataTable().clear().draw();
+                                $('#gvwDataEmail').dataTable().fnAddData(respone.result.lstData_mail);
+                                $('#gvwDataEmail').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwDataEmail').DataTable().clear().draw();
+                                $('#gvwDataEmail').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Failed) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwDataEmail').DataTable().columns.adjust().draw();
+                        $('#gvwDataEmail').DataTable().columns.adjust().responsive.recalc();
+                    }
+                }); }, function () { });
+        }
+    </script>
+}

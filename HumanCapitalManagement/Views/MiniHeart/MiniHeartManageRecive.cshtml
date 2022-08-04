@@ -1,0 +1,217 @@
+﻿@model HumanCapitalManagement.ViewModel.Feedbacks.MiniHeart_Main.vMiniHeart_Main_Return
+@{
+    ViewBag.Title = "HCM | Mini Heart Manage Recive";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Mini Heart Manage Recive
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="col-xs-12">
+                    <div class="row" id="search">
+                        <br />
+
+                        <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">Start Period </span>
+                                @{ Html.RenderAction("GetPeroidMiniHeartStart", "HCMMasterData2", new
+                                    {
+                                        id = "ddlStart",
+                                        databind = "Startddl",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>
+
+                        <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">End Period </span>
+                                @{ Html.RenderAction("GetPeroidMiniHeartEnd", "HCMMasterData2", new
+                                    {
+                                        id = "ddlEnd",
+                                        databind = "Endddl",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-sm col-xs-12  text-left">
+                            <button type="button" class="btn btn-primary" onclick="LoadData('');" style="width:150px;">Search</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+
+      
+                   
+              
+
+                    <div class="box box-primary">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover display" id="gvwDatareceve" width="100%">
+                                            <thead>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+</div>
+<link href="~/Scripts/plugins/DataTables2/Buttons-1.5.6/css/buttons.dataTables.min.css" rel="stylesheet" />
+<link href="~/Scripts/plugins/chartjs/Chart.css" rel="stylesheet" />
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+
+    <script src="~/Scripts/plugins/chartjs/Chart.js"></script>
+    <script type="text/javascript">
+
+
+        $(function () {
+            SetTable();
+         
+
+
+
+        });
+
+    
+
+        function LoadData(type) {
+
+            var startDatetxt = $('#ddlStart  option:selected').text();
+            var endDatetxt = $('#ddlEnd  option:selected').text();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Search_MiniHeart_Recive", "MiniHeart")',
+                dataType: "json",
+                data: {
+                    start: startDatetxt,
+                    end: endDatetxt,
+
+                },
+                success: function (respone) {
+                  
+
+                    $('#gvwDatareceve').DataTable().columns.adjust().draw();
+
+                   
+                    var getdatarecive = respone.result.mainlstdatarecive;
+                    if (getdatarecive != undefined && getdatarecive != null && getdatarecive.length > 0) {
+                        $('#gvwDatareceve').DataTable().clear().draw();
+                        $('#gvwDatareceve').dataTable().fnAddData(getdatarecive);
+                        $('#gvwDatareceve').dataTable().fnDraw();
+                        $('#gvwDatareceve').DataTable().columns.adjust().draw();
+
+
+                     
+
+                    }
+                    else {
+                        $('#gvwDatareceve').DataTable().clear().draw();
+                        $('#gvwDatareceve').dataTable().fnDraw();
+
+                    }
+
+                },
+                complete: function (jqXHR, status) {//finaly
+                    UnCheckCheckBoxHeader("ckbAll");
+                    SetICheck();
+                    SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "fix");
+                    UnblockUI();
+                }
+            });
+        }
+
+        function SetTable() {
+
+      
+
+            var objHeadClRequestre = [
+
+                { "title": " Staff No.", "width": "5%", "className": "dt-left-ctm", "data": "Emp_No" },
+                { "title": " Name", "width": "20%", "className": "dt-left-ctm", "data": "Emp_Name" },
+                { "title": " Group", "width": "10%", "className": "dt-center-ctm", "data": "Group" },
+               // { "title": " Rank", "width": "15%", "className": "dt-center-ctm", "data": "Rank" },
+                //{ "title": " Give", "width": "15%", "className": "dt-center-ctm", "data": "Give" },
+                { "title": " Received", "width": "15%", "className": "dt-center-ctm", "data": "Recive" },
+
+
+
+            ];
+            var objTableRere = {
+                sTableID: "gvwDatareceve",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",
+                objHeadCl: objHeadClRequestre,//Table Headder
+                objDataSet: [], //dataset
+                EmptyTable: EmptyTable,
+                objBeforeClRender: false,
+                columnDefs: [
+                ]
+            };
+           
+            CreatTableJS(objTableRere);
+        }
+
+
+
+
+
+        function GetData() {
+            var lstData = "";
+            Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ForEach(function (ed) {
+                lstData += ed.Id + ",";
+            });
+
+            return lstData;
+        }
+
+    </script>
+   
+}
+<!-- /.content -->

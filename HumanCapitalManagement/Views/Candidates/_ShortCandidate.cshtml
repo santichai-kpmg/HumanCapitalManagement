@@ -1,0 +1,129 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vCandidates_obj_Save
+
+<form class="form-horizontal"  autocomplete="off">
+    <div id="pvCandidate">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">Card Type :</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateddlIDCard_Type", "HCMMasterData", new
+                            {
+                                id = "ddlCardType",
+                                databind = "candidate_id_type",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">ID Card :</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtcard_id" name="txtcard_id" class="form-control" data-bind="value: candidate_id, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">Name En<font color=red>*</font> :</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtName" name="txtName" class="form-control" data-bind="value: candidate_name, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">Last Name En<font color=red>*</font> :</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtLname" name="txtLname" class="form-control" data-bind="value: candidate_lastname, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right">Phone No. :</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtPhone" name="txtPhone" class="form-control" data-bind="value: candidate_phone, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">Recruitment Team<font color=red>*</font> :</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateddlRecruitment_Team", "HCMMasterData", new
+                            {
+                                id = "ddlRecruitment",
+                                databind = "recruitment_id",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right ">Activities Form :</label>
+                    <div class="col-md-6">
+                        
+                       
+                        @{ Html.RenderAction("CreateActivitiesTrainee", "HCMMasterData", new
+                            {
+                                id = "ddlActivitiesTrainee",
+                                databind = "activities_Id",
+                                value = ""
+                            });}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        <font color="Red" align ="center"><p>*If the personal request is Position trainee/intern. Please select activities too.</p></font></div>
+        </div>
+</form>
+<script type="text/javascript">
+    var objModelPVS = @Html.Raw(Json.Encode(Model));
+    var objMaxLengthCandidate = [
+        { ctrlID: "txtcard_id", ctrlType: "txt", MaxLength: 20 }
+        , { ctrlID: "txtName", ctrlType: "txt", MaxLength: 240 }
+        , { ctrlID: "txtLname", ctrlType: "txt", MaxLength: 240 }
+        , { ctrlID: "txtPhone", ctrlType: "txt", MaxLength: 50 }];
+    $(function () {
+
+
+    });
+
+    function ValidateFormPV() {
+        var objValidatePopUp = {};
+        //objValidatePopUp[GetElementName("txtcard_id", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtLname", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("txtPhone", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopup[GetElementName("txtOxfordScore", objControl.txtbox)]  = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("ddlCardType", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlRecruitment", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("ddlActivitiesTrainee", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        BindValidateBootstrap("pvCandidate", objValidatePopUp);
+    }
+</script>

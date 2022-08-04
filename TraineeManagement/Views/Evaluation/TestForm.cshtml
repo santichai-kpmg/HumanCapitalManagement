@@ -1,0 +1,73 @@
+﻿@model IEnumerable<HumanCapitalManagement.Models.MainModels.TM_Education_History>
+
+@{
+    ViewBag.Title = "KPMG Trainee | Evaluation";
+    Layout = "~/Views/Shared/_TPJMaster.cshtml";
+}
+
+<h2>View</h2>
+
+@section style{
+    <style>
+        
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+
+    <script type="text/javascript">
+    var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+          
+           BindData(objModel);
+           ko.applyBindings(viewModel);
+        });
+    </script>   @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+        }
+
+    </script>

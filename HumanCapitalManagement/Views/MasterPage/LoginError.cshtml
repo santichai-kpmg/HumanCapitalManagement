@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "LoginError";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Login Error
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-yellow"> 404</h2>
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-yellow"></i> Login Error.</h3>
+            <p>
+                <label class="control-label" data-bind='value: msg'></label>
+                Plz Call Admin.
+            </p>
+        </div>
+        <!-- /.error-content -->
+    </div>
+    <!-- /.error-page -->
+</section>
+<!-- /.content -->
+
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var lstObj = [];
+        $(function () {
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+        });
+        var viewModel = {
+        };
+        function BindData(value) {
+            if (viewModel.page == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportMASSTIFForm" targetNamespace="http://tempuri.org/dsReportMASSTIFForm.xsd" xmlns:mstns="http://tempuri.org/dsReportMASSTIFForm.xsd" xmlns="http://tempuri.org/dsReportMASSTIFForm.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportMASSTIFForm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReportMASSTIFForm" msprop:Generator_UserDSName="dsReportMASSTIFForm">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsCore" msprop:Generator_TableClassName="dsCoreDataTable" msprop:Generator_TableVarName="tabledsCore" msprop:Generator_TablePropName="dsCore" msprop:Generator_RowDeletingName="dsCoreRowDeleting" msprop:Generator_RowChangingName="dsCoreRowChanging" msprop:Generator_RowEvHandlerName="dsCoreRowChangeEventHandler" msprop:Generator_RowDeletedName="dsCoreRowDeleted" msprop:Generator_UserTableName="dsCore" msprop:Generator_RowChangedName="dsCoreRowChanged" msprop:Generator_RowEvArgName="dsCoreRowChangeEvent" msprop:Generator_RowClassName="dsCoreRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sheader" msprop:Generator_ColumnVarNameInTable="columnsheader" msprop:Generator_ColumnPropNameInRow="sheader" msprop:Generator_ColumnPropNameInTable="sheaderColumn" msprop:Generator_UserColumnName="sheader" type="xs:string" minOccurs="0" />
+              <xs:element name="sevidence" msprop:Generator_ColumnVarNameInTable="columnsevidence" msprop:Generator_ColumnPropNameInRow="sevidence" msprop:Generator_ColumnPropNameInTable="sevidenceColumn" msprop:Generator_UserColumnName="sevidence" type="xs:string" minOccurs="0" />
+              <xs:element name="sscoring" msprop:Generator_ColumnVarNameInTable="columnsscoring" msprop:Generator_ColumnPropNameInRow="sscoring" msprop:Generator_ColumnPropNameInTable="sscoringColumn" msprop:Generator_UserColumnName="sscoring" type="xs:string" minOccurs="0" />
+              <xs:element name="nSeq" msprop:Generator_ColumnVarNameInTable="columnnSeq" msprop:Generator_ColumnPropNameInRow="nSeq" msprop:Generator_ColumnPropNameInTable="nSeqColumn" msprop:Generator_UserColumnName="nSeq" type="xs:int" minOccurs="0" />
+              <xs:element name="srating" msprop:Generator_ColumnVarNameInTable="columnsrating" msprop:Generator_ColumnPropNameInRow="srating" msprop:Generator_ColumnPropNameInTable="sratingColumn" msprop:Generator_UserColumnName="srating" type="xs:string" minOccurs="0" />
+              <xs:element name="question" msprop:Generator_ColumnVarNameInTable="columnquestion" msprop:Generator_ColumnPropNameInRow="question" msprop:Generator_ColumnPropNameInTable="questionColumn" msprop:Generator_UserColumnName="question" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsAuditing" msprop:Generator_TableClassName="dsAuditingDataTable" msprop:Generator_TableVarName="tabledsAuditing" msprop:Generator_RowChangedName="dsAuditingRowChanged" msprop:Generator_TablePropName="dsAuditing" msprop:Generator_RowDeletingName="dsAuditingRowDeleting" msprop:Generator_RowChangingName="dsAuditingRowChanging" msprop:Generator_RowEvHandlerName="dsAuditingRowChangeEventHandler" msprop:Generator_RowDeletedName="dsAuditingRowDeleted" msprop:Generator_RowClassName="dsAuditingRow" msprop:Generator_UserTableName="dsAuditing" msprop:Generator_RowEvArgName="dsAuditingRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nSeq" msprop:Generator_ColumnVarNameInTable="columnnSeq" msprop:Generator_ColumnPropNameInRow="nSeq" msprop:Generator_ColumnPropNameInTable="nSeqColumn" msprop:Generator_UserColumnName="nSeq" type="xs:int" minOccurs="0" />
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:string" minOccurs="0" />
+              <xs:element name="header" msprop:Generator_ColumnVarNameInTable="columnheader" msprop:Generator_ColumnPropNameInRow="header" msprop:Generator_ColumnPropNameInTable="headerColumn" msprop:Generator_UserColumnName="header" type="xs:string" minOccurs="0" />
+              <xs:element name="Qst" msprop:Generator_ColumnVarNameInTable="columnQst" msprop:Generator_ColumnPropNameInRow="Qst" msprop:Generator_ColumnPropNameInTable="QstColumn" msprop:Generator_UserColumnName="Qst" type="xs:string" minOccurs="0" />
+              <xs:element name="scoring" msprop:Generator_ColumnVarNameInTable="columnscoring" msprop:Generator_ColumnPropNameInRow="scoring" msprop:Generator_ColumnPropNameInTable="scoringColumn" msprop:Generator_UserColumnName="scoring" type="xs:string" minOccurs="0" />
+              <xs:element name="answer" msprop:Generator_ColumnVarNameInTable="columnanswer" msprop:Generator_ColumnPropNameInRow="answer" msprop:Generator_ColumnPropNameInTable="answerColumn" msprop:Generator_UserColumnName="answer" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsAdInfo" msprop:Generator_TableClassName="dsAdInfoDataTable" msprop:Generator_TableVarName="tabledsAdInfo" msprop:Generator_RowChangedName="dsAdInfoRowChanged" msprop:Generator_TablePropName="dsAdInfo" msprop:Generator_RowDeletingName="dsAdInfoRowDeleting" msprop:Generator_RowChangingName="dsAdInfoRowChanging" msprop:Generator_RowEvHandlerName="dsAdInfoRowChangeEventHandler" msprop:Generator_RowDeletedName="dsAdInfoRowDeleted" msprop:Generator_RowClassName="dsAdInfoRow" msprop:Generator_UserTableName="dsAdInfo" msprop:Generator_RowEvArgName="dsAdInfoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nID" msprop:Generator_ColumnVarNameInTable="columnnID" msprop:Generator_ColumnPropNameInRow="nID" msprop:Generator_ColumnPropNameInTable="nIDColumn" msprop:Generator_UserColumnName="nID" type="xs:string" minOccurs="0" />
+              <xs:element name="seq" msprop:Generator_ColumnVarNameInTable="columnseq" msprop:Generator_ColumnPropNameInRow="seq" msprop:Generator_ColumnPropNameInTable="seqColumn" msprop:Generator_UserColumnName="seq" type="xs:int" minOccurs="0" />
+              <xs:element name="question" msprop:Generator_ColumnVarNameInTable="columnquestion" msprop:Generator_ColumnPropNameInRow="question" msprop:Generator_ColumnPropNameInTable="questionColumn" msprop:Generator_UserColumnName="question" type="xs:string" minOccurs="0" />
+              <xs:element name="multi_answer" msprop:Generator_ColumnVarNameInTable="columnmulti_answer" msprop:Generator_ColumnPropNameInRow="multi_answer" msprop:Generator_ColumnPropNameInTable="multi_answerColumn" msprop:Generator_UserColumnName="multi_answer" type="xs:string" minOccurs="0" />
+              <xs:element name="other_answer" msprop:Generator_ColumnVarNameInTable="columnother_answer" msprop:Generator_ColumnPropNameInRow="other_answer" msprop:Generator_ColumnPropNameInTable="other_answerColumn" msprop:Generator_UserColumnName="other_answer" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsReq" msprop:Generator_TableClassName="dsReqDataTable" msprop:Generator_TableVarName="tabledsReq" msprop:Generator_TablePropName="dsReq" msprop:Generator_RowDeletingName="dsReqRowDeleting" msprop:Generator_RowChangingName="dsReqRowChanging" msprop:Generator_RowEvHandlerName="dsReqRowChangeEventHandler" msprop:Generator_RowDeletedName="dsReqRowDeleted" msprop:Generator_UserTableName="dsReq" msprop:Generator_RowChangedName="dsReqRowChanged" msprop:Generator_RowEvArgName="dsReqRowChangeEvent" msprop:Generator_RowClassName="dsReqRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

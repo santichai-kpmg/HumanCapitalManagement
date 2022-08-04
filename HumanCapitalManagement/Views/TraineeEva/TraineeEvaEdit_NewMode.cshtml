@@ -1,0 +1,1029 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vTraineeEva_obj_Save
+@{
+    ViewBag.Title = "HCM | Intern Evaluation";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Intern Evaluation
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Intern Details</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Intern Name</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control input-sm" id="txtName" data-bind='value: trainee_name' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm row">
+                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control input-sm" id="txtGroup" data-bind='value: group_name' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm row">
+                                                <label class="col-md-4 control-label text-right nomallabel">Intern No.</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control input-sm" id="txtNoEva" data-bind='value: trainee_no' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm row">
+                                                <label class="col-md-4 control-label text-right nomallabel">Start Date</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group form-inline" style="float: left;">
+                                                        <input ID="txtDateAction" name="txtDateAction" class="form-control " data-bind="value : target_start, valueUpdate: 'afterkeydown' " type="text" disabled
+                                                               ToolTip="To" placeholder="-- / -- / ----" />
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm row">
+                                                <label class="col-md-4 control-label text-right nomallabel">Nickname</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control input-sm" id="txtNickName" data-bind='value: nick_name' disabled>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm row">
+                                                <label class="col-md-4 control-label text-right nomallabel">End Date</label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group form-inline" style="float: left;">
+                                                        <input ID="txtDateAction" name="txtDateAction" class="form-control " data-bind="value : target_end, valueUpdate: 'afterkeydown' " type="text" disabled
+                                                               ToolTip="To" placeholder="-- / -- / ----" />
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-solid box-ctmPR4">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Intern Evaluation</h3>
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body ">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="callout callout-warning ">
+                                        <h4><u>Performance Rating Criteria:</u></h4>
+                                        <p>
+                                            <div id="ratename1">
+                                                <strong>1</strong> : <em> </em><br />
+                                            </div>
+                                            <div id="ratename2">
+                                                <strong>2</strong> : <em> </em><br />
+                                            </div>
+                                            <div id="ratename3">
+                                                <strong>3</strong> : <em>  </em><br />
+                                            </div>
+                                            <div id="ratename4">
+                                                <strong>4</strong> : <em> </em><br />
+                                            </div>
+                                            <div id="ratename5">
+                                                <strong>5</strong> : <em> </em><br />
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                            <thead>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label  text-right nomallabel ">What have you learned from having an internship with KPMG? (สิ่งที่ได้เรียนรู้จากการฝึกงาน)</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtcomment" cols="50" class="form-control" data-bind='value: comment'
+                                                      disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label  text-right nomallabel ">Please identify what you have done well during internship period (สิ่งที่คิดว่าทำได้ดี)</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtcomment" cols="50" class="form-control" data-bind='value: comment2'
+                                                      disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label  text-right nomallabel ">What are your developmental areas ?<br />(สิ่งที่คิดว่าต้องพัฒนาเพิ่มมากขึ้น)</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtcomment" cols="50" class="form-control" data-bind='value: comment3'
+                                                      disabled></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right require" for="textinput">Recommend to hire in the future?* :</label>
+                                    <div class="col-md-8">
+                                        @{ Html.RenderAction("HiringRating", "HCMMasterData2", new
+                                            {
+                                                id = "ddlhiring",
+                                                databind = "hiringratingname",
+                                                value = ""
+                                            });}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label  text-right nomallabel ">Evaluator's Comments :</label>
+                                        <div class="col-md-8">
+                                            <textarea rows="3" id="txtcomment" cols="50" class="form-control" data-bind='value: incharge_comments'
+                                                      @Html.Raw(HttpUtility.HtmlDecode(Model.scomplete + "" == "Y" ? "disabled" : ""))></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        @*<label class="col-md-2 control-label  text-right require ">Result</label>*@
+                                        <div class="col-md-8 col-md-offset-2" style=" border:2px solid #f36b11; padding-top: 5px;padding-bottom: 5px;">
+                                            <input type="checkbox" id="chkStatus" name="chkStatus" class="flat-green" value="Y" />I have already communicated the performance feedback to this Intern.
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row row collapse in" id="divReplaced">
+                                        <div class="col-lg-12">
+                                            <div class="box box-solid box-ctmPR3">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Performance Manager</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <!-- form start -->
+                                                <div class="box-body">
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtNamemgr" name="txtNamemgr" class="form-control" data-bind='value: mgr_user_name' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtgroup" name="txtgroup" class="form-control" data-bind='value: mgr_unit_name' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtposition" name="txtposition" class="form-control" data-bind='value: mgr_user_rank' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-body -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row row collapse in" id="divReplaced">
+                                        <div class="col-lg-12">
+                                            <div class="box box-solid box-ctmPR3">
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">In-Charge / Engagement Manager</h3>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <!-- form start -->
+                                                <div class="box-body">
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Name</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtNameic" name="txtNameic" class="form-control" data-bind='value: ic_user_name' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtgroup" name="txtgroup" class="form-control" data-bind='value: ic_unit_name' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group form-group-sm">
+                                                                <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                                <div class="col-md-8">
+                                                                    <input type="text" id="txtposition" name="txtposition" class="form-control" data-bind='value: ic_user_rank' disabled />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box-body -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group form-group-sm row">
+                                    <label class="col-md-4 control-label text-right nomallabel">Key Contact Evaluator </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control input-sm" data-bind='value: type_approve' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="box-footer text-center">
+                            @if (Model.scomplete != "Y")
+                            {
+                                <button type="button" class="btn btn-primary" onclick="Save('Draft');">Save Draft</button>
+                                <button type="button" class="btn btn-primary" onclick="Save('Submit');">Submit</button>
+                                <button type="button" class="btn btn-danger" onclick="RollbackData();">Rollback</button>
+                            }
+
+                            <button type="button" class="btn btn-warning" onclick="Cancel();">Back</button>
+                        </div>
+
+                        <!-- /.box-body -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to submit?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="PopupApprove" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to submit?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="ApproveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="PopupRollback" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #ff6a00;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to rollback evaluation?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="Rollback()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section style{
+    <style>
+        div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dt-HeadGr-ctm {
+            background-color: #2952a3 !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35) !important;
+            color: rgb(0, 0, 0) !important;
+            vertical-align: middle !important;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .dt-answer {
+            white-space: pre
+        }
+    </style>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    @*Script for bind Data KnockOut*@
+
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var objModel = @Html.Raw(Json.Encode(Model));
+
+       var sUrlBack = '@Url.Action("TraineeEvaList", "TraineeEva")';
+       $(function () {
+        @if (Request.QueryString["bUrl"] != null)
+           {
+       <text>
+           sUrlBack += "?qryStr=" + '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+       </text>
+       }
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        var objMaxLength = [
+            { ctrlID: "txtcomment", ctrlType: "area", MaxLength: 1000 }];
+        var save_Status = "";
+        $(function () {
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            getRate();
+            if (GetInputByID("txtSearch") != undefined) {
+                // SetAutocom("txtSearch");
+            }
+            SetMaxLeangthJS(objMaxLength);
+
+        });
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                //$("input[id*=Cvalidate][value='" + value.hiring_status + "']").iCheck('check');
+                $("input[id*=chkStatus][value='" + value.confidentiality_agreement + "']").iCheck('check');
+                if (objModel.objtifform != undefined && objModel.objtifform != null && objModel.objtifform.lstQuestion != undefined && objModel.objtifform.lstQuestion != null && objModel.objtifform.lstQuestion.length > 0) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.objtifform.lstQuestion);
+                    $('#gvwData').dataTable().fnDraw();
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        // $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    //$("input[id*=Cvalidate][value='" + value.hiring_status + "']").iCheck('check');
+                    $("input[id*=chkStatus][value='" + value.confidentiality_agreement + "']").iCheck('check');
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                }
+            }
+            else {
+
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+
+
+    </script>
+    <script type="text/javascript">
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id" },
+                { "title": "Descriptions", "width": "35%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "question", },
+                { "title": "Intern's<br/>self-evaluation rating", "width": "10%", "className": "dt-left-ctm", "data": "rating", "searchable": false, "orderable": false },
+                { "title": "Evaluator's Rating", "width": "15%", "className": "dt-left-ctm", "data": "approve_rating", "searchable": false, "orderable": false },
+                { "title": "Evaluator's comment<br/>Please provide reasons supporting the given rating.", "width": "40%", "className": "dt-left-ctm dt-answer", "data": "remark", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'><'col-sm-6'>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'><'col-sm-7'>>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                nRunningNumber: ["true", 1],
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        return (data + "").replace("(", "<br/>(");
+                    }
+                },
+                {
+                    "targets": 4,
+                    "render": function (data, type, row) {
+                        var sHtml = "";
+                        if (objModel.objtifform.lstRating != undefined && objModel.objtifform.lstRating != null && objModel.objtifform.lstRating.length > 0) {
+                            sHtml = CreatSelect("ddlRating" + row.id, JSON.stringify(objModel.objtifform.lstRating), data, row.sDisable);
+                        }
+                        return sHtml;
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, row) {
+                        return CreateTextAreaInt("txtRemark" + row.id, 9999, row.remark, row.sDisable, 3);
+                    },
+                }
+                ],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-left-ctm" style="height: 25px;font-size: 14px;" colspan="5">' + group + '</td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'sgroup'
+                },
+
+            };
+            var table = CreatTableJS(objTableRe);
+        }        
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='3' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("ddlTIFStatus", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidatePopUp[GetElementName("ddlRank", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidatePopUp[GetElementName("ddlhiring", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            //var objIcheck = "input[name='" + GetElementName("Cvalidate", objControl.rblICheck) + "'] ";
+            BindValidateBootstrap("divContent", objValidatePopUp /*objIcheck*/);
+        }
+
+        function CreatSelect(sID, objJson, sSelectValue, sDisable, rowid) {
+            $("select[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            var sHtml = "<select id='" + sID + "' class='form-control input-sm ' style='width:100%;' " + sDis + " >";
+            if (objJson != undefined) {
+                if (sSelectValue != undefined && sSelectValue != null && sSelectValue != "") {
+                    $.each(JSON.parse(objJson), function (i, item) {
+                        var optionhtml = "";
+                        if (item.value + "" == sSelectValue + "") {
+                            optionhtml = '<option value="' +
+                                item.value + '" selected="selected">' + item.text + '</option>';
+                            sHtml += optionhtml;
+                        }
+                        else {
+                            optionhtml = '<option value="' +
+                                item.value + '">' + item.text + '</option>';
+                            sHtml += optionhtml;
+                        }
+                    });
+                }
+                else {
+                    var optionhtml = "";
+                    $.each(JSON.parse(objJson), function (i, item) {
+                        optionhtml = '<option value="' +
+                            item.value + '">' + item.text + '</option>';
+                        sHtml += optionhtml;
+                    });
+                }
+            }
+            sHtml += "</select>";
+
+            //Set Event dropdows
+            $("select[id$=" + sID + "]").bind("change", function () {
+                $("select[id$=" + sID + "]").val($(this).val());
+            });
+            $("select[id$=" + sID + "]").on("change", function () {
+                calculateStatus()
+            });
+
+            return sHtml;
+        }
+
+    </script>
+}
+@section scripts2{
+    <script type="text/javascript">
+
+            function RollbackData() {
+                $("#PopupRollback").modal();
+            }
+            function Approve() {
+                $("#PopupApprove").modal();
+            }
+            function Rollback() {
+                var IsPass = true;
+                if (IsPass) {
+                    $("#PopupRollback").modal('hide');
+                    BlockUI();
+                    var Param = ko.toJS(viewModel);
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("RollBackTIFForm", "TraineeEva")',
+                        data: JSON.stringify({ ItemData: Param }),
+                        success: function (respone) {
+                            if (respone.result.Status == SysProcess.SessionExpired) {
+                                PopupLogin('@Url.Action("Index", "Home")');
+                            } else if (respone.result.Status == SysProcess.Success) {
+                                DialogSuccessOk(DialogHeader.Info, "Rollback evaluation completed", 'func', function () {
+                                    var prodId = getParameterByName('bUrl');
+                                    if (prodId != "") {
+                                        window.location.href = sUrlBack;
+                                    }
+                                    else {
+                                        window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                    }
+                                });
+                            }
+                            else if (respone.result.Status == SysProcess.Duplicate) {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                            else {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                        },
+                        error: AjaxCall.error,
+                        complete: function (jqXHR, status) {//finaly
+                            UnblockUI();
+                            $("#PopupRollback").modal('hide');
+                        }
+                    });
+                }
+            }
+
+        function Save(sVal) {
+                var Acceptlst = [];
+                var IsPass = true;
+
+               if (sVal != "Draft") {
+                   if (!CheckValidateBootstrap("divContent")) {
+                       IsPass = false;
+                       FocusValidateBootstrap("divContent");
+                   }
+
+               }
+
+
+                if (IsPass) {
+                    //set value to rating
+                    Enumerable.From(objModel.objtifform.lstQuestion).ForEach(function (ed) {
+                        return ed.approve_rating = GetValDropdown("ddlRating" + ed.id);
+                    });
+                    Enumerable.From(objModel.objtifform.lstQuestion).ForEach(function (ed) {
+                        return ed.remark = GetValTextArea("txtRemark" + ed.id);
+                    });
+
+                    Acceptlst = Enumerable.From(objModel.objtifform.lstQuestion).ToArray();
+                    ko.mapping.fromJS(Acceptlst, {}, viewModel.objtifform.lstQuestion);
+                    var $Accept = GetLabelByID("lblAccept");
+
+                    if (Acceptlst.length == 0) {
+                        DialogWarning(DialogHeader.Warning, "Please select at least one item.");
+                    }
+                    else {
+
+                        //check validate ref no
+                        var lstRatingAws = Enumerable.From(objModel.objtifform.lstQuestion).Where(function (w) { return w.approve_rating + "" == "" }).ToArray();
+                        var lstRemarkAws = Enumerable.From(objModel.objtifform.lstQuestion).Where(function (w) { return w.remark + "" == "" }).ToArray();
+                        if ((lstRatingAws.length > 0 || lstRemarkAws.length > 0) && sVal != "Draft" ) {
+                            if (lstRatingAws.length > 0) {
+                                var sfirst = Enumerable.From(lstRatingAws).FirstOrDefault();
+                                DialogWarning(DialogHeader.Warning, "Please select rating. " + sfirst.question);
+                                GetSelectByID("ddlRating" + sfirst.id).focus();
+                                return false;
+                            }
+                            else if (lstRemarkAws.length > 0) {
+                                var sfirst = Enumerable.From(lstRemarkAws).FirstOrDefault();
+                                DialogWarning(DialogHeader.Warning, "Please input remark. " + sfirst.question);
+                                GetTextareaByID("txtRemark" + sfirst.id).focus();
+                                return false;
+                            }
+                        }
+                           else if (sVal == "Submit") {
+                            //check validate devit
+                            if (Acceptlst.length > 0) {
+                                //var AcceptNumber = Enumerable.From(Acceptlst).Sum(function (s) { return ConvertToIntNotnull(s.AMOUNT_AMT) });
+                                var strReturnAccept = 'Do you want to save?';
+                                $Accept.text(strReturnAccept);
+                            }
+                            else {
+                                $Accept.text('Not specify.');
+                            }
+                            $("#PopupSave").modal();
+                        }
+                        else if (sVal == "Draft") {
+                            SaveDraft();
+                        }
+                    }
+                }
+        }
+
+            function GetData() {
+            var lstData = ko.toJS(viewModel);
+            if (lstData != null && lstData.objtifform.lstQuestion != undefined && lstData.objtifform.lstQuestion != null) {
+
+                Enumerable.From(lstData.objtifform.lstQuestion).ForEach(function (ed) {
+                    return ed.question = "";
+                });
+                Enumerable.From(lstData.objtifform.lstQuestion).ForEach(function (ed) {
+                    return ed.sgroup = "";
+                });
+                lstData.objtifform.lstRating = null;
+                lstData.confidentiality_agreement = GetValueChkGroupSingelValue("chkStatus");
+            }
+            return lstData;
+        }
+        function SaveData() {
+            var IsPass = true;
+            var Param = GetData();
+            if (IsPass && Param.confidentiality_agreement == "Y") {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("SaveEditTraineeEva", "TraineeEva")',
+                    data: JSON.stringify({ ItemData: Param}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $("#PopupSave").modal('hide');
+                    }
+                });
+            }
+            else {
+                DialogWarning(DialogHeader.Warning, "Please “tick” the box indicating that you have already communicated the performance feedback to this Intern.");
+            }
+        }
+        function SaveDraft() {
+            var IsPass = true;
+            var Param = GetData();
+            if (IsPass ) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("SaveDraftTraineeEva", "TraineeEva")',
+                    data: JSON.stringify({ ItemData: Param}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $("#PopupSave").modal('hide');
+                    }
+                });
+            }
+        }
+        function gethhiringrate() {
+
+        }
+
+        function getRate() {
+
+
+            objModel.objtifform.lstRating.forEach((item) => {
+                if (item.value == "1") {
+                    $("div[id$=ratename1]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "2") {
+                    $("div[id$=ratename2]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "3") {
+                    $("div[id$=ratename3]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "4") {
+                    $("div[id$=ratename4]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "5") {
+                    $("div[id$=ratename5]").html("<strong>" + (item.text) + "" + "</strong>:  <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "6") {
+                    $("div[id$=ratename1]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "7") {
+                    $("div[id$=ratename2]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "8") {
+                    $("div[id$=ratename3]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "9") {
+                    $("div[id$=ratename4]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "10") {
+                    $("div[id$=ratename5]").html("<strong>" + (item.text) + "" + "</strong>:  <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "11") {
+                    $("div[id$=ratename1]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "12") {
+                    $("div[id$=ratename2]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "13") {
+                    $("div[id$=ratename3]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "14") {
+                    $("div[id$=ratename4]").html("<strong>" + (item.text) + " " + "</strong>: <em>" + (item.detail) + "</em><br />");
+                }
+                if (item.value == "15") {
+                    $("div[id$=ratename5]").html("<strong>" + (item.text) + "" + "</strong>:  <em>" + (item.detail) + "</em><br />");
+                }
+            })
+        }
+
+    </script>
+
+    <script>
+        function changeEvaluateStatus(status) {
+            $('#ddlhiring').val(status)
+        }
+        function calculateStatus() {
+            var state = true;
+            Enumerable.From(objModel.objtifform.lstQuestion).ForEach(function (ed) {
+                ed.rating = GetValDropdown("ddlRating" + ed.id);
+            });
+
+            const answerList = objModel.objtifform.lstQuestion.map(i => {
+                if (!i.rating) {
+                    state = false;
+                }
+                return parseInt(i.rating)
+            })
+            //ถ้าตอบไม่ครบ ออกฟังชั่น
+            if (!state) return;
+            var url = '@Url.Action("evaluateScore", "TraineeEva")'
+
+            fetch(url, {
+                method: 'POST', // or 'PUT'
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(answerList),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    changeEvaluateStatus(data.status)
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+}

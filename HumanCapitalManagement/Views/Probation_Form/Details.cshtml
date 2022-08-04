@@ -1,0 +1,283 @@
+﻿@model HumanCapitalManagement.Models.Probation.Probation_Form
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Probation_Form</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assessment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assessment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Probation_Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Probation_Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provident_Fund)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provident_Fund)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail_Send)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail_Send)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_Pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_Pro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_Pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_Pro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Count_Date_Pro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Count_Date_Pro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HR_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HR_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HR_Submit_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HR_Submit_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff_Acknowledge_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff_Acknowledge_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PM_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PM_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PM_Submit_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PM_Submit_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupHead_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupHead_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupHead_Submit_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupHead_Submit_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOP_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOP_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOP_Submit_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOP_Submit_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Create_User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Create_User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Update_User)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Update_User)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Extend_Form)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Extend_Form)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Extend_Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Extend_Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Extend_Period)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Extend_Period)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark_Revise)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark_Revise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Send_Mail_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Send_Mail_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff_Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff_Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PM_Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PM_Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupHead_Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupHead_Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOP_Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOP_Action)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

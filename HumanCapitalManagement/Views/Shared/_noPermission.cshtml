@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Group Permissions List Data";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        @*No Permission*@
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="error-page">
+        <h2 class="headline text-red"><i class="fa fa-hand-paper-o"></i></h2>
+        <div class="error-content">
+            <h3><i class="fa fa-warning text-red"></i> Oops! Something went wrong.</h3>
+            <p>
+                You don't have permission,<a href="@Url.Action("Index", "Home", null)">return to Index</a>
+            </p>
+        </div>
+    </div>
+    <!-- /.error-page -->
+</section>
+<!-- /.content -->

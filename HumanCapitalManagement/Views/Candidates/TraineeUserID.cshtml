@@ -1,0 +1,404 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Trainee Password";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Trainee Password (Trainee can do self-evaluation with 3 conditions: On-Board Status, User ID, and Password.
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="row" id="search">
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Group</span>
+                            @{ Html.RenderAction("CreateDivisionCode", "HCMMasterData", new
+                                {
+                                    id = "ddlGroup",
+                                    databind = "group_code",
+                                    value = ""
+                                });}
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+                            <span class="input-group-addon nomallabel">Ref No.</span>
+                            <input type="text" id="txtSearch" name="txtSearch" class="form-control" data-bind="value : ref_no , valueUpdate: 'afterkeydown'" />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                        <div class="input-group">
+
+                            <span class="input-group-addon nomallabel">Name</span>
+                            <input type="text" id="txtname" name="txtname" class="form-control" data-bind="value : name , valueUpdate: 'afterkeydown'" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-sm-6 col-xs-6">
+                        <div class="col-md-12" style=" margin-top:5px;">
+                            <label class="control-label">
+                                <input type="radio" name="Status" checked id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y">Active<br>
+                            </label>
+                            <label class="control-label">
+                                <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group form-group-sm col-xs-12  text-left">
+                        <button type="button" class="btn btn-info" onclick="LoadData();">Search</button>
+                        <button type="button" class="btn btn-primary" onclick="Save();">Create/Reset</button>
+
+                        @*<button type="button" class="btn btn-primary" onclick="AddData();">Add</button>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                            <thead>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                @*<input type="hidden" id="txtSess" name="txtSess" class="form-control" data-bind='value: session' />*@
+            </div>
+
+        </form>
+        @*<%--[modal] before Add--%>*@
+        <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog widthPOP">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #337ab7;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title"><b style="color: white;">Create / Reset Confirmation</b></span>
+                    </div>
+                    <div class="modal-body">
+                        <div id="divCreatePopUp">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="col-md-12 text-center">
+                                            <label class="control-label" id="lblAccept"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="col-md-12 text-center">Do you want to save?</label>
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section style{
+
+    @*<link href="~/Scripts/plugins/DataTables2/FixedColumns-3.2.2/css/fixedColumns.dataTables.css" rel="stylesheet" />*@
+}
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    @*<script src="~/Scripts/plugins/DataTables2/FixedColumns-3.2.2/js/dataTables.fixedColumns.js"></script>*@
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var objlstData = [];
+        $(function () {
+            SetTable();
+            //setDatePickerFromTo($("input[id$=txtDateStart]"), $("input[id$=txtDateTo]"));
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+        });
+        function Search() {
+            var lstSearch = ko.toJS(viewModel)
+            return lstSearch;
+        };
+        function LoadData() {
+            $('div[id$=divTable]').collapse("show");
+            $('#gvwData').DataTable().columns.adjust().draw();
+            var Param = Search();
+            BlockUI();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadTraineeList", "Candidates")',
+                dataType: "json",
+                data: { SearchItem: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {1
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+                        var lstData = response.result.lstData;
+                        if (lstData == undefined || lstData.length <= 0) {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                            objlstData = [];
+                        }
+                        else {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnAddData(lstData);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                            objlstData = lstData;
+                        }
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnCheckCheckBoxHeader("ckbAll");
+                    SetICheck();
+                    SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "");
+                    UnblockUI();
+                }
+            });
+        }
+
+        function Cancel() {
+            window.location.reload();
+        }
+
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": chkAll(), "width": "4%", "className": "dt-chk-ctm", "searchable": false, "orderable": false, "data": "Id" },
+                { "title": "Ref No.", "width": "10%", "className": "dt-center-ctm", "data": "ref_no" },
+                { "title": "Candidate Name", "width": "20%", "className": "dt-left-ctm", "data": "name_en" },
+                { "title": "Group", "width": "10%", "className": "dt-center-ctm", "data": "sgroup" },
+                { "title": "ID Card", "width": "10%", "className": "dt-center-ctm", "data": "id_card" },
+                { "title": "UserID", "width": "10%", "className": "dt-center-ctm", "data": "user_name" },
+                { "title": "Defaulf<br/>Password", "width": "10%", "className": "dt-center-ctm", "data": "spassword" },
+                { "title": "Update Date", "width": "13%", "className": "dt-center-ctm", "data": "update_date" },
+                { "title": "Update By", "width": "10%", "className": "dt-center-ctm", "data": "update_user" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix:  0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[7, "desc"]],
+                columnDefs: [{
+                    "targets": 0,
+                    "render": function (data) {
+                        return CreateRadioOfPage(data);
+                    }
+                }, {
+                    "targets": 7,
+                    "type": "date-th",
+                }],
+                objBeforeClRender: false,
+
+            };
+
+            var table = CreatTableJS(objTableRe);
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+                $("div[id$=" + objTableRe.sTableID + "_wrapper] div.icheckbox_flat-green input[id$=chkRow]").iCheck('uncheck');
+                UnCheckCheckBoxHeader("ckbAll");
+                SetICheck();
+                SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "");
+                $('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper ').height($('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper div.dataTables_scroll').height());
+            });
+        }
+        function Save() {
+            var Acceptlst = [];
+            Enumerable.From(objlstData).ForEach(function (ed) { return ed.statusvalue = GetValueChkGroupSingelValue(ed.Id + ""); });
+
+            Acceptlst = Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ToArray();
+            var $Accept = GetLabelByID("lblAccept");
+
+            if (Acceptlst.length == 0) {
+                DialogWarning(DialogHeader.Warning, "Please select at least one item.");
+            }
+            else {
+
+                if (Acceptlst.length > 0) {
+                    //var AcceptNumber = Enumerable.From(Acceptlst).Sum(function (s) { return ConvertToIntNotnull(s.AMOUNT_AMT) });
+                    var strReturnAccept = 'Do you want to “Create / Reset” password for ' + Acceptlst.length + ' person(s)?';
+                    $Accept.text(strReturnAccept);
+                }
+                else {
+                    $Accept.text('Not specify.');
+                }
+                $("#PopupSave").modal();
+            }
+        }
+              function GetData() {
+            var lstData = {
+                lstData: Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).Select(function (x) {
+                    return {
+                        IdEncrypt: x['IdEncrypt'],
+                    }
+                }).ToArray(),
+            };
+
+            return lstData;
+        }
+        function SaveData(){
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var lstParam = GetData();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("TraineeEditData", "Candidates")',
+                    data: JSON.stringify({ ItemData: lstParam}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin();
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                SaveComplect();
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Failed)
+                        {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+        function SaveComplect() {
+            $("#PopupSave").modal('hide');
+            LoadData();
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+                if (objModel.lstData != undefined && objModel.lstData != null) {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnAddData(objModel.lstData);
+                    $('#gvwData').dataTable().fnDraw();
+
+                    setTimeout(function () {
+                        $('#gvwData').DataTable().columns.adjust().draw();
+                        $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+                else {
+                    $('#gvwData').DataTable().clear().draw();
+                    $('#gvwData').dataTable().fnDraw();
+                    $('div[id$=divTable]').collapse("hide");
+                }
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+
+
+
+        }
+
+    </script>
+}
+<!-- /.content -->

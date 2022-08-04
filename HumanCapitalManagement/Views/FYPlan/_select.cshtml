@@ -1,0 +1,51 @@
+﻿
+@model HumanCapitalManagement.ViewModel.CommonVM.vSelect
+@if (Model != null)
+{
+    string sdis = "";
+    if (Model.disable)
+    {
+        sdis = "disabled";
+    }
+    if (Model.databind != null && @Model.databind != "")
+    {
+        <select id="@Model.id" name="@Model.id" class="form-control selectContainer input-sm" @sdis data-bind='value: @Model.databind'>
+            <option value=""> - Select - </option>
+            @if (Model.lstData != null && Model.lstData.Any())
+            {
+                foreach (var lst in Model.lstData)
+                {
+                    if (Model.value != lst.value)
+                    {
+                        <option value="@lst.value">@lst.text</option>
+                    }
+                    else
+                    {
+                        <option value="@lst.value" selected>@lst.text</option>
+                    }
+                }
+            }
+        </select>
+    }
+    else
+    {
+        <select id="@Model.id" name="@Model.id" class="form-control selectContainer" @sdis>
+            <option value=""> - Select - </option>
+            @if (Model.lstData != null && Model.lstData.Any())
+            {
+                foreach (var lst in Model.lstData)
+                {
+                    if (Model.value != lst.value)
+                    {
+                        <option value="@lst.value">@lst.text</option>
+                    }
+                    else
+                    {
+                        <option value="@lst.value" selected>@lst.text</option>
+                    }
+                }
+            }
+        </select>
+    }
+
+}

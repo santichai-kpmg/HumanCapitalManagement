@@ -1,0 +1,593 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Edit University";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Edit University
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_1" data-toggle="tab">University Detail</a></li>
+                        <li><a href="#tab_2" data-toggle="tab">Faculty Detail</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_1">
+                            <div id="divContent">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!-- general form elements -->
+                                        <!-- form start -->
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">University Name</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="txtNameEn" name="txtNameEn" class="form-control" data-bind="value : name_en , valueUpdate: 'afterkeydown'" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*<div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right nomallabel">University Name Th</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="txtNameTh" name="txtNameTh" class="form-control" data-bind="value : name_th , valueUpdate: 'afterkeydown'" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right nomallabel">University Short Name</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="txtNewNameSh" name="txtNewNameSh" class="form-control" data-bind='value: short_name_en' />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @*<div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">University Apponline Name</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="txtNameAOL" name="txtNameAOL" class="form-control" data-bind="value : name_aol , valueUpdate: 'afterkeydown'" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">Status</label>
+                                                        <div class="col-md-8">
+                                                            <label class="control-label">
+                                                                <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y">Active<br>
+                                                            </label>
+                                                            <label class="control-label">
+                                                                <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right nomallabel">Special Note</label>
+                                                        <div class="col-md-8">
+                                                            <textarea rows="3" id="txtDes" cols="50" class="form-control" data-bind='value: description'></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="button" class="btn btn-primary" onclick="Save();">Save</button>
+                                                    <button type="button" class="btn btn-danger" onclick="Cancel();">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab_2">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="divContentFaculty">
+                                        <div class="box-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">Faculty Name</label>
+                                                        <div class="col-md-8">
+                                                            <div class="input-group">
+                                                                @{ Html.RenderAction("CreateddlFaculty", "EduMasterData", new
+                                                                    {
+                                                                        id = "ddlFaculty",
+                                                                        value = ""
+                                                                    });}
+                                                                <span class="input-group-btn">
+                                                                    <button type="button" class="btn btn-sm btn-info btn-flat" tooltip="Copy Faculty Name" flow="right" onclick="CopyFaculty()">
+                                                                        <icon class="fa fa-fw fa-copy"></icon>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">Faculty Display Name</label>
+                                                        <div class="col-md-8">
+                                                            <input type="text" id="txtFacultyName" name="txtFacultyName" class="form-control" />
+                                                            <input type="text" id="txtFacultyid" name="txtFacultyid" class="form-control hidden" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right nomallabel">Faculty Special Note</label>
+                                                        <div class="col-md-8">
+                                                            <textarea rows="3" id="txtFacultyDes" name="txtFacultyDes" cols="50" class="form-control"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group form-group-sm">
+                                                        <label class="col-md-4 control-label text-right require">Status</label>
+                                                        <div class="col-md-8">
+                                                            <label class="control-label">
+                                                                <input type="radio" name="rdlStatusFaculty" id="rdlStatusFaculty" class="flat-green radio radio-inline" value="Y">Active<br>
+                                                            </label>
+                                                            <label class="control-label">
+                                                                <input type="radio" name="rdlStatusFaculty" id="rdlStatusFaculty" class="flat-green radio radio-inline" value="N">Inactive<br>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12 text-center">
+                                                    <button type="button" class="btn btn-primary" onclick="SaveFaculty();">Add Faculty</button>
+                                                    <button type="button" class="btn btn-danger" onclick="CancelFaculty();">Cancel</button>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="box box-solid box-ctmPR4">
+                                                        <div class="box-header with-border">
+                                                            <h3 class="box-title">Faculty List Data</h3>
+                                                            <div class="box-tools pull-right">
+                                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                    <i class="fa fa-refresh"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.box-header -->
+                                                        <div class="box-body">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataFaculty" width="100%">
+                                                                    <thead>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- /. box -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <label class="control-label" id="lblAccept"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to save?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sUrlBack ='@Url.Action("UniversityList", "University")';
+        var objMaxLength = [
+            { ctrlID: "txtNameEn", ctrlType: "txt", MaxLength: 230 },
+            //{ ctrlID: "txtNameTh", ctrlType: "txt", MaxLength: 230 },
+            //{ ctrlID: "txtNameAOL", ctrlType: "txt", MaxLength: 230 },
+            { ctrlID: "txtNewNameSh", ctrlType: "txt", MaxLength: 50 },
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 450 },
+            { ctrlID: "txtFacultyName", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtFacultyDes", ctrlType: "area", MaxLength: 450 }
+        ];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTableFaculty();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            ValidateForm();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+
+                }
+                if (e.target.hash == '#tab_2') {
+                    $('#gvwDataFaculty').DataTable().columns.adjust().draw();
+                }
+            });
+        });
+        function Save() {
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                IsPass = false;
+                FocusValidateBootstrap("divContent");
+            }
+            if (IsPass) {
+                $("#PopupSave").modal();
+            }
+
+        }
+        function SaveData (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContent")) {
+                FocusValidateBootstrap("divContent");
+                IsPass = false;
+            }
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var Param = ko.toJS(viewModel);
+                Param.lstData = null;
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("EditUniversity", "University")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=rdlStatus][value='" + value.active_status + "']").iCheck('check');
+                //Table param
+                if (objModel.lstFaculty != undefined && objModel.lstFaculty != null && objModel.lstFaculty.length > 0) {
+                    $('#gvwDataFaculty').DataTable().clear().draw();
+                    $('#gvwDataFaculty').dataTable().fnAddData(objModel.lstFaculty);
+                    $('#gvwDataFaculty').dataTable().fnDraw();
+                }
+                else {
+                    $('#gvwDataFaculty').DataTable().clear().draw();
+                    $('#gvwDataFaculty').dataTable().fnDraw();
+
+                }
+                setTimeout(function () {
+                    $('#gvwDataFaculty').DataTable().columns.adjust().draw();
+                    $('#gvwDataFaculty').DataTable().columns.adjust().responsive.recalc();
+                }, 500);
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=rdlStatus][value='" + value.active_status + "']").iCheck('check');
+            }
+        }
+        //function for validate form
+        function ValidateForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtNameEn", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            //objValidatePopUp[GetElementName("txtNameAOL", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidatePopUp);
+            var objValidateFaculty = {};
+            objValidateFaculty[GetElementName("ddlFaculty", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidateFaculty[GetElementName("txtFacultyName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContentFaculty", objValidateFaculty);
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        function SetTableFaculty() {
+            var objHeadClRequest = [
+                { "title": "Edit", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Edit" },
+                { "title": "Name", "width": "17%", "className": "dt-left-ctm", "data": "fa_name" },
+                { "title": "Display Name", "width": "20%", "className": "dt-left-ctm", "data": "fa_display_name" },
+                { "title": "Status", "width": "10%", "className": "dt-center-ctm", "data": "active_status" },
+                { "title": "Created Date", "width": "13%", "className": "dt-center-ctm", "data": "create_date" },
+                { "title": "Created by", "width": "11%", "className": "dt-center-ctm", "data": "create_user" },
+                { "title": "Update Date", "width": "13%", "className": "dt-center-ctm", "data": "update_date" },
+                { "title": "Update By", "width": "11%", "className": "dt-center-ctm", "data": "update_user" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFaculty",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[1, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+            };
+
+            CreatTableJS(objTableRe);
+
+        }
+    </script>
+    <script type="text/javascript">
+        function GetDataFaculty() {
+            var lstData = {
+                id: GetValueTextBox("txtFacultyid"),
+                IdEncrypt: ko.toJS(viewModel.IdEncrypt),
+                fa_name_id: GetValDropdown("ddlFaculty"),
+                fa_display_name: GetValueTextBox("txtFacultyName"),
+                decs: GetValTextArea("txtFacultyDes"),
+                active_status: GetValRadioListICheck("rdlStatusFaculty"),
+            }
+            return lstData;
+
+        }
+        function SaveFaculty (){
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divContentFaculty")) {
+                FocusValidateBootstrap("divContentFaculty");
+                IsPass = false;
+            }
+            if (IsPass) {
+                BlockUI();
+                var Param = GetDataFaculty();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("CreateUniversityFaculty", "University")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccess(DialogHeader.Info, DialogMsg.SaveComplete);
+                            ClearFaculty();
+                            if (respone.result.lstData != undefined && respone.result.lstData != null && respone.result.lstData.length > 0) {
+                                $('#gvwDataFaculty').DataTable().clear().draw();
+                                $('#gvwDataFaculty').dataTable().fnAddData(respone.result.lstData);
+                                $('#gvwDataFaculty').dataTable().fnDraw();
+                            }
+                            else {
+                                $('#gvwDataFaculty').DataTable().clear().draw();
+                                $('#gvwDataFaculty').dataTable().fnDraw();
+                            }
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $('#gvwDataFaculty').DataTable().columns.adjust().draw();
+                        $('#gvwDataFaculty').DataTable().columns.adjust().responsive.recalc();
+                    }
+                });
+            }
+        }
+        function CopyFaculty() {
+            var _getValue = GetValDropdown("ddlFaculty");
+            if (_getValue != undefined && _getValue != "") {
+                var GetText = GetTextDropdownText("ddlFaculty");
+                GetInputByID("txtFacultyName").val(GetText);
+                $('#divContentFaculty').bootstrapValidator('revalidateField', GetElementName("txtFacultyName", objControl.txtbox));
+            }
+        }
+        function EditFaculty(sVal) {
+            ClearFaculty();
+            BlockUI();
+            var Param = {
+                IdEncrypt: sVal, IdEncrypt_Uni_Id: ko.toJS(viewModel.IdEncrypt) };
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("LoadUniversityFaculty", "University")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            SetObjectFaculty(respone.result.objData);
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            ClearFaculty();
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        function ClearFaculty() {
+            GetSelectByID("ddlFaculty").val('');
+            GetInputByID("txtFacultyName").val('');
+            GetInputByID("txtFacultyid").val('');
+            GetTextareaByID("txtFacultyDes").val('');
+            $("input[id*=rdlStatusFaculty][value='Y']").iCheck('check');
+            $('#divContentFaculty').bootstrapValidator('updateStatus', GetElementName("ddlFaculty", objControl.dropdown), "NOT_VALIDATED");
+            $('#divContentFaculty').bootstrapValidator('updateStatus', GetElementName("txtFacultyName", objControl.txtbox), "NOT_VALIDATED");
+        }
+        function CancelFaculty() {
+            BlockUI();
+            ClearFaculty();
+            setTimeout(function () {
+                UnblockUI();
+            }, 500);
+        }
+        function SetObjectFaculty(objData) {
+            if (objData != undefined) {
+                GetSelectByID("ddlFaculty").val(objData.fa_name_id);
+                GetInputByID("txtFacultyName").val(objData.fa_display_name);
+                GetInputByID("txtFacultyid").val(objData.id);
+                GetTextareaByID("txtFacultyDes").val(objData.decs);
+                $("input[id*=rdlStatusFaculty][value='" + objData.active_status+"']").iCheck('check');
+            }
+
+        }
+    </script>
+}

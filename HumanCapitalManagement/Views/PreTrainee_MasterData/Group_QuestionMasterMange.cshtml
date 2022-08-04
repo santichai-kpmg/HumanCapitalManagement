@@ -1,0 +1,211 @@
+﻿
+@{
+
+    ViewBag.Title = "Group_QuestionMasterMange";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Group QuestionMasterList
+
+    </h1>
+
+    <br />
+    <div class="box box-primary">
+        <div class="box-body">
+            <div class="row">
+                <div class="form-group form-group-sm col-xs-12  text-left">
+
+                    <button type="button" class="btn bg-teal" onclick="LoadData();">Search</button>
+                    <button type="button" class="btn bg-purple" onclick="Manage();">Manage</button>
+                    <button type="button" class="btn btn-primary" onclick="AddData();">Add</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTable();
+            //setDatePickerFromTo($("input[id$=txtDateStart]"), $("input[id$=txtDateTo]"));
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+        });
+        function AddData() {
+             window.location.href = '@Url.Action("TIFFormCreate", "PreTrainee_MasterData")';
+        }
+        function View(sVal) {
+             BlockUI();
+             window.location.href = '@Url.Action("Group_QuestionMasterMange", "PreTrainee_MasterData")?id=' + sVal;
+        }
+
+        function Manage() {
+             BlockUI();
+             window.location.href = '@Url.Action("Group_QuestionMasterMange", "PreTrainee_MasterData")';
+        }
+
+        function Search() {
+            var lstSearch = ko.toJS(viewModel)
+            return lstSearch;
+        };
+        function LoadData() {
+            $('div[id$=divTable]').collapse("show");
+            $('#gvwData').DataTable().columns.adjust().draw();
+            var Param = Search();
+            BlockUI();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("LoadGroup_QuestionMasterList", "PreTrainee_MasterData")',
+                dataType: "json",
+                data: { SearchItem: Param },
+                success: function (response) {
+                    if (response.result.Status == SysProcess.SessionExpired) {1
+                        PopupLogin('@Url.Action("Index", "Home")');
+                    }
+                    else {
+
+                        //var lstDataMaster = response.result.lstDataMaster;
+                        objModel.lstDataMaster = response.result.lstDataMaster;
+
+
+                        if (objModel.lstDataMaster == undefined || objModel.lstDataMaster.length <= 0) {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                        else {
+                            $('div[id$=divTable]').collapse("show");
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnAddData(objModel.lstDataMaster);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+                        }
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+        }
+
+        function Cancel() {
+            window.location.reload();
+        }
+
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "View", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "View" },
+                { "title": "Content", "width": "37%", "className": "dt-left-ctm", "data": "Content" },
+                { "title": "Status", "width": "10%", "className": "dt-center-ctm", "data": "Active_Status" },
+                { "title": "Created Date", "width": "13%", "className": "dt-center-ctm", "data": "Create_Date" },
+                { "title": "Created by", "width": "11%", "className": "dt-center-ctm", "data": "Create_User" },
+                { "title": "Update Date", "width": "13%", "className": "dt-center-ctm", "data": "Update_Date" },
+                { "title": "Update By", "width": "11%", "className": "dt-center-ctm", "data": "Update_User" },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",//length pangging
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "desc"]],
+                columnDefs: [{
+                    "targets": 3,
+                    "type": "date-th",
+                }, {
+                    "targets": 5,
+                    "type": "date-th",
+                }],
+                objBeforeClRender: false,
+            };
+
+            var table = CreatTableJS(objTableRe);
+            //new $.fn.dataTable.FixedHeader($('#gvwData'));
+        }
+    </script>
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+
+            if (objModel.lstData != undefined && objModel.lstData != null) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(objModel.lstData);
+                $('#gvwData').dataTable().fnDraw();
+
+                setTimeout(function () {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    $('#gvwData').DataTable().columns.adjust().responsive.recalc();
+                }, 500);
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+                $('div[id$=divTable]').collapse("hide");
+            }
+
+        }
+
+    </script>
+}

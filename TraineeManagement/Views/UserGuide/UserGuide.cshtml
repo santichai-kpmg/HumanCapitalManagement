@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "KPMG Intern | User Guide";
+    Layout = "~/Views/Shared/_TPJMaster.cshtml";
+}
+
+
+<div class="breadcrumb-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i>Profile</li>
+            <li class="breadcrumb-item active"> User Guide</li>
+        </ol>
+    </div>
+</div>
+<div id="page-start"></div>
+<!-- section end -->
+<!-- section -->
+<!-- ================ -->
+<div class="main-container  light-translucent-bg background-img-7">
+    <div class="container-fluid" style="    min-height: 55vh;
+    height: 100%;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fa fa-file pr-10"></i> User Guide
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- Main content -->
+                        <section class="content">
+
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div style="padding: 80px;">
+
+                                            <a href="~/File/Audit Trainee - OT.pdf" target="_blank">
+                                                <div class="container">
+                                                    <img src="~/images/3.jpg" class="image" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    border-radius: 0px 30px 0px 30px;" />
+                                                    <div class="overlay">
+                                                        <div class="text">Preview</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div style="padding: 80px;">
+                                            <a href="~/File/Trainee Perdiem and Transportation.pdf" target="_blank">
+                                                <div class="container">
+                                                    <img src="~/images/2.jpg" class="image" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    border-radius: 0px 30px 0px 30px;" />
+                                                    <div class="overlay">
+                                                        <div class="text">Preview</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div style="padding: 80px;">
+                                            <a href="~/File/Trainee Timesheet - NonAudit.pdf" target="_blank">
+                                                <div class="container">
+                                                    <img src="~/images/1.jpg" class="image" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);    border-radius: 0px 30px 0px 30px;" />
+                                                    <div class="overlay">
+                                                        <div class="text">Preview</div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </section>
+                        <!-- /.content -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<!-- Page specific script -->
+@section style{
+    <link href="~/Scripts/plugins/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: #008CBA;
+
+        }
+
+        .container:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            SetActiveMenu("6");
+        });
+    </script>
+
+
+
+}

@@ -1,0 +1,91 @@
+﻿
+@*@model HumanCapitalManagement.ViewModel.MainVM.vCandidates_obj_update*@
+
+
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div id="pvUpCandidate">
+            <div class="row ">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover display" id="gvwDetail" width="100%">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+
+<script type="text/javascript">
+        var objModelUpdate = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            SetTableCandidate();
+            BindDataDetail(objModelUpdate);
+    });
+    function BindDataDetail(value) {
+        if (value.lstCandidates != undefined && value.lstCandidates != null && value.lstCandidates.length > 0) {
+            $('#gvwDetail').DataTable().clear().draw();
+            $('#gvwDetail').dataTable().fnAddData(value.lstCandidates);
+            $('#gvwDetail').dataTable().fnDraw();
+        }
+        else {
+            $('#gvwDetail').DataTable().clear().draw();
+            $('#gvwDetail').dataTable().fnDraw();
+            $('#gvwDetail').DataTable().columns.adjust().responsive.recalc();
+        }
+    }
+    function SetTableCandidate() {
+        var objHeadClRequest = [
+            { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "Id", },
+            { "title": "Name", "width": "15%", "className": "dt-left-ctm", "data": "candidate_name", "searchable": false },
+            { "title": "Rank", "width": "10%", "className": "dt-center-ctm", "data": "rank", "searchable": false },
+            { "title": "Status", "width": "15%", "className": "dt-center-ctm", "data": "candidate_status", "searchable": false },
+            { "title": "Action Date", "width": "15%", "className": "dt-center-ctm", "data": "action_date", "searchable": false },
+            { "title": "Remark", "width": "25%", "className": "dt-left-ctm", "data": "remark", "searchable": false },
+            { "title": "HR Owner", "width": "15%", "className": "dt-left-ctm", "data": "owner_name", "searchable": false },
+        ];
+
+        var objTableRe = {
+            sTableID: "gvwDetail",
+            nDis: [],
+            sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+            objHeadCl: objHeadClRequest,//Table Headder
+            objDataSet: [], //dataset
+            nHeadFix: 0,// fix clr
+            EmptyTable: EmptyTable,
+            order: [[4, "desc"]],
+            objBeforeClRender: false,
+            lengthMN: [[-1], ["All"]],
+            nRunningNumber: ["true", 0],
+            columnDefs: [{
+                "targets": 4,
+                "type": "date-th2",
+            }
+            ],
+            fixedHeader: {
+                header: false,
+                footer: false
+            }
+
+        };
+
+        var table = CreatTableJS(objTableRe);
+        setTimeout(function () {
+            $('#gvwDetail').DataTable().columns.adjust().draw();
+            $('#gvwDetail').DataTable().columns.adjust().responsive.recalc();
+        }, 200);
+    }
+</script>
+
+
+
+
+

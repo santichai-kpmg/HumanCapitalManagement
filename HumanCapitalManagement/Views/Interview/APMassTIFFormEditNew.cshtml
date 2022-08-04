@@ -1,0 +1,1637 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vInterview_obj_save
+@{
+    ViewBag.Title = "HCM | Second Evaluator: Confirm / Edit Interview Result (TIF)";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Second Evaluator: Confirm / Edit Interview Result (TIF)
+    </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div >
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Personnel Request Form Detail</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                <div class="col-md-8">
+
+                                                    <input type="text" class="form-control" data-bind='value: group_id' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Position</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: position_id' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Candidate Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: candidate_name' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Rank fr. PR</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: rank_id' disabled />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-solid box-ctmPR4">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Technical Interview Form</h3>
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        @if (!string.IsNullOrEmpty(Model.TIF_type) && (Model.TIF_type == "M" || Model.TIF_type == "N"))
+                        {
+                            <div class="box-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="nav-tabs-custom">
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a href="#tab_1" data-toggle="tab">Core Competencies</a></li>
+                                                <li><a href="#tab_2" data-toggle="tab">Auditing Questions</a></li>
+                                                <li><a href="#tab_3" data-toggle="tab">Additional Information</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab_1">
+                                                    <div id="divContent">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="callout callout-warning ">
+                                                                    <div>
+                                                                        <h4>
+                                                                            <u>Rating Criteria</u>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <p>
+                                                                        <strong>1. Consistently exceeds performance expectation</strong> : <em>Overall performance consistently exceeds expectations of the role</em><br />
+                                                                        <strong>2. Often exceeds performance expectation</strong> : <em>Overall performance often exceeds expectations of the role</em><br />
+                                                                        <strong>3. Consistently meets performance expectation</strong> : <em>Overall performance consistently meets expectations of the role</em><br />
+                                                                        <strong>4. Partially meets performance expectation</strong> : <em>Overall performance occasionally falls below the expectations of the role</em><br />
+                                                                        <strong>5. Does not meet performance expectation</strong> <em>Overall performance often fails to meet the expectations of the role</em><br />
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h4 class="box-title">Please select rating from 1 - 5 in each sub-core competency and the evidence MUST be provided.</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <!-- general form elements -->
+                                                                <!-- form start -->
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-striped table-bordered table-hover display" id="gvwDataCore" width="100%">
+                                                                        <thead>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <!-- /.box-body -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab_2">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div id="divContent2">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h4 class="box-title">Auditing Questions</h4>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group form-group-sm">
+                                                                            <label class="col-md-4 control-label  text-right require ">Questions - SET</label>
+                                                                            <div class="col-md-8" >
+                                                                                @{ Html.RenderAction("CreateddlMassType", "HCMMasterData2", new
+                                                                                        {
+                                                                                            id = "ddlMassType",
+                                                                                            databind = "set_type",
+                                                                                            value = "",
+                                                                                            disable = true,
+                                                                                    });}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="callout callout-warning ">
+                                                                            <h4><u>Rating Criteria</u></h4>
+                                                                            <p>
+                                                                                <strong>1.</strong><em>Exactly the same with key answers</em><br />
+                                                                                <strong>2.</strong><em>Relevant answer (Partly correct)</em><br />
+                                                                                <strong>3.</strong><em>Relevant answer (Partly correct,partly incorrect)</em><br />
+                                                                                <strong>4.</strong><em>Wrong answer but have some relevant</em><br />
+                                                                                <strong>5.</strong><em>Wrong answer/cannot answer</em><br />
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped table-bordered table-hover display" id="gvwDataAuditing" width="100%">
+                                                                                <thead>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="tab_3">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <h4 class="box-title">Additional Information</h4>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped table-bordered table-hover table-responsive-custom" id="gvwDataInfo" width="100%">
+                                                                                <thead>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-sm">
+                                            @*<label class="col-md-2 control-label  text-right require ">Result</label>*@
+                                            <div class="col-md-8 col-md-offset-2" style=" border:2px solid #f36b11; padding-top: 5px;padding-bottom: 5px;">
+                                                <input type="checkbox" id="chkStatus" name="chkStatus" class="flat-green" value="Y" />We (interviewers) recognize and  acknowledge that the confidential information from candidate's previous/current employer will not be disclosed to us during the interview session. We have informed the candidate regarding this matter accordingly.
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-2 control-label  text-right nomallabel ">Additional Comments</label>
+                                            <div class="col-md-10">
+                                                <textarea rows="3" id="txtcomment" cols="50" class="form-control" data-bind='value: comment'
+                                                          disabled></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label text-right require">Start Date</label>
+                                            <div class="col-md-8">
+                                                <div class="input-group form-inline" style="float: left;">
+                                                    <input ID="txtStartdate" name="txtStartdate" class="form-control " type="text"
+                                                           ToolTip="To" placeholder="-- / -- / ----" data-bind="value : target_start, valueUpdate: 'afterkeydown' " disabled />
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label text-right require">Recommended Rank</label>
+                                            <div class="col-md-8">
+                                                <select id="ddlRank" name="ddlRank" class="form-control" data-bind="options: lstrank, optionsText: 'name', optionsValue: 'id',
+                                                   value: recommended_rank_id,
+                                                   valueAllowUnset: true" disabled></select>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label  text-right require ">Interview Result</label>
+                                            <div class="col-md-8">
+                                                @{ Html.RenderAction("CreateddlMassTIFStatus", "HCMMasterData2", new
+                                                    {
+                                                        id = "ddlTIFStatus",
+                                                        databind = "tif_status_id",
+                                                        value = "",
+                                                        disable = true,
+                                                    });}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-lg-offset-3">
+                                        <div class="box box-solid box-ctmPR4">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">TIF Confirmation Process</h3>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <!-- form start -->
+                                            <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwDataApprove" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- /.box-body -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer text-center">
+                                @if (Model.approve_status + "" != "Y")
+                                {
+                                    <button type="button" id="btnEdit" class="btn btn-primary" onclick="Edit();">Edit</button>
+                                    <button type="button" id="btnEditConfirm" class="btn btn-success hide" onclick="Save('Y');">Edit & Confirm</button>
+                                    <button type="button" id="btnConfirm" class="btn btn-success" onclick="Approve();">Confirm</button>
+                                    <button type="button" class="btn btn-danger" onclick="RollbackData();">Rollback</button>
+                                }
+                                <button type="button" class="btn btn-warning" onclick="Cancel();">Back</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="box-body ">
+                                <div class="error-page">
+                                    <h2 class="headline text-red"><i class="fa fa-warning"></i></h2>
+                                    <div class="error-content">
+                                        <h3><i class="fa fa-warning text-red"></i> Missing! Type of TIF form</h3>
+                                        <p>
+                                            Pleace contact, @Model.null_tif_contact.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer text-center">
+                                <button type="button" class="btn btn-warning" onclick="Cancel();">Back</button>
+                            </div>
+                        }
+
+                        <!-- /.box-body -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to submit?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="PopupApprove" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to submit?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="ApproveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="PopupRollback" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #ff6a00;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to Rollback Approved Data?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="Rollback()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <style>
+        div:not(.dataTables_scrollFoot)::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dt-HeadGr-ctm {
+            background-color: #2952a3 !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a !important;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35) !important;
+            color: rgb(0, 0, 0) !important;
+            vertical-align: middle !important;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        /*input:disabled + .checkbox-icon:before {
+            border-color: silver !important;
+        }
+
+        input:disabled:checked + .checkbox-icon:before {
+            background-color: silver !important;
+        }*/
+    </style>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    @*<script src="~/Scripts/plugins/DataTables2/FixedHeader-3.1.2/js/dataTables.fixedHeader.min.js"></script>*@
+    @*Script for bind Data KnockOut*@
+
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var Is_disable = "Y";
+       var sUrlBack = '@Url.Action("APTIFFormList", "Interview")';
+       $(function () {
+        @if (Request.QueryString["bUrl"] != null)
+           {
+       <text>
+           sUrlBack += "?qryStr=" + '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+       </text>
+       }
+
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        var objMaxLength = [
+            { ctrlID: "txtcomment", ctrlType: "area", MaxLength: 1000 }];
+        var save_Status = "";
+        $(function () {
+            SetTableMass();
+            SetTableAuditing();
+            SetTableApprove();
+            SetTableInfo();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            GetSelectByID("ddlMassType").val("4");
+            if (GetInputByID("txtSearch") != undefined) {
+                // SetAutocom("txtSearch");
+            }
+            SetMaxLeangthJS(objMaxLength);
+            //$("select[id$=ddlMassType]").on("change", function () {
+            //    ActionddlMassType($(this).val());
+
+            //});
+            SetDatePicker(GetInputByID("txtStartdate"));
+
+            $("input[id$=txtStartdate]").change(function () {
+                $('#divContent').bootstrapValidator('revalidateField', GetElementName("txtStartdate", objControl.txtbox));
+            }).keydown(function (e) {
+                if (e.which == 8 || e.which == 46) {
+                    $('#divContent').bootstrapValidator('updateStatus', GetElementName("txtStartdate", objControl.txtbox), "INVALID");
+
+                }
+            });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwDataCore').DataTable().columns.adjust().draw();
+                    $('#gvwDataCore').DataTable().fixedHeader.enable();
+                }
+                else if (e.target.hash == '#tab_2') {
+                    $('#gvwDataAuditing').DataTable().columns.adjust().draw();
+                    $('#gvwDataCore').DataTable().fixedHeader.disable();
+                }
+                else if (e.target.hash == '#tab_3') {
+
+                    $('#gvwDataInfo').DataTable().columns.adjust().draw();
+                    $('#gvwDataCore').DataTable().fixedHeader.disable();
+
+                }
+            });
+        });
+
+
+
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=chkStatus][value='" + value.confidentiality_agreement + "']").iCheck('check');
+                if (value.TIF_type + "" == "N" || value.TIF_type + "" == "M") {
+
+                    if (objModel.objMasstifform != undefined && objModel.objMasstifform != null && objModel.objMasstifform.lstQuestion != undefined && objModel.objMasstifform.lstQuestion != null && objModel.objMasstifform.lstQuestion.length > 0) {
+                        $('#gvwDataCore').DataTable().clear().draw();
+                        $('#gvwDataCore').dataTable().fnAddData(objModel.objMasstifform.lstQuestion);
+                        $('#gvwDataCore').dataTable().fnDraw();
+                        setTimeout(function () {
+                            $('#gvwDataCore').DataTable().columns.adjust().draw();
+                            $('#gvwDataCore').DataTable().columns.adjust().responsive.recalc();
+                        }, 500);
+                    }
+                    else {
+                        $('#gvwDataCore').DataTable().clear().draw();
+                        $('#gvwDataCore').dataTable().fnDraw();
+                    }
+
+                    if (objModel.objMasstifform != undefined && objModel.objMasstifform != null && objModel.objMasstifform.lstAuditing != undefined && objModel.objMasstifform.lstAuditing != null && objModel.objMasstifform.lstAuditing.length > 0) {
+                        $('#gvwDataAuditing').DataTable().clear().draw();
+                        $('#gvwDataAuditing').dataTable().fnAddData(objModel.objMasstifform.lstAuditing);
+                        $('#gvwDataAuditing').dataTable().fnDraw();
+                        setTimeout(function () {
+                            $('#gvwDataAuditing').DataTable().columns.adjust().draw();
+                            $('#gvwDataAuditing').DataTable().columns.adjust().responsive.recalc();
+                        }, 500);
+                    }
+                    else {
+                        $('#gvwDataAuditing').DataTable().clear().draw();
+                        $('#gvwDataAuditing').dataTable().fnDraw();
+                    }
+
+
+                    if (objModel.lstApprove != undefined && objModel.lstApprove != null && objModel.lstApprove.length > 0) {
+                        $('#gvwDataApprove').DataTable().clear().draw();
+                        $('#gvwDataApprove').dataTable().fnAddData(objModel.lstApprove);
+                        $('#gvwDataApprove').dataTable().fnDraw();
+
+                        setTimeout(function () {
+                            $('#gvwDataApprove').DataTable().columns.adjust().draw();
+                            $('#gvwDataApprove').DataTable().columns.adjust().responsive.recalc();
+                        }, 500);
+                    }
+                    else {
+                        $('#gvwDataApprove').DataTable().clear().draw();
+                        $('#gvwDataApprove').dataTable().fnDraw();
+
+                    }
+
+                    if (objModel.objMasstifform != undefined && objModel.objMasstifform != null && objModel.objMasstifform.lstAdInfo != undefined && objModel.objMasstifform.lstAdInfo != null && objModel.objMasstifform.lstAdInfo.length > 0) {
+                        $('#gvwDataInfo').DataTable().clear().draw();
+                        $('#gvwDataInfo').dataTable().fnAddData(objModel.objMasstifform.lstAdInfo);
+                        $('#gvwDataInfo').dataTable().fnDraw();
+                        setTimeout(function () {
+                            $('#gvwDataInfo').DataTable().columns.adjust().draw();
+                            $('#gvwDataInfo').DataTable().columns.adjust().responsive.recalc();
+                        }, 500);
+                    }
+                    else {
+                        $('#gvwDataInfo').DataTable().clear().draw();
+                        $('#gvwDataInfo').dataTable().fnDraw();
+                    }
+                }
+            }
+            else {
+                $("input[id*=chkStatus][value='" + value.confidentiality_agreement + "']").iCheck('check');
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+
+
+    </script>
+    <script type="text/javascript">
+
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable, sRow) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            if (sRow == undefined || sRow == null) {
+                sRow = 3;
+            }
+
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='" + sRow + "' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+        //function for validate form
+        function
+            eForm() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("ddlMassType", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent2", objValidatePopUp);
+
+            var objValidate = {};
+
+            objValidate[GetElementName("ddlTIFStatus", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidate[GetElementName("ddlRank", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidate[GetElementName("txtStartdate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divContent", objValidate);
+
+        }
+
+    </script>
+    <script type="text/javascript">
+        function DisablegvwDataCore() {
+            if (Is_disable == "Y") {
+                $('input[id*=-chkRow]').attr("disabled", true);
+            }
+            else {
+                $('input[id*=-chkRow]').removeAttr("disabled");
+            }
+        }
+        function SetTableApprove() {
+            var objHeadClRequest = [
+                { "title": "Evaluator", "width": "10%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nStep" },
+                { "title": "Evaluator’s Name", "width": "35%", "className": "dt-left-ctm", "data": "app_name", "searchable": false, "orderable": false },
+                { "title": "Confirmed Date", "width": "25%", "className": "dt-center-ctm", "data": "approve_date", "searchable": false, "orderable": false },
+                { "title": "Status", "width": "20%", "className": "dt-center-ctm", "data": "app_code", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataApprove",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+
+                        return data;
+                    }
+                }
+                ],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function SetTableMass() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "Core Compotencies", "width": "27%", "className": "dt-right-ctm", "searchable": false, "orderable": false, "data": "question", },
+                { "title": "Rating", "width": "18%", "className": "dt-left-ctm", "data": "rating", "searchable": false, "orderable": false },
+                { "title": "Evidence", "width": "55%", "className": "dt-left-ctm", "data": "evidence", "searchable": false, "orderable": false },
+                        ];
+
+            var objTableRe = {
+                sTableID: "gvwDataCore",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row) {
+                            return (data + "").replace("(", "<br/>(");
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row) {
+                            
+                            var sHtml = CreatSelect("ddlRating" + row.id, JSON.stringify(objModel.objMasstifform.lstRating), data,"Y");
+                            return sHtml;
+                        }
+                    },
+                    {
+
+                        "targets": 4,
+                        "render": function (data, type, row) {
+                            if (data == undefined) {
+                                return CreateTextAreaInt("txtevidence" + row.id, 1000, " ","Y");
+
+                            }
+                            else {
+                                return CreateTextAreaInt("txtevidence" + row.id, 1000, data, "Y",);
+
+                            }
+                        },
+                    }
+                ],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }
+                ,
+                rowGroup: {
+                    'startRender': function (rows, header) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-left-ctm" style="height: 25px;font-size: 14px;" colspan="5">' + header + '</td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'header'
+                }
+            };
+
+            var table = CreatTableJS(objTableRe);
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+
+                SetICheck();
+                // DisablegvwDataCore();
+            });
+        }
+        function SetTableAuditing() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "id", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "header", "visible": false },
+                { "title": "No.", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nSeq", },
+                { "title": "Selected Question ", "width": "25%", "className": "dt-left-ctm", "data": "Qst", "searchable": false, "orderable": false },
+                { "title": "Answer", "width": "53%", "className": "dt-left-ctm", "data": "answer", "searchable": false, "orderable": false },
+                { "title": "Rating", "width": "17%", "className": "dt-left-ctm", "data": "scoring", "searchable": false, "orderable": false },
+                { "title": "", "width": "0%", "className": "rowgroup", "searchable": false, "orderable": false, "data": "lstQuiz", "visible": false }
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataAuditing",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    {
+                        "targets": 4,
+                        "render": function (data, type, row) {
+                            //var sHtml = "";
+                            //if (objModel.objMasstifform.lstAuditing_Qst != undefined && objModel.objMasstifform.lstAuditing_Qst != null && objModel.objMasstifform.lstAuditing_Qst.length > 0) {
+
+                            //    sHtml = CreatSelectMass("ddlAudQst" + row.id, JSON.stringify(objModel.objMasstifform.lstAuditing_Qst), data, "Y");
+                            //}
+                            //return sHtml;
+                            var sHtml = "";
+                            if (row.lstQuiz != undefined && row.lstQuiz != null && row.lstQuiz.length > 0) {
+                                //sHtml = CreatSelect("ddlAudQst" + row.id, JSON.stringify(objModel.objMasstifform.lstAuditing_Qst), data);
+                                sHtml = CreatSelect("ddlAudQst" + row.id, JSON.stringify(row.lstQuiz), data,"Y");
+                            }
+                            return sHtml;
+                        },
+                    },
+                    {
+                        "targets": 5,
+                        "render": function (data, type, row) {
+                            return CreateTextAreaInt("txtanswer" + row.id, 1000, data, "Y", 10);
+                        }
+                    }, {
+                        "targets": 6,
+                        "render": function (data, type, row) {
+                            var sHtml = "";
+                            if (objModel.objMasstifform.lstScoring != undefined && objModel.objMasstifform.lstScoring != null && objModel.objMasstifform.lstScoring.length > 0) {
+
+                                sHtml = CreatSelect("ddlScoring" + row.id, JSON.stringify(objModel.objMasstifform.lstScoring), data, "Y");
+                            }
+                            return sHtml;
+                        },
+                    }
+
+                ],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }
+                ,
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm"  colspan="4" >' + group + '</td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'header'
+                }
+            };
+
+            var table = CreatTableJS(objTableRe);
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+
+            });
+        }
+        function CreateRadioOfMassTIF(sID, sVal, sText, sSeletc) {
+            var sChecked = "";
+            var sHtml = "";
+            if (sID != undefined && sID != "" && sVal != undefined && sVal != "") {
+                if (sSeletc != undefined && sSeletc == sVal) {
+                    sChecked = "checked";
+                }
+                sHtml = '<input type="radio" id="chkX' + sID + '-chkRow" name="chk' + sID + '"  class="flat-green" value="' + sVal + '" ' + sChecked + '   />&nbsp;<strong>' + sText + "</strong>";
+            }
+            else {
+                sHtml = "";
+            }
+            return sHtml;
+        }
+        function CreatSelectMass(sID, objJson, sSelectValue, sDisable) {
+            $("select[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            var sHtml = "<select id='" + sID + "' class='form-control input-sm ' style='width:100%;' " + sDis + " >";
+            if (objJson != undefined) {
+                if (sSelectValue != undefined && sSelectValue != null && sSelectValue != "") {
+                    $.each(JSON.parse(objJson), function (i, item) {
+                        var optionhtml = "";
+                        if (item.value + "" == sSelectValue + "") {
+                            optionhtml = '<option value="' +
+                                item.value + '" selected="selected">' + item.text + '</option>';
+                            sHtml += optionhtml;
+                        }
+                        else {
+                            optionhtml = '<option value="' +
+                                item.value + '">' + item.text + '</option>';
+                            sHtml += optionhtml;
+                        }
+                    });
+                }
+                else {
+                    var optionhtml = "";
+                    $.each(JSON.parse(objJson), function (i, item) {
+                        optionhtml = '<option value="' +
+                            item.value + '">' + item.text + '</option>';
+                        sHtml += optionhtml;
+                    });
+                }
+            }
+            sHtml += "</select>";
+
+            //Set Event dropdows
+            $("select[id$=" + sID + "]").bind("change", function () {
+                $("select[id$=" + sID + "]").val($(this).val());
+            });
+
+            return sHtml;
+        }
+    </script>
+    <script type="text/javascript">
+           function SetTableInfo() {
+               var objHeadClRequest = [
+                   { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "seq", "visible": false },
+                   { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nID", "visible": false },
+                   { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "multi_answer", "visible": false },
+                   { "title": "No.", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "seq", },
+                   { "title": "Question", "width": "35%", "className": "dt-left-ctm", "data": "question", "searchable": false, "orderable": false },
+                   { "title": "Answer", "width": "35%", "className": "dt-left-ctm", "data": "lstAnswersselect", "searchable": false, "orderable": false },
+                   { "title": "Note", "width": "25%", "className": "dt-left-ctm", "data": "other_answer", "searchable": false, "orderable": false },
+               ];
+
+               var objTableRe = {
+                   sTableID: "gvwDataInfo",
+                   nDis: [],
+                   sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                   objHeadCl: objHeadClRequest,//Table Headder
+                   objDataSet: [], //dataset
+                   nHeadFix: 0,// fix clr
+                   EmptyTable: EmptyTable,
+                   order: [[0, "asc"]],
+                   objBeforeClRender: false,
+                   lengthMN: [[-1], ["All"]],
+                   columnDefs: [
+                       {
+                           "targets": 4,
+                           "render": function (data, type, row) {
+                               var sHtml = "";
+                               sHtml = (data + "").replace("(", "<br/>(");
+
+                               return sHtml;
+                           },
+                       },
+                       {
+                           "targets": 5,
+                           "render": function (data, type, row) {
+                               var sHtml = "";
+                               if (row.lstAnswers != undefined && row.lstAnswers != null && row.lstAnswers.length > 0) {
+
+                                   sHtml = CreateMassCheckbox(row.nID + "", JSON.stringify(row.lstAnswers), data, "", row.multi_answer);
+                               }
+                               return sHtml;
+                           },
+                       }, {
+                           "targets": 6,
+                           "render": function (data, type, row) {
+                               return CreateTextAreaInt("txtotheranswer" + row.nID, 500, data, 'Y', 10);
+                           }
+                       }
+                   ],
+                   fixedHeader: {
+                       header: false,
+                       footer: false
+                   }
+                   ,
+                   rowGroup: {
+                       enable: false
+                   }
+               };
+
+               var table = CreatTableJS(objTableRe);
+               $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+                   SetICheck();
+                   SetCheckBoxNotMulti()
+               });
+           }
+           function CreateMassCheckbox(sID, objJson, sSelectValue, sDisable, isMulti) {
+
+               var sDis = "";
+               var multi = "no";
+               if (sDisable != undefined && sDisable == "Y") {
+                   sDis = "disabled";
+               }
+               if (isMulti != undefined && isMulti == "Y") {
+                   multi = "multiple";
+               }
+               var sHtml = "";
+               //return "<input type='checkbox' id='AdnInfo' name='AdnInfo' class='flat-green' data-type='xxxx' value='Y' checked />Iasfasf"
+               if (objJson != undefined) {
+                   if (sSelectValue != undefined && sSelectValue != null && sSelectValue.length > 0) {
+                       $.each(JSON.parse(objJson), function (i, item) {
+                           var optionhtml = "";
+                           //if (item.nID + "" == sSelectValue + "") {
+                           if (sSelectValue.indexOf(item.nID + "") >= 0) {
+                               optionhtml = '<label><input type="checkbox"   id="AdnInfo' + sID + '" name="AdnInfo' + sID + '"   data-type="' + multi + '"  data-text="' + item.answer + '"  value="' +
+                                   item.nID + '" class="flat-green" checked />' + item.answer + '</label><br/>';
+                               sHtml += optionhtml;
+                           }
+                           else {
+                               optionhtml = '<label><input type="checkbox"   id="AdnInfo' + sID + '" name="AdnInfo' + sID + '" data-type="' + multi + '"  data-text="' + item.answer + '" value="' +
+                                   item.nID + '"  class="flat-green" />' + item.answer + '</label><br/>';
+                               sHtml += optionhtml;
+                           }
+                       });
+                   }
+                   else {
+                       var optionhtml = "";
+                       $.each(JSON.parse(objJson), function (i, item) {
+                           optionhtml = '<label><input type="checkbox" id="AdnInfo' + sID + '" name="AdnInfo' + sID + '" data-type="' + multi + '" data-text="' + item.answer + '"  value="' +
+                               item.nID + '"  class="flat-green"  />' + item.answer + '</label><br/>';
+                           sHtml += optionhtml;
+                       });
+                   }
+               }
+               return sHtml;
+           }
+           function SetCheckBoxNotMulti() {
+               $('input[id*=AdnInfo]').unbind('ifChecked');
+               $('input[id*=AdnInfo]').bind('ifChecked', function (event) {
+                   //debugger
+                   var $box = $(this);
+                   var IsMulti = $box.data("type");
+                   if (IsMulti == "no") {
+                       if ($box.is(':checked')) {
+                           // the name of the box is retrieved using the .attr() method
+                           // as it is assumed and expected to be immutable
+                           var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                           // the checked state of the group/box on the other hand will change
+                           // and the current value is retrieved using .prop() method
+                           $(group).parent().removeClass("checked").attr("aria-checked", false);
+                           $(group).prop('checked', false);
+                           $box.parent().addClass("checked").attr("aria-checked", true);
+                           $box.prop('checked', true);
+                       } else {
+                           $box.parent().removeClass("checked").attr("aria-checked", false);
+                           $box.prop('checked', false);
+                       }
+                   }
+                   else {
+                       var IsNo = $box.data("text");
+                       if (IsNo == "No") {
+                           if ($box.is(':checked')) {
+                               // the name of the box is retrieved using the .attr() method
+                               // as it is assumed and expected to be immutable
+                               var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                               // the checked state of the group/box on the other hand will change
+                               // and the current value is retrieved using .prop() method
+                               $(group).parent().removeClass("checked").attr("aria-checked", false);
+                               $(group).prop('checked', false);
+                               $box.parent().addClass("checked").attr("aria-checked", true);
+                               $box.prop('checked', true);
+                           } else {
+                               $box.parent().removeClass("checked").attr("aria-checked", false);
+                               $box.prop('checked', false);
+                           }
+                       }
+                       else {
+                           var group = "input:checkbox[name='" + $box.attr("name") + "'][data-text='No']";
+                           $(group).parent().removeClass("checked").attr("aria-checked", false);
+                           $(group).prop('checked', false);
+                       }
+                   }
+
+               });
+           }
+
+              @*function ActionddlMassType(val) {
+               var Param = val;
+               var Tif_no = ko.toJS(viewModel.objMasstifform.TIF_no) + "";
+               if (Param != "") {
+
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("GetMassAuditing", "Interview")',
+                    data: JSON.stringify({ SearchItem: Param, tifno: Tif_no }),
+                    success: function (respone) {
+                        console.log(respone);
+                        if (respone != undefined) {
+
+                         ReBindAudQst(respone.lstAuditing_Qst);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            } else {
+                   ReBindAudQst([{ value: "", text: " - Select - " }])
+            }
+
+                }*@
+
+                function ReBindAudQst(lstNew) {
+
+                    if (lstNew != undefined) {
+                        var sHtml = "";
+                        var optionhtml = "";
+                        var shtmlGroup1 = "";
+                        var shtmlGroup2 = "";
+                        var shtmlGroup3 = "";
+                        //Loop Group Question 1-3
+                        $.each(lstNew, function (i, item) {
+                            if (item.group_question == 1) {
+                                optionhtml = '<option class="Mass-select" value="' +
+                                    item.value + '">' + item.text + '</option>';
+                                shtmlGroup1 += optionhtml;
+                            }
+                        });
+                        $.each(lstNew, function (i, item) {
+                            if (item.group_question == 2) {
+                                optionhtml = '<option class="Mass-select" value="' +
+                                    item.value + '">' + item.text + '</option>';
+                                shtmlGroup2 += optionhtml;
+                            }
+                        });
+                        $.each(lstNew, function (i, item) {
+                            if (item.group_question == 3) {
+                                optionhtml = '<option class="Mass-select" value="' +
+                                    item.value + '">' + item.text + '</option>';
+                                shtmlGroup3 += optionhtml;
+                            }
+                        });
+
+                        //    $('select[id*=ddlAudQst]').each(function () {
+                        //        $(this).find('option').remove();
+                        //        $(this).append(sHtml);
+                        //})
+
+                        //Insert Question in Dropdown 1-5
+                        $('select[id$= ddlAudQst1]').each(function () {
+                            $(this).find('option').remove();
+                            $(this).append(shtmlGroup1);
+                        })
+                        $('select[id$= ddlAudQst2]').each(function () {
+                            $(this).find('option').remove();
+                            $(this).append(shtmlGroup1);
+                        })
+                        $('select[id$= ddlAudQst3]').each(function () {
+                            $(this).find('option').remove();
+                            $(this).append(shtmlGroup2);
+                        })
+                        $('select[id$= ddlAudQst4]').each(function () {
+                            $(this).find('option').remove();
+                            $(this).append(shtmlGroup2);
+                        })
+                        $('select[id$= ddlAudQst5]').each(function () {
+                            $(this).find('option').remove();
+                            $(this).append(shtmlGroup3);
+                        })
+
+                    
+
+                    }
+                }
+    </script>
+}
+@if (Model.approve_status + "" != "Y")
+{
+    @section scripts2{
+        <script type="text/javascript">
+          function Save(sVal) {
+              var Acceptlst = [];
+              var Acceptlst2 = [];
+              var Acceptlst3 = [];
+            var IsPass = true;
+            //if (!CheckValidateBootstrap("divContent")) {
+            //    IsPass = false;
+            //    FocusValidateBootstrap("divContent");
+            //  }
+            //if (!CheckValidateBootstrap("divContent2")) {
+            //    IsPass = false;
+            //    FocusValidateBootstrap("divContent2");
+            //}
+
+            if (IsPass && sVal != undefined && sVal != "") {
+                save_Status = sVal;
+                //set value first tab
+                //set value to scoring
+                Enumerable.From(objModel.objMasstifform.lstQuestion).ForEach(function (ed) {
+                    return ed.rating = GetValDropdown("ddlRating" + ed.id);
+                });
+                //Enumerable.From(objModel.objMasstifform.lstQuestion).ForEach(function (ed) {
+                //    return ed.rating = $('#ddlRating' + ed.id + ' option:selected').val();
+                //});
+
+                //set value to evidence
+                Enumerable.From(objModel.objMasstifform.lstQuestion).ForEach(function (ed) {
+                    return ed.evidence = GetValTextArea("txtevidence" + ed.id);
+                });
+                Acceptlst = Enumerable.From(objModel.objMasstifform.lstQuestion).ToArray();
+                ko.mapping.fromJS(Acceptlst, {}, viewModel.objMasstifform.lstQuestion);
+
+
+                //set value second tab
+                //set value to Qst
+                Enumerable.From(objModel.objMasstifform.lstAuditing).ForEach(function (ed) {
+                    return ed.Qst = GetValDropdown("ddlAudQst" + ed.id);
+                });
+
+                //set value to answer
+                Enumerable.From(objModel.objMasstifform.lstAuditing).ForEach(function (ed) {
+                    return ed.answer = GetValTextArea("txtanswer" + ed.id);
+                });
+                //set value to scoring
+                Enumerable.From(objModel.objMasstifform.lstAuditing).ForEach(function (ed) {
+                    return ed.scoring = GetValDropdown("ddlScoring" + ed.id);
+                });
+
+                Acceptlst2 = Enumerable.From(objModel.objMasstifform.lstAuditing).ToArray();
+                ko.mapping.fromJS(Acceptlst2, {}, viewModel.objMasstifform.lstAuditing);
+
+                //set value third Additional Information
+
+                //set select answer
+                Enumerable.From(objModel.objMasstifform.lstAdInfo).ForEach(function (ed) {
+                    return ed.lstAnswersselect = GetValueChkGroup("AdnInfo" + ed.nID);
+                });
+                //set other answer
+                Enumerable.From(objModel.objMasstifform.lstAdInfo).ForEach(function (ed) {
+                    return ed.other_answer = GetValTextArea("txtotheranswer" + ed.nID);
+                });
+                Acceptlst3 = Enumerable.From(objModel.objMasstifform.lstAdInfo).ToArray();
+                ko.mapping.fromJS(Acceptlst3, {}, viewModel.objMasstifform.lstAdInfo);
+
+
+
+                var $Accept = GetLabelByID("lblAccept");
+
+                if (Acceptlst.length == 0) {
+                    DialogWarning(DialogHeader.Warning, "Please select at least one item.");
+                }
+                else {
+
+                    //check validate ref no
+                    var lstRatingAws = Enumerable.From(objModel.objMasstifform.lstQuestion).Where(function (w) { return w.text + "" == "" }).ToArray();
+                    var lstRemarkAws = Enumerable.From(objModel.objMasstifform.lstQuestion).Where(function (w) { return w.evidence + "" == "" }).ToArray();
+
+                    var lstAudQst = Enumerable.From(objModel.objMasstifform.lstAuditing).Where(function (w) { return w.Qst + "" == "" }).ToArray();
+                    var lstRemarkanswer = Enumerable.From(objModel.objMasstifform.lstAuditing).Where(function (w) { return w.answer + "" == "" }).ToArray();
+                    var lstScoring = Enumerable.From(objModel.objMasstifform.lstAuditing).Where(function (w) { return w.scoring + "" == "" }).ToArray();
+
+                    var lstAdnAns = Enumerable.From(objModel.objMasstifform.lstAdInfo).Where(function (w) { return w.lstAnswersselect.length <= 0 && w.is_validate + "" == "Y" }).ToArray();
+                    //var lstAdnAnsAudTax = Enumerable.From(objModel.objMasstifform.lstAdInfo).Where(function (w) { return w.lstAnswersselect.length > 0 && w.is_validate + "" == "N" }).ToArray();
+
+
+                    if ((lstRatingAws.length > 0 || lstRemarkAws.length > 0 || lstAudQst.length > 0 || lstRemarkanswer.length > 0 || lstScoring.length > 0 || lstAdnAns.length > 0 /*|| lstAdnAnsAudTax.length <= 0*/) && sVal != "Draft") {
+                        if (lstRatingAws.length > 0) {
+                            $('.nav-tabs a[href="#tab_1"]').tab('show');
+                            var sfirst = Enumerable.From(lstRatingAws).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please select scoring. " + sfirst.header);
+                            GetSelectByID("ddlRating" + sfirst.id).focus();
+                            return false;
+                        }
+                        else if (lstRemarkAws.length > 0) {
+                            $('.nav-tabs a[href="#tab_1"]').tab('show');
+                            var sfirst = Enumerable.From(lstRemarkAws).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please input evidence. " + sfirst.header);
+                            GetTextareaByID("txtevidence" + sfirst.id).focus();
+                            return false;
+                        }
+                        else if (lstAudQst.length > 0) {
+                            $('.nav-tabs a[href="#tab_2"]').tab('show');
+                            var sfirst = Enumerable.From(lstAudQst).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please select question. " + sfirst.header);
+                            GetSelectByID("ddlAudQst" + sfirst.id).focus();
+                            return false;
+                        }
+                        else if (lstRemarkanswer.length > 0) {
+                            $('.nav-tabs a[href="#tab_2"]').tab('show');
+                            var sfirst = Enumerable.From(lstRemarkanswer).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please input answer. " + sfirst.header);
+                            GetTextareaByID("txtanswer" + sfirst.id).focus();
+                            return false;
+                        }
+                        else if (lstScoring.length > 0) {
+                            $('.nav-tabs a[href="#tab_2"]').tab('show');
+                            var sfirst = Enumerable.From(lstScoring).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please select scoring. " + sfirst.header);
+                            GetSelectByID("ddlScoring" + sfirst.id).focus();
+                            return false;
+                        }
+                        else if (lstAdnAns.length > 0) {
+                            $('.nav-tabs a[href="#tab_3"]').tab('show');
+                            var sfirst = Enumerable.From(lstAdnAns).FirstOrDefault();
+                            DialogWarning(DialogHeader.Warning, "Please select additional. " + sfirst.question);
+                            //GetSelectByID("ddlScoring" + sfirst.id).focus();
+                            return false;
+                        }
+                        //else if (lstAdnAnsAudTax.length <= 0) {
+                        //    $('.nav-tabs a[href="#tab_3"]').tab('show');
+
+                        //    DialogWarning(DialogHeader.Warning, "Please select answer:<br/>If audit candidate >>> Answer audit part <br/>If Tax & Legal candidate >>> Answer Tax & Legal part");
+                        //    //GetSelectByID("ddlScoring" + sfirst.id).focus();
+                        //    return false;
+                        //}
+                    }
+                    else  {
+                        //check validate devit
+                        if (Acceptlst.length > 0) {
+                            //var AcceptNumber = Enumerable.From(Acceptlst).Sum(function (s) { return ConvertToIntNotnull(s.AMOUNT_AMT) });
+                            var strReturnAccept = 'Do you want to save?';
+                            $Accept.text(strReturnAccept);
+                        }
+                        else {
+                            $Accept.text('Not specify.');
+                        }
+                        $("#PopupSave").modal();
+                    }
+                }
+            }
+
+            }
+
+            function GetData() {
+                var lstData = ko.toJS(viewModel);
+                if (lstData != null && lstData.objMasstifform.lstQuestion != undefined && lstData.objMasstifform.lstQuestion != null) {
+                    lstData.confidentiality_agreement = GetValueChkGroupSingelValue("chkStatus");
+                    Enumerable.From(lstData.objMasstifform.lstQuestion).ForEach(function (ed) {
+                        return ed.question = "";
+                    });
+                    Enumerable.From(lstData.objMasstifform.lstQuestion).ForEach(function (ed) {
+                        return ed.text = "";
+                    });
+                    Enumerable.From(lstData.objMasstifform.lstQuestion).ForEach(function (ed) {
+                        return ed.c_answer = "";
+                    });
+                    Enumerable.From(lstData.objMasstifform.lstAdInfo).ForEach(function (ed) {
+                        return ed.evidence = null;
+                    });
+                    lstData.objMasstifform.lstAuditing_Qst = null;
+                    lstData.objMasstifform.lstScoring = null;
+                    lstData.approve_status = save_Status;
+                }
+                return lstData;
+            }
+
+
+         function SaveData() {
+             var IsPass = true;
+             var Param = GetData();//ko.toJS(viewModel);
+                 //Param.approve_status = save_Status;
+                 //if (Param.objMasstifform.lstQuestion != undefined && Param.objMasstifform.lstQuestion != null) {
+                 //    Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                 //        return ed.a_answer = "";
+                 //    });
+                 //    Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                 //        return ed.b_answer = "";
+                 //    });
+                 //    Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                 //        return ed.c_answer = "";
+                 //    });
+                 //    Param.objMasstifform.lstAuditing_Qst = null;
+                 //    Param.objMasstifform.lstScoring = null;
+
+                 //}
+             if (IsPass && save_Status != "" && Param.confidentiality_agreement == "Y") {
+                BlockUI();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url: '@Url.Action("ApproveMassTIFForm", "Interview")',
+                    data: JSON.stringify({ ItemData: Param}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+
+                                var prodId = getParameterByName('bUrl');
+                                if (prodId != "") {
+                                    window.location.href = sUrlBack;
+                                }
+                                else {
+                                    window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                }
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                        $("#PopupSave").modal('hide');
+                    }
+                });
+             }
+             else {
+                 DialogWarning(DialogHeader.Warning, "Interviewer (Evaluator) must “tick” the box for acknowledgement confidential information from candidate's previous/current employer will not be disclosed to us during the interview session.");
+             }
+            }
+                 function SetAutocom(txtTarget) {
+                        $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                            var newList = ko.toJS(viewModel);
+                            if (newList.Id != undefined) {
+                                newList.user_name = '';
+                                newList.unit_name = '';
+                                newList.user_id = '';
+                                newList.user_rank = '';
+                                BindData(newList);
+                            }
+                        });
+                        $("input[id$=" + txtTarget + "]").autocomplete({
+                            //disabled: true,
+                            source: function (request, response) {
+                                $.ajax({
+                                    global: false,  // <-- this is the key!
+                                    dataType: AjaxCall.dataType,
+                                    type: AjaxCall.type,
+                                    contentType: AjaxCall.contentType,
+                                    url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name ,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                        minLength: 1,
+                        select: function (event, ui) {
+                        var newList = ko.toJS(viewModel);
+                        if (newList.Id != undefined) {
+                            newList.user_name = ui.item.user_name;
+                            newList.unit_name = ui.item.unit_name;
+                            newList.user_id = ui.item.user_id;
+                            newList.user_no = ui.item.user_no;
+                            newList.user_rank = ui.item.user_rank;
+                            BindData(newList);
+                        }
+
+                        }
+
+                        });
+            }
+            function RollbackData() {
+                $("#PopupRollback").modal();
+            }
+            function Approve() {
+                $("#PopupApprove").modal();
+            }
+            function Rollback() {
+                var IsPass = true;
+                if (IsPass) {
+
+                    BlockUI();
+                    var Param = ko.toJS(viewModel);
+                    if (Param.objMasstifform.lstQuestion != undefined && Param.objMasstifform.lstQuestion != null) {
+                        Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                            return ed.a_answer = "";
+                        });
+                        Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                            return ed.b_answer = "";
+                        });
+                        Enumerable.From(Param.objMasstifform.lstQuestion).ForEach(function (ed) {
+                            return ed.c_answer = "";
+                        });
+                        Param.objMasstifform.lstAuditing_Qst = null;
+                        Param.objMasstifform.lstScoring = null;
+
+                    }
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("RollBackMassTIFForm", "Interview")',
+                        data: JSON.stringify({ ItemData: Param }),
+                        success: function (respone) {
+                            if (respone.result.Status == SysProcess.SessionExpired) {
+                                PopupLogin('@Url.Action("Index", "Home")');
+                            } else if (respone.result.Status == SysProcess.Success) {
+                                DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+                                    var prodId = getParameterByName('bUrl');
+                                    if (prodId != "") {
+                                        window.location.href = sUrlBack;
+                                    }
+                                    else {
+                                        window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                    }
+                                });
+                            }
+                            else if (respone.result.Status == SysProcess.Duplicate) {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                            else {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                        },
+                        error: AjaxCall.error,
+                        complete: function (jqXHR, status) {//finaly
+                            UnblockUI();
+                            $("#PopupRollback").modal('hide');
+                        }
+                    });
+                }
+            }
+            function ApproveData() {
+                var IsPass = true;
+                if (IsPass) {
+
+                    BlockUI();
+                    var Param = ko.toJS(viewModel);
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("ApproveMassData", "Interview")',
+                        data: JSON.stringify({ ItemData: Param }),
+                        success: function (respone) {
+                            if (respone.result.Status == SysProcess.SessionExpired) {
+                                PopupLogin('@Url.Action("Index", "Home")');
+                            } else if (respone.result.Status == SysProcess.Success) {
+                                DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+                                    var prodId = getParameterByName('bUrl');
+                                    if (prodId != "") {
+                                        window.location.href = sUrlBack;
+                                    }
+                                    else {
+                                        window.location.href = sUrlBack + '?qryStr=%7B%0D%0A%20%20"active_status"%3A%20"Y"%0D%0A%7D';
+                                    }
+                                });
+                            }
+                            else if (respone.result.Status == SysProcess.Duplicate) {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                            else {
+                                DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                            }
+                        },
+                        error: AjaxCall.error,
+                        complete: function (jqXHR, status) {//finaly
+                            UnblockUI();
+                            $("#PopupApprove").modal('hide');
+                        }
+                    });
+                }
+            }
+
+            function Edit() {
+                BlockUI();
+                $("#btnConfirm").hide();
+                setTimeout(function () {
+                    $("#btnEditConfirm").removeClass("hide");
+                    GetTextareaByID("txtcomment").prop("disabled", false);
+                    GetSelectByID("ddlRank").prop("disabled", false);
+                    GetSelectByID("ddlTIFStatus").prop("disabled", false);
+                    GetSelectByID("ddlMassType").prop("disabled", false);
+                    GetInputByID("txtStartdate").prop("disabled", false);
+
+                    $('textarea[id*=txtevidence]').prop("disabled", false);
+                    $('textarea[id*=txtanswer]').prop("disabled", false);
+                    $('textarea[id*=txtotheranswer]').prop("disabled", false);
+
+                    $('select[id*=ddlAudQst]').prop("disabled", false);
+                    $('select[id*=ddlScoring]').prop("disabled", false);
+                    $('select[id*=ddlRating]').prop("disabled", false);
+                    $("#btnEdit").hide("hide");
+                    UnblockUI();
+                }, 300);
+
+            }
+        </script>
+
+    }
+}

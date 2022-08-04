@@ -1,0 +1,124 @@
+﻿@model IEnumerable<HumanCapitalManagement.Models.Common.Menu>
+@functions{
+    public string GenHtmlSupMenu(int mID, int mIdActive)
+    {
+        string sHtml = "";
+        var lstSupMenu = Model.Where(w => w.MENU_PARENT == mID + "").ToList();
+
+        foreach (var lstS in lstSupMenu)
+        {
+            string active = "";
+            string cIcon = lstS.MENU_ICON + "" != "" ? lstS.MENU_ICON + "" : "fa fa-folder";
+            string sMenuname = lstS.MENU_NAME_TH.Length <= 23 ? lstS.MENU_NAME_TH : lstS.MENU_NAME_TH.Substring(0, 21) + "...";
+            string sTooltip = ViewBag.Menu + "" != "" ? "tooltipClose" : "tooltip";
+            string sTooltipSpan = ViewBag.Menu + "" != "" ? "tooltip" : "tooltipClose";
+            if (lstS.MENU_SUB == "N")
+            {
+                cIcon = lstS.MENU_ICON + "" != "" ? lstS.MENU_ICON + "" : "fa fa-circle-o";
+                if (lstS.active_menu + "" == "Y")
+                {
+                    //active = "active";
+                }
+                string sLink = "#";
+                if (lstS.Controller + "" != "" && lstS.Controller + "" != "#")
+                {
+                    sLink = Url.Action(lstS.Action, lstS.Controller);
+                    //sLink = "" + Html.ActionLink("Button Name", "Index","").ToString(); ;
+                }
+                sHtml += @"<li class=""" + active + @""">
+                                <a  id=""" + lstS.Id + @""" href =""" + sLink + @""" onClick=""BlockUIMenu()""  
+                                " + sTooltip + @"="""+ lstS.MENU_NAME_TH + @""" flow=""right"" >
+                            <i class=""" + cIcon + @"""    ></i><span  " + sTooltipSpan + @"=""" + lstS.MENU_NAME_TH + @""" flow=""right"" >" + sMenuname + @"</span></a>
+                        </li>";
+            }
+            else if (lstS.MENU_SUB == "Y")
+            {
+                if (lstS.active_menu + "" == "Y")
+                {
+                    //active = "active  menu-open";
+                }
+
+                sHtml += @"<li class=""treeview " + active + @"""><a href=""#"" 
+                                " + sTooltip + @"=""" + lstS.MENU_NAME_TH + @"""  flow=""right"" >
+                                <i class=""" + cIcon + @"""    ></i>
+                                    <span   " + sTooltipSpan + @"=""" + lstS.MENU_NAME_TH + @""" flow=""right"" >" + sMenuname + @"</span><span class=""pull-right-container""><i class=""fa fa-angle-left pull-right""></i></span>
+                            </a><ul class=""treeview-menu"">";
+                sHtml += GenHtmlSupMenu(lstS.Id, mIdActive);
+                sHtml += @"</ul></li>";
+            }
+        }
+        return sHtml;
+    }
+}
+<!-- sidebar menu: : style can be found in sidebar.less -->
+<ul class="sidebar-menu tree" data-widget="tree">
+    @*<li class="header">MAIN NAVIGATION</li>*@
+
+    @if (Model != null && Model.Any())
+    {
+
+        foreach (var lstMu in Model.Where(w => w.MENU_LEVEL == 1))
+        {
+            string active = "";
+            string cIcon = lstMu.MENU_ICON + "" != "" ? lstMu.MENU_ICON + "" : "fa fa-folder";
+            string sMenuname = lstMu.MENU_NAME_TH.Length <= 23 ? lstMu.MENU_NAME_TH : lstMu.MENU_NAME_TH.Substring(0, 21) + "...";
+            string sTooltip = ViewBag.Menu + "" != "" ? "tooltipClose" : "tooltip";
+            string sTooltipSpan = ViewBag.Menu + "" != "" ? "tooltip" : "tooltipClose";
+
+
+            if (lstMu.MENU_SUB + "" == "Y")
+            {
+                if (lstMu.active_menu + "" == "Y")
+                {
+                    //active = "active  menu-open";
+                }
+
+
+                <li class="treeview @active">
+                    <a href="#"
+                     @Html.Raw("" + sTooltip + @"=""" + lstMu.MENU_NAME_TH + @"""")  flow="right" >
+                        <i class="@cIcon"></i><span  @Html.Raw("" + sTooltipSpan + @"=""" + lstMu.MENU_NAME_TH + @"""") flow="right" >@sMenuname</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        @Html.Raw(@GenHtmlSupMenu(@lstMu.Id, 0))
+                    </ul>
+                </li>
+            }
+            else
+            {
+                if (lstMu.active_menu + "" == "Y")
+                {
+                    //active = "active";
+                }
+                <li class="@active">
+                    @*<a href="@((@lstMu.LINK + "" != "" && @lstMu.LINK + "" != "#" )?  "../" + @lstMu.LINK : "#" )">*@
+                    <a id="@lstMu.Id" href="@((@lstMu.Controller + "" != "" && @lstMu.Controller + "" != "#" )?  Url.Action(@lstMu.Action, @lstMu.Controller) : "#" )"
+                       @Html.Raw("" + sTooltip + @"=""" + lstMu.MENU_NAME_TH + @"""") flow="right"
+                       onClick="BlockUIMenu()">
+                        <i class="@cIcon"></i><span @Html.Raw("" + sTooltipSpan + @"=""" + lstMu.MENU_NAME_TH + @"""") flow="right" >@sMenuname</span>
+                    </a>
+                </li>
+            }
+
+        }
+    }
+</ul>
+<script type="text/javascript">
+    var menuActive = '@Model.Where(w => w.active_menu == "Y").Select(s => s.Id + "").FirstOrDefault()';
+    $(function () {
+        $('a[id="' + menuActive + '"]').not('logo').parents("li").addClass("active");
+
+    });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+    function BlockUIMenu() {
+        BlockUI();
+        setTimeout(function () {
+            UnblockUI();
+        }, 3000);
+    }
+</script>

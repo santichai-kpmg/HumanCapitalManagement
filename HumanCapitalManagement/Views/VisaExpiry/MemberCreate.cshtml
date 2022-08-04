@@ -1,0 +1,531 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Visa Expiry | Family Member Create";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<section class="content-header">
+
+    <h1>
+        Visa Expiry | Family Member Create.
+    </h1>
+
+</section>
+
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Student detail -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">
+                                        Information
+                                    </h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        @*<div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Company Name</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        @{ Html.RenderAction("CreateCompany", "HCMMasterData", new
+                                                            {
+                                                                id = "ddlcompany",
+                                                                databind = "Company_name",
+                                                                value = ""
+
+                                                            });}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        @*<div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Register ID</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtcode" name="txtcode" data-bind='value: membercode' />
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Prefix</label>
+                                                <div class="col-md-8">
+                                                    <div class="input-group">
+                                                        @{ Html.RenderAction("Createddl_VisaPrefixEN", "HCMMasterData", new
+                                                            {
+                                                                id = "ddlPrefix",
+                                                                databind = "TM_Prefix_Id",
+                                                                value = ""
+
+                                                            });}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Name (ENG)</label>
+                                                <div class="col-md-8">
+
+                                                    <input type="text" class="form-control" id="txtnameENG" name="txtnameENG" data-bind='value: name_eng' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">LastName (ENG)</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtlastnameENG" name="txtlastnameENG" data-bind='value: lastname_eng' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Middle Name (ENG)</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtmiddle" name="txtmiddle" data-bind='value: middle' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Name (TH)</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtnameTH" name="txtnameTH" data-bind='value: name_th' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">LastName (TH)</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtlastnameTH" name="txtlastnameTH" data-bind='value: lastname_th' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Telephone</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txttelephone" name="txttelephone" data-bind='value: telephone' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Email</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" id="txtmail" name="txtmail" data-bind='value: mail' />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-md-4 control-label  text-right require ">HR Coordinator</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                                        <input type="text" id="txtSearch" name="txtSearch" class="form-control" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-md-4 control-label text-right nomallabel">HR Name</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="txtgroup" name="txtgroup" class="form-control" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                    <div class="col-md-8">
+                                                        <input type="text" id="txtposition" name="txtposition" class="form-control" disabled />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <div class="box-footer text-center">
+                            <button type="button" class="btn btn-primary" onclick="Save();">Submit</button>
+                            <button type="button" class="btn btn-warning" onclick="BackPage(objModel.BackPage);">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to submit?</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+    <style>
+
+        .dt-HeadGr-ctm {
+            background-color: #2952a3;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35);
+            color: rgb(0, 0, 0);
+            vertical-align: middle;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .Mass-select {
+            width: 250px;
+        }
+
+        .table-responsive-custom > .dataTables_scrollBody {
+            overflow-y: visible !important;
+            overflow-x: visible !important;
+            overflow: hidden;
+        }
+    </style>
+
+}
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <script src="~/Scripts/plugins/bootstrap-select/js/i18n/defaults-en_US.js"></script>
+
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+    <script type="text/javascript">
+        @*var sUrlBack = '@Url.Action("CompanyView", "Company")';*@
+        var objMaxLength = [
+            { ctrlID: "txtNewName", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtNewNameSh", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtDes", ctrlType: "area", MaxLength: 500 }];
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            if (GetInputByID("txtSearch") != undefined) {
+                SetAutocom("txtSearch");
+            }
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            
+        });
+        function Save() {
+            $("#PopupSave").modal({ backdrop: 'static', keyboard: false });
+        }
+        function SaveData(){
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal("hide");
+                BlockUI();
+                var Param = GetData();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("AddMember", "VisaExpiry")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+                                window.location = document.referrer;
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+<script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+           function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                //ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        autoFocus:true,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+    }
+
+
+           function ClearAuto(vName, vGroup, vPosition, vID) {
+        GetInputByID("txtName").val(vName);
+        GetInputByID("txtgroup").val(vGroup);
+        GetInputByID("txtposition").val(vPosition);
+        GetInputByID("txtMGID").val(vID);
+    }
+
+
+        function GetData() {
+            var Ispass = true
+            var lstData = ko.toJS(viewModel);
+            //var company = GetValDropdown("ddlcompany");
+            var company = "5";
+            //Validate varible
+            
+            var chk_code = "";
+            var chk_nameENG = document.getElementById("txtnameENG").value;
+            var chk_nameTH = document.getElementById("txtnameTH").value;
+            var chk_Middle = document.getElementById("txtmiddle").value;
+            var chk_lastnameENG = document.getElementById("txtlastnameENG").value;
+            var chk_lastnameTH = document.getElementById("txtlastnameTH").value;
+            var chk_Prefix = document.getElementById("ddlPrefix").value;
+            var chk_tel = document.getElementById("txttelephone").value;
+            var chk_mail = document.getElementById("txtmail").value;
+            var chk_staff_no = document.getElementById("txtMGID").value;
+            if (chk_nameENG == undefined || chk_nameENG.length == "") {
+                Ispass = false;
+                DialogWarning(DialogHeader.Warning, "Please Input Name (ENG).");
+                return false;
+            }
+            if (chk_staff_no == undefined || chk_staff_no.length == "") {
+                Ispass = false;
+                DialogWarning(DialogHeader.Warning, "Please Select Staff.");
+                return false;
+            }
+            if (chk_lastnameENG == undefined || chk_lastnameENG.length == "") {
+                Ispass = false;
+                DialogWarning(DialogHeader.Warning, "Please Input LastName (ENG).");
+                return false;
+            }
+            if (chk_Prefix == undefined || chk_Prefix.length == "") {
+                Ispass = false;
+                DialogWarning(DialogHeader.Warning, "Please select Prefix.");
+                return false;
+            }
+            if (Ispass) {
+                lstData.Company_name = company;
+                lstData.code ="";
+                lstData.name_eng = document.getElementById("txtnameENG").value;
+                lstData.name_th = document.getElementById("txtnameTH").value;
+                lstData.middle = document.getElementById("txtmiddle").value;;
+                lstData.lastname_eng = document.getElementById("txtlastnameENG").value;
+                lstData.lastname_th = document.getElementById("txtlastnameTH").value;
+                lstData.telephone = document.getElementById("txttelephone").value;;
+                lstData.mail = document.getElementById("txtmail").value;
+                lstData.staff = document.getElementById("txtMGID").value;
+            }
+            return lstData;
+        }
+        function BindData(value) {
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+                $("input[id*=rdlStatus][value=" + value.active_status + "]").iCheck('check');
+            }
+
+            if (objModel.lstEmployee != undefined && objModel.lstEmployee != null) {
+                $('#gvwDataCustomer').DataTable().clear().draw();
+                $('#gvwDataCustomer').dataTable().fnAddData(objModel.lstEmployee);
+                $('#gvwDataCustomer').dataTable().fnDraw();
+
+                setTimeout(function () {
+                    $('#gvwDataCustomer').DataTable().columns.adjust().draw();
+                    $('#gvwDataCustomer').DataTable().columns.adjust().responsive.recalc();
+                }, 500);
+            }
+            else {
+                $('#gvwDataCustomer').DataTable().clear().draw();
+                $('#gvwDataCustomer').dataTable().fnDraw();
+                $('div[id$=divTable]').collapse("hide");
+            }
+
+        }
+
+        function BackPage(sVal) {
+              var sUrlBack = '@Url.Action("EmployeeView", "VisaExpiry")?qryStr=' + sVal;
+            window.location.href = sUrlBack;
+        }
+
+
+
+</script>
+
+
+}

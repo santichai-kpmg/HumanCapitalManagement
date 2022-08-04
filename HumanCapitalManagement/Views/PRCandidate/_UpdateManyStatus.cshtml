@@ -1,0 +1,152 @@
+﻿
+
+@model HumanCapitalManagement.ViewModel.MainVM.vPRCan_many
+
+<div class="modal-body">
+    <form class="form-horizontal" autocomplete="off">
+        <div id="divStatus">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Status<font color=red>*</font> :</label>
+                        <div class="col-md-6">
+                            @{ Html.RenderAction("CreateddlCanStatusForChange", "HCMMasterData", new
+                                {
+                                    id = "ddlCanStatus",
+                                    //value = Model.empNo + "",
+                                });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button id="btnUpdate" type="button" onclick="SearchPopupCan()" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Rank Grade :</label>
+                        <div class="col-md-6">
+                            @{ Html.RenderAction("CreateddlCanRank", "HCMMasterData", new
+                                {
+                                    id = "ddlRankGrade",
+                                    databind = "candidate_rank_id",
+                                    value = ""
+                                });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Next Status<font color=red>*</font> :</label>
+                        <div class="col-md-6">
+                            <select id="ddlStatus" name="ddlStatus" class="form-control" data-bind="options: lstStatus, optionsText: 'name', optionsValue: 'id',
+                                               value: status_id,
+                                               valueAllowUnset: true"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right">Action Date<font color=red>*</font> :</label>
+                        <div class="col-md-6">
+                            <div class="input-group form-inline" style="float: left;">
+                                <input ID="txtDateAction" name="txtDateAction" class="form-control " type="text"
+                                       ToolTip="To" placeholder="-- / -- / ----" data-bind="value : action_date, valueUpdate: 'afterkeydown' " />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Status Remark :</label>
+                        <div class="col-md-6">
+                            <textarea type="text" rows="3" cols="50" id="txtStatusremark" name="txtStatusremark" class="form-control" data-bind='value: action_remark'></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Active/Inactive :</label>
+                        <div class="col-md-6">
+                            <label class="control-label">
+                                <input type="radio" name="rdlStatusMany" id="rdlStatusMany" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y">Active<br>
+                            </label>
+                            <label class="control-label">
+                                <input type="radio" name="rdlStatusMany" id="rdlStatusMany" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right ">Recruitment Team<font color=red>*</font> :</label>
+                        <div class="col-md-6">
+                            @{ Html.RenderAction("CreateddlRecruitment_Team", "HCMMasterData", new
+                                {
+                                    id = "ddlRecruitment",
+                                    databind = "recruitment_id",
+                                    value = ""
+                                });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover display" id="gvwDatamany" width="100%">
+                            <thead>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button id="btnUpdate" type="button" onclick="SaveMany()" class="btn btn-primary">Update</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+<script type="text/javascript">
+        var objModelMany = @Html.Raw(Json.Encode(Model));
+        //function UpdateSt() {
+
+        //}
+        $(function () {
+            SetDatePicker(GetInputByID("txtDateAction"));
+            $("input[id$=txtDateAction]").change(function () {
+                $('#divStatus').bootstrapValidator('revalidateField', GetElementName("txtDateAction", objControl.txtbox));
+            }).keydown(function (e) {
+                if (e.which == 8 || e.which == 46) {
+                    $('#divStatus').bootstrapValidator('updateStatus', GetElementName("txtDateAction", objControl.txtbox), "INVALID");
+
+                }
+            });
+        });
+    function ValidateFormmany() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtDateAction", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidatePopUp[GetElementName("ddlStatus", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divStatus", objValidatePopUp);
+        }
+</script>

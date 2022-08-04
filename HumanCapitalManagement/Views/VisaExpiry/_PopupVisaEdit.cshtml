@@ -1,0 +1,242 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vDocumentEmployee_obj
+
+<form class="form-horizontal" autocomplete="off">
+    <div id="pvCandidate">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Type Document</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateTypeDocument", "HCMMasterData", new
+                            {
+                                id = "ddlTypeDoc_edit",
+                                databind = "Type_doc_id",
+                                value = "",
+                                disable = true
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Document Number</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtdoc_num_edit" name="txtdoc_num_edit" class="form-control" data-bind="value: document_number, valueUpdate: 'afterkeydown'" disabled />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Date Of Issued</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtdateIssued_edit" name="txtdateIssued_edit" autocomplete="off" class="form-control span2" disabled />
+                        <span class="add-on"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Nationality</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateCountry", "HCMMasterData", new
+                            {
+                                id = "ddlCountry_edit",
+                                databind = "Country_id",
+                                value = "",
+                                disable = true
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Valid Date</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtvaliddate_edit" name="txtvaliddate_edit" autocomplete="off" class="form-control span2" disabled />
+                        <span class="add-on"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Active Status</label>
+                    <div class="col-md-6">
+                        <select name="active_status" id="active_status" disabled>
+                            <option value="Y">Active</option>
+                            <option value="N">Inactive</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right require">Status</label>
+                        <label class="col-md-4">
+                            <input type="radio" name="Status" id="rdlStatus" checked class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y">Active
+                            <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                        </label>
+                    </div>
+                </div>*@
+        </div>
+        <div class="modal-footer">
+            <button id="btnEditDoc" type="button" onclick="EditDocumentEMP()" class="btn btn-primary">Edit</button>
+            <button id="btnConfirm" type="button" onclick="SaveDataPV()" class="btn btn-success">Confirm</button>
+            <button type="button" class="btn btn-default" onclick="Cancel()" data-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+
+</form>
+<script type="text/javascript">
+
+    var objModelEdit = @Html.Raw(Json.Encode(Model));
+
+    $(function () {
+        debugger;
+        $("#btnConfirm").hide();
+        var valid = getDateIfDate2(objModelEdit.valid_date_edit);
+        var date = getDateIfDate2(objModelEdit.date_of_issued_edit);
+        SetDatePicker(GetInputByID("txtvaliddate_edit").val(objModelEdit.valid_date));
+        SetDatePicker(GetInputByID("txtdateIssued_edit").val(objModelEdit.date_of_issued));
+
+        GetSelectByID("ddlCountry_edit").val(objModelEdit.Country_id);
+        GetSelectByID("ddlTypeDoc_edit").val(objModelEdit.Type_doc_id);
+        GetInputByID("txtdoc_num_edit").val(objModelEdit.document_number);
+        $('#rdlStatus input').on('change', function () {
+            $('input[name=Status]:checked', '#rdlStatus').val();
+        });
+
+    });
+
+    function getDateIfDate(d) {
+        var m = d.match(/\/Date\((\d+)\)\//);
+        return m ? (new Date(+m[1])).toLocaleDateString('en-US', { year: 'numeric' , month: '2-digit', day: '2-digit' }) : d;
+    }
+    function getDateIfDate2(d) {
+        var m = d.match(/\/Date\((\d+)\)\//);
+        return (new Date(+m[1])).getFullYear()+"/"+ (new Date(+m[1])).getMonth() + "/" + (new Date(+m[1])).getDate()  ;
+        //return m ? (new Date(+m[1])) : d;
+    }
+    function EditDocumentEMP() {
+        $("#btnEditDoc").hide();
+        $("#btnConfirm").show();
+        document.getElementById("ddlCountry_edit").disabled = false;
+        document.getElementById("ddlTypeDoc_edit").disabled = false;
+        document.getElementById("txtdoc_num_edit").disabled = false;
+        document.getElementById("txtdateIssued_edit").disabled = false;
+        document.getElementById("txtvaliddate_edit").disabled = false;
+        document.getElementById("active_status").disabled = false;
+    }
+    function Cancel() {
+        $("#PopupAdd").modal('hide');
+    }
+    //function Save() {
+    //    $("#PopupSave").modal('show');
+    //}
+    function GetDataEdit() {
+        var Ispass = true
+        var lstData = ko.toJS(viewModel);
+        debugger;
+
+        var chk_validate = document.getElementById("txtvaliddate_edit").value;
+        var chk_country = document.getElementById("ddlCountry_edit").value;
+        var chk_dateissued = document.getElementById("txtdateIssued_edit").value;
+        var chk_doc_num = document.getElementById("txtdoc_num_edit").value;
+        var chk_typedoc = document.getElementById("ddlTypeDoc_edit").value;
+        if (chk_typedoc == undefined || chk_typedoc.length == "") {
+            Ispass = false;
+            DialogWarning(DialogHeader.Warning, "Please Select Document Type.");
+            return false;
+        }
+        //if (chk_doc_num == undefined || chk_doc_num.length == "") {
+        //    Ispass = false;
+        //    DialogWarning(DialogHeader.Warning, "Please Input Doucment Number.");
+        //    return false;
+        //}
+        if (chk_dateissued == undefined || chk_dateissued.length == "") {
+            Ispass = false;
+            DialogWarning(DialogHeader.Warning, "Please Input Date Of Issued.");
+            return false;
+        }
+        if (chk_country == undefined || chk_country.length == "") {
+            Ispass = false;
+            DialogWarning(DialogHeader.Warning, "Please Select Nationality.");
+            return false;
+        }
+        if (chk_validate == undefined || chk_validate.length == "") {
+            Ispass = false;
+            DialogWarning(DialogHeader.Warning, "Please Input Validate.");
+            return false;
+        }
+        if (Ispass) {
+            //Document
+            lstData.active_status_edit = document.getElementById("active_status").value;
+            lstData.Type_doc_id = document.getElementById("ddlTypeDoc_edit").value;
+            lstData.document_number = document.getElementById("txtdoc_num_edit").value;
+            lstData.date_of_issued = document.getElementById("txtdateIssued_edit").value;
+            lstData.Country_id = document.getElementById("ddlCountry_edit").value;
+            lstData.valid_date = document.getElementById("txtvaliddate_edit").value;
+            lstData.Id_Doc = objModelEdit.Id_Doc;
+            
+            lstData.Alert_Type_Create = "Y";
+            //Employee
+            lstData.Employee_Id = objModel.code;
+        }
+        return lstData;
+    }
+    function SaveDataPV(){
+            var IsPass = true;
+            if (IsPass) {
+                BlockUI();
+                var Param = GetDataEdit(); //ko.js(viewModle)
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("AddDoc_EMP", "VisaExpiry")',
+                    data: JSON.stringify({ ItemData : Param }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete, 'func', function () {
+                                location.reload();
+
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate){
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+    function ValidateFormPV() {
+        var objValidatePopUp = {};
+        //objValidatePopUp[GetElementName("txtdoc_num", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtdateIssued", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtvaliddate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlTypeDoc", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlCountry", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        BindValidateBootstrap("pvDocument", objValidatePopUp);
+    }
+</script>

@@ -1,0 +1,95 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vDocumentEmployee_obj
+
+<form class="form-horizontal" autocomplete="off">
+    <div id="pvCandidate">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Type Document</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateTypeDocument", "HCMMasterData", new
+                            {
+                                id = "ddlTypeDoc",
+                                databind = "Type_doc_id",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Document Number</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtdoc_num" name="txtdoc_num" class="form-control" data-bind="value: document_number, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Date Of Issued</label>
+                    <div class="col-md-6">
+                        <input type="date" id="txtdateIssued" name="txtdateIssued" class="form-control" data-bind="value: date_of_issued, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Nationality</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateCountry", "HCMMasterData", new
+                            {
+                                id = "ddlCountry",
+                                databind = "Country_id",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Valid Date</label>
+                    <div class="col-md-6">
+                        <input type="date" id="txtvaliddate" name="txtvaliddate" class="form-control" data-bind="value: valid_date, valueUpdate: 'afterkeydown'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script type="text/javascript">
+    var objModelPVS = @Html.Raw(Json.Encode(Model));
+    debugger;
+    var objMaxLengthCandidate = [
+        //{ ctrlID: "txtcard_id", ctrlType: "txt", MaxLength: 20 }
+        //, { ctrlID: "txtName", ctrlType: "txt", MaxLength: 240 }
+        //, { ctrlID: "txtLname", ctrlType: "txt", MaxLength: 240 }
+        //, { ctrlID: "txtPhone", ctrlType: "txt", MaxLength: 50 }
+    ];
+    $(function () {
+
+
+    });
+    function ValidateFormPV() {
+        var objValidatePopUp = {};
+        //objValidatePopUp[GetElementName("txtcard_id", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("txtdoc_num", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtdateIssued", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtvaliddate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("txtPhone", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopup[GetElementName("txtOxfordScore", objControl.txtbox)]  = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("ddlCardType", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlTypeDoc", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("ddlCountry", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("ddlActivitiesTrainee", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+        BindValidateBootstrap("pvDocument", objValidatePopUp);
+    }
+</script>

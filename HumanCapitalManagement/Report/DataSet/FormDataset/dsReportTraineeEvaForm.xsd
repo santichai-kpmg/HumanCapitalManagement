@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReportTraineeEvaForm" targetNamespace="http://tempuri.org/dsReportTraineeEvaForm.xsd" xmlns:mstns="http://tempuri.org/dsReportTraineeEvaForm.xsd" xmlns="http://tempuri.org/dsReportTraineeEvaForm.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReportTraineeEvaForm" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReportTraineeEvaForm" msprop:Generator_UserDSName="dsReportTraineeEvaForm">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsMain" msprop:Generator_TableClassName="dsMainDataTable" msprop:Generator_TableVarName="tabledsMain" msprop:Generator_TablePropName="dsMain" msprop:Generator_RowDeletingName="dsMainRowDeleting" msprop:Generator_RowChangingName="dsMainRowChanging" msprop:Generator_RowEvHandlerName="dsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="dsMainRowDeleted" msprop:Generator_UserTableName="dsMain" msprop:Generator_RowChangedName="dsMainRowChanged" msprop:Generator_RowEvArgName="dsMainRowChangeEvent" msprop:Generator_RowClassName="dsMainRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="no" msprop:Generator_ColumnVarNameInTable="columnno" msprop:Generator_ColumnPropNameInRow="no" msprop:Generator_ColumnPropNameInTable="noColumn" msprop:Generator_UserColumnName="no" type="xs:int" minOccurs="0" />
+              <xs:element name="description" msprop:Generator_ColumnVarNameInTable="columndescription" msprop:Generator_ColumnPropNameInRow="description" msprop:Generator_ColumnPropNameInTable="descriptionColumn" msprop:Generator_UserColumnName="description" type="xs:string" minOccurs="0" />
+              <xs:element name="trainee_rating" msprop:Generator_ColumnVarNameInTable="columntrainee_rating" msprop:Generator_ColumnPropNameInRow="trainee_rating" msprop:Generator_ColumnPropNameInTable="trainee_ratingColumn" msprop:Generator_UserColumnName="trainee_rating" type="xs:string" minOccurs="0" />
+              <xs:element name="eva_ratine" msprop:Generator_ColumnVarNameInTable="columneva_ratine" msprop:Generator_ColumnPropNameInRow="eva_ratine" msprop:Generator_ColumnPropNameInTable="eva_ratineColumn" msprop:Generator_UserColumnName="eva_ratine" type="xs:string" minOccurs="0" />
+              <xs:element name="comment" msprop:Generator_ColumnVarNameInTable="columncomment" msprop:Generator_ColumnPropNameInRow="comment" msprop:Generator_ColumnPropNameInTable="commentColumn" msprop:Generator_UserColumnName="comment" type="xs:string" minOccurs="0" />
+              <xs:element name="sgroup" msprop:Generator_ColumnVarNameInTable="columnsgroup" msprop:Generator_ColumnPropNameInRow="sgroup" msprop:Generator_ColumnPropNameInTable="sgroupColumn" msprop:Generator_UserColumnName="sgroup" type="xs:string" minOccurs="0" />
+              <xs:element name="seq" msprop:Generator_ColumnVarNameInTable="columnseq" msprop:Generator_ColumnPropNameInRow="seq" msprop:Generator_ColumnPropNameInTable="seqColumn" msprop:Generator_UserColumnName="seq" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsRating" msprop:Generator_TableClassName="dsRatingDataTable" msprop:Generator_TableVarName="tabledsRating" msprop:Generator_RowChangedName="dsRatingRowChanged" msprop:Generator_TablePropName="dsRating" msprop:Generator_RowDeletingName="dsRatingRowDeleting" msprop:Generator_RowChangingName="dsRatingRowChanging" msprop:Generator_RowEvHandlerName="dsRatingRowChangeEventHandler" msprop:Generator_RowDeletedName="dsRatingRowDeleted" msprop:Generator_RowClassName="dsRatingRow" msprop:Generator_UserTableName="dsRating" msprop:Generator_RowEvArgName="dsRatingRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sratingname" msprop:Generator_ColumnVarNameInTable="columnsratingname" msprop:Generator_ColumnPropNameInRow="sratingname" msprop:Generator_ColumnPropNameInTable="sratingnameColumn" msprop:Generator_UserColumnName="sratingname" type="xs:string" minOccurs="0" />
+              <xs:element name="sratingdes" msprop:Generator_ColumnVarNameInTable="columnsratingdes" msprop:Generator_ColumnPropNameInRow="sratingdes" msprop:Generator_ColumnPropNameInTable="sratingdesColumn" msprop:Generator_UserColumnName="sratingdes" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dsReq" msprop:Generator_TableClassName="dsReqDataTable" msprop:Generator_TableVarName="tabledsReq" msprop:Generator_RowChangedName="dsReqRowChanged" msprop:Generator_TablePropName="dsReq" msprop:Generator_RowDeletingName="dsReqRowDeleting" msprop:Generator_RowChangingName="dsReqRowChanging" msprop:Generator_RowEvHandlerName="dsReqRowChangeEventHandler" msprop:Generator_RowDeletedName="dsReqRowDeleted" msprop:Generator_RowClassName="dsReqRow" msprop:Generator_UserTableName="dsReq" msprop:Generator_RowEvArgName="dsReqRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

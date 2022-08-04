@@ -1,0 +1,1794 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Probation Form";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Probation Form
+        </h1>
+        <div class="row" hidden>
+            <div class="box box-solid">
+                <div class="box-body no-border no-pad-top no-pad-bot">
+                    <div class="col-xs-12">
+                        <div class="row" id="search">
+                            <br />
+
+                            <div class="row">
+                                <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">Start Date</span>
+                                        <input ID="startDate" name="startDate" class="form-control text-center" type="text" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">End Date</span>
+                                        <input ID="endDate" name="endDate" class="form-control text-center" type="text" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">Status</span>
+                                        <select id="sltStatus" class="form-control">
+                                            <option value="All">All</option>
+                                            <option value="Y">Give</option>
+                                            <option value="A">Approved</option>
+                                            <option value="S">Sent</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">Name/ID</span>
+                                        <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                        <input type="text" id="txtSearch" name="txtSearch" class="form-control" />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">Name</span>
+                                        <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="row" hidden>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                            <div class="col-md-8">
+                                                <input type="text" id="txtgroup" name="txtgroup" class="form-control" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" hidden>
+                                    <div class="col-md-12">
+                                        <div class="form-group form-group-sm">
+                                            <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                            <div class="col-md-8">
+                                                <input type="text" id="txtposition" name="txtposition" class="form-control" disabled />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-group-sm col-xs-12  text-left">
+                                <button type="button" class="btn btn-primary" onclick="LoadData('G');" style="width:150px;">Search</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Main content -->
+    <div class="collapse in">
+        <section class="content no-pad-top ">
+            <form class="form-horizontal">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <span id="forextentext" style="display:none;font-size: 16px;color: white;background-color: darkred;padding: 5px 15px;border-radius: 10px;" class="text-danger"></span>
+                                <div class="row" id="forloadletter" style="display:none;">
+                                    <div class="form-group form-group-sm col-xs-12  text-right">
+
+                                        <button type="button" class="btn btn-success" onclick="ExportData();" style="width:450px;"><span class="fa fa-file-pdf-o"></span> Download Letter of Successful Probation Period </button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 row text-right" id="divforprint" hidden>
+                                    <button id="printformbtn" type="button" class="btn btn-success" onclick="PrintForm();" style="width:150px;"><span class="fa fa-file-pdf-o"></span> Print </button>
+                                </div>
+                                <div class="box-tools pull-right" hidden>
+                                    <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="col-md-12">
+
+                                    <div id="formdiv" class="center" style="background-color:white;">
+                                        <div class="col-md-12" hidden>
+                                            <div class="col-md-4" style="margin-left: -40px;"><img src="~/Image/KPMG-RGB.png" width="100" /></div>
+                                            <div class="col-md-4 text-center"><strong>* Return to HR Dept. by &laquo;Date_Send_to_HR&raquo; *</strong></div>
+                                            <div class="col-md-4"><span class="pull-right"><em>HR 06</em></span></div>
+                                        </div>
+                                        <table border="1" style="width:950px;max-width:1000px;min-width:800px;">
+                                            <tbody>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 91%; height: 18px; text-align: left;padding: 10px; background-color:linen;" colspan="6"><strong>PERFORMANCE EVALUATION (PROBATIONARY PERIOD) </strong> <strong class="pull-right">CONFIDENTIAL</strong></td>
+                                                </tr>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 29%; height: 18px;" colspan="2">
+                                                        <p><strong>&nbsp;Name:</strong></p>
+                                                        <label id="txtName" class="text-center fordatalabel"></label>
+                                                        @*<p id="txtName"><strong>&nbsp;&laquo;Name&raquo; &laquo;Surname&raquo;</strong></p>*@
+                                                    </td>
+                                                    <td style="width: 29%; height: 18px;" colspan="2">
+                                                        <p><strong>&nbsp;Rank:</strong></p>
+                                                        <label id="txtPosition" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                    <td style="width: 18%; height: 18px;">
+                                                        <p><strong>&nbsp;Staff No.:</strong></p>
+                                                        <label id="txtStaff_No" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                    <td style="width: 15%; height: 18px;">
+                                                        <p><strong>&nbsp;Cost Center:</strong></p>
+                                                        <label id="txtCost_Center" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 29%; height: 18px;" colspan="2">
+                                                        <p><strong>&nbsp;Date Employed:</strong></p>
+                                                        <label id="txtDate_Employed" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                    <td style="width: 29%; height: 18px;" colspan="2">
+                                                        <p><strong>&nbsp;Probationary Period End:</strong></p>
+                                                        <label id="txtPeriod_End" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                    <td style="width: 33%; height: 18px;" colspan="2">
+                                                        <p><strong>&nbsp;Performance Manager / PM's Cost Center:</strong></p>
+                                                        <label id="txtManager" class="text-center fordatalabel"></label>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 91%; height: 18px; text-align: center; background-color: lightgray;" colspan="6">&nbsp;(TO BE FILLED IN BY PERFORMANCE MANAGER)</td>
+                                                </tr>
+                                                <tr style="height: 18px;background-color:#f3f3f3;">
+                                                    <td style="width: 91%; height: 18px; text-align: center;" colspan="6">&nbsp;Please evaluate your staff based on the following competencies and give your recommendation as to whether or not his/her employment status<br />be continued as a permanent staff upon completion of four-month probationary period.</td>
+                                                </tr>
+                                                <tr style="height: 18px;background-color:#f3f3f3;">
+                                                    <td style="width: 91%; height: 18px; text-align: center;" colspan="6">&nbsp;<strong>Please refer to attached link for examples of required behavior for each competency.</strong><br /> <a href="https://intra.aspac.kpmg.com/sites/TH/HR/OpenPD/OpenPDDocuments/Refreshed%20EAL_portal.pdf" target="_blank">Everyone a Leader Framework</a></td>
+                                                </tr>
+                                                <tr style="height: 18px;background-color:#f3f3f3;">
+                                                    <td style="width: 91%; height: 18px; text-align: center;" colspan="6">&nbsp;<strong>Note rating performance: Please provide the reason in case that you evaluate &ldquo;Not Pass&rdquo; or &ldquo;N/A&rdquo; </strong><br />(not applicable - In case of limited time for observation)</td>
+                                                </tr>
+                                                <tr style="height: 78px;">
+                                                    <td style="width: 91%; height: 78px;" colspan="6">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%"></table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 19%; height: 18px;">
+                                                        <p>&nbsp;Current Leave (Hours) :</p>
+                                                        <p id="txtAbsent" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                    <td style="width: 72%; height: 18px;background-color:#efffec47;" colspan="5">
+                                                        &nbsp;
+                                                        <strong>Should the employment status be continued as a permanent staff?</strong><br>
+                                                        &nbsp; &nbsp; &nbsp;
+                                                        <input id="concludeY" type="radio" name="chkconclude" value="Y" class="square-green"> YES&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <input id="concludeN" type="radio" name="chkconclude" value="N" class="square-green"> NO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <input id="concludeO" type="radio" name="chkconclude" value="O" class="square-green"> OTHER (i.e. Probation extension – please specify below)
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;">
+                                                    <td style="width: 91%; height: 18px;" colspan="6">
+                                                        &nbsp;
+                                                        <strong>Other Remarks and Recommendations:</strong><br />
+                                                        <textarea rows="3" cols="50" id="txtOtherRemarks" name="txtRemark9" class="form-control" maxlength="1000" style="width:100%;" placeholder="Performance Manager (PM) are required to provide evidence to support the performance evaluation result by adding comment/remark/recommendation."></textarea>
+
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;" id="tdExtend" hidden>
+                                                    <td style="width: 100%; height: 18px;" colspan="3">
+                                                        &nbsp;
+                                                        <strong>Extend Period :</strong>
+                                                        <input id="chkExtend_Period1" type="radio" name="chkExtend_Period" value="1" class="square-green"> 1 Month&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <input id="chkExtend_Period2" type="radio" name="chkExtend_Period" value="2" class="square-green"> 2 Months
+
+                                                    </td>
+                                                    <td style="width: 100%; height: 18px;" colspan="3">
+                                                        &nbsp;
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-3"> <strong>Action Plan :</strong></div>
+                                                            <div class="col-md-9">
+                                                                <div id="divUploadfile" class="upload-btn-wrapper">
+                                                                    <button type="button" class="btn btn-success" style="width:150px;"><span class="fa fa-upload"></span>&nbsp;&nbsp;&nbsp; Browse Files</button>
+                                                                    <input type="file" id="btnUpload" name="files[]" multiple />
+                                                                </div>
+
+                                                                @*<input id="Action_Plan" type="file" name="pic" class="form-control" style="margin-top: -10px; margin-bottom: 5px;">*@
+                                                                @*<div class="input-group input-group-sm">
+                                                                        <label class="input-group-btn">
+                                                                            <span class="btn btn-primary">
+                                                                                Browse&hellip;
+
+                                                                                <input type="file" id="btnUpload" name="files[]" style="display: none;" multiple />
+                                                                            </span>
+                                                                        </label>
+                                                                        <input type="text" class="form-control" readonly />
+                                                                    </div>*@
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div style="border:1px solid lightblue; padding:10px 3px 0px 5px;border-radius:20px;margin-bottom:10px;">
+                                                                <p id="listFileold"></p>
+                                                                <p id="listFile"></p>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;background-color:linen;">
+                                                    <td style="width: 19%; height: 18px;">
+                                                        <p>&nbsp;Proposed By:</p>
+                                                        <p id="txtHR_Name" style="text-align: center;font-weight:900;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Wanna P.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>
+                                                        <p style="text-align: center;">(HR Department)</p>
+                                                    </td>
+                                                    <td style="width: 20.1542%; height: 18px;" colspan="2">
+                                                        <p>&nbsp; Evaluated By:</p>
+                                                        <p id="txtPM_Name" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                        @* <label id="txtPM_Name" style="text-align: center;"></label>*@
+                                                        <p style="text-align: center;">&nbsp;(Performance Manager)</p>
+                                                    </td>
+                                                    <td style="width: 18.8458%; height: 18px;">
+                                                        <p>&nbsp; Acknowledged By:</p>
+                                                        <p id="txtStaff_Name" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                        <p style="text-align: center;">&nbsp;(Employee)</p>
+                                                    </td>
+                                                    <td style="width: 18%; height: 18px;">
+                                                        <p>&nbsp; Recommended&nbsp; By:</p>
+
+                                                        <div id="divforselectGH">
+                                                            <span class="input-group-addon nomallabel">Name/ID</span>
+                                                            <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                                            <input type="text" id="txtSearchGH" name="txtSearchGH" class="form-control" />
+
+
+                                                            <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                                        </div>
+
+                                                        <p id="txtGroupHead_Name" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                        <p style="text-align: center;">&nbsp;(Group Head/Dept.Head)</p>
+                                                    </td>
+                                                    <td style="width: 15%; height: 18px;">
+                                                        <p>&nbsp; Approved By:</p>
+                                                        <p id="txtHOP_Name" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                        <p style="text-align: center;">&nbsp;(HOP / Head of SSVC)</p>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 18px;background-color:antiquewhite;">
+                                                    <td style="width: 19%; height: 18px;">
+                                                        <p>&nbsp;Proposed Date:</p>
+                                                        <p id="txtHR_Submit_Date" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                    <td style="width: 20.1542%; height: 18px;" colspan="2">
+                                                        <p>&nbsp;Evaluated Date:</p>
+                                                        <p id="txtPM_Submit_Date" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                    <td style="width: 18.8458%; height: 18px;">
+                                                        <p>&nbsp;Acknowledged Date:</p>
+                                                        <p id="txtStaff_Acknowledge_Date" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                    <td style="width: 18%; height: 18px;">
+                                                        <p>&nbsp;Recommended Date:</p>
+                                                        <p id="txtGroupHead_Submit_Date" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                    <td style="width: 15%; height: 18px;">
+                                                        <p>&nbsp;Approved Date:</p>
+                                                        <p id="txtHOP_Submit_Date" style="text-align: center;font-weight:900;">&nbsp;</p>
+                                                    </td>
+                                                </tr>
+                                                <tr style="height: 1px; border: 0px solid white !important;display:none;">
+                                                    <td style="width: 19%; height: 1px;">&nbsp;</td>
+                                                    <td style="width: 10%; height: 1px;">&nbsp;</td>
+                                                    <td style="width: 10.1542%; height: 1px;">&nbsp;</td>
+                                                    <td style="width: 18.8458%; height: 1px;">&nbsp;</td>
+                                                    <td style="width: 18%; height: 1px;">&nbsp;</td>
+                                                    <td style="width: 15%; height: 1px;">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- DivTable.com -->
+
+
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" id="divbuttonaction">
+                    <div class="form-group form-group-sm col-xs-12  text-center">
+                        <button id="btnSubmit" type="button" class="btn btn-primary" onclick="Save();" style="width:150px;">Submit</button>
+                        <button id="btnReset" type="button" class="btn btn-info" onclick="Reset();" style="width:150px;display:none;">Reset</button>
+                        <button id="btnRevies" type="button" class="btn btn-warning" onclick="RollbackData();" style="width:150px;">Revise</button>
+                        @*<button type="button" class="btn btn-danger" onclick="" style="width:150px;">Cancel</button>*@
+
+                    </div>
+                </div>
+            </form>
+</form>
+        </section>
+    </div>
+<div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+            </div>
+            <div class="modal-body">
+                <div id="divCreatePopUp">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="col-md-12 text-center">
+                                    Do you want to confirm save ?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="SaveData('S');" class="btn btn-primary">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="PopupConfirm_Revise" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #ff6a00;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">
+                    <b style="color: white;">
+                        <span class="fa fa-info-circle"></span>&nbsp; Revise Remark
+                    </b>
+                </span>
+            </div>
+            <div class="modal-body text-center">
+                <div class="form-group form-group-sm col-sm-12  col-xs-12">
+                    <div class="input-group">
+                        <span class="input-group-addon required">Remark</span>
+                        <input type="text" id="txtGHRemark" name="txtGHRemark" class="form-control" autocomplete="off" required />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="SaveData('R');return false;" class="btn btn-warning" data-dismiss="modal">
+                    Revise
+                </button>
+
+                <button type="button" class="btn btn-danger" data-dismiss="modal"> Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<style>
+
+    /* DivTable.com */
+    .divTable {
+        display: table;
+        width: 100%;
+    }
+
+    .divTableRow {
+        display: table-row;
+    }
+
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+    }
+
+    .divTableCell, .divTableHead {
+        border: 1px solid #999999;
+        display: table-cell;
+        padding: 3px 10px;
+    }
+
+    .divTableHeading {
+        background-color: #EEE;
+        display: table-header-group;
+        font-weight: bold;
+    }
+
+    .divTableFoot {
+        background-color: #EEE;
+        display: table-footer-group;
+        font-weight: bold;
+    }
+
+    .divTableBody {
+        display: table-row-group;
+    }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .btn_uploadfile {
+        border: 2px solid gray;
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+        .btn_uploadfile:hover {
+            border: 10px solid gray;
+            color: gray;
+            background-color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .fordatalabel {
+        padding: 2px 5px;
+        background-color: #f5686821;
+        border-radius: 20px;
+        width: 93%;
+        margin: 0 10px;
+    }
+
+    @@media print {
+        input[type=checkbox], input[type=radio] {
+            opacity: 1 !important;
+        }
+
+        .checked {
+            opacity: 1 !important;
+            content: '-';
+        }
+
+            .checked:after {
+                content: "\f192"; /* this is your text. You can also use UTF-8 character codes as I do here */
+                font-family: FontAwesome;
+                font-size: 16px;
+            }
+
+        .box-header, box-primary {
+            display: none;
+        }
+
+        thead {
+            width: 1240px !important;
+        }
+    }
+</style>
+
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+    <script src="~/Scripts/SystemFunc/sysUploadFileActionPlan.js"></script>
+
+    <script type="text/javascript">
+
+        var objModel = @Html.Raw(Json.Encode(Model));
+
+        function Save(sVal) {
+            $("#PopupSave").modal();
+        }
+
+        var objlstData = [];
+
+        $('.new_Btn').bind("click", function () {
+            $('#html_btn').click();
+        });
+
+        $(window).bind("load", function () {
+            $('#gvwData').DataTable().columns.adjust().draw();
+
+        });
+
+        $(function () {
+           
+            $('#startDate,#endDate').datepicker({
+                format: "dd MM yyyy",
+
+                autoclose: true
+            });
+
+            SetAutocom("txtSearch");
+            SetAutocom("txtSearchGH");
+            SetTable();
+
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+
+            bindloaddata();
+
+            if (objModel.maindata.Assessment == "Y" && (objModel.maindata.Status == "Complete" || objModel.maindata.Status == "Completed") && (objModel.maindata.You_Are == "Staff" || objModel.maindata.You_Are == "Completed" ) && new Date(moment(new Date()).format('YYYY MM DD')) >= new Date(moment(objModel.maindata.End_Pro).format('YYYY MM DD')))
+            {
+                $('#forloadletter').show();
+            }
+            if (objModel.maindata.Extend_Status == "Y")
+            {
+                $('#forextentext').show();
+                if (objModel.maindata.Extend_Status == "Y")
+                {
+                    $('#forextentext').html("Probation extended from " + moment(moment(objModel.maindata.End_Pro).format("YYYY-MMMM-DD")).add('month', -objModel.maindata.Extend_Period).format("DD MMMM YYYY"));
+
+                }
+                else
+                {
+                    $('#forextentext').html("Probation extended from " + moment(moment(objModel.maindata.Start_Pro).format("YYYY-MMMM-DD")).add('days', 118).format("DD MMMM YYYY"));
+
+                }
+
+
+
+            }
+            $('#gvwData').DataTable().columns.adjust().draw();
+            SetICheck();
+          //Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+
+
+          //      $('input[id="chkX' + ed.Id +ed.Assessment+ '-chkRow"]').iCheck('check');
+
+
+          //  });
+
+        //$('input:radio[name="chk2266"]').filter('[value="N"]').attr('checked', true);
+
+        var getcheck = document.getElementsByClassName('checked')
+                Enumerable.From(getcheck).ForEach(function (ed) {
+         ed.innerHTML = "";
+                });
+
+
+        /* if (getBrowserName() != "Chrome") {
+                var settext = '<strong><label style="color: tomato;">Chrome</label> is recommended for HCM system. Please <label style="color: tomato;">change</label> your web browser.</strong>';
+                settext += '<br><input type="text" value="" id="myInput" style=" opacity: 0;">';
+                settext += '<br><div class="pull-right"><button class="btn btn-sm btn-info" onclick="myFunction()">Copy Link</button>';
+                settext += ' <input class="btn btn-sm btn-danger" type="button" value="Close this window" onclick="windowClose();"></div><br>';
+                DialogWarning(DialogHeader.Warning, settext);
+                return false;
+
+            }*/
+
+        });
+
+
+        function PrintForm()
+        {
+        $('#printformbtn').hide();
+        $('#divbuttonaction').hide();
+            $('#btnUpload').hide();
+            $("div").removeClass("table-responsive")
+            window.print();
+            RefreshTable('#gvwData');
+        $('#printformbtn').show();
+        $('#divbuttonaction').show();
+            $('#btnUpload').show();
+
+
+
+        var getcheck = document.getElementsByClassName('checked');
+        var formdiv = $("#formdiv");
+
+         var container = document.getElementById("formdiv");
+
+
+        var sethtml = container.outerHTML;
+        var i = 0;
+        for(i=0;i<getcheck.length;i++)
+        {
+            //sethtml.replace(getcheck[i].outerHTML, "<span>&#10003;</span>");
+           // sethtml.replace('<div class="iradio_square-green checked disabled" aria-checked="false" aria-disabled="true" style="position: relative;"></div>', "check");
+            sethtml = sethtml.replace('<div class="iradio_square-green checked disabled" aria-checked="false" aria-disabled="true" style="position: relative;"></div>', "<h2>&#9745;</h2>");
+            sethtml = sethtml.replace('<div class="iradio_square-green checked" aria-checked="false" aria-disabled="false" style="position: relative;"></div>', "<h2>&#9745;</h2>");
+             //sethtml = sethtml.replace('<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>', "<h3>&#9744;</h3>");
+             //sethtml = sethtml.replace('<ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins>', "<h3>&#9744;</h3>");
+
+        }
+
+             //sethtml = sethtml.replace('<strong></strong>', "check");
+
+           //container.outerHTML = sethtml;
+
+            //displayMessage(this+("<script>window.print();window.close();<//script>").replace("//","/"));
+            //displayMessage(sethtml+("<script>window.print()<//script>").replace("//","/"));
+        }
+
+        $(document).ready(function () {
+            $('input').on('ifChecked', function (event) {
+                //alert('aaa');
+                var getid = $(this);
+
+                //if (getid[0].name == "chkconclude")
+                //{
+                //    Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+                //        var ad = GetValRadioListNotValidate("chk" + ed.Id);
+                //        if (ad == null || ad == "") {
+                //            DialogWarning(DialogHeader.Warning, "Please select " + ed.Topic, 'func', function () {
+
+                //                return false;
+                //            });
+                //            return false;
+                //            //break;
+                //            //throw BreakException;
+
+                //        }
+                //        else {
+                //            return false;
+                //        }
+                //    });
+                //}
+                if (getid.val() != "Y") {
+                    var foralert = "";
+                    if (getid[0].name == "chkconclude") {
+                        if (getid.val() == "O") {
+                            var remark = GetValTextArea("txtOtherRemarks");
+                            if (remark == "") {
+                                foralert = '<p>Please state the reason for selecting &lsquo;OTHER&rsquo; below.</p>'
+                                        +'<p>&nbsp;</p>'
+                                        +'<p><span style="color: #ff0000;">In the case that staff&rsquo;s performance might <strong><em>not</em></strong> pass probation, <u>please contact Siriwan or Manisa / HR before completing the evaluation within the system</u> and please inform HR at least 30 days before the staff&rsquo;s probation ending date, to assist in required process, with PM&rsquo;s action as per below.</span></p>'
+                                        +''
+                                        +'<li>PM needs to discuss with PPC committee/or Group Head for further action such as</li>'
+                                        +''
+                                        +'<ol>'
+                                        +'<li>Extension of probation period and develop the improvement plan with the staff.</li>'
+                                        +'<li>Unsuccessful probation.</li>'
+                                        +'</ol>'
+                                        +'<p>Please be noted that Labor Law is an important concern so late feedback will make an impact to the amount of severance payment to the staff.</p>';
+
+
+                            }
+                            $('[name=chkExtend_Period]').iCheck('uncheck');
+                            $("#tdExtend").show();
+                        }
+                        else if (getid.val() == "N") {
+                            var remark = GetValTextArea("txtOtherRemarks");
+                            if (remark == "") {
+                                foralert = '<p>In case the performance manager wants to extend the staff&rsquo;s probation, please select &ldquo;OTHER&rdquo; and state the reason below.</p>'
+                                        +'<p>&nbsp;</p>'
+                                        +'<p><span style="color: #ff0000;">In the case that staff&rsquo;s performance might <strong><em>not</em></strong> pass probation, <u>please contact Siriwan or Manisa / HR before completing the evaluation within the system</u> and please inform HR at least 30 days before the staff&rsquo;s probation ending date, to assist in required process, with PM&rsquo;s action as per below.</span></p>'
+                                        +''
+                                        +'<li>PM needs to discuss with PPC committee/or Group Head for further action such as</li>'
+                                        +''
+                                        +'<ol>'
+                                        +'<li>Extension of probation period and develop the improvement plan with the staff.</li>'
+                                        +'<li>Unsuccessful probation.</li>'
+                                        +'</ol>'
+                                        +''
+                                        +'Please be noted that Labor Law is an important concern so late feedback will make an impact to the amount of severance payment to the staff.'
+                                        +'';
+
+                            }$("#tdExtend").hide();
+                        }
+
+                    }
+                    else if (getid[0].name == "chkExtend_Period") {
+
+                        return false;
+                    }
+                    else {
+                        var remark = GetValTextArea("txtRemark" + getid[0].name.split('chk')[1]);
+                        if (remark == "")
+                            foralert = "Please give a reason of “Not Pass” or “N / A”";
+
+
+
+
+                    }
+
+
+
+
+
+                    if (foralert != "") {
+                        DialogWarning(DialogHeader.Warning, foralert, 'func', function () {
+
+                            return false;
+                        });
+                    }
+                }
+                else
+                {
+                    $("#tdExtend").hide();
+                }
+                    if (getid[0].name != "chkconclude")
+                     {
+                     setnewempty();
+                     }
+                var yesp = 0;
+                var nop = 0;
+                var otherp = 0;
+
+                Enumerable.From($('input[id*="chkX"]:checked')).ForEach(function (ed) {
+                    if (ed.value != "") {
+                        var abc = ed.value;
+
+                        if (abc == "Y") {
+                            yesp += 1;
+
+                        }
+                        else if (abc == "N") {
+                            nop += 1;
+
+                        } else if (abc == "O") {
+                            otherp += 1;
+
+                        }
+                    }
+
+                });
+
+
+
+                if (yesp > 0 && nop > 0 && otherp > 0)
+                {
+                    $('[id=concludeY]').iCheck('disable');
+                }
+                else if (nop > 0 && otherp > 0)
+                {
+                    $('[id=concludeY]').iCheck('disable');
+                }
+                else if (yesp > 0 && otherp > 0)
+                {
+                    $('[id=concludeN]').iCheck('disable');
+                }
+                else if (yesp > 0 && nop > 0)
+                {
+                    $('[id=concludeY]').iCheck('disable');
+                }
+                else if (otherp > 0)
+                {
+                    $('[id=concludeY]').iCheck('disable');
+                    $('[id=concludeN]').iCheck('disable');
+                }
+                else if (nop > 0)
+                {
+                    $('[id=concludeY]').iCheck('disable');
+                    $('[id=concludeO]').iCheck('disable');
+                }
+                else if (yesp > 0)
+                {
+                    $('[id=concludeN]').iCheck('disable');
+                    $('[id=concludeO]').iCheck('disable');
+                }
+
+                //alert(yesp + " / " + nop + " / " + otherp);
+         //if(getid[0].id.substring(0, 4)=="chkX")
+         //   {
+         //       if(getid.val() == "Y")
+         //       {
+         //           alert(getid.val());
+         //       }
+         //       else if(getid.val() == "N")
+         //       {
+         //           alert(getid.val());
+         //       }
+         //       else if(getid.val() == "O")
+         //       {
+         //     alert(getid.val());
+         //       }
+         //   }
+
+                //alert(getid[0].name);
+            });
+
+            SetUploadFile("btnUpload", "", "hfdSessFile", '@Url.Action("UploadFileBypass", "Probation")');
+
+            $('input[type="file"]').change(function (e) {
+
+                Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+                    var ad = GetValRadioListNotValidate("chk" + ed.Id);
+                    if (ad == null || ad == "")
+                    {
+                        return false;
+
+                    } else
+                    {
+                        return ed.Assessment = ad;
+                    }
+                });
+
+                Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+                    var getremark = GetValTextArea("txtRemark" + ed.Id);
+
+                    return ed.Remark = getremark;
+                });
+
+
+                var getfilename = "";
+                for (var i = 0; i < this.files.length; i++) {
+                    getfilename += (i+1)+" : "+this.files[i].name+"<br>";
+                }
+               var getoldfile =  $('#listFile').html();
+                $('#listFile').html(getfilename);
+
+                bindloaddata();
+
+            });
+        });
+
+        function setnewempty()
+        {
+
+                $('[id=concludeY],[id=concludeN],[id=concludeO]').iCheck('uncheck');
+                $('[id=concludeY],[id=concludeN],[id=concludeO]').iCheck('enable');
+                $('[id=concludeY],[id=concludeN],[id=concludeO]').iCheck('update');
+        }
+
+        function bindloaddata() {
+            var modelget = objModel;
+
+            var getdata = modelget.lstData_Detail;
+            if (getdata != undefined && getdata != null && getdata.length > 0) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(getdata);
+                $('#gvwData').dataTable().fnDraw();
+                $('#gvwData').DataTable().columns.adjust().draw();
+
+                $('#btnapprove').css("display", "block");
+
+                objlstData = getdata;
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+
+                objlstData = [];
+            }
+
+            var getmaindata = objModel.maindata;
+            $('[id$=txtName]').text(getmaindata.Staff_Name);
+            $('[id$=txtPosition]').text(getmaindata.Position);
+            $('[id$=txtStaff_No]').text(getmaindata.Staff_No);
+            $('[id$=txtCost_Center]').text(getmaindata.Cost_Center);
+            $('[id$=txtDate_Employed]').text(getmaindata.Date_Employed);
+            $('[id$=txtPeriod_End]').text(getmaindata.Probationary_Period_End);
+            $('[id$=txtManager]').text(getmaindata.PM_Cost);
+            $('[id$=txtAbsent]').html(getmaindata.Absent);
+
+            $('#conclude' + getmaindata.Assessment).iCheck('check');
+
+            $('[id$=txtOtherRemarks]').text(getmaindata.Remark);
+            $('#listFileold').html(getmaindata.File_Upload);
+            if (getmaindata.Assessment == "O") {
+                $('#chkExtend_Period' + getmaindata.Extend_Period).iCheck('check');
+            }
+            if ($('#conclude' + getmaindata.Assessment).val() == "O") {
+                $("#tdExtend").show();
+
+            }
+            //signator
+            //HR_Name
+            //Staff_Name
+            //PM_Name
+            //GroupHead_Name
+            //HOP_Name
+
+            //HR_Submit_Date
+            //Staff_Acknowledge_Date
+            //PM_Submit_Date
+            //GroupHead_Submit_Date
+            //HOP_Submit_Date
+
+            var youare = getmaindata.You_Are;
+
+            var getyou = youare.split('|');
+
+            switch (getyou[0]) {
+                case "PM":
+                    if (getmaindata.Status == "HR" || getmaindata.Status == "R") {
+                        $('[id=divbuttonaction]').show();
+                    } else
+                    {
+                        $('[id=divbuttonaction]').hide();
+                    }
+                    $('[id=divforprint]').show();
+                    break;
+                case "Staff":
+                    if (getmaindata.Status != "PM")
+                        $('[id=divbuttonaction]').hide();
+                    break;
+                case "GroupHead":
+                    if (getmaindata.Status != "Staff")
+                        $('[id=divbuttonaction]').hide();
+                    break;
+                case "HOP":
+                    if (getmaindata.Status != "GroupHead" || getmaindata.Status == "Completed")
+                        $('[id=divbuttonaction]').hide();
+                    break;
+                case "Completed":
+                    if (getmaindata.Status == "Completed" ||getmaindata.Status == "Complete")
+                        $('[id=divbuttonaction]').hide();
+                    break;
+                case "Complete":
+                    if (getmaindata.Status == "Completed"||getmaindata.Status == "Complete")
+                        $('[id=divbuttonaction]').hide();
+                    break;
+                default:
+                // code block
+            }
+
+
+            if (getmaindata.Status == "R") {
+
+                if (getyou[0] == "PM" )
+                {
+                    $('[name*=chk]').iCheck('disable');
+                    $('[name*=txtRemark]').attr('readonly', 'readonly');
+                $('#divUploadfile').hide();
+
+                $("#btnSubmit").hide();
+                $("#btnReset").show();
+
+                }
+                //if (getyou[0] != "PM" && getmaindata.GroupHead_Submit_Date == "")
+                //{
+                //    $('[id=divbuttonaction]').hide();
+                //}
+            }
+            //else {
+            if (getmaindata.Status != "R")
+
+            {
+                if (
+                    (getyou[0] != "PM" )
+                    ||
+                    getmaindata.PM_Submit_Date != ""
+                    || (getmaindata.Staff_Acknowledge_Date != "" && getmaindata.Staff_Acknowledge_Date != "-")
+                    || getmaindata.GroupHead_Submit_Date != ""
+                    ||    (getmaindata.HOP_Submit_Date != "" && getmaindata.HOP_Submit_Date != "-")
+                ) {
+                    $('[name*=chk]').iCheck('disable');
+                    $('[name*=txtRemark]').attr('readonly', 'readonly');
+                    $('#divUploadfile').hide();
+                }
+            }
+            //}
+            if (youare != "GroupHead" && youare != "GroupHead|HOP") 
+        {
+
+                $('[id=btnRevies]').hide();
+                if (youare == "Staff")
+                {
+                    $("#btnSubmit").html('Acknowledge');
+                }
+
+                if (youare == "HR") {
+                    if (getmaindata.HR_Submit_Date != null && getmaindata.HR_Submit_Date != "" ) {
+                        $('[id=divbuttonaction]').hide();
+                    }
+                    $("#btnSubmit").html('Save');
+                }
+                else if ((youare == "PM" || youare == "PM|GroupHead" )&& getmaindata.Status != "R") {
+                    if (getmaindata.PM_Submit_Date != null && getmaindata.PM_Submit_Date != "") {
+                        $('[id=divbuttonaction]').hide();
+                    }
+                    $("#btnSubmit").html('Submit');
+                }
+
+                else if (youare == "Staff" && getmaindata.Status != "PM") {
+                    if (getmaindata.Staff_Acknowledge_Date != null && getmaindata.Staff_Acknowledge_Date != "") {
+                        $('[id=divbuttonaction]').hide();
+                    }
+                    else
+                    {
+                        $('[id=divbuttonaction]').show();
+                    }
+
+                }
+                else if (youare == "HOP") {
+                    if (getmaindata.HOP_Submit_Date != null && getmaindata.HOP_Submit_Date != "") {
+                        $('[id=divbuttonaction]').hide();
+                    }
+                    $("#btnSubmit").html('Approve');
+                }
+                else if (youare == "Completed") {
+                    if (getmaindata.HOP_Submit_Date != null && getmaindata.HOP_Submit_Date != "") {
+                        $('[id=divbuttonaction]').hide();
+                    }
+
+                }
+                //else { $('[id=divbuttonaction]').hide(); }
+            }
+            else {
+                if (getmaindata.GroupHead_Submit_Date != null && getmaindata.GroupHead_Submit_Date != "" ) {
+                    $('[id=divbuttonaction]').hide();
+                }
+                $("#btnSubmit").html('Approve');
+            }
+
+            //if (getmaindata.PM_Submit_Date != "" || youare == "PM") {
+
+            //    if (getmaindata.PM_Submit_Date == "" || getmaindata.PM_Submit_Date == null) {
+            //        $('[id$=txtPM_Name]').css('color', 'red');
+            //    }
+            $('[id$=txtPM_Name]').text(getmaindata.PM_Name);
+            $('[id$=txtPM_Submit_Date]').html(getmaindata.PM_Submit_Date);
+            //}
+
+            //if (getmaindata.HR_Submit_Date != "" || youare == "HR") {
+            $('[id$=txtHR_Name]').text(getmaindata.HR_Name);
+            $('[id$=txtHR_Submit_Date]').html(getmaindata.HR_Submit_Date);
+            //}
+
+            //if (getmaindata.Staff_Acknowledge_Date != "" || youare == "Staff") {
+            //    if (getmaindata.Staff_Acknowledge_Date == "" || getmaindata.Staff_Acknowledge_Date == null) {
+            //        $('[id$=txtStaff_Name]').css('color', 'red');
+            //    }
+
+            $('[id$=txtStaff_Name]').text(getmaindata.Staff_Name);
+            $('[id$=txtStaff_Acknowledge_Date]').html(getmaindata.Staff_Acknowledge_Date);
+            //}
+            //if (getmaindata.GroupHead_Submit_Date != "" || youare == "GroupHead") {
+            //    if (getmaindata.GroupHead_Submit_Date == "" || getmaindata.GroupHead_Submit_Date == null) {
+            //        $('[id$=txtGroupHead_Name]').css('color', 'red');
+            //    }
+            if (getmaindata.GroupHead_Name != "") {
+                $('[id$=divforselectGH]').hide();
+
+            }
+            else {
+                $('[id$=txtGroupHead_Name]').hide();
+            }
+            $('[id$=txtGroupHead_Name]').text(getmaindata.GroupHead_Name);
+            if (getmaindata.Status == "R") {
+                $('[id$=txtGroupHead_Submit_Date]').html(getmaindata.GroupHead_Submit_Date + "<br><p class='text-danger'>REVISE</p>");
+            } else {
+                $('[id$=txtGroupHead_Submit_Date]').html(getmaindata.GroupHead_Submit_Date);
+            }
+            //}
+            //if (getmaindata.HOP_Submit_Date != "" || youare == "HOP") {
+            //    if (getmaindata.HOP_Submit_Date == "" || getmaindata.HOP_Submit_Date == null) {
+            //       $('[id$=txtHOP_Name]').css('color', 'red');
+            //    }
+            $('[id$=txtHOP_Name]').text(getmaindata.HOP_Name);
+            $('[id$=txtHOP_Submit_Date]').text(getmaindata.HOP_Submit_Date);
+            //}
+
+
+        }
+        function RollbackData() {
+            $("#PopupConfirm_Revise").modal();
+        }
+        function LoadData(type) {
+
+            var startDatetxt = $('#startDate').val();
+            var endDatetxt = $('#endDate').val();
+            var empNotxt = $('#txtSearch').val();
+            //var nametxt = $('#txtName').val();
+            //var lastnametxt = $('#txtLastName').val();
+            var statusslt = $('#sltStatus').val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Search_Feedback", "Feedbacks")',
+                dataType: "json",
+                data: {
+                    start: startDatetxt,
+                    end: endDatetxt,
+                    status: type,
+                    empno: empNotxt,
+                    type: statusslt,
+                    //lastname: lastnametxt
+                },
+                success: function (respone) {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                    if (objModel != null) {
+
+                        bindloaddata();
+                    }
+
+                },
+                complete: function (jqXHR, status) {//finaly
+                    UnCheckCheckBoxHeader("ckbAll");
+                    SetICheck();
+                    SetCheckBoxSelectRowInGrid("gvwData", "ckbAll", "chkRow", "fix");
+                    UnblockUI();
+                }
+            });
+        }
+
+            function LoadFile(sVal) {
+
+                    BlockUI();
+                    window.open('@Url.Action("CreatAction_Plans_File", "Probation")?id=' + sVal, '_blank');
+                    setTimeout(function () { UnblockUI(); }, 500);
+
+            }
+
+        function SetTable() {
+
+            var objHeadClRequest = [
+
+                { "title": " NO", "width": "100px", "className": "dt-left-ctm", "data": "Seq" , "visible": false },
+                { "title": "                  Everyone A Leader framework                 ", "width": "500px", "className": "dt-left-ctm", "data": "proposition" , "orderable": false },
+                { "title": " Pass", "width": "100px", "className": "dt-center-ctm", "data": "Ans_1", "orderable": false },
+                { "title": " Not Pass", "width": "100px", "className": "dt-center-ctm", "data": "Ans_2", "orderable": false },
+                { "title": " N/A", "width": "100px", "className": "dt-center-ctm", "data": "Ans_3", "orderable": false},
+                { "title": " Remark (reason of “Not Pass” or “N / A”)", "width": "350px", "className": "dt-left-ctm", "data": "Remark", "orderable": false }
+
+
+
+            ];
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    //{
+
+                    //    "render": function (data, type, row, meta) {
+                    //        return meta.row + meta.settings._iDisplayStart + 1;
+                    //    },
+                    //    "targets": 0
+                    //},
+                    {
+                        "targets": 2,
+                        "render": function (data, type, row)  {
+                            var sHtml = "";
+                            sHtml = CreateRadioOfMassTIFs(row.Id, "Y", "", row.Assessment + "");
+                            return sHtml;
+
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "render": function (data, type, row)  {
+                            var sHtml = "";
+                            sHtml = CreateRadioOfMassTIFs(row.Id, "N", "", row.Assessment + "");
+                            return sHtml;
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "render": function  (data, type, row)  {
+                            var sHtml = "";
+                            sHtml = CreateRadioOfMassTIFs(row.Id, "O", "", row.Assessment + "");
+                            return sHtml;
+                        }
+                    },
+                    {
+                        "targets": 5,
+                        "render": function (data, type, row) {
+                            return CreateTextAreaInt("txtRemark" + row.Id, 1000, data + "");
+                        }
+                    }
+
+                    //{
+                    //    "render": function (data, type, row) {
+                    //        return data == "Y" ? "Give" : data == "A" ? "Approved" : data == "S" ? "Sent" : "" ;
+                    //    },
+                    //    "targets": 10
+                    //}
+                ]
+            };
+            CreatTableJS(objTableRe);
+            //$('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+
+            //    SetICheck();
+            //});
+
+
+
+        }
+        function SetCheckBoxNotMulti() {
+            $('input[id*=chkX]').unbind('ifChecked');
+            $('input[id*=chkX]').bind('ifChecked', function (event) {
+                //debugger
+                var $box = $(this);
+                var IsMulti = $box.data("type");
+                if (IsMulti == "no") {
+                    if ($box.is(':checked')) {
+                        // the name of the box is retrieved using the .attr() method
+                        // as it is assumed and expected to be immutable
+                        var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                        // the checked state of the group/box on the other hand will change
+                        // and the current value is retrieved using .prop() method
+                        $(group).parent().removeClass("checked").attr("aria-checked", false);
+                        $(group).prop('checked', false);
+                        $box.parent().addClass("checked").attr("aria-checked", true);
+                        $box.prop('checked', true);
+                    } else {
+                        $box.parent().removeClass("checked").attr("aria-checked", false);
+                        $box.prop('checked', false);
+                    }
+                }
+                else {
+                    var IsNo = $box.data("text");
+                    if (IsNo == "No") {
+                        if ($box.is(':checked')) {
+                            // the name of the box is retrieved using the .attr() method
+                            // as it is assumed and expected to be immutable
+                            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                            // the checked state of the group/box on the other hand will change
+                            // and the current value is retrieved using .prop() method
+                            $(group).parent().removeClass("checked").attr("aria-checked", false);
+                            $(group).prop('checked', false);
+                            $box.parent().addClass("checked").attr("aria-checked", true);
+                            $box.prop('checked', true);
+                        } else {
+                            $box.parent().removeClass("checked").attr("aria-checked", false);
+                            $box.prop('checked', false);
+                        }
+                    }
+                    else {
+                        var group = "input:checkbox[name='" + $box.attr("name") + "'][data-text='No']";
+                        $(group).parent().removeClass("checked").attr("aria-checked", false);
+                        $(group).prop('checked', false);
+                    }
+                }
+
+            });
+        }
+        function SaveData(type) {
+            if (type == "R")
+            {
+                if ($('#txtGHRemark').val() == "")
+                {
+
+                    DialogWarning(DialogHeader.Warning, "Please give remark for revise", 'func', function () {
+                        return false;
+                    });
+                    return false;
+                }
+
+            }
+                var form = $('#fileUploadForm')[0];
+
+                var data = new FormData(form);
+            //divforselectGH
+            if ($('#txtSearchGH').val() == "" && $('#txtGroupHead_Name').text() == "") {
+                DialogWarning(DialogHeader.Warning, "Please select Recommended  By", 'func', function () {
+                    return false;
+                });
+            }
+            else
+            {
+            var Acceptlst = [];
+            Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+                var ad = GetValRadioListNotValidate("chk" + ed.Id);
+                return ed.Assessment = ad;
+            });
+            Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+                var getremark = GetValTextArea("txtRemark" + ed.Id);
+
+                return ed.Remark = getremark;
+            });
+                if ($('#txtSearchGH').val() != "")
+                {
+                    objModel.maindata.GroupHead_No = $('#txtSearchGH').val();
+                }
+            objModel.maindata.Assessment = GetValRadioListNotValidate("chkconclude");
+            objModel.maindata.Remark = GetValTextArea("txtOtherRemarks");
+            objModel.maindata.Save_Type = type;
+            objModel.maindata.Remark_Revise = $('#txtGHRemark').val();
+            objModel.maindata.Extend_Period = GetValRadioListNotValidate("chkExtend_Period");
+
+            Acceptlst = Enumerable.From(objModel).ToArray();
+            ko.mapping.fromJS(Acceptlst, {}, viewModel);
+
+           //Enumerable.From(objModel.lstData_Detail).ForEach(function (ed) {
+           //     return ed.scoring = GetValRadioListNotValidate("chk" + ed.id);
+           // });
+
+
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var lstParam = objModel;
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("Save_ProbationForm", "Probation")',
+                    data: JSON.stringify({ itemdata: lstParam }),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin();
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+                                location.reload();
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Failed)
+                        {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+                }
+            }
+        }
+
+        function Reset()
+        {
+             var IsPass = true;
+            if (IsPass) {
+                BlockUI();
+                var lstParam = objModel;
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("Reset_ProbationForm", "Probation")',
+                    data: JSON.stringify({ itemdata: lstParam }),
+                    success: function (respone) {
+
+
+                        BlockUI();
+                        window.location.href = '@Url.Action("ProbationForm", "Probation")?qryStr=' + respone.result.idEncype;
+
+
+                        //if (respone.result.Status == SysProcess.SessionExpired) {
+                        //    PopupLogin();
+                        //} else if (respone.result.Status == SysProcess.Success) {
+                        //    DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+                        //        location.reload();
+                        //    });
+                        //}
+                        //else if (respone.result.Status == SysProcess.Failed)
+                        //{
+                        //    DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        //}
+                        //else {
+                        //    DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        //}
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+                }
+            }
+
+
+        //var table = $('#gvwData').DataTable();
+        //var col = table.column($(this).closest('th'));
+        $('input[type="checkbox"]').change(function () {
+            if (!$(this).is(':checked')) {
+                return confirm("Are you sure?");
+            }
+        });
+
+
+        function GetData() {
+            var lstData = "";
+            Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ForEach(function (ed) {
+                lstData += ed.Id + ",";
+            });
+
+            return lstData;
+        }
+
+        function ExportData()
+        {
+            var getdata = objModel.maindata;
+            window.open('@Url.Action("LetterExport", "Probation")?empno=' + getdata.Staff_No +'&enddatepro=' + getdata.End_Pro, '_blank');
+        }
+
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable, sRow) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            if (sRow == undefined || sRow == null) {
+                sRow = 3;
+            }
+
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='" + sRow + "' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+         function CreateRadioOfMassTIF(sID, sVal, sText, sSeletc) {
+                    var sChecked = "";
+                    var sHtml = "";
+                    if (sID != undefined && sID != "" && sVal != undefined && sVal != "") {
+                        if (sSeletc != undefined && sSeletc == sVal) {
+                            sChecked = "checked";
+                        }
+                        sHtml = '<input type="radio" id="chkX' + sID +sVal+ '-chkRow" name="chk' + sID + '"  class="square-green" value="' + sVal + '" ' + sChecked + '   />&nbsp;<strong>' + sText + "</strong>";
+                    }
+                    else {
+                        sHtml = "";
+                    }
+                    return sHtml;
+        }
+
+        function CreateRadioOfMassTIFs(sID, sVal, sText, sSeletc) {
+            var sChecked = "";
+            var sHtml = "";
+            if (sID != undefined && sID != "" && sVal != undefined && sVal != "") {
+                if (sSeletc != undefined && sSeletc == sVal) {
+                    sChecked = "checked";
+                }
+                sHtml = '<input type="radio" id="chkX' + sID + '-chkRow" name="chk' + sID + '"  class="square-green" value="' + sVal + '" ' + sChecked + '   />&nbsp;<strong>' + sText + "</strong>";
+            }
+            else {
+                sHtml = "";
+            }
+            return sHtml;
+        }
+
+                function CreatSelectMass(sID, objJson, sSelectValue, sDisable) {
+                    $("select[id$=" + sID + "]").unbind();
+                    var sDis = "";
+                    if (sDisable != undefined && sDisable == "Y") {
+                        sDis = "disabled";
+                    }
+                    var sHtml = "<select id='" + sID + "' class='form-control input-sm ' style='width:100%;' " + sDis + " >";
+                    if (objJson != undefined) {
+                        if (sSelectValue != undefined && sSelectValue != null && sSelectValue != "") {
+                            $.each(JSON.parse(objJson), function (i, item) {
+                                var optionhtml = "";
+                                if (item.value + "" == sSelectValue + "") {
+                                    optionhtml = '<option value="' +
+                                        item.value + '" selected="selected">' + item.text + '</option>';
+                                    sHtml += optionhtml;
+                                }
+                                else {
+                                    optionhtml = '<option value="' +
+                                        item.value + '">' + item.text + '</option>';
+                                    sHtml += optionhtml;
+                                }
+                            });
+                        }
+                        else {
+                            var optionhtml = "";
+                            $.each(JSON.parse(objJson), function (i, item) {
+                                optionhtml = '<option value="' +
+                                    item.value + '">' + item.text + '</option>';
+                                sHtml += optionhtml;
+                            });
+                        }
+                    }
+                    sHtml += "</select>";
+
+                    //Set Event dropdows
+                    $("select[id$=" + sID + "]").bind("change", function () {
+                        $("select[id$=" + sID + "]").val($(this).val());
+                    });
+
+                    return sHtml;
+                }
+
+                function CreateMassCheckbox(sID, objJson, sSelectValue, sDisable, isMulti) {
+
+                    var sDis = "";
+                    var multi = "no";
+                    if (sDisable != undefined && sDisable == "Y") {
+                        sDis = "disabled";
+                    }
+                    if (isMulti != undefined && isMulti == "Y") {
+                        multi = "multiple";
+                    }
+                    var sHtml = "";
+                    //return "<input type='checkbox' id='AdnInfo' name='AdnInfo' class='flat-green' data-type='xxxx' value='Y' checked />Iasfasf"
+                    if (objJson != undefined) {
+                        if (sSelectValue != undefined && sSelectValue != null && sSelectValue.length > 0) {
+                            $.each(JSON.parse(objJson), function (i, item) {
+                                var optionhtml = "";
+                                //if (item.nID + "" == sSelectValue + "") {
+                                if (sSelectValue.indexOf(item.nID + "") >= 0) {
+                                    optionhtml = '<label><input type="checkbox"   id="AdnInfo' + sID + '" name="AdnInfo' + sID + '"   data-type="' + multi + '"  data-text="' + item.answer + '"  value="' +
+                                        item.nID + '" class="flat-green" checked />' + item.answer + '</label><br/>';
+                                    sHtml += optionhtml;
+                                }
+                                else {
+                                    optionhtml = '<label><input type="checkbox"   id="AdnInfo' + sID + '" name="AdnInfo' + sID + '" data-type="' + multi + '"  data-text="' + item.answer + '" value="' +
+                                        item.nID + '"  class="flat-green" />' + item.answer + '</label><br/>';
+                                    sHtml += optionhtml;
+                                }
+                            });
+                        }
+                        else {
+                            var optionhtml = "";
+                            $.each(JSON.parse(objJson), function (i, item) {
+                                optionhtml = '<label><input type="checkbox" id="AdnInfo' + sID + '" name="AdnInfo' + sID + '" data-type="' + multi + '" data-text="' + item.answer + '"  value="' +
+                                    item.nID + '"  class="flat-green"  />' + item.answer + '</label><br/>';
+                                sHtml += optionhtml;
+                            });
+                        }
+                    }
+                    return sHtml;
+                }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+
+        }
+        function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+            $('.nameget').text(vName);
+            if (vID != "")
+            {
+                getimage(vID);
+            }
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+
+
+
+           function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        global: false,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+
+
+        //add fn
+        function SetICheck() {
+
+
+            $('.square-green input[type="checkbox"],.square-green input[type="radio"]').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            $('input[type="checkbox"].square-green,input[type="radio"].square-green').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            }
+
+
+         function displayMessage(printContent)
+        {
+                win = window.open("print.html", 'popup', 'toolbar = no, status = no');
+                win.document.write(printContent);
+                win.document.close(); // new line
+        }
+
+
+        function getBrowserName() {
+            var browserName = '';
+            var userAgent = navigator.userAgent;
+            (typeof InstallTrigger !== 'undefined') && (browserName = 'Firefox');
+            (false || !!document.documentMode) && (browserName = 'IE');
+            (!!window.chrome && userAgent.match(/OPR/)) && (browserName = 'Opera');
+            (!!window.chrome && userAgent.match(/Edge/)) && (browserName = 'Edge');
+            (!!window.chrome && !userAgent.match(/(OPR|Edge)/)) && (browserName = 'Chrome');
+
+
+            return browserName;
+        }
+
+        function myFunction() {
+            $('#myInput').val(location.href);
+            var copyText = document.getElementById("myInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy");
+            alert("Copied the text: " + copyText.value);
+        }
+        function windowClose() {
+            window.open('', '_parent', '');
+            window.close();
+        }
+
+
+
+
+    </script>
+
+
+}
+<!-- /.content -->

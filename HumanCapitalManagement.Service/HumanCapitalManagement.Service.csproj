@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{120211BB-ED29-4F97-9948-2C250971BF6C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HumanCapitalManagement.Service</RootNamespace>
+    <AssemblyName>HumanCapitalManagement.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.10.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressService\TM_CityService.cs" />
+    <Compile Include="AddressService\TM_CountryService.cs" />
+    <Compile Include="AddressService\TM_DistrictService.cs" />
+    <Compile Include="AddressService\TM_SubDistrictService.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="CommonClass\HCMServiceClass.cs" />
+    <Compile Include="CommonClass\PESServiceClass.cs" />
+    <Compile Include="Common\CompanyService.cs" />
+    <Compile Include="Common\ActivityService.cs" />
+    <Compile Include="Common\DivisionService.cs" />
+    <Compile Include="Common\EmploymentTypeService.cs" />
+    <Compile Include="Common\GroupListPermissionService.cs" />
+    <Compile Include="Common\GroupPermissionService.cs" />
+    <Compile Include="Common\MailContentService.cs" />
+    <Compile Include="Common\MenuActionService.cs" />
+    <Compile Include="Common\MPService.cs" />
+    <Compile Include="Common\PoolService.cs" />
+    <Compile Include="Common\RankService.cs" />
+    <Compile Include="Common\RequestTypeService.cs" />
+    <Compile Include="Common\TM_Candidate_TypeService.cs" />
+    <Compile Include="Common\TM_Company_Approve_PermitService.cs" />
+    <Compile Include="Common\TM_Employment_RequestService.cs" />
+    <Compile Include="Common\TM_GenderService.cs" />
+    <Compile Include="Common\TM_MailContent_CcService.cs" />
+    <Compile Include="Common\TM_MailContent_Cc_bymailService.cs" />
+    <Compile Include="Common\TM_MaritalStatusService.cs" />
+    <Compile Include="Common\TM_NationalitiesService.cs" />
+    <Compile Include="Common\TM_Pool_Approve_PermitService.cs" />
+    <Compile Include="Common\TM_Pool_RankService.cs" />
+    <Compile Include="Common\TM_PrefixService.cs" />
+    <Compile Include="Common\TM_Recruitment_TeamService.cs" />
+    <Compile Include="Common\TM_SubGroupService.cs" />
+    <Compile Include="Common\TM_Trainee_HiringRatingService.cs" />
+    <Compile Include="Common\TM_UnitGroup_Approve_PermitService.cs" />
+    <Compile Include="Common\UserListPermissionService.cs" />
+    <Compile Include="Common\UserPermissionService.cs" />
+    <Compile Include="Common\UserUnitGroupService.cs" />
+    <Compile Include="ConsentService\Consent_Asnwer_LogService.cs" />
+    <Compile Include="ConsentService\Consent_AsnwerService.cs" />
+    <Compile Include="ConsentService\Consent_Main_FormService.cs" />
+    <Compile Include="ConsentService\Consent_SpacialService.cs" />
+    <Compile Include="ConsentService\TM_Consent_QuestionService.cs" />
+    <Compile Include="ConsentService\TM_Consent_FormService.cs" />
+    <Compile Include="EduService\TM_Education_DegreeServices.cs" />
+    <Compile Include="EduService\TM_Education_HistoryServices.cs" />
+    <Compile Include="EduService\TM_FacultyService.cs" />
+    <Compile Include="EduService\TM_MajorService.cs" />
+    <Compile Include="EduService\TM_UniversitysService.cs" />
+    <Compile Include="EduService\TM_Universitys_FacultyService.cs" />
+    <Compile Include="EduService\TM_Universitys_MajorService.cs" />
+    <Compile Include="eGreetingsService\eGreetings_DetailService.cs" />
+    <Compile Include="eGreetingsService\eGreetings_MainService.cs" />
+    <Compile Include="eGreetingsService\TM_eGreetings_Group_QuestionService.cs" />
+    <Compile Include="eGreetingsService\TM_eGreetings_PeroidService.cs" />
+    <Compile Include="eGreetingsService\TM_eGreetings_QuestionService.cs" />
+    <Compile Include="IService_T.cs" />
+    <Compile Include="LogService\LogPersonnelRequestService.cs" />
+    <Compile Include="MainService\Action_PlansService.cs" />
+    <Compile Include="MainService\MiniHeart_Detail2021Service.cs" />
+    <Compile Include="MainService\MiniHeart_DetailService.cs" />
+    <Compile Include="MainService\MiniHeart_Main2021Service.cs" />
+    <Compile Include="MainService\MiniHeart_MainService.cs" />
+    <Compile Include="MainService\Probation_With_OutService.cs" />
+    <Compile Include="MainService\TM_Candidate_PIntern_MassService.cs" />
+    <Compile Include="MainService\TM_Candidate_PIntern_Mass_AnswerService.cs" />
+    <Compile Include="MainService\TM_Candidate_PIntern_Mass_ApprovService.cs" />
+    <Compile Include="MainService\TM_Evaluation_QuestionService.cs" />
+    <Compile Include="MainService\TM_MiniHeart_Group_Question2021Service.cs" />
+    <Compile Include="MainService\TM_MiniHeart_Peroid2021Service.cs" />
+    <Compile Include="MainService\TM_MiniHeart_PeroidService.cs" />
+    <Compile Include="MainService\TM_MiniHeart_Group_QuestionService.cs" />
+    <Compile Include="MainService\TM_MiniHeart_Question2021Service.cs" />
+    <Compile Include="MainService\TM_Probation_Group_QuestionService.cs" />
+    <Compile Include="MainService\TM_MiniHeart_QuestionService.cs" />
+    <Compile Include="MainService\TM_Probation_QuestionService.cs" />
+    <Compile Include="MainService\Probation_FormService.cs" />
+    <Compile Include="MainService\Probation_DetailService.cs" />
+    <Compile Include="MainService\TM_Company_TraineeService.cs" />
+    <Compile Include="MainService\E_Mail_HistoryService.cs" />
+    <Compile Include="MainService\FeedbackService.cs" />
+    <Compile Include="MainService\PersonnelRequestService.cs" />
+    <Compile Include="MainService\TempTransactionService.cs" />
+    <Compile Include="MainService\TM_CandidatesService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIFService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIF_AdditionalService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIF_Adnl_AnswerService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIF_ApprovService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIF_Audit_QstService.cs" />
+    <Compile Include="MainService\TM_Candidate_MassTIF_CoreService.cs" />
+    <Compile Include="MainService\TM_Candidate_RankService.cs" />
+    <Compile Include="MainService\TM_Candidate_StatusService.cs" />
+    <Compile Include="MainService\TM_Candidate_Status_CycleService.cs" />
+    <Compile Include="MainService\TM_Candidate_Status_NextService.cs" />
+    <Compile Include="MainService\TM_Candidate_TIFService.cs" />
+    <Compile Include="MainService\TM_Candidate_TIF_AnswerService.cs" />
+    <Compile Include="MainService\TM_Candidate_TIF_ApprovService.cs" />
+    <Compile Include="MainService\TM_FY_DetailService.cs" />
+    <Compile Include="MainService\TM_FY_PlanService.cs" />
+    <Compile Include="MainService\TM_PositionService.cs" />
+    <Compile Include="MainService\TM_PR_Candidate_MappingService.cs" />
+    <Compile Include="MainService\TM_PR_StatusService.cs" />
+    <Compile Include="MainService\TM_SourcingChannelService.cs" />
+    <Compile Include="MainService\TM_Step_ApproveService.cs" />
+    <Compile Include="MainService\TM_TechnicalTestService.cs" />
+    <Compile Include="MainService\TM_TechnicalTestTransactionService.cs" />
+    <Compile Include="MainService\TM_Time_TypeService.cs" />
+    <Compile Include="MainService\TM_Trainee_EvaService.cs" />
+    <Compile Include="MainService\TM_Trainee_Eva_AnswerService.cs" />
+    <Compile Include="MainService\TM_WorkExperienceService.cs" />
+    <Compile Include="MPBase_T.cs" />
+    <Compile Include="PartnerEvaluation\PES_Final_RatingService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Final_Rating_YearService.cs" />
+    <Compile Include="PartnerEvaluation\PES_NominationService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_AnswerService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_CompetenciesService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_Default_CommitteeService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_FilesService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_KPIsService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_SignaturesService.cs" />
+    <Compile Include="PartnerEvaluation\PES_Nomination_YearService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_EvaluationService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_AnswerService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_ApproveService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_AuthorizedEvaService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_AuthorizedService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_FileService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_IncidentsService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_Incidents_ScoreService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_KPIsService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Evaluation_YearService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Feedback_EmpService.cs" />
+    <Compile Include="PartnerEvaluation\PTR_Feedback_UnitGroupService.cs" />
+    <Compile Include="PartnerEvaluation\TM_Annual_RatingService.cs" />
+    <Compile Include="PartnerEvaluation\TM_Feedback_RatingService.cs" />
+    <Compile Include="PartnerEvaluation\TM_KPIs_BaseService.cs" />
+    <Compile Include="PartnerEvaluation\TM_Partner_EvaluationService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PES_NMN_CompetenciesService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PES_NMN_SignatureStepService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PES_NMN_StatusService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PTR_Eva_ApproveStepService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PTR_Eva_StatusService.cs" />
+    <Compile Include="PartnerEvaluation\TM_PTR_E_Mail_HistoryService.cs" />
+    <Compile Include="MainService\TM_Candidate_PInternService.cs" />
+    <Compile Include="MainService\TM_Candidate_PIntern_AnswerService.cs" />
+    <Compile Include="MainService\TM_Candidate_PIntern_ApprovService.cs" />
+    <Compile Include="PreInternAssessment\TM_PIntern_Mass_Form_QuestionService.cs" />
+    <Compile Include="PreInternAssessment\TM_PIntern_RatingFormService.cs" />
+    <Compile Include="PreInternAssessment\TM_PIntern_FormService.cs" />
+    <Compile Include="PreInternAssessment\TM_PIntern_RatingService.cs" />
+    <Compile Include="PreInternAssessment\TM_PIntern_StatusService.cs" />
+    <Compile Include="PreInternAssessment\TM_PInternAssessment_ActivitiesService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBase_T.cs" />
+    <Compile Include="StrengthFinder\StrengthFinderService.cs" />
+    <Compile Include="TIFForm\TM_Additional_AnswersService.cs" />
+    <Compile Include="TIFForm\TM_Additional_InformationService.cs" />
+    <Compile Include="TIFForm\TM_Additional_QuestionsService.cs" />
+    <Compile Include="TIFForm\TM_Evaluation_FormService.cs" />
+    <Compile Include="TIFForm\TM_Eva_RatingService.cs" />
+    <Compile Include="TIFForm\TM_MassTIF_StatusService.cs" />
+    <Compile Include="TIFForm\TM_Mass_Auditing_QuestionService.cs" />
+    <Compile Include="TIFForm\TM_Mass_Question_TypeService.cs" />
+    <Compile Include="TIFForm\TM_Mass_ScoringService.cs" />
+    <Compile Include="TIFForm\TM_Mass_TIF_FormService.cs" />
+    <Compile Include="TIFForm\TM_TIF_FormService.cs" />
+    <Compile Include="TIFForm\TM_TIF_RatingService.cs" />
+    <Compile Include="TIFForm\TM_TIF_StatusService.cs" />
+    <Compile Include="TIFForm\TM_TraineeEva_StatusService.cs" />
+    <Compile Include="TraineeSite\Perdiem_TransportService.cs" />
+    <Compile Include="TraineeSite\TimeSheet_DetailService.cs" />
+    <Compile Include="TraineeSite\TimeSheet_FormService.cs" />
+    <Compile Include="TraineeSite\TraineeLoginService.cs" />
+    <Compile Include="VisaExpiry\tblMstAutoMailsService.cs" />
+    <Compile Include="VisaExpiry\TM_Company_VisaService.cs" />
+    <Compile Include="VisaExpiry\TM_Document_EmployeeService.cs" />
+    <Compile Include="VisaExpiry\TM_EmployeeForeign_VisaService.cs" />
+    <Compile Include="VisaExpiry\TM_EmployeeService.cs" />
+    <Compile Include="VisaExpiry\TM_Prefix_VisaService.cs" />
+    <Compile Include="VisaExpiry\TM_Remark_VisaService.cs" />
+    <Compile Include="VisaExpiry\TM_Type_DocumentService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HumanCapitalManagement.Data\HumanCapitalManagement.Data.csproj">
+      <Project>{8f393e39-0b76-4d5a-9a08-d220a2f40494}</Project>
+      <Name>HumanCapitalManagement.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HumanCapitalManagement.Models\HumanCapitalManagement.Models.csproj">
+      <Project>{17011c0a-20af-4ca0-96dc-ef7745842f74}</Project>
+      <Name>HumanCapitalManagement.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

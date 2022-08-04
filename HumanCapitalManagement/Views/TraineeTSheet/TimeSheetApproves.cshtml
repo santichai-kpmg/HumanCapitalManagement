@@ -1,0 +1,1031 @@
+﻿@{
+    ViewBag.Title = "HCM | Trainee Time Sheet";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<div class="breadcrumb-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-home pr-2"></i>Profile</li>
+            @* <li class="breadcrumb-item"><a href="@Url.Action("TimeSheetList", "TimeSheet", null)">TimeSheet Form</a></li>*@
+            <li class="breadcrumb-item active">Detail</li>
+        </ol>
+    </div>
+</div>
+<div id="page-start"></div>
+<!-- section end -->
+<!-- section -->
+<!-- ================ -->
+<div class="main-container  light-translucent-bg background-img-7">
+    <div class="container-fluid" style="    min-height: 55vh;
+    height: 100%;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-0">
+                            <i class="fa fa-list-alt pr-10"></i>Trainee TimeSheet Form
+                        </h4>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" onclick="SaveData('Draft');return false;" class="btn btn-animated btn-primary">Save Draft <i class="fa fa-save"></i></a>
+                        <a href="#" onclick="SaveData('Submit');return false;" class="btn btn-animated btn-success">Submit <i class="fa fa-calendar"></i></a>
+                        <a href="#" onclick="window.location.href = '@Url.Action("TimeSheetView", "TimeSheet")';" class="btn btn-animated btn-warning">Back <i class="fa fa-undo"></i></a>
+
+                    </div>
+                    <div class="card-body">
+                        <!-- Main content -->
+                        <section class="content">
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-12">
+                                    <div class="box box-primary">
+                                        <div class="box-body no-padding">
+                                            <!-- THE CALENDAR -->
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /. box -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul class="nav nav-tabs style-3" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" href="#h3tab1" role="tab" data-toggle="tab">
+                                                <h4 style="color: rgb(60, 141, 188);"><span class="fa fa-calendar"></span>&nbsp; Time Sheet</h4>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <div class="tab-pane show active" role="tabpanel" id="h3tab1">
+                                            <div class="row">
+                                                <div id="calendar"></div>
+                                            </div>
+
+                                            <div class="row text-center" style="padding:20px 10px 0 10px;">
+
+                                                <label class="contForRdo lb-type-green">
+                                                    <span class="fa fa-keyboard-o"></span>&nbsp; Normal Hour
+
+                                                </label>
+
+                                                <label class="contForRdo lb-type-blue">
+                                                    <span class="fa fa-clock-o"></span>&nbsp; OT
+
+                                                </label>
+
+                                                <label class="contForRdo lb-type-pink">
+                                                    <span class="fa fa-book"></span>&nbsp; Training
+
+                                                </label>
+
+                                                <label class="contForRdo lb-type-orange">
+                                                    <span class="fa fa-hotel"></span>&nbsp; Sick Leave
+
+                                                </label>
+
+                                                <label class="contForRdo lb-type-red">
+                                                    <span class="fa fa-plane"></span>&nbsp; Vac Leave
+
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                        <!-- /.content -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<div id="PopupTimesheet" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">
+                    <b style="color: white;">
+                        <span class="fa fa-plus-circle"></span>&nbsp; Add time information
+                    </b>
+                </span>
+            </div>
+            <div class="modal-body">
+                <div class="row text-center">
+                    <div class="col-md-12">
+                        <div style="border:1px solid #3c8dbc;padding:10px 0;margin:10px;border-radius:10px;">
+                            <label class="contForRdo lb-type-green">
+                                <span class="fa fa-keyboard-o"></span>&nbsp; Normal Hour
+                                <input type="radio" checked="checked" name="radioType" value="NH" title="Normal Hour">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="contForRdo lb-type-blue">
+                                <span class="fa fa-clock-o"></span>&nbsp; OT
+                                <input type="radio" name="radioType" value="OT" title="OT">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="contForRdo lb-type-pink">
+                                <span class="fa fa-book"></span>&nbsp; Training
+                                <input type="radio" name="radioType" value="TN" title="Training">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="contForRdo lb-type-orange">
+                                <span class="fa fa-hotel"></span>&nbsp; Sick Leave
+                                <input type="radio" name="radioType" value="SL" title="Sick Leave">
+                                <span class="checkmark"></span>
+                            </label>
+
+                            <label class="contForRdo lb-type-red">
+                                <span class="fa fa-plane"></span>&nbsp; Vac Leave
+                                <input type="radio" name="radioType" value="VL" title="Vac Leave">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row" id="divforeggm">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm row">
+                            <label class="col-sm-4 col-form-label nomallabel text-right">Engagement Code </label>
+                            <div class="col-sm-8">
+
+                                <input id="txtEngagement" name="txtEngagement" class="form-control" type="search" list="engagement_lst" />
+
+                                <datalist id="engagement_lst"></datalist>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm row">
+                            <label class="col-sm-4 col-form-label require text-right">
+                                Period Of Time
+                            </label>
+                            <div class="col-sm-8 text-center">
+                                <div class="input-daterange input-group">
+                                    <span data-field="time" class="form-control input-group-addon" ID="txtTimeSheetStart_Date" style="border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;"></span>
+
+                                    @* <input type="text" class="input-sm form-control col-sm-5" ID="txtTimeSheetStart_Date" name="txtTimeSheetStart_Date"  data-field="time">*@
+                                    <span class="input-group-addon col-sm-2">&nbsp;&nbsp; To</span>
+                                    @*<input type="text" class="input-sm form-control col-sm-5" ID="txtTimeSheetEnd_Date" name="txtTimeSheetEnd_Date" data-field="time">*@
+                                    <span data-field="time" class="form-control input-group-addon text-center" ID="txtTimeSheetEnd_Date" style="border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;"></span>
+                                    <div id="dtBox"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm row">
+                            <label class="col-sm-4 col-form-label nomallabel text-right">Remark </label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control input-sm" id="txtRemark" name="txtRemark" maxlength="200" value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="addeven()" class="btn btn-primary" data-dismiss="modal">
+                    <span class="fa fa-plus-circle"></span>&nbsp; Add
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times-circle"></span>&nbsp; Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PopupRemoveEven" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">
+                    <b style="color: white;">
+                        <span class="fa fa-trash-o"></span>&nbsp; Delete time information
+                    </b>
+                </span>
+            </div>
+            <div class="modal-body text-center">
+                <p class="text-danger"><span class="fa fa-warning text-warning" style="font-size:20px;"></span>&nbsp; Are you sure you want to delete this information ?</p>
+                @*<label id="id_even_remove" class="text-warning" style="font-size:25px;"></label>
+                    <label id="id_even_remove_H" class="hidden" style="font-size:25px;"></label>*@
+
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnOK" type="button" onclick="removeeven()" class="btn btn-warning" data-dismiss="modal">
+                    <span class="fa fa-trash-o"></span>&nbsp; Delete
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times-circle"></span>&nbsp; Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="PopupDetailEven" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog  widthPOP">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #337ab7;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <span class="modal-title">
+                    <b style="color: white;">
+                        <span class="fa fa-info-circle"></span>&nbsp; Detail
+                    </b>
+                </span>
+            </div>
+            <div class="modal-body text-center">
+                @*<p class="text-danger"><span class="fa fa-warning text-warning" style="font-size:20px;"></span>&nbsp; Are you sure you want to delete this information ?</p>*@
+                <label id="id_even_detail" style="font-size: 20px;
+    border: 1px solid #e2dede;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    line-height: 40px;
+    width: 100%;
+    color:#337ab7;"></label>
+
+                <label id="id_even_remove" class="" style="font-size:25px;"></label>
+                <label id="id_even_remove_H" class="" style="font-size:25px;"></label>
+            </div>
+            <div class="modal-footer">
+                @*<button id="btnOK" type="button" onclick="removeeven()" class="btn btn-primary" data-dismiss="modal">
+                        <span class="fa fa-trash-o"></span>&nbsp; Delete
+                    </button>*@
+                <button id="btnOK" type="button" onclick="removeeven()" class="btn btn-warning" data-dismiss="modal">
+                    <span class="fa fa-trash-o"></span>&nbsp; Delete
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times-circle"></span>&nbsp; Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page specific script -->
+
+@section style{
+    <link href="~/Scripts/plugins/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+
+    <link href="~/Scripts/plugins/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
+    @*<link href="~/Scripts/plugins/fullcalendar/dist/fullcalendar.print.min.css" rel="stylesheet" />*@
+    <link href="~/Scripts/plugins/DateTimePicker_Cus/dist/DateTimePicker.min.css" rel="stylesheet" />
+
+
+    <style>
+
+        .btn-warning {
+            color: white;
+        }
+
+        .fc .fc-row .fc-content-skeleton table, .fc .fc-row .fc-content-skeleton td, .fc .fc-row .fc-helper-skeleton td {
+            background: 0 0;
+            border-color: #dddddd !important;
+            margin: 5px 0;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        #calendar {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .fc-event-container {
+            position: relative;
+        }
+
+        .closon {
+            position: absolute;
+            right: 0;
+            cursor: pointer;
+            background-color: #FFF;
+            border: 1px solid white;
+            border-radius: 50%;
+            font-size: 5px;
+            padding: 0 3px;
+            margin-top: 5px;
+        }
+
+        .fc-slats tr {
+            height: 5px !important;
+        }
+
+        .fc-widget-header {
+            line-height: 50px;
+            color: cadetblue;
+        }
+
+        .contForRdo {
+            display: inline-table;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            padding: 1px 40px;
+            color: white;
+            border-radius: 20px;
+            border: 2px solid #337ab76b;
+        }
+
+            /* Hide the browser's default radio button */
+            .contForRdo input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+            }
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .contForRdo:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .contForRdo input:checked ~ .checkmark {
+            background-color: #0ecafe;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .contForRdo input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .contForRdo .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .lb-type-green {
+            background-color: forestgreen;
+            color: white;
+        }
+
+        .lb-type-yellow {
+            background-color: #dede14;
+            color: white;
+        }
+
+        .lb-type-pink {
+            background-color: #df09bb;
+            color: white;
+        }
+
+        .lb-type-blue {
+            background-color: blue;
+            color: white;
+        }
+
+        .lb-type-orange {
+            background-color: orange;
+            color: white;
+        }
+
+        .lb-type-red {
+            background-color: red;
+            color: white;
+        }
+
+        .fc-title {
+            color: white;
+            line-height: 25px;
+        }
+
+        input[data-field] {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.25;
+            color: #495057;
+            background-color: #fff;
+            background-image: none;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 0.25rem;
+            transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        }
+
+
+        .dtpicker-buttonSet {
+            background: rgb(60, 141, 188) !important;
+            color: #FFF !important;
+        }
+
+        .dtpicker-buttonClear {
+            background: orange !important;
+            color: #FFF !important;
+        }
+
+        .fc-dailytotal {
+            border-radius: 5px;
+            background-color: #fafafa;
+            width: 45px;
+            height: 20px;
+            padding: 0px 0px 5px 10px;
+            line-height: 30px;
+        }
+    </style>
+}
+
+
+
+@section scripts{
+    @*<script src="~/Scripts/plugins/jquery/dist/jquery.min.js"></script>
+        <script src="~/Scripts/plugins/jquery-ui/jquery-ui.min.js"></script>*@
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+
+    <!-- Slimscroll -->
+    <script src="~/Scripts/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Scripts/plugins/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Scripts/plugins/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Scripts/plugins/dist/js/demo.js"></script>
+    <!-- fullCalendar -->
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+    <script src="~/Scripts/plugins/fullcalendar/dist/fullcalendar.min.js"></script>
+
+    <script src="~/Scripts/plugins/DateTimePicker_Cus/dist/DateTimePicker.min.js"></script>
+    <script src="~/Scripts/plugins/DateTimePicker_Cus/src/i18n/DateTimePicker-i18n.js"></script>
+
+
+
+
+    <script>
+        var objModel = @Html.Raw(Json.Encode(Model));
+        var lstforEven = "";
+        var STAddEven;
+        var EDAddEven;
+
+        var objEven = [];
+
+        @*$(document).ready(function () {
+            $("#dtBox").DateTimePicker();
+            $.ajax({
+                dataType: AjaxCall.dataType,
+                type: AjaxCall.type,
+                contentType: AjaxCall.contentType,
+                url:'@Url.Action("GetEngagement", "TimeSheet")',
+                data: JSON.stringify({ ItemData : "" }),
+                    success: function (respone) {
+
+                        var str = ''; // variable to store the options
+                        var newdata = new Array(respone);
+                        for (var i = 0; i < newdata[0].length; ++i) {
+                            str += '<option id="' + newdata[0][i].id + '" value="' + newdata[0][i].id + '" />'; // Storing options in variable
+                        }
+                        var my_list = document.getElementById("engagement_lst");
+                        my_list.innerHTML = str;
+
+                },
+                error: AjaxCall.error,
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+
+                }
+                    });
+            });*@
+
+        $('#txtTimeSheetStart_Date').on('DOMSubtreeModified', function () {
+            var d = new Date(new Date().toDateString() + ' ' + $('#txtTimeSheetStart_Date').text());
+            var thispoin = $radio = $('input[type="radio"]:checked');
+            var settime;
+            switch (thispoin.val()) {
+                case "NH":
+                    if (d.getHours() < 12) {
+                        d.addHours(9);
+                    }
+                    else if (d.getHours() < 15) {
+                        d.addHours(8);
+                    }
+                    else { d.addHours(23 - d.getHours()); }
+                    break;
+                case "TN":
+                    d.addHours(9);
+                    break;
+                case "OT":
+                case "SL":
+                case "VL":
+                    d.addHours(2);
+                    break;
+                default:
+                // code block
+            }
+            settime = addZero(d.getHours()) + ':' + addZero(d.getMinutes());
+            if ($('#txtTimeSheetEnd_Date').text() == "") {
+                $('#txtTimeSheetEnd_Date').text(settime);
+            }
+        });
+        $('#txtTimeSheetEnd_Date').on('DOMSubtreeModified', function () {
+            var datetimeST = new Date(new Date().toDateString() + ' ' + $('#txtTimeSheetStart_Date').text());
+            var datetimeED = new Date(new Date().toDateString() + ' ' + $('#txtTimeSheetEnd_Date').text());
+            if ($('#txtTimeSheetEnd_Date').text() != '')
+                if (diff($('#txtTimeSheetStart_Date').text(), $('#txtTimeSheetEnd_Date').text() ) > 10) {
+                    alert('Normal Hour More than the system specified Please select other Type and add the remaining amount.');
+                    $('#txtTimeSheetEnd_Date').text('');
+
+                }
+
+            if (datetimeED < datetimeST && $('#txtTimeSheetEnd_Date').text() != '') {
+
+                alert('Invalid time period');
+                $('#txtTimeSheetEnd_Date').text('');
+
+            }
+
+        })
+        $('input[type="radio"]').on('change', function (e) {
+            switch (this.value) {
+                case "NH":
+                case "OT":
+                    $('#txtEngagement').attr('readonly', false);
+                    $('#divforeggm').show(500);
+                    break;
+                case "TN":
+                case "SL":
+                case "VL":
+                    $('#txtEngagement').attr('readonly', true);
+                    $('#txtEngagement').val('');
+                    $('#divforeggm').hide(900)
+                    break;
+                default:
+                // code block
+            }
+            //alert(this.value);
+        });
+        Date.prototype.addHours = function (h) {
+            this.setTime(this.getTime() + (h * 60 * 60 * 1000));
+            return this;
+        }
+        function addZero(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function diff(start, end) {
+            start = start.split(":");
+            end = end.split(":");
+            var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+            var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+            var diff = endDate.getTime() - startDate.getTime();
+            var hours = Math.floor(diff / 1000 / 60 / 60);
+            diff -= hours * 1000 * 60 * 60;
+            var minutes = Math.floor(diff / 1000 / 60);
+            if (start[0] >= 12 && end[0] <= 13) {
+                newset -= end[1];
+                alert('You cannot select a start date or an end date in the duration of the lunch break.');
+                $('#txtTimeSheetStart_Date').text('');
+                $('#txtTimeSheetEnd_Date').text('');
+            }
+            else if (start[0] == 12 && start[1] <= 59) {
+                newset -= end[1];
+                alert('Cannot add information during this time.');
+                $('#txtTimeSheetStart_Date').text('');
+                $('#txtTimeSheetStart_Date').focus();
+            }
+            else if (end[0] == 12 && end[1] > 0 && end[1] <= 59) {
+                alert('Cannot add information during this time.');
+                $('#txtTimeSheetEnd_Date').text('');
+                $('#txtTimeSheetEnd_Date').focus();
+            }
+            else if (start[0] <= 12 && end[0] < 13) {
+                var setall = endDate.getTime() - startDate.getTime();
+                hours = Math.floor(setall / 1000 / 60 / 60);
+                setall -= hours * 1000 * 60 * 60;
+                var newset = Math.floor(setall / 1000 / 60);
+                if (start[0] == 12) {
+                    newset -= start[1];
+                }
+                else if (end[0] == 12) {
+                    newset -= end[1];
+                }
+                minutes = newset;
+            }
+            else if (start[0] <= 12 && end[0] >= 13)
+            {
+                hours -= 1;
+            }
+
+
+            var thispoin = $radio = $('input[type="radio"]:checked');
+            if (hours >= 8 && thispoin.val() == "NH")
+            {
+                if ((hours == 8 && minutes > 0) || (hours > 8)) {
+                    alert('Selected period More than the standard set.');
+                    $('#txtTimeSheetEnd_Date').text('');
+                }
+            }
+
+
+
+            return (hours <= 9 ? "0" : "") + hours + ":" + (minutes <= 9 ? "0" : "") + minutes;
+        }
+
+        function displayPopup() {
+            if ($(document).width() >= 768)
+                return false;
+            else
+                return true;
+        }
+
+        $(function () {
+
+            SetActiveMenu("timesheet");
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+            function init_events(ele) {
+                ele.each(function () {
+
+                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                    // it doesn't need to have a start or end
+                    var eventObject = {
+                        title: $.trim($(this).text()),
+
+                        // use the element's text as the event title
+                    }
+
+                    // store the Event Object in the DOM element so we can get to it later
+                    $(this).data('eventObject', eventObject)
+
+                    // make the event draggable using jQuery UI
+                    //$(this).draggable({
+                    //    zIndex: 1070,
+                    //    revert: true, // will cause the event to go back to its
+                    //    revertDuration: 0  //  original position after the drag
+                    //})
+
+                })
+            }
+
+            init_events($('#external-events div.external-event'))
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+            //Date for the calendar events (dummy data)
+            var lstdata = [];
+            if (objModel.lstData_cld != undefined && objModel.lstData_cld != null && objModel.lstData_cld.length > 0) {
+                lstdata = objModel.lstData_cld
+
+            }
+
+                $('#calendar').fullCalendar({
+                    //axisFormat: 'h:mm T',
+                    defaultView: 'month',
+                    header: {
+                        left: 'prev,next ',
+                        center: 'title',
+                        right: ''
+                    }, /*'agendaWeek,month'*/
+                    buttonText: {
+
+                        month: 'Overview',
+                        week: 'Time Sheet',
+                        //day: 'Edit time period'
+                    },
+                    events: lstdata ,
+                    selectable: true,
+                    selectHelper: true,
+                    select: function (start, end) {
+                        STAddEven = start;
+                        EDAddEven = end;
+
+                        var newDate = moment(STAddEven.format());
+                        // Inject it into the initial moment object
+                        EDAddEven.set(newDate.toObject());
+
+                        $("#PopupTimesheet").modal();
+                    },
+                    editable: false,
+                    disableDragging: true,
+                    displayEventTime: false,
+                    //allDay: false,
+                    //eventLimit: true,
+                    eventRender: function (event, element, view) {
+                        //เพิ่ม ฟังชั่นการ ลบ
+                        //if (view.name == 'listDay') {
+                        //    element.find(".fc-list-item-time").append("<span class='closon'>X</span>");
+                        //} else {
+                        //    element.find(".fc-content").prepend("<span class='closon'>X</span>");
+                        //}
+                        //element.find(".closon").on('click', function () {
+                        //    $("#id_even_remove").text('" ' + event.title + ' "');
+                        //    $("#id_even_remove").val(event._id);
+                        //    $("#id_even_remove_H").val(event.id);
+                        //    //$("#PopupRemoveEven").modal()
+                        //    //if ( == true) {
+                        //    //    $('#calendar').fullCalendar('removeEvents', function (searchEvent) {
+                        //    //        return searchEvent._id === event._id;
+                        //    //    });
+                        //    //    $("#id_even_remove").modal('hide');
+                        //    //}
+                        //});
+                    },
+                    viewRender: function (view, element) {
+                        $.each($(".fc-day-top"), function (key, val) {
+                            var dateYMD = $(this).attr("data-date");
+                            $(this).append("<div class='fc-dailytotal' id='dailytotal-" + dateYMD + "'></div>");
+                        });
+                    },
+
+                    eventRender: function (event, element, view) {
+                        $(".fc-dailytotal").text(0); //Clear total sum
+                    },
+
+                    eventAfterRender: function (event, element, view) {
+                        var currentday = moment(event.start).format("YYYY-MM-DD");
+                        event.totalhrs = event.title.split('|')[0].replace(':','.');
+                        if (event.totalhrs > 0) {
+                            var prev = $("#dailytotal-" + currentday).text() || 0;
+                            var sum = (+prev + +event.totalhrs).toFixed(2);
+                            $("#dailytotal-" + currentday).text(sum);
+                        }
+                        if (sum > 24) {
+                            return false;
+                            alert(currentday + ' The day has more hours than the system determines. ' + sum);
+                            $("#dailytotal-" + currentday).addClass('text-danger');
+
+                        }
+                    },
+
+                    eventClick: function (event) {
+                        $("#id_even_remove").val(event._id);
+                        $("#id_even_remove_H").val(event.id);
+                        $("#id_even_detail").html("<p style='color: #ffffff;background: " + event.backgroundColor +";border-radius: 20px;'>"+event.title +"<p> Date  : " + event.start.format("DD MMM YYYY") + " <br>Start Time  : " + event.start.format("HH:mm") + " <br>End Time  : " + event.end.format("HH:mm"));
+                        $("#PopupDetailEven").modal();
+
+                         }
+
+
+                })
+
+
+        })
+
+        function addeven() {
+            var EggmCode = $('#txtEngagement').val();
+            var datetimeST = $('#txtTimeSheetStart_Date').text();
+            var datetimeED = $('#txtTimeSheetEnd_Date').text();
+            if (datetimeST == '' || datetimeED == '')
+            {
+                alert('Please choose the time period.');
+                return false;
+            }
+            var NofHour = diff(datetimeST, datetimeED);
+            var Remark = GetValueTextBox("txtRemark");
+
+            var thispoin = $radio = $('input[type="radio"]:checked');
+            var title = thispoin.attr('title');
+            STAddEven.time(datetimeST, 'HH:mm');
+            EDAddEven.time(datetimeED, 'HH:mm');
+            //STAddEven.set(datetimeST, 'HH:mm');
+            //EDAddEven.set(datetimeED, 'HH:mm');
+            title = NofHour + '|' + title ;
+            if (EggmCode != '')
+            {
+                title += '|' + EggmCode ;
+            }
+            if (Remark != '') {
+                title += '|' + Remark;
+            }
+            var eventData;
+            switch (thispoin.val()) {
+                case "NH":
+                    eventData = {
+                        allDay: false,
+                        title: title,
+                        start: STAddEven,
+                        end: EDAddEven,
+                        backgroundColor: $(".lb-type-green").css("background-color"),
+                        borderColor: "",
+
+                    };
+                    break;
+                case "OT":
+                    eventData = {
+                        allDay: false,
+                        title: title,
+                        start: STAddEven,
+                        end: EDAddEven,
+                        backgroundColor: $(".lb-type-blue").css("background-color"),
+                        borderColor: ""
+                    };
+                    break;
+                case "TN":
+                    eventData = {
+                        allDay: false,
+                        title: title,
+                        start: STAddEven,
+                        end: EDAddEven,
+                        backgroundColor: $(".lb-type-pink").css("background-color"),
+                        borderColor: ""
+                    };
+                    break;
+                case "SL":
+                    eventData = {
+                        allDay: false,
+                        title: title,
+                        start: STAddEven,
+                        end: EDAddEven,
+                        backgroundColor: $(".lb-type-orange").css("background-color"),
+                        borderColor: ""
+                    };
+                    break;
+                case "VL":
+                    eventData = {
+                        allDay: false,
+                        title: title,
+                        start: STAddEven,
+                        end: EDAddEven,
+                        backgroundColor: $(".lb-type-red").css("background-color"),
+                        borderColor: ""
+                    };
+                    break;
+                default:
+                // code block
+            }
+            if (true) {
+                $('#calendar').fullCalendar('renderEvent', eventData, true);
+                var objnew = {
+                    id: eventData.id,
+                    title: eventData.title,
+                    start: eventData.start.format('YYYY-MM-DD HH:mm'),
+                    end: eventData.end.format('YYYY-MM-DD HH:mm'),
+                    allDay: eventData.allDay,
+                    backgroundColor: eventData.backgroundColor
+                };
+                objModel.lstData_cld.push(objnew);
+
+
+                ko.mapping.fromJS(objModel.lstData_cld, {}, viewModel.lstData_cld);
+                BindData(objModel);
+            }
+        }
+        function removeeven(id)
+        {
+            var idin = $("#id_even_remove_H").val();
+            id = $("#id_even_remove").val();
+            $('#calendar').fullCalendar('removeEvents', function (searchEvent) {
+
+                //idin = searchEvent.id;
+                return searchEvent._id === id;
+            });
+
+            //var found = $('#calendar').fullCalendar('clientEvents').find(function (element) {
+            //    return element._id === id;
+            //});
+
+            //idin = found.id;
+            objModel.lstData_cld = objModel.lstData_cld.filter(item => item.id !== idin);
+            ko.mapping.fromJS(objModel.lstData_cld, {}, viewModel.lstData_cld);
+            BindData(objModel);
+        }
+
+        function SaveData(type)
+        {
+            var Param = GetData();
+            if (type == 'Draft') { }
+             $.ajax({
+                dataType: AjaxCall.dataType,
+                type: AjaxCall.type,
+                async: false,
+                contentType: AjaxCall.contentType,
+                 url: '@Url.Action("SaveTimeSheet", "TimeSheet")',
+                 data: JSON.stringify({ ItemData : Param,types : type }),
+                success: function (respone) {
+                     if (respone.result.Status == SysProcess.SessionExpired) {
+                             PopupLogin('@Url.Action("Index", "Home")');
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, DialogMsg.SaveComplete);
+                            //window.location.href = @Url.Action("TimeSheetView", "TimeSheet")';
+                        }
+                        else if (respone.result.Status == SysProcess.Duplicate) {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                    }
+                    UnblockUI();
+                },
+                error: AjaxCall.error,
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+             });
+        }
+
+        function GetData() {
+
+
+            var lstData = ko.toJS(viewModel);
+
+            return lstData;
+        }
+
+
+
+    </script>
+
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+        }
+
+    </script>
+}

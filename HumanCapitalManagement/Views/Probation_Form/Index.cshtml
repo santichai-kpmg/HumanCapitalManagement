@@ -1,0 +1,274 @@
+﻿@model IEnumerable<HumanCapitalManagement.Models.Probation.Probation_Form>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Assessment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Probation_Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Provident_Fund)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail_Send)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Start_Pro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End_Pro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Count_Date_Pro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HR_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HR_Submit_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff_Acknowledge_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PM_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PM_Submit_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupHead_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupHead_Submit_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HOP_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HOP_Submit_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active_Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Create_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Create_User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Update_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Update_User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extend_Form)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extend_Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extend_Period)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remark_Revise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Send_Mail_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Staff_Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PM_Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupHead_Action)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HOP_Action)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Assessment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Probation_Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provident_Fund)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail_Send)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Start_Pro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.End_Pro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count_Date_Pro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HR_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HR_Submit_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff_Acknowledge_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PM_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PM_Submit_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupHead_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupHead_Submit_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOP_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOP_Submit_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Create_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Create_User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Update_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Update_User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extend_Form)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extend_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Extend_Period)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Remark_Revise)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Send_Mail_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff_Action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PM_Action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupHead_Action)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HOP_Action)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+<script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+<script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+<script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+<script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+<script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+<script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+<script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+<script src="~/Scripts/plugins/moment/moment.js"></script>
+<script src="~/Scripts/SystemFunc/sysFunction.js"></script>
+<script>
+    $(function () {
+        var objTableRe = {
+            sTableID: "gvwData",
+            nDis: [],
+            sProperty: "<'top col-md-6'l>rt<'bottom col-md-6'fi><'bottom col-md-6 text-right'p><'clear'>",
+            //objHeadCl: objHeadClRequest,//Table Headder
+            objDataSet: [], //dataset
+            //EmptyTable: EmptyTable,
+            objBeforeClRender: false,
+            //lengthMN: [[-1], ["All"]],
+            //rowGroup: {
+            //    dataSrc: 'Test_name_en'
+            //},
+            //columnDefs: [
+            //   {
+            //        "type": "date",
+            //        "targets": 3
+            //    }, {
+            //        "type": "date",
+            //        "targets":4
+            //    },{
+            //        "render": function (data, type, row) {
+            //            return data == "Completed" ? "<span class='text-success'>Completed</span>" : data == "Revise" ? "<span class='text-danger'>Revise</span>" : data;
+            //        },
+            //        "targets": 9
+            //    }
+            //]
+        };
+
+        CreatTableJS(objTableRe);
+    });
+</script>

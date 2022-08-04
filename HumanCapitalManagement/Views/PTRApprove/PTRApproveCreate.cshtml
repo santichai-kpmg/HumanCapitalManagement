@@ -1,0 +1,1335 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Approve Partner Evaluation Form";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Approve Partner Evaluation Form
+    </h1>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+
+                                    <h3 class="box-title">2018 Personal Performance Evaluation</h3>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <h4 class="">
+                                        Partner / Director<small> (Thailand / Myanmar / Laos) </small>
+                                    </h4>
+                                    <div class="callout callout-info">
+                                        <h4>Instruction </h4>
+                                        <p>
+                                            Please complete the form and pass to your BU Head, Practice Head for his/her evaluation and concurrence before submitting to CEO by 16 July 2018.
+                                            <br /><br />
+                                            Please refer to the information in your 2018 Personal Performance Plan previously submitted.
+                                            For further enquiries on this form, please contact Sithakarn (ext. 2960).
+                                            <br /><br />
+                                            Remarks: This form is not required for those who is proposed as candidate to be promoted to Shareholder or Partner.
+                                        </p>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Employee Name</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: candidate_name' disabled value="Sample" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                                <div class="col-md-8">
+
+                                                    <input type="text" class="form-control" data-bind='value: group_id' disabled value="Audit G2" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" data-bind='value: rank_id' disabled value="Partner" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Other roles at office-wide level</label>
+                                                <div class="col-md-8">
+                                                    <input type="text" class="form-control" value="Member of PPC" disabled />
+                                                    <span class="help-block" style="font-size:12px;">(i.e. Member of PPC, National Account Plans, other committee etc.)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <dl class="dl-horizontal" style="margin-bottom: 0px; margin-top:-20px;font-size:12px;">
+                                                <dt>Notice :</dt>
+                                                <dd>The information to be provided by Audit Partner/Director will never include non-audit fees generated on KPMG audit clients. </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right nomallabel">Self-Evaluation</label>
+                                                <div class="col-md-8">
+                                                    <select class="form-control" id="sel1" disabled>
+                                                        <option>Excellently Exceed Expectation </option>
+                                                        <option>Meet Expectations</option>
+                                                        <option>Need Improvement</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Final Evaluation</label>
+                                                <div class="col-md-8">
+                                                    <select class="form-control" id="sel1">
+                                                        <option>- select -</option>
+                                                        <option>Excellently Exceed Expectation </option>
+                                                        <option>Meet Expectations</option>
+                                                        <option>Need Improvement</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-group-sm">
+                                                <label class="col-md-4 control-label text-right require">Responses</label>
+                                                <div class="col-md-8">
+                                                    <textarea rows="3" id="txtDes" cols="50" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <dl class="dl-horizontal" style="margin-bottom: 0px; margin-top:-10px;font-size:12px;">
+                                                <dt>Notice :</dt>
+                                                <dd>Formal evaluation will be ultimately determined by Function Head and/or CEO that may not match with the your self-evaluation. Function Head is required to inform evaluator the final rating. </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <button type="button" class="btn btn-success" onclick="Save();">Submit</button>
+                                            <button type="button" class="btn btn-danger" onclick="Save();">Revise</button>
+                                            <button type="button" class="btn btn-warning" onclick="Cancel();">Back</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR4">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Approval Process</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataApprove" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="row">
+                                    <div class="col-md-12">
+                                        <dl style="margin-bottom: 0px; margin-top:-10px;font-size:12px;">
+                                            <dt></dt>
+                                            <dd>Remarks : This form is not required for those who is proposed as candidate to be promoted to Shareholder or Partner.<br /><br/></dd>
+                                        </dl>
+                                    </div>
+                                </div>*@
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR4">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">Final Evaluation</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataFinal" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="box box-solid box-ctmPR3">
+                                        <div class="box-header with-border">
+                                            @*<h3 class="box-title">Upload File</h3>*@
+                                            <h3 class="box-title">Reference</h3>
+                                            <div class="box-tools pull-right">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                    <i class="fa fa-refresh"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body  no-padding no-pad-bot no-pad-top">
+                                            <div class="row">
+                                                @*<div class="col-sm-12 " id="divUploadDoc">
+                                                        <div class="form-group form-group-sm">
+                                                            <label class="col-sm-2 control-label text-right require">Import file</label>
+                                                            <div class="col-sm-8  form-inline">
+                                                                <div class="input-group input-group-sm">
+                                                                    <label class="input-group-btn">
+                                                                        <span class="btn btn-primary">
+                                                                            Browse&hellip;
+                                                                            <input type="file" id="btnUpload3" name="files[]" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                                                                        </span>
+                                                                    </label>
+                                                                    <input type="text" class="form-control" readonly />
+                                                                </div>
+                                                                <span class="help-block">Support .xlsx,pdf,dos,  Only</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>*@
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover display" id="gvwDataFile" width="100%">
+                                                            <thead>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nav-tabs-custom">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="#tab_1" data-toggle="tab">2018 Personal Evaluation Form</a></li>
+                                    @*<li><a href="#tab_4" data-toggle="tab">Score Card</a></li>
+                                        <li><a href="#tab_5" data-toggle="tab">APPENDIX</a></li>.*@
+                                    <li><a href="#tab_6" data-toggle="tab">360 c Feedback</a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane active" id="tab_1">
+                                        <div id="divContent">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <!-- general form elements -->
+                                                    <!-- form start -->
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-info">
+                                                                <div class="box-header with-border">
+                                                                    <i class="fa fa-text-width"></i>
+                                                                    <h3 class="box-title">List Question Plan</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataT1" width="100%">
+                                                                                    <thead>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-info">
+                                                                <div class="box-header with-border">
+                                                                    <i class="fa fa-text-width"></i>
+                                                                    <h3 class="box-title">KPIs</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body ">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="table-responsive">
+                                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataKPI" width="100%">
+                                                                                    <thead>
+                                                                                    </thead>
+                                                                                    <tbody></tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- /.box-body -->
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="tab-pane" id="tab_4">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="divContentFaculty">
+                                                        <div class="box-body">
+                                                            <div class="col-md-12">
+                                                                <div class="box box-solid box-info">
+                                                                    <div class="box-header with-border">
+                                                                        <i class="fa fa-text-width"></i>
+                                                                        <h3 class="box-title">List Score Card</h3>
+                                                                        <div class="box-tools pull-right">
+                                                                            <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                                <i class="fa fa-refresh"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-header -->
+                                                                    <div class="box-body">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped table-bordered table-hover display" id="gvwData4" width="100%">
+                                                                                <thead>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                        <div class="callout callout-warning ">
+                                                                            <h4><u>Remark</u></h4>
+                                                                            <p>
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <ul>
+                                                                                            <li><strong>Self</strong> : <em>Self Assessment</em></li>
+                                                                                            <li><strong>1st Pen</strong> : <em>BU Head</em></li>
+                                                                                            <li><strong>2nd Pen</strong> : <em>Practice Head</em></li>
+                                                                                        </ul>
+                                                                                    </li>
+                                                                                    <li>For KPI that you have not had a chance to demonstrate, please key in half of total score.</li>
+                                                                                </ul>
+                                                                                Score :  Excellent (> 90%)   Strong (> 70%)   Average (>50% )   Need Improvement (< 50%)
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- /. box -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_5">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="divContentFaculty">
+                                                        <div class="box-body">
+                                                            <div class="col-md-12">
+                                                                <div class="box box-solid box-info">
+                                                                    <div class="box-header with-border">
+                                                                        <i class="fa fa-text-width"></i>
+                                                                        <h3 class="box-title">APPENDIX</h3>
+                                                                        <div class="box-tools pull-right">
+                                                                            <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                                <i class="fa fa-refresh"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /.box-header -->
+                                                                    <div class="box-body">
+                                                                        <h3>
+                                                                            Key Performance Indicators
+                                                                        </h3>
+                                                                        <blockquote>
+                                                                            <p>All items below are measured in different weight of percentages varied by annual strategic goals, plans and actions.   Please go through the matrix for your reference.  </p>
+
+                                                                        </blockquote>
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-striped table-bordered table-hover display" id="gvwData5" width="100%">
+                                                                                <thead>
+                                                                                </thead>
+                                                                                <tbody></tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <!-- /. box -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    <div class="tab-pane" id="tab_6">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div id="divContentFaculty">
+                                                    <div class="box-body">
+                                                        <div class="col-md-12">
+                                                            <div class="box box-solid box-info">
+                                                                <div class="box-header with-border">
+                                                                    <i class="fa fa-text-width"></i>
+                                                                    <h3 class="box-title">Feedback</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                                                            <i class="fa fa-refresh"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /.box-header -->
+                                                                <div class="box-body">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                                                            <thead>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <!-- /. box -->
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog  widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <label class="control-label" id="lblAccept"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to save?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+    <link href="~/Scripts/plugins/DataTables2/rowReorder.dataTables.min.css" rel="stylesheet" />
+    <style>
+        .dt-HeadGr-ctm {
+            background-color: #2952a3;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-total-ctm {
+            background-color: #36c61a;
+            color: rgb(255, 255, 255);
+            vertical-align: middle;
+        }
+
+        .dt-totalAll-ctm {
+            background-color: rgb(255, 222, 35);
+            color: rgb(0, 0, 0);
+            vertical-align: middle;
+        }
+
+        table.dataTable {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    </style>
+}
+@section scripts{
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowReorder.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    <script type="text/javascript">
+        var url = document.URL;
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+    </script>
+
+    <script type="text/javascript">
+        var sUrlBack ='@Url.Action("PTRApproveList", "PTRApprove")';
+        var objMaxLength = [
+            { ctrlID: "txtSearch", ctrlType: "txt", MaxLength: 250 },
+            { ctrlID: "txtDesuser", ctrlType: "txt", MaxLength: 950 }];
+       // var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+           SetTable2();
+            SetTableApprove();
+            SetTableCandidate();
+            SetTable4();
+            SetTable5();
+            SetTable();
+            SetTableWay();
+            ValidateForm();
+            SetTableFile();
+            SetTableFinal();
+            SetMaxLeangthJS(objMaxLength);
+            @if(Request.QueryString["bUrl"]!=null)
+             {
+            <text>
+            sUrlBack +="?qryStr="+  '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+             }
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwDataT1').DataTable().columns.adjust().draw();
+                    $('#gvwDataKPI').DataTable().columns.adjust().draw();
+                    $('#gvwDataWAY').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_2') {
+                    $('#gvwData3').DataTable().columns.adjust().draw();
+                }
+                else   if (e.target.hash == '#tab_3') {
+
+                }
+                else if (e.target.hash == '#tab_4') {
+                    $('#gvwData4').DataTable().columns.adjust().draw();
+                } else if (e.target.hash == '#tab_5') {
+                    $('#gvwData5').DataTable().columns.adjust().draw();
+                } else if (e.target.hash == '#tab_6') {
+                    $('#gvwData').DataTable().columns.adjust().draw();
+                }
+            });
+
+            SetICheck();
+
+
+        });
+        function GetData() {
+            var lstQuestion = $('#gvwData').dataTable().fnGetData();
+            var lstSave = ko.toJS(viewModel);
+            lstSave.lstQuestion = lstQuestion;
+            return lstSave;
+        }
+        function Save() {
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal();
+            }
+
+        }
+
+        function AddQuestion() {
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divUser")) {
+                IsPass = false;
+                // $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "INVALID");
+            }
+            if (IsPass) {
+                var lstNowRea = $('#gvwData').dataTable().fnGetData();
+                var objAddData = {
+                    nID: 1,
+                    header: GetInputByID("txtSearch").val(),
+                    rate: GetValDropdown("ddlEXEX"),
+                    question1: GetTextareaByID("txtDesuser").val(),
+                    question2: GetTextareaByID("txtDesuser2").val(),
+                };
+
+                if (lstNowRea != undefined && lstNowRea.length > 0) {
+                    var nMax = Enumerable.From(lstNowRea).Max(function (x) { return x.nID }) + 1;
+                    objAddData.nID = nMax;
+                    lstNowRea.push(objAddData);
+                }
+                else {
+                    lstNowRea = objAddData;
+                }
+                BindQuestion(lstNowRea);
+                ClearText();
+            }
+        }
+        function ClearText() {
+            GetInputByID("txtSearch").val('');
+            GetTextareaByID("txtDesuser").val('');
+            GetSelectByID("ddlEXEX").val('');
+            GetTextareaByID("txtDesuser2").val('');
+
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "NOT_VALIDATED");
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("ddlEXEX", objControl.dropdown), "NOT_VALIDATED");
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtDesuser", objControl.txtarea), "NOT_VALIDATED");
+            $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtDesuser2", objControl.txtarea), "NOT_VALIDATED");
+
+
+        }
+        function ValidateForm() {
+            var objValidateUser = {};
+            objValidateUser[GetElementName("txtSearch", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser[GetElementName("ddlEXEX", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser[GetElementName("txtDesuser", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser[GetElementName("txtDesuser2", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser", objValidateUser);
+
+            var objValidateUser3 = {};
+            objValidateUser3[GetElementName("txtxxx1", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser3[GetElementName("txtDesuser3", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser3", objValidateUser3);
+
+            var objValidateUser4 = {};
+            objValidateUser4[GetElementName("txt44", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser4[GetElementName("txtttt4", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidateUser4[GetElementName("txtDesuser4", objControl.txtarea)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divUser4", objValidateUser4);
+
+            var objValidateUser5 = {};
+            objValidateUser5[GetElementName("txtSearchWay", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("divWay", objValidateUser5);
+        }
+        function BindQuestion(lstObjData) {
+            if (!$.fn.DataTable.isDataTable('#gvwData')) {
+                SetTable();
+
+            }
+            if (lstObjData == undefined || lstObjData.length <= 0) {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnDraw();
+            }
+            else {
+                $('#gvwData').DataTable().clear().draw();
+                $('#gvwData').dataTable().fnAddData(lstObjData);
+                $('#gvwData').dataTable().fnDraw();
+            }
+            $('#gvwData').DataTable().columns.adjust().draw()
+        }
+
+
+        function AddWay() {
+            var IsPass = true;
+            if (!CheckValidateBootstrap("divWay")) {
+                IsPass = false;
+                // $('#divUser').bootstrapValidator('updateStatus', GetElementName("txtSearch", objControl.txtbox), "INVALID");
+            }
+            if (IsPass) {
+                var lstNowRea = $('#gvwDataWAY').dataTable().fnGetData();
+                var objAddData = {
+                    nID: 1,
+                    header: GetInputByID("txtSearchWay").val(),
+                };
+
+                if (lstNowRea != undefined && lstNowRea.length > 0) {
+                    var nMax = Enumerable.From(lstNowRea).Max(function (x) { return x.nID }) + 1;
+                    objAddData.nID = nMax;
+                    lstNowRea.push(objAddData);
+                }
+                else {
+                    lstNowRea = objAddData;
+                }
+                console.log(lstNowRea);
+                BindQuestionWay(lstNowRea);
+                ClearTextWay();
+            }
+        }
+        function ClearTextWay() {
+            GetInputByID("txtSearchWay").val('');
+            $('#divWay').bootstrapValidator('updateStatus', GetElementName("txtSearchWay", objControl.txtbox), "NOT_VALIDATED");
+        }
+
+        function BindQuestionWay(lstObjData) {
+            if (!$.fn.DataTable.isDataTable('#gvwDataWAY')) {
+                SetTableWay();
+
+            }
+            if (lstObjData == undefined || lstObjData.length <= 0) {
+                $('#gvwDataWAY').DataTable().clear().draw();
+                $('#gvwDataWAY').dataTable().fnDraw();
+            }
+            else {
+                $('#gvwDataWAY').DataTable().clear().draw();
+                $('#gvwDataWAY').dataTable().fnAddData(lstObjData);
+                $('#gvwDataWAY').dataTable().fnDraw();
+            }
+            $('#gvwDataWAY').DataTable().columns.adjust().draw()
+        }
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+        }
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+
+        function SetTableApprove() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1", "visible": false },
+                { "title": "Position", "width": "27%", "className": "dt-left-ctm", "data": "th2", "searchable": false, "orderable": false },
+                { "title": "Approver", "width": "48%", "className": "dt-left-ctm", "data": "th3", "searchable": false, "orderable": false },
+                { "title": "Approval Date", "width": "25%", "className": "dt-center-ctm", "data": "th4", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataApprove",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Partner / Director", "th3": "Sample", "th4": "1-Jun-2018", "th5": "", }
+                    , { "th1": "2", "th2": "BU Head / Group Head", "th3": "Saowanee Sethsathira", "th4": "3-Jun-2018", "th5": "", }
+                    , { "th1": "3", "th2": "Practice Head", "th3": "Charoen Phosamritlert", "th4": "4-Jun-2018", "th5": "", }
+                    , { "th1": "4", "th2": "CEO", "th3": "Winid Silamongkol", "th4": "6-Jun-2018", "th5": "", }], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTableFinal() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1", "visible": false },
+                { "title": "Position", "width": "28%", "className": "dt-left-ctm", "data": "th2", "searchable": false, "orderable": false },
+                { "title": "Status", "width": "27%", "className": "dt-left-ctm", "data": "th3", "searchable": false, "orderable": false },
+                { "title": "Remark", "width": "45%", "className": "dt-center-ctm", "data": "th4", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFinal",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Partner / Director", "th3": "Meet Expectations", "th4": "", "th5": "", }
+                    , { "th1": "2", "th2": "BU Head / Group Head", "th3": "Meet Expectations", "th4": "", "th5": "", }
+                    , { "th1": "3", "th2": "Practice Head", "th3": "Meet Expectations", "th4": "", "th5": "", }
+                    , { "th1": "4", "th2": "CEO", "th3": "", "th4": "", "th5": "", }], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTableFile() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1" },
+                { "title": "File Name", "width": "35%", "className": "dt-left-ctm", "data": "th2", "searchable": false, "orderable": false },
+                { "title": "Description", "width": "45%", "className": "dt-left-ctm", "data": "th3", "searchable": false, "orderable": false },
+                { "title": "", "width": "20%", "className": "dt-center-ctm", "data": "th5", "searchable": false, "orderable": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataFile",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Filetest1.pdf", "th3": "............", "th4": "", "th5": '', }
+                    , { "th1": "2", "th2": "Filetest2.pdf", "th3": "............", "th4": "", "th5": '', }
+                    ], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                },
+                rowGroup: {
+                    enable: false
+                },
+                 columnDefs: [ {
+                           "targets": 3,
+                           "render": function (data, type, row, meta) {
+                               return '<a href="#" onclick="return false;" tooltip="Detail" flow="down"> <img src="@Url.Content("~/Image/filetype_pdf.png")" class="img-icon" width="28" height="28" />' + "</a>";
+                        }
+                    }
+                ],
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+
+
+        function CreateRadioTest(sID) {
+            var sHtml = "";
+            if (sID != undefined && sID != "") {
+                sHtml = '<input type="checkbox" id="chkX' + sID + '-chkRow" name="chk' + sID + '" class="flat-green" value="Y"  />&nbsp;MB&nbsp;&nbsp;' +
+                    '<input type="checkbox" id="chkY' + sID + '-chkRow"  name="chk' + sID + '" id="rdBlue" class="flat-green" value="N"   />&nbsp;%';
+            }
+            else {
+                sHtml = "";
+            }
+
+
+            return sHtml;
+        }
+
+    </script>
+    <script type="text/javascript">
+        function SetTableCandidate() {
+            var objHeadClRequest = [
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1", "visible": false },
+                { "title": "", "width": "0%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th2", "visible": false },
+                { "title": "Question", "width": "40%", "className": "dt-left-ctm", "searchable": false, "orderable": false, "data": "th3", },
+                { "title": "Answer", "width": "60%", "className": "dt-left-ctm", "data": "remark", "searchable": false, "th4": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataT1",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Personal Performance Plan", "th3": "What are your vision, ambition, aspiration for achievement?", "th4": "Comment 1 .................", "th5": "Purposes", }
+                    , { "th1": "2", "th2": "Personal Performance Plan", "th3": "What relevant KPIs (both Financials / Non-Financials) you will cover to support your purposes?  How will you achieve them?(Action Plans)", "th4": "Comment 2 .................", "th5": "Top 5 Priorities and Actions", }
+                    , { "th1": "3", "th2": "Personal Performance Evaluation", "th3": "What are top 5 priorities set in your Personal Performance Plan and have covered and executed.", "th4": "Comment 4 .................", "th5": "Top 5 Priorities and Achievements(Priorities)", }
+                    , { "th1": "4", "th2": "Personal Performance Evaluation", "th3": "What are top 5 priorities set in your Personal Performance Plan and have covered and executed.", "th4": "Comment 5 .................", "th5": "Top 5 Priorities and Achievements(Actions)", }
+                    , { "th1": "4", "th2": "Personal Performance Evaluation", "th3": "Consider your own “Year End Performance Rating” against your Top 5 priorities that you had set in your Personal Performance Plan.", "th4": "Comment 6 .................", "th5": "Achievements", }
+                ], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        sHtml = "<strong>" + row.th5 + "</strong><br/>" + data;
+                        return sHtml;
+                    }
+                }, {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        var Dis = "";
+                        if (row.th4 + "" != "") {
+                            Dis = "Y";
+                        }
+                        return CreateTextAreaInt("txtRemark" + row.th1, 1000, row.th4 + "", Dis, 7);
+                    }
+                }],
+                fixedHeader: {
+                    header: false,
+                    footer: false
+                }, rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm"  colspan="2" >' + group + '</td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'th2'
+                }
+
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function CreateTextAreaInt(sID, sMaxlength, sValue, sDisable, sRow) {
+            $("input[id$=" + sID + "]").unbind();
+            var sDis = "";
+            if (sDisable != undefined && sDisable == "Y") {
+                sDis = "disabled";
+            }
+            if (sRow == undefined || sRow == null) {
+                sRow = 3;
+            }
+
+            var sSetValue = sValue != undefined && sValue != "" ? "value='" + sValue + "'" : "";
+            var sMaxlength = sMaxlength != undefined && sMaxlength != "" ? "maxlength='" + sMaxlength + "'" : "";
+            var sHtml = "<textarea rows='" + sRow + "' cols='50'  id='" + sID + "' name='" + sID + "' class='form-control' " + sMaxlength + " " + sSetValue + " style='width:100%;' " + sDis + "  >" + sValue + "</textarea>";
+
+            return sHtml;
+        }
+
+        function SetTable2() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1" },
+                { "title": "Financial", "width": "25%", "className": "dt-left-ctm dt-mid-ctm", "data": "th2", "searchable": false, "orderable": false, },
+                {
+                    "title": "Actual<br/>up to<br/>30 June 2018", "width": "15%", "className": "dt-center-ctm dt-mid-ctm", "data": "th5", "searchable": false, "orderable": false,
+                },
+                { "title": "Target", "width": "10%", "className": "dt-center-ctm dt-mid-ctm", "data": "th3", "searchable": false, "orderable": false, },
+                { "title": " Remarks", "width": "45%", "className": "dt-center-ctm dt-mid-ctm", "data": "th4", "searchable": false, "orderable": false, },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataKPI",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Fee managed (MB)", "th3": "30.0", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" value="25" disabled >', }
+                    , { "th1": "2", "th2": "Contribution margin (%)", "th3": "55-70%", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  value="60%" disabled >', }
+                    , { "th1": "3", "th2": "Recovery rate (%)", "th3": "40-55%", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  value="50%" disabled >', }
+                    , { "th1": "4", "th2": "Lock-up (Days)", "th3": "75", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" value="60" disabled >', }
+                    , { "th1": "5", "th2": "Chargeability (%)", "th3": "50-70%", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" value="65%" disabled >', }
+                    , { "th1": "6", "th2": "Billing (MB)", "th3": "30.0", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" value="24" disabled >', }
+                    , { "th1": "7", "th2": "Collections (MB)", "th3": "30.0", "th4": "", "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" value="28" disabled  >', }], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                columnDefs: [
+                    {
+                        "targets": 4,
+                        "render": function (data, type, row) {
+                            return CreateTextAreaInt("txtRemark" + row.th1, 1000, "", "Y", 2);
+                        },
+                    }
+                ],
+                rowGroup: {
+                    enable: false
+                }
+            };
+
+            var table = CreatTableJS(objTableRe);
+            $('#' + objTableRe.sTableID + '').dataTable().on('draw.dt', function (settings) {
+                $("div[id$=" + objTableRe.sTableID + "_wrapper] div.icheckbox_flat-green input[id$=chkRow]").iCheck('uncheck');
+
+                UnCheckCheckBoxHeader("ckbAll");
+                SetICheck();
+                //$('#ckbAll').iCheck('destroy');
+                $('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper ').height($('div[id=' + objTableRe.sTableID + '_wrapper] div.DTFC_ScrollWrapper div.dataTables_scroll').height());
+
+            });
+            SetICheck();
+        }
+        function SetTable4() {
+            var objHeadClRequest = [
+
+                { "title": "", "width": "45%", "className": "dt-left-ctm dt-mid-ctm", "data": "th2", "searchable": false, "orderable": false, },
+                { "title": "Score", "width": "10%", "className": "dt-right-ctm dt-mid-ctm", "data": "th3", "searchable": false, "orderable": false, },
+                { "title": "Self", "width": "15%", "className": "dt-center-ctm dt-mid-ctm", "data": "th4", "searchable": false, "orderable": false, },
+                { "title": "1st Pen", "width": "15%", "className": "dt-center-ctm dt-mid-ctm", "data": "th5", "searchable": false, "orderable": false, },
+                { "title": "2nd Pen", "width": "15%", "className": "dt-center-ctm dt-mid-ctm", "data": "th6", "searchable": false, "orderable": false, },
+                { "title": "", "width": "0%", "className": "dt-right-ctm", "data": "th7", "searchable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData4",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Fee managed (MB)", "th3": "100", "th4": '<input type="text" value="95" id="txt44" name="txt44" class="form-control input-sm " style="text-align: right;" disabled  >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"   >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "1", }
+                    , { "th1": "2", "th2": "Contribution margin (%)", "th3": "50", "th4": '<input type="text" value="50" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "1", }
+                    , { "th1": "3", "th2": "Recovery rate (%)", "th3": "50", "th4": '<input type="text" id="txt44" value="50" name="txt44" class="form-control input-sm" style="text-align: right;" disabled  >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"   >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "1", }
+                    , { "th1": "4", "th2": "Lock-up (Days)", "th3": "50", "th4": '<input type="text" id="txt44" value="50" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled  >', "th7": "1", }
+                    , { "th1": "5", "th2": "Chargeability (%)", "th3": "50", "th4": '<input type="text" id="txt44" value="45" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "1", }
+                    , { "th1": "6", "th2": "Billing (MB)", "th3": "100", "th4": '<input type="text" id="txt44" value="95" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"   >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled  >', "th7": "1", }
+                    , { "th1": "7", "th2": "Collections (MB)", "th3": "100", "th4": '<input type="text" id="txt44" value="95" name="txt44" class="form-control input-sm"  style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  disabled >', "th7": "1", }
+                    , { "th1": "7", "th2": "Quality performance incident (QPR/SEC)", "th3": "50", "th4": '<input type="text" value="45" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Compliance incident (RCP/GCR/Training)", "th3": "40", "th4": '<input type="text" id="txt44" value="40" name="txt44" class="form-control input-sm" style="text-align: right;"  disabled>', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"    >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled  >', "th7": "2", }
+                    , { "th1": "7", "th2": "KPMG Story participation", "th3": "20", "th4": '<input type="text" id="txt44" name="txt44" value="20" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "KPMG Way", "th3": "30", "th4": '<input type="text" id="txt44" name="txt44" value="30" class="form-control input-sm"  style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"   >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Engage in opportunities, i.e. sales participation, sales effort, etc.", "th3": "30", "th4": '<input type="text" value="30" id="txt44" name="txt44" class="form-control input-sm"  style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Employee engagement and survey", "th3": "30", "th4": '<input type="text" id="txt44" value="30" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Client feedback", "th3": "30", "th4": '<input type="text" id="txt44" value="25" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Client survey", "th3": "30", "th4": '<input type="text" id="txt44" value="25" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled  >', "th7": "2", }
+                    , { "th1": "7", "th2": "Drive collaboration including support others", "th3": "30", "th4": '<input type="text" value="25" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Networking", "th3": "30", "th4": '<input type="text" id="txt44" name="txt44" value="25" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Professional activities", "th3": "20", "th4": '<input type="text" id="txt44" value="15" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Corporate social responsibilities", "th3": "20", "th4": '<input type="text" value="15" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Drive firm strategies / function strategies", "th3": "30", "th4": '<input type="text" value="15" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Coaching / mentoring", "th3": "30", "th4": '<input type="text" id="txt44" name="txt44" value="15" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"   >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Marketing events", "th3": "30", "th4": '<input type="text" id="txt44" name="txt44" value="25" class="form-control input-sm"style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "2", }
+                    , { "th1": "7", "th2": "Management functions (Executive Partner)", "th3": "150", "th4": '<input type="text" value="150" id="txt44" name="txt44" class="form-control input-sm" style="text-align: right;" disabled >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm" disabled >', "th7": "3", }
+
+                ], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[5, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                rowGroup: {
+                    'startRender': null,
+                    'endRender': function (rows, group) {
+
+                        var ntotal = 0;
+                        var nX = 0;
+
+                        var amount = rows
+                            .data();
+
+                        $.each(amount, function (key, value) {
+                            ntotal = (ntotal + StringtoInt(value.th3 + ""));
+
+                        });
+                        if (group == "1") {
+                            nX = 480;
+                        }
+                        else if (group == "2") {
+                            nX = 380;
+                        }
+                        else if (group == "3") {
+                            nX = 150;
+                        }
+                        return $('<tr/>')
+                            .append('<td class="dt-total-ctm dt-left-ctm dt-mid-ctm" colspan="1" >Total</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(ntotal) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" >' + StringtoCount(nX) + '</td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" ></td>')
+                            .append('<td class="dt-total-ctm dt-right-ctm" ></td>');
+                    },
+                    'dataSrc': 'th7'
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTable5() {
+            var objHeadClRequest = [
+
+                { "title": "Type", "width": "50%", "className": "dt-left-ctm", "data": "th2", "searchable": false, "orderable": false, },
+                { "title": "Explanation", "width": "50%", "className": "dt-left-ctm ", "data": "th3", "searchable": false, "orderable": false, },
+                { "title": "", "width": "0%", "className": "dt-right-ctm", "data": "th7", "searchable": false, "visible": false },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData5",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": '<ul><li>Fee managed</li><li>Contribution margin</li><li>Recovery rate</li><li>Lock-up</li><li>Chargeability</li><li>Billing</li><li>Collections</li></ul>', "th3": "The financial KPI are agreed at the Practice and Firm level as benchmark for individual performance. The actual results are regularly compiled and reported by Finance. ", "th4": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th7": "Financial", }
+                    , {
+                    "th1": "2", "th2": '<p><strong>The Clear Choice.</strong></p>'
+                        + '<ul><li>KPMG Story Participation</li></ul>'
+                        + '<p><strong><em>Our people are extraordinary.</em></strong></p>'
+                        + '<ul><li>Employee engagement and survey</li><li>Drive collaboration including support others</li><li>Drive firm strategies / function strategies</li><li>Coaching / mentoring</li></ul>'
+                        + '<p><strong><em>Our clients see a difference in us.</em></strong></p>'
+                        + '<ul><li>KPMG Way</li><li>Engage in opportunities, i.e. sales participation, sales effort, etc.</li><li>Client feedback</li>'
+                        + '<li>Client survey</li><li>Marketing events / Networking</li></ul>'
+                        + '<p><strong><em>The public trusts us.</em></strong></p>'
+                        + '<ul><li>Quality performance incident (QPR/SEC)</li><li>Compliance incident (RM/RCP/GCR/Training)</li><li>Professional activities</li>'
+                        + '<li>Corporate social responsibilities</li></ul>', "th3": '<ul>'
+                            + '<li>Adopt and uphold KPMG Story (Purpose, Values, Vision, Strategy and Promise) in daily work.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>'
+                            + '<li>Participate Firm&rsquo;s Employee engagement activities and survey.</li>'
+                            + '<li>Work collaboratively, share knowledge across function and sector.</li>'
+                            + '</ul>'
+
+                            + '<ul>'
+                            + '<li>Strive and encourage others to meet firm&rsquo;s function/sector strategies.</li>'
+                            + '<li>Actively seek and provide timely constructive and honest feedback to coach and develop others.</li>'
+                            + '<li>Participate and adopt KPMG Way in business process i.e. Account Plan, Opportunity Pipeline, MarketEDGE.</li>'
+                            + '<li>Demonstrate commercial acumen. Proactively identify, pursue and win business opportunities across function/sector.</li>'
+                            + '<li>Level of Client Satisfaction survey/responses. Regularly seek clients&rsquo; feedback for continual service improvement.</li>'
+                            + '<li>Undertake client survey to understand clients&rsquo; needs to deliver high quality.</li>'
+                            + '</ul>'
+
+                            + '<ul>'
+                            + '<li>Initiate /engage in marketing events to expose KPMG as Clear Choice in the market. Participate in Firm, clients and partners &lsquo;events and look for opportunities to leverage those networks and opportunities to KPMG.</li>'
+                            + '<li>QPR Results/SEC issues</li>'
+                            + '<li>Comply and complete all Firm&rsquo;s Quality and Risk Management policies/trainings.</li>'
+                            + '<li>Build and maintain a credible and influential profile in respective industry/sector or professional associations or organizations.</li>'
+                            + '<li>Engage in internal or external activities that broaden skills, experience and perspectives through work with others in the communities.</li>'
+                            + '</ul>', "th4": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th5": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th6": '<input type="text" id="txt44" name="txt44" class="form-control input-sm"  >', "th7": "Non-Financial",
+                },
+
+                ], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[2, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('<tr/>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm" >' + group + '</td>')
+                            .append('<td class="dt-HeadGr-ctm dt-center-ctm" ></td>');
+                    },
+                    'endRender': null,
+                    'dataSrc': 'th7'
+                }
+            };
+            var table = CreatTableJS(objTableRe);
+        }
+        function SetTable() {
+            var objHeadClRequest = [
+                { "title": "", "width": "5%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "nID" },
+                { "title": "Name", "width": "25%", "className": "dt-left-ctm reorderable", "data": "header", "searchable": false, "orderable": false, },
+                { "title": "Type", "width": "10%", "className": "dt-center-ctm reorderable", "data": "type", "searchable": false, "orderable": false, },
+                { "title": "Rating", "width": "10%", "className": "dt-center-ctm reorderable", "data": "rate", "searchable": false, "orderable": false, },
+                { "title": "Appreciations", "width": "25%", "className": "dt-left-ctm", "data": "question1", "searchable": false, "orderable": false, },
+                { "title": "Recommendations", "width": "25%", "className": "dt-left-ctm", "data": "question2", "searchable": false, "orderable": false, },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwData",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ nID: 1, header: "Test 1 ", rate: "Strong", question1: "Comment 1 ", question2: "Comment 2 ", "type" : "Employee"},
+                    { nID: 2, header: "Test 2 ", rate: "Excellent", question1: "Comment 1 ", question2: "Comment 1 ", "type" : "Employee"}], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+
+                rowGroup: {
+                    enable: false
+                }
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function SetTableWay() {
+            var objHeadClRequest = [
+                { "title": "", "width": "10%", "className": "dt-center-ctm", "searchable": false, "orderable": false, "data": "th1" },
+                { "title": "Company Name", "width": "30%", "className": "dt-left-ctm reorderable", "data": "th2", "searchable": false, "orderable": false, },
+                { "title": "Achievement,<br/>Progress,<br/>work done,<br/>etc. ", "width": "15%", "className": "dt-center-ctm reorderable", "data": "th3", "searchable": false, "orderable": false, },
+                { "title": "Remark", "width": "45%", "className": "dt-chk-ctm reorderable", "data": "th4", "searchable": false, "orderable": false, },
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataWAY",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [{ "th1": "1", "th2": "Company1", "th3": "", "th4": "", "th5": "", }
+                    , { "th1": "2", "th2": "Company2", "th3": "", "th4": "", "th5": "", }
+                    , { "th1": "3", "th2": "Company3", "th3": "", "th4": "", "th5": "", }
+                    , { "th1": "4", "th2": "Company4", "th3": "", "th4": "", "th5": "", }
+                    , { "th1": "5", "th2": "Company5", "th3": "", "th4": "", "th5": "", }
+                ], //dataset
+                nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                nRunningNumber: ["true", 0],
+                rowGroup: {
+                    enable: false
+                },
+                columnDefs: [{
+                    "targets": 2,
+                    "render": function (data, type, row) {
+                        var xx = "Y";
+                        if (StringtoInt(row.th1) % 2 === 0) {
+                            xx = "N";
+                        }
+                        return CreateSingleCheckBokXXX(row.th1, xx);
+                    }
+                }, {
+                    "targets": 3,
+                    "render": function (data, type, row) {
+                        return CreateTextAreaInt("txtRemark" + row.th1, 1000, "", "Y", 2);
+                    },
+                }
+                ],
+            };
+
+            var table = CreatTableJS(objTableRe);
+
+        }
+        function CreateSingleCheckBokXXX(sID, sValue) {
+            var sHtml = "";
+            var sChecked = "";
+            if (sID != undefined && sID != "") {
+                if (sValue != undefined && sValue == "Y") {
+                    sChecked = "checked";
+                }
+                sHtml = '<input type="checkbox" id="' + sID + '" name="' + sID + '" class="flat-green" value="Y" ' + sChecked + '  />';
+            }
+            else {
+                sHtml = "";
+            }
+            return sHtml;
+        }
+    </script>
+}
+
+
+Severity	Code	Description	Project	File	Line	Suppression State
+Error	CS0029	Cannot implicitly convert type 'System.Collections.Generic.IEnumerable<int>[]' to 'int[]'	HumanCapitalManagement.Service	C:\WorkProject\HumanCapitalManagement\HumanCapitalManagement.Service\PartnerEvaluation\PTR_Evaluation_ApproveService.cs	46	Active

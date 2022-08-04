@@ -1,0 +1,82 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vcandidatesTechnicalTestTransaction_obj_Save 
+
+<form class="form-horizontal" >
+    <div id="pvCandidateTechnicalTest">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label  text-right require">Technical Test Name<font color=red>*</font> :</label>
+                    <div class="col-md-6">
+                        @{ Html.RenderAction("CreateddlTestName", "HCMMasterData", new
+                            {
+                                id = "ddlTestName",
+                                databind = "technicaltest_id",
+                                value = ""
+                            });}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Score<font color=red>*</font>  :</label>
+                    <div class="col-md-6">
+                        <input type="text" id="txtTechnicalTestScore" name="txtTechnicalTestScore" class="form-control" data-bind='value: technicaltest_score' />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Technical Test Date<font color=red>*</font>  :</label>
+                    <div class="col-md-6">
+                        <div class="input-group form-inline" style="float: left;">
+                            <input ID="txtTechnicalTest_Date" name="txtTechnicalTest_Date" class="form-control text-center" type="text"
+                                   ToolTip="Technical Test Date" placeholder="-- / -- / ----" data-bind="value: technicaltest_date" />
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+<script type="text/javascript">
+
+    var objModelPVTechnicalTest = @Html.Raw(Json.Encode(Model));
+    
+  
+    $(function () {
+
+        SetDatePicker(GetInputByID("txtTechnicalTest_Date"));
+        
+
+    });
+
+    //function ValidateFormPVTechnicalTest() {
+    //    var objValidatePopUp = {};
+
+    //    objValidatePopUp[GetElementName("ddlTestName", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");       
+    //    objValidatePopUp[GetElementName("txtTechnicalTestScore", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+    //    objValidatePopUp[GetElementName("txtTechnicalTest_Date", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+
+    //    BindValidateBootstrap("pvCandidateTechnicalTest", objValidatePopUp);
+    //}
+   
+
+</script>
+
+
+
+

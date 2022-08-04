@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://th.kpmg.intranet/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://th.kpmg.intranet/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">E-Mail Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://th.kpmg.intranet/">
+      <s:element name="ws_MailServer">
+        <s:complexType />
+      </s:element>
+      <s:element name="ws_MailServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_MailServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mBCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mSbj" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_SendMailResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_SendMail_Advance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mBCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mSbj" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mMsg" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isTest" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="tTo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="priority" type="tns:MailPriority" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="MailPriority">
+        <s:restriction base="s:string">
+          <s:enumeration value="Normal" />
+          <s:enumeration value="Low" />
+          <s:enumeration value="High" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ws_SendMail_AdvanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ws_SendMail_AdvanceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_GetScriptAdminMail4AutoScript">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ScriptKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ws_GetScriptAdminMail4AutoScriptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ws_GetScriptAdminMail4AutoScriptResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ws_MailServerSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_MailServer" />
+  </wsdl:message>
+  <wsdl:message name="ws_MailServerSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_MailServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_SendMail" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_SendMail_Advance" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_SendMail_AdvanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptSoapIn">
+    <wsdl:part name="parameters" element="tns:ws_GetScriptAdminMail4AutoScript" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptSoapOut">
+    <wsdl:part name="parameters" element="tns:ws_GetScriptAdminMail4AutoScriptResponse" />
+  </wsdl:message>
+  <wsdl:message name="ws_MailServerHttpGetIn" />
+  <wsdl:message name="ws_MailServerHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailHttpGetIn">
+    <wsdl:part name="mFrom" type="s:string" />
+    <wsdl:part name="nFrom" type="s:string" />
+    <wsdl:part name="mTo" type="s:string" />
+    <wsdl:part name="mCC" type="s:string" />
+    <wsdl:part name="mBCC" type="s:string" />
+    <wsdl:part name="mSbj" type="s:string" />
+    <wsdl:part name="mMsg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceHttpGetIn">
+    <wsdl:part name="mFrom" type="s:string" />
+    <wsdl:part name="nFrom" type="s:string" />
+    <wsdl:part name="mTo" type="s:string" />
+    <wsdl:part name="mCC" type="s:string" />
+    <wsdl:part name="mBCC" type="s:string" />
+    <wsdl:part name="mSbj" type="s:string" />
+    <wsdl:part name="mMsg" type="s:string" />
+    <wsdl:part name="isTest" type="s:string" />
+    <wsdl:part name="tTo" type="s:string" />
+    <wsdl:part name="priority" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptHttpGetIn">
+    <wsdl:part name="ScriptKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_MailServerHttpPostIn" />
+  <wsdl:message name="ws_MailServerHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailHttpPostIn">
+    <wsdl:part name="mFrom" type="s:string" />
+    <wsdl:part name="nFrom" type="s:string" />
+    <wsdl:part name="mTo" type="s:string" />
+    <wsdl:part name="mCC" type="s:string" />
+    <wsdl:part name="mBCC" type="s:string" />
+    <wsdl:part name="mSbj" type="s:string" />
+    <wsdl:part name="mMsg" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMailHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceHttpPostIn">
+    <wsdl:part name="mFrom" type="s:string" />
+    <wsdl:part name="nFrom" type="s:string" />
+    <wsdl:part name="mTo" type="s:string" />
+    <wsdl:part name="mCC" type="s:string" />
+    <wsdl:part name="mBCC" type="s:string" />
+    <wsdl:part name="mSbj" type="s:string" />
+    <wsdl:part name="mMsg" type="s:string" />
+    <wsdl:part name="isTest" type="s:string" />
+    <wsdl:part name="tTo" type="s:string" />
+    <wsdl:part name="priority" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_SendMail_AdvanceHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptHttpPostIn">
+    <wsdl:part name="ScriptKey" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ws_GetScriptAdminMail4AutoScriptHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="EMail_NewSoap">
+    <wsdl:operation name="MailServer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Mail Server</wsdl:documentation>
+      <wsdl:input name="ws_MailServer" message="tns:ws_MailServerSoapIn" />
+      <wsdl:output name="ws_MailServer" message="tns:ws_MailServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail" message="tns:ws_SendMailSoapIn" />
+      <wsdl:output name="ws_SendMail" message="tns:ws_SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceSoapIn" />
+      <wsdl:output name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get email of ScriptAdmin who will receive AutoScript mail</wsdl:documentation>
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptSoapIn" />
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EMail_NewHttpGet">
+    <wsdl:operation name="MailServer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Mail Server</wsdl:documentation>
+      <wsdl:input name="ws_MailServer" message="tns:ws_MailServerHttpGetIn" />
+      <wsdl:output name="ws_MailServer" message="tns:ws_MailServerHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail" message="tns:ws_SendMailHttpGetIn" />
+      <wsdl:output name="ws_SendMail" message="tns:ws_SendMailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceHttpGetIn" />
+      <wsdl:output name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get email of ScriptAdmin who will receive AutoScript mail</wsdl:documentation>
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptHttpGetIn" />
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="EMail_NewHttpPost">
+    <wsdl:operation name="MailServer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Mail Server</wsdl:documentation>
+      <wsdl:input name="ws_MailServer" message="tns:ws_MailServerHttpPostIn" />
+      <wsdl:output name="ws_MailServer" message="tns:ws_MailServerHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail" message="tns:ws_SendMailHttpPostIn" />
+      <wsdl:output name="ws_SendMail" message="tns:ws_SendMailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Send E-Mail</wsdl:documentation>
+      <wsdl:input name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceHttpPostIn" />
+      <wsdl:output name="ws_SendMail_Advance" message="tns:ws_SendMail_AdvanceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get email of ScriptAdmin who will receive AutoScript mail</wsdl:documentation>
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptHttpPostIn" />
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript" message="tns:ws_GetScriptAdminMail4AutoScriptHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EMail_NewSoap" type="tns:EMail_NewSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MailServer">
+      <soap:operation soapAction="http://th.kpmg.intranet/ws_MailServer" style="document" />
+      <wsdl:input name="ws_MailServer">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_MailServer">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://th.kpmg.intranet/ws_SendMail" style="document" />
+      <wsdl:input name="ws_SendMail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <soap:operation soapAction="http://th.kpmg.intranet/ws_SendMail_Advance" style="document" />
+      <wsdl:input name="ws_SendMail_Advance">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail_Advance">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <soap:operation soapAction="http://th.kpmg.intranet/ws_GetScriptAdminMail4AutoScript" style="document" />
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EMail_NewSoap12" type="tns:EMail_NewSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MailServer">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ws_MailServer" style="document" />
+      <wsdl:input name="ws_MailServer">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_MailServer">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ws_SendMail" style="document" />
+      <wsdl:input name="ws_SendMail">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ws_SendMail_Advance" style="document" />
+      <wsdl:input name="ws_SendMail_Advance">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail_Advance">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ws_GetScriptAdminMail4AutoScript" style="document" />
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EMail_NewHttpGet" type="tns:EMail_NewHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="MailServer">
+      <http:operation location="/ws_MailServer" />
+      <wsdl:input name="ws_MailServer">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ws_MailServer">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/ws_SendMail" />
+      <wsdl:input name="ws_SendMail">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <http:operation location="/ws_SendMail_Advance" />
+      <wsdl:input name="ws_SendMail_Advance">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail_Advance">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <http:operation location="/ws_GetScriptAdminMail4AutoScript" />
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="EMail_NewHttpPost" type="tns:EMail_NewHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="MailServer">
+      <http:operation location="/ws_MailServer" />
+      <wsdl:input name="ws_MailServer">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ws_MailServer">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <http:operation location="/ws_SendMail" />
+      <wsdl:input name="ws_SendMail">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail_Advance">
+      <http:operation location="/ws_SendMail_Advance" />
+      <wsdl:input name="ws_SendMail_Advance">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ws_SendMail_Advance">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScriptAdminMail4AutoScript">
+      <http:operation location="/ws_GetScriptAdminMail4AutoScript" />
+      <wsdl:input name="ws_GetScriptAdminMail4AutoScript">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ws_GetScriptAdminMail4AutoScript">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EMail_New">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">E-Mail Web Service</wsdl:documentation>
+    <wsdl:port name="EMail_NewSoap" binding="tns:EMail_NewSoap">
+      <soap:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Email_New.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EMail_NewSoap12" binding="tns:EMail_NewSoap12">
+      <soap12:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Email_New.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EMail_NewHttpGet" binding="tns:EMail_NewHttpGet">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Email_New.asmx" />
+    </wsdl:port>
+    <wsdl:port name="EMail_NewHttpPost" binding="tns:EMail_NewHttpPost">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Email_New.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

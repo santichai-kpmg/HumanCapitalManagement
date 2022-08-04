@@ -1,0 +1,1459 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "HCM | Trainee Payment";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Intern Allowance Payment
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="col-xs-12">
+                    <div class="row" id="search">
+                        <br />
+                        <div class="form-group form-group-sm col-sm-4  col-xs-4" hidden>
+                            <div class="input-group">
+                                <span class="input-group-addon nomallabel">Peroid</span>
+                                <input ID="txtDateOfpreoid" name="txtDateOfpreoid" class="form-control text-center" type="text" />
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Start Date</span>
+                                    <input ID="startDate" name="startDate" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">End Date</span>
+                                    <input ID="endDate" name="endDate" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Status</span>
+                                    <select id="sltStatus" class="form-control">
+                                        <option value="Y">Approved</option>
+                                        <option value="A">Reviewed</option>
+                                        <option value="P">Paid</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Full Name</span>
+                                    <input ID="txtName" name="txtName" class="form-control" type="text" />
+
+                                </div>
+                            </div>
+                            @*<div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                    <div class="input-group">
+                                        <span class="input-group-addon nomallabel">Group</span>
+                                        @{ Html.RenderAction("CreateDivisionCode", "HCMMasterData", new
+                                            {
+                                                id = "ddlGroup",
+                                                databind = "group_code",
+                                                value = ""
+                                            });}
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-sm col-xs-12  text-left">
+                            <button type="button" class="btn btn-primary" onclick="LoadData();" style="width:150px;">1 Calculate</button>
+                            <button id="btnExport" type="button" class="btn btn-default" onclick="ExportData();" style="width:150px;">2 Export</button>
+                            <button id="btnReview" type="button" class="btn btn-warning" onclick="SaveData('A');" style="width:150px;">3 Review</button>
+                            <button id="btnPayment" type="button" class="btn btn-success" onclick="SaveData('P');" style="width:150px;">4 Paid</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in" id="divTable">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            Intern Allowance Payment Results
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab_1" data-toggle="tab">Memo</a></li>
+                                            <li><a href="#tab_2" data-toggle="tab">All</a></li>
+                                            <li><a href="#tab_3" data-toggle="tab">Sum (Standard,OT)</a></li>
+                                            @*<li><a href="#tab_6" data-toggle="tab">Sum(OT)</a></li>*@
+                                            <li><a href="#tab_7" data-toggle="tab">Sum (Perdiem)</a></li>
+                                            <li><a href="#tab_4" data-toggle="tab">Detail OT</a></li>
+                                            <li><a href="#tab_5" data-toggle="tab">AutoPay</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab_1">
+                                                <div style="padding:20px;margin:5px; border:1px solid gray;border-radius:20px;">
+                                                    <div class="row">
+                                                        <div class="col-md-2"> <p id="hTo">To  :</p></div>
+                                                        <div class="col-md-10"><p id="sTo">K.Wanna / K.Manisa</p></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-2"><p id="hFrom">From  :</p></div>
+                                                        <div class="col-md-10"><p id="sFrom" hidden></p>Siriwan</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-2"><p id="hDate">Date  :</p></div>
+                                                        <div class="col-md-10"><p id="sDate"></p></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-2"> <p id="hSubject">Subject  :</p></div>
+                                                        <div class="col-md-10"><p id="sSubject"></p></div>
+                                                    </div>
+                                                    <hr />
+                                                    <p id="sApprovedate"></p>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover display" id="gvwMemoData" width="100%">
+                                                                    <thead>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                    <tfoot>
+                                                                        <tr>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </tfoot>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row hidden">
+                                                        <div class="col-md-2"> <p>Reviewed :</p></div>
+                                                        <div class="col-md-3"><p></p></div>
+                                                        <div class="col-md-2"><p>Manisa M.</p></div>
+                                                        <div class="col-md-3"><p></p></div>
+                                                        <div class="col-md-2">
+                                                            <p>Date</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane " id="tab_2">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table  table-bordered  display" id="gvwAllData" style="width:100%">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th rowspan="2">No.</th>
+                                                                        <th rowspan="2">Cost Center</th>
+                                                                        <th rowspan="2">Trainee Code</th>
+                                                                        <th rowspan="2">Name</th>
+                                                                        <th colspan="3">Hours</th>
+                                                                        <th colspan="4">Amount(Baht)</th>
+                                                                        <th rowspan="2">Bank</th>
+                                                                        <th rowspan="2">ID Book Bank</th>
+                                                                        <th rowspan="2">Note</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Standard</th>
+                                                                        <th>OT</th>
+                                                                        <th>Total Hours</th>
+                                                                        <th>Standard</th>
+                                                                        <th>OT</th>
+                                                                        <th>Per diem</th>
+                                                                        <th>Total Amount</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+
+                                                            @*<table class="table table-striped table-bordered table-hover display" id="gvwAllData" width="100%">
+                                                                    <thead>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                </table>*@
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="tab_3">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwSummaryData" width="100%">
+                                                                <thead>
+                                                                    <tr>
+
+                                                                        <th rowspan="2">Cost Center</th>
+                                                                        <th rowspan="2">Trainee Code</th>
+                                                                        <th rowspan="2">Name</th>
+                                                                        <th rowspan="2">Client Name</th>
+                                                                        <th rowspan="2">Code</th>
+                                                                        <th rowspan="2">Client</th>
+                                                                        <th rowspan="2">Office</th>
+                                                                        <th colspan="2">Nomal</th>
+                                                                        <th colspan="2">OT</th>
+                                                                        <th rowspan="2">Grand Total</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th>Hours</th>
+                                                                        <th>Amount</th>
+                                                                        <th>Hours</th>
+                                                                        <th>Amount</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="tab_4">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwSumOTData" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="tab_5">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwAutoPayData" width="100%">
+                                                                <thead>
+                                                                </thead>
+
+
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane" id="tab_7">
+
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-striped table-bordered table-hover display" id="gvwPerdiem_transport" width="100%">
+                                                                <thead>
+                                                                </thead>
+                                                                <tbody></tbody>
+                                                                <tfoot>
+                                                                    <tr>
+                                                                        <th></th>
+                                                                    </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                @*<input type="hidden" id="txtSess" name="txtSess" class="form-control" data-bind='value: session' />*@
+            </div>
+
+        </form>
+    </section>
+</div>
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/dataTables.rowGroup.min.js"></script>
+    @*<script src="~/Scripts/plugins/DataTables2/FixedHeader-3.1.2/js/dataTables.fixedHeader.min.js"></script>*@
+    <script src="~/Scripts/plugins/DataTables2/jquery.dataTables.rowGrouping.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/dataTables.buttons.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.print.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.html5.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.bootstrap.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.flash.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.colVis.js"></script>
+    <script type="text/javascript">
+        var objModel = @Html.Raw(Json.Encode(Model));
+        $(function () {
+            $('#txtDateOfpreoid,#startDate,#endDate').datepicker({
+                format: "dd MM yyyy",
+
+                autoclose: true
+            });
+
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                if (e.target.hash == '#tab_1') {
+                    $('#gvwMemoData').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_2') {
+                    $('#gvwAllData').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_3') {
+                    $('#gvwSummaryData').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_4')
+                {
+                    $('#gvwSumOTData').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_5')
+                {
+                    $('#gvwAutoPayData').DataTable().columns.adjust().draw();
+                }
+                else if (e.target.hash == '#tab_7') {
+                    $('#gvwPerdiem_transport').DataTable().columns.adjust().draw();
+                }
+
+
+
+            });
+
+        });
+
+
+        function Add() {
+                BlockUI();
+              window.location.href = '@Url.Action("TimeSheetCreate", "TimeSheet")';
+        }
+
+        function Edit_timesheet(sVal) {
+                BlockUI();
+              window.location.href = '@Url.Action("TimeSheetApprove", "TraineeTSheet")?qryStr=' + sVal;
+        }
+        function currencyFormat(num) {
+            return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }
+
+        function SetTable() {
+
+            //gvwMemoData
+            //gvwAllData
+            //gvwSummaryData
+            //gvwSumOTData
+            //gvwAutoPayData
+
+
+            var objHeadClRequestMemo = [
+                { "title": "Company", "width": "25%", "className": "dt-left-ctm", "data": "company", "orderable": false  },
+                { "title": "Cost Center", "width": "11%", "className": "dt-center-ctm", "data": "cost_center", "orderable": false },
+                { "title": "Standard", "width": "9%", "className": "dt-right-ctm", "data": "standard", "orderable": false },
+                { "title": "OT", "width": "10%", "className": "dt-right-ctm", "data": "ot", "orderable": false },
+                { "title": "Per Diem", "width": "10%", "className": "dt-right-ctm", "data": "perdiem", "orderable": false },
+                { "title": "Total", "width": "15%", "className": "dt-right-ctm", "data": "total", "orderable": false  },
+            ];
+            var objTableReMemo = {
+                sTableID: "gvwMemoData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestMemo,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                //order: [[0, "desc"]],
+                objBeforeClRender: false,
+                columnDefs: [
+                    {
+
+                        "render": $.fn.dataTable.render.number(',', '.', 2),
+                        "targets": 2
+                    },
+                    {
+
+                        "render": $.fn.dataTable.render.number(',', '.', 2),
+                        "targets": 3
+                    },
+                    {
+
+                        "render": $.fn.dataTable.render.number(',', '.', 2),
+                        "targets": 4
+                    },
+                    {
+
+                        "render": $.fn.dataTable.render.number(',', '.', 2),
+                        "targets": 5
+                    }
+
+                ], rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('');
+                    },
+                    'endRender': function (rows, group) {
+
+                        var hs = 0;
+                        var ho = 0;
+                        var ht = 0;
+                        var asd = 0;
+                        var ao = 0;
+                        var ap = 0;
+                        var at = 0;
+
+                        var amount = rows.data();
+
+                        $.each(amount, function (key, value) {
+                            hs = (hs + Number(value.standard.replace(/[^0-9.-]+/g, "")));
+                            ho = (ho + Number(value.ot.replace(/[^0-9.-]+/g, "")));
+                            ht = (ht + Number(value.perdiem.replace(/[^0-9.-]+/g, "")));
+                            asd = (asd + Number(value.total.replace(/[^0-9.-]+/g, "")));
+                        });
+
+
+
+                        var objSum = Enumerable.From(objModel.lstData_Memo).Where(function (w) { return w.company == group }).FirstOrDefault();
+                        if (objSum != null) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="2">Total ' + group + ' </td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ho) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ht) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(asd) + '</td>');
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="2">Total ' + group + ' </td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+                    },
+                    'dataSrc': 'company'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var hs = 0;
+                    var ho = 0;
+                    var ht = 0;
+                    var asd = 0;
+                    var ao = 0;
+                    var ap = 0;
+                    var at = 0;
+                    $.each(objModel.lstData_Memo, function (key, value) {
+
+                        hs = (hs + Number(value.standard.replace(/[^0-9.-]+/g, "")));
+                        ho = (ho + Number(value.ot.replace(/[^0-9.-]+/g, "")));
+                        ht = (ht + Number(value.perdiem.replace(/[^0-9.-]+/g, "")));
+                        asd = (asd + Number(value.total.replace(/[^0-9.-]+/g, "")));
+                    });
+                    // Update footer
+                    var sFood = $(tfoot).find('th').eq(0).parent();
+                    sFood.html('');
+                    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="2">Grand Total</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(hs) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ho) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ht) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(asd) + '</th>');
+
+                }
+            };
+
+
+            var objHeadClRequestAll = [
+                { "width": "3%", "className": "dt-center-ctm"},
+                { "width": "10%", "className": "dt-center-ctm", "data": "cost_center", "orderable": false },
+                { "width": "5%", "className": "dt-left-ctm", "data": "trainee_code", "orderable": false },
+                { "width": "12%", "className": "dt-left-ctm", "data": "name", "orderable": false},
+                { "width": "7%", "className": "dt-right-ctm", "data": "hours_standard", "orderable": false},
+                { "width": "7%", "className": "dt-right-ctm", "data": "hours_ot", "orderable": false },
+                { "width": "7%", "className": "dt-right-ctm", "data": "hours_total", "orderable": false},
+                { "width": "7%", "className": "dt-right-ctm", "data": "amount_standard", "orderable": false},
+                { "width": "7%", "className": "dt-right-ctm", "data": "amount_ot", "orderable": false },
+                { "width": "7%", "className": "dt-right-ctm", "data": "amount_perdiem", "orderable": false },
+                { "width": "10%", "className": "dt-right-ctm", "data": "amount_total", "orderable": false },
+                { "width": "7%", "className": "dt-left-ctm", "data": "bank", "orderable": false},
+                { "width": "7%", "className": "dt-left-ctm", "data": "id_book_bank", "orderable": false},
+                { "width": "7%", "className": "dt-left-ctm", "data": "note", "orderable": false },
+            ];
+            var objTableReAll = {
+                sTableID: "gvwAllData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestAll,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                columnDefs: [
+                    {
+                        "render": function (data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        },
+
+                        "targets": 0
+                    },
+
+                ],
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('');
+                    },
+                    'endRender': function (rows, group) {
+                        var hs = 0;
+                        var ho = 0;
+                        var ht = 0;
+                        var asd = 0;
+                        var ao = 0;
+                        var ap = 0;
+                        var at = 0;
+
+                        var amount = rows.data();
+
+                        $.each(amount, function (key, value) {
+                            hs = (hs + parseFloat(value.hours_standard.replace(/[^0-9.-]+/g, "")));
+                            ho = (ho + parseFloat(value.hours_ot.replace(/[^0-9.-]+/g, "")));
+                            ht = (ht + parseFloat(value.hours_total.replace(/[^0-9.-]+/g, "")));
+                            asd = (asd + parseFloat(value.amount_standard.replace(/[^0-9.-]+/g, "")));
+                            ao = (ao + parseFloat(value.amount_ot.replace(/[^0-9.-]+/g, "")));
+                            ap = (ap + parseFloat(value.amount_perdiem.replace(/[^0-9.-]+/g, "")));
+                            at = (at + parseFloat(value.amount_total.replace(/[^0-9.-]+/g, "")));
+                        });
+
+
+                        var objSum = Enumerable.From(objModel.lstData_All).Where(function (w) { return w.cost_center == group }).FirstOrDefault();
+                        if (objSum != null) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="4">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ho) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ht) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(asd) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ao) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ap) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(at) +'</td>')
+
+                                .append('<td class="dt-total-ctm dt-right-ctm" ></td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" ></td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" ></td>');
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="4">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+
+                    },
+                    'dataSrc': 'cost_center'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var hs = 0;
+                    var ho = 0;
+                    var ht = 0;
+                    var asd = 0;
+                    var ao = 0;
+                    var ap = 0;
+                    var at = 0;
+                    $.each(objModel.lstData_All, function (key, value) {
+
+                        hs = (hs + Number(value.hours_standard.replace(/[^0-9.-]+/g, "")));
+                        ho = (ho + Number(value.hours_ot.replace(/[^0-9.-]+/g, "")));
+                        ht = (ht + Number(value.hours_total.replace(/[^0-9.-]+/g, "")));
+                        asd = (asd + Number(value.amount_standard.replace(/[^0-9.-]+/g, "")));
+                        ao = (ao + Number(value.amount_ot.replace(/[^0-9.-]+/g, "")));
+                        ap = (ap + Number(value.amount_perdiem.replace(/[^0-9.-]+/g, "")));
+                        at = (at + Number(value.amount_total.replace(/[^0-9.-]+/g, "")));
+                    });
+                    // Update footer
+                    var sFood = $(tfoot).find('th').eq(0).parent();
+                    sFood.html('');
+                    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="4">Grand Total</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(hs) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ho) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ht) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(asd) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ao) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ap) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(at) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;"></th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;"></th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;"></th>');
+
+                }
+
+            };
+
+            var setnum = [];
+            var objHeadClRequestSummary = [
+                { "width": "10%", "className": "dt-left-ctm", "data": "cost_center", "orderable": false  },
+                { "width": "5%", "className": "dt-left-ctm", "data": "trainee_code", "orderable": false  },
+                { "width": "15%", "className": "dt-left-ctm", "data": "name", "orderable": false },
+                { "width": "20%", "className": "dt-left-ctm", "data": "client_name", "orderable": false  },
+                { "width": "10%", "className": "dt-center-ctm", "data": "code", "orderable": false  },
+                { "width": "10%", "className": "dt-right-ctm", "data": "client", "orderable": false  },
+                { "width": "10%", "className": "dt-right-ctm", "data": "office", "orderable": false },
+                { "width": "10%", "className": "dt-right-ctm", "data": "nomal_hours", "orderable": false  },
+                { "width": "10%", "className": "dt-right-ctm", "data": "nomal_amount", "orderable": false },
+                { "width": "10%", "className": "dt-right-ctm", "data": "ot_hours", "orderable": false },
+                { "width": "10%", "className": "dt-right-ctm", "data": "ot_amount", "orderable": false },
+                { "width": "15%", "className": "dt-right-ctm", "data": "grand_total", "orderable": false  }
+            ];
+            var objTableReSummary = {
+                sTableID: "gvwSummaryData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestSummary,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('');
+                    },
+                    'endRender': function (rows, group) {
+
+                        var hs = 0;
+                        var ho = 0;
+                        var ht = 0;
+                        var asd = 0;
+                        var ao = 0;
+                        var ap = 0;
+                        var at = 0;
+
+                        var amount = rows.data();
+
+                        $.each(amount, function (key, value) {
+                            if (value.client != "" && value.client != null)
+                            hs = (hs + Number(value.client.replace(/[^0-9.-]+/g, "")));
+                            ho = (ho + Number(value.office.replace(/[^0-9.-]+/g, "")));
+                            ht = (ht + Number(value.nomal_hours.replace(/[^0-9.-]+/g, "")));
+                            asd = (asd + Number(value.nomal_amount.replace(/[^0-9.-]+/g, "")));
+                            ao = (ao + Number(value.ot_hours.replace(/[^0-9.-]+/g, "")));
+                            ap = (ap + Number(value.ot_amount.replace(/[^0-9.-]+/g, "")));
+                            at = (at + Number(value.grand_total.replace(/[^0-9.-]+/g, "")));
+
+                            var singleObj = {};
+                            singleObj['client'] = hs;
+                            singleObj['office'] = ho;
+                            singleObj['normalhour'] = ht;
+                            singleObj['normalamount'] = asd;
+                            singleObj['othour'] = ao;
+                            singleObj['otamount'] = ap;
+                            singleObj['grandamount'] = at;
+                            setnum.push(singleObj);
+                        });
+
+
+
+                        var objSum = Enumerable.From(objModel.lstData_Sum).Where(function (w) { return w.name == group }).FirstOrDefault();
+                        if (objSum != null) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"></td><td class="dt-total-ctm dt-left-ctm"></td><td class="dt-total-ctm dt-left-ctm"  colspan="3">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ho) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ht) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm ' + (Number.isInteger(asd) == false ? "text-danger" : " ") + '" tooltip="' + currencyFormat(asd) + '" >' + currencyFormat(Math.round(asd)) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ao) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm ' + (Number.isInteger(ap) == false ? "text-danger" : " ") + '" tooltip="' + currencyFormat(ap) + '" >' + currencyFormat(Math.round(ap)) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm ' + (Number.isInteger(at) == false ? "text-danger" : " ") + '" tooltip="' + currencyFormat(at) + '" >' + currencyFormat(Math.round(at)) + '</td>');
+
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"></td><td class="dt-total-ctm dt-left-ctm"></td><td class="dt-total-ctm dt-left-ctm"  colspan="3">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+                    },
+                    'dataSrc': 'name'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display,index) {
+                //    var api = this.api(), data;
+                //    var hs = 0;
+                //    var ho = 0;
+                //    var ht = 0;
+                //    var asd = 0;
+                //    var ao = 0;
+                //    var ap = 0;
+                //    var at = 0;
+                //    if (data.length > 0) {
+                //        //$.each(objModel.lstData_Sum, function (key, value) {
+                //        $.each(data, function (key, value) {
+                //            if (value.client != "" && value.client != null)
+                //                hs = (hs + Number(value.client.replace(/[^0-9.-]+/g, "")));
+                //            ho = (ho + Number(value.office.replace(/[^0-9.-]+/g, "")));
+                //            ht = (ht + Number(value.nomal_hours.replace(/[^0-9.-]+/g, "")));
+                //            asd = (asd + Number(value.nomal_amount_hd.replace(/[^0-9.-]+/g, "")));
+                //            ao = (ao + Number(value.ot_hours.replace(/[^0-9.-]+/g, "")));
+                //            ap = (ap + Number(value.ot_amount_hd.replace(/[^0-9.-]+/g, "")));
+                //            at = (at + Number(value.grand_total.replace(/[^0-9.-]+/g, "")));
+                //        });
+                //    }
+                //    // Update footer
+                //    var sFood = $(tfoot).find('th').eq(0).parent();
+                //    sFood.html('');
+                //    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="5">Grand Total</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(hs) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ho) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ht) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(asd) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ao) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ap) + '</th>'
+                //        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(at) + '</th>');
+
+                }
+            };
+            function RoundHalfDown(num) {
+                return -Math.round(-num);
+            }
+
+            var objHeadClRequestSumOT = [
+                { "title": "Trainee Name", "width": "25%", "className": "dt-left-ctm", "data": "name", "orderable": false },
+                { "title": "Month", "width": "11%", "className": "dt-center-ctm", "data": "month", "orderable": false },
+                { "title": "Daily Wage", "width": "9%", "className": "dt-right-ctm", "data": "daily_wage", "orderable": false },
+                { "title": "Rate 1 (hrs)", "width": "10%", "className": "dt-right-ctm", "data": "rate1", "orderable": false },
+                { "title": "Rate 2 (hrs)", "width": "10%", "className": "dt-right-ctm", "data": "rate2", "orderable": false },
+                { "title": "Rate 3 (hrs)", "width": "10%", "className": "dt-right-ctm", "data": "rate3", "orderable": false },
+                { "title": "Total (hrs)", "width": "10%", "className": "dt-right-ctm", "data": "totalhrs", "orderable": false  },
+                { "title": "Total (Baht)", "width": "15%", "className": "dt-right-ctm", "data": "total", "orderable": false },
+            ];
+            var objTableReSumOT = {
+                sTableID: "gvwSumOTData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestSumOT,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+
+                objBeforeClRender: false,
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('');
+                    },
+                    'endRender': function (rows, group) {
+
+                        var hs = 0;
+                        var ho = 0;
+                        var ht = 0;
+                        var asd = 0;
+                        var ao = 0;
+                        var ap = 0;
+                        var at = 0;
+
+                        var amount = rows.data();
+
+                        $.each(amount, function (key, value) {
+                            hs = (hs + Number(value.rate1.replace(/[^0-9.-]+/g, "")));
+                            ho = (ho + Number(value.rate2.replace(/[^0-9.-]+/g, "")));
+                            ht = (ht + Number(value.rate3.replace(/[^0-9.-]+/g, "")));
+                            asd = (asd + Number(value.totalhrs.replace(/[^0-9.-]+/g, "")));
+                            ao = (ao + Number(value.total.replace(/[^0-9.-]+/g, "")));
+                        });
+
+
+
+                        var objSum = Enumerable.From(objModel.lstData_OT).Where(function (w) { return w.name == group }).FirstOrDefault();
+                        if (objSum != null) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="3">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ho) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ht) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(asd) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(ao) + '</td>');
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="3">' + group + ' Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+                    },
+                    'dataSrc': 'name'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var hs = 0;
+                    var ho = 0;
+                    var ht = 0;
+                    var asd = 0;
+                    var ao = 0;
+                    var ap = 0;
+                    var at = 0;
+                    $.each(objModel.lstData_OT, function (key, value) {
+
+                        hs = (hs + Number(value.rate1.replace(/[^0-9.-]+/g, "")));
+                        ho = (ho + Number(value.rate2.replace(/[^0-9.-]+/g, "")));
+                        ht = (ht + Number(value.rate3.replace(/[^0-9.-]+/g, "")));
+                        asd = (asd + Number(value.totalhrs.replace(/[^0-9.-]+/g, "")));
+                        ao = (ao + Number(value.total.replace(/[^0-9.-]+/g, "")));
+                    });
+                    // Update footer
+                    var sFood = $(tfoot).find('th').eq(0).parent();
+                    sFood.html('');
+                    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="3">Grand Total</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(hs) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ho) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ht) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(asd) + '</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(ao) + '</th>');
+
+                }
+            };
+
+
+            var objHeadClRequestAutoPay = [
+                { "title": "Vendor ID", "width": "10%", "className": "dt-left-ctm", "data": "Vendor_ID", "orderable": false },
+                { "title": "Bank Code", "width": "11%", "className": "dt-center-ctm", "data": "Bank_Code", "orderable": false },
+                { "title": "Account Number", "width": "9%", "className": "dt-right-ctm", "data": "Account_Number", "orderable": false },
+                { "title": "Vendor Name", "width": "30%", "className": "dt-left-ctm", "data": "Vendor_Name", "orderable": false  },
+                { "title": "Amount", "width": "10%", "className": "dt-right-ctm", "data": "Amount", "orderable": false },
+                { "title": "Bene Ref", "width": "10%", "className": "dt-right-ctm", "data": "Bene_Ref", "orderable": false  },
+                //{ "title": "WHT", "width": "15%", "className": "dt-right-ctm", "data": "WHT" , "orderable": false },
+                //{ "title": "Advice", "width": "15%", "className": "dt-right-ctm", "data": "Advice" , "orderable": false },
+                //{ "title": "SMS", "width": "15%", "className": "dt-right-ctm", "data": "SMS" , "orderable": false },
+                //{ "title": "Payment Detail", "width": "15%", "className": "dt-right-ctm", "data": "Payment_Detail" , "orderable": false },
+                //{ "title": "#Invoice", "width": "15%", "className": "dt-right-ctm", "data": "Invoice", "orderable": false  },
+                //{ "title": "Branch Code ", "width": "15%", "className": "dt-right-ctm", "data": "Branch_Code", "orderable": false  }
+            ];
+            var objTableReAutoPay = {
+                sTableID: "gvwAutoPayData",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestAutoPay,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+
+                objBeforeClRender: false,
+                rowGroup: {
+                    'startRender': function (rows, group) {
+                        return $('');
+                    },
+                    'endRender': function (rows, group) {
+
+                        var hs = 0;
+
+
+                        var amount = rows.data();
+
+                        $.each(amount, function (key, value) {
+                            hs = (hs + Number(value.Amount.replace(/[^0-9.-]+/g, "")));
+                        });
+
+
+
+                        var objSum = Enumerable.From(objModel.lstData_AutoPay).Where(function (w) { return w.Bank_Code == group }).FirstOrDefault();
+                        if (objSum != null) {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="4">Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" ></td>');
+                        }
+                        else {
+                            return $('<tr/>')
+                                .append('<td class="dt-total-ctm dt-left-ctm"  colspan="4">Total</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>')
+                                .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                        }
+
+                    },
+                    'dataSrc': 'Bank_Code'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+
+            };
+
+            var objHeadClRequestPerdiemTransport = [
+                { "title": "Cost Center", "width": "10%", "className": "dt-left-ctm", "data": "Cost_Center", "orderable": false },
+                { "title": "Withdrawal", "width": "5%", "className": "dt-left-ctm", "data": "Type_of_withdrawal", "orderable": false },
+                { "title": "Date", "width": "20%", "className": "dt-left-ctm", "data": "Create_Date", "orderable": false },
+                { "title": "Trainee Code", "width": "5%", "className": "dt-left-ctm", "data": "Trainee_Code", "orderable": false  },
+                { "title": "Name", "width": "15%", "className": "dt-left-ctm", "data": "Name", "orderable": false  },
+                { "title": "Client Name", "width": "20%", "className": "dt-left-ctm", "data": "Engagement_Name", "orderable": false },
+                { "title": "Code", "width": "10%", "className": "dt-left-ctm", "data": "Engagement_Code", "orderable": false  },
+                { "title": "Amount", "width": "10%", "className": "dt-right-ctm", "data": "Amount", "orderable": false },
+
+            ];
+            var objTableRePerdiemTransport = {
+                sTableID: "gvwPerdiem_transport",
+                nDis: [],
+                sProperty: "<'row'<'col-sm-6'l><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'i><'col-sm-7'p>>",//length pangging
+                objHeadCl: objHeadClRequestPerdiemTransport,//Table Headder
+                objDataSet: [], //dataset
+                //nHeadFix: 0,// fix clr
+                EmptyTable: EmptyTable,
+
+                objBeforeClRender: false,
+                columnDefs: [
+                    {
+
+                        "render": $.fn.dataTable.render.number(',', '.', 2),
+                        "targets": 7
+                    },
+                    {
+
+                        "render": function (data, type, row, meta) {
+                            return data=="P"?"Perdiem":"Transport";
+                        },
+                        "targets": 1
+                    }]
+                , rowGroup: {
+                        'startRender': function (rows, group) {
+                            return $('');
+                        },
+                        'endRender': function (rows, group) {
+
+                            var hs = 0;
+
+
+                            var amounts = rows.data();
+
+                            $.each(amounts, function (key, value) {
+                                if (value.Amount != null && value.Amount != undefined)
+                                hs = (hs + Number(value.Amount));
+                            });
+
+
+
+                            var objSum = Enumerable.From(objModel.lstData_PerdiemTransport).Where(function (w) { return w.Name == group }).FirstOrDefault();
+                            if (objSum != null) {
+                                return $('<tr/>')
+                                    .append('<td class="dt-total-ctm dt-left-ctm"  colspan="7">' + group + ' Total</td>')
+                                    .append('<td class="dt-total-ctm dt-right-ctm" >' + currencyFormat(hs) + '</td>');
+                            }
+                            else {
+                                return $('<tr/>')
+                                    .append('<td class="dt-total-ctm dt-left-ctm"  colspan="7">' + group + ' Total</td>')
+                                    .append('<td class="dt-total-ctm dt-right-ctm" >0</td>');
+                            }
+
+                    },
+                    'dataSrc': 'Name'
+                },
+                fixedHeader: {
+                    header: true,
+                    footer: false
+                },
+                footerCallback: function (tfoot, data, start, end, display) {
+                    var api = this.api(), data;
+                    var hs = 0;
+
+                    $.each(objModel.lstData_PerdiemTransport, function (key, value) {
+
+                        if (value.Amount != null && value.Amount != undefined)
+                            hs = (hs + Number(value.Amount));
+                    });
+                    // Update footer
+                    var sFood = $(tfoot).find('th').eq(0).parent();
+                    sFood.html('');
+                    sFood.html('<th class=" dt-totalAll-ctm " style="text-align: left;" colspan="6">Grand Total</th>'
+                        + '<th class="dt-totalAll-ctm " style="text-align: right;">' + currencyFormat(hs) + '</th>'
+                       );
+
+                }
+
+            };
+
+            var table = CreatTableJS(objTableReMemo);
+            table = CreatTableJS(objTableReAll);
+            table = CreatTableJS(objTableReSummary);
+            table = CreatTableJS(objTableReSumOT);
+            table = CreatTableJS(objTableReAutoPay);
+            table = CreatTableJS(objTableRePerdiemTransport);
+        }
+
+        function Search() {
+                var lstSearch = ko.toJS(viewModel)
+                return lstSearch;
+        };
+
+
+        var lstData = [];
+        var lstDataOT = [];
+        var lstDataAll = [];
+        var lstDataAutoPay = [];
+        var lstDataSummary = [];
+        var lstDataMemo = [];
+        var lstDataPerdiemTransport = [];
+
+        function SaveData(type_save)
+        {
+            objModel.type_save = type_save;
+            BindData(objModel);
+            //var Param = objModel;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("TraineePayMentSave", "TraineePayMent")',
+                dataType: "json",
+                data: { Typesave: type_save },
+                 success: function (respone) {
+                     if (respone.result.Status == SysProcess.SessionExpired) {
+                              PopupLogin('@Url.Action("Index", "Home")');
+                          } else if (respone.result.Status == SysProcess.Success) {
+                              DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+
+                                  //window.location.href = window.location.href;
+                              });
+
+                          }
+                          else {
+                              DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                          }
+
+                },
+                complete: function (jqXHR, status) {//finaly
+
+                    UnblockUI();
+                }
+            });
+        }
+        function ExportData()
+        {
+            window.open('@Url.Action("TraineePayMentExport", "TraineePayMent")', '_blank');
+        }
+        function ExportDatas()
+        {
+            var Param = objModel;
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("TraineePayMentExport", "TraineePayMent")',
+                dataType: "json",
+
+                 success: function (respone) {
+                     if (respone.result.Status == SysProcess.SessionExpired) {
+                              PopupLogin('@Url.Action("Index", "Home")');
+                          } else if (respone.result.Status == SysProcess.Success) {
+                              DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+
+                                  //window.location.href = window.location.href;
+                              });
+
+                          }
+                          else {
+                              DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                          }
+
+                },
+                complete: function (jqXHR, status) {//finaly
+
+                    UnblockUI();
+                }
+            });
+        }
+        function LoadData() {
+            BlockUI();
+            SetTable();
+
+
+
+
+            var preoidtxt = $('#txtDateOfpreoid').val();
+            var startDatetxt = $('#startDate').val();
+            var endDatetxt = $('#endDate').val();
+            var nametxt = $('#txtName').val();
+            //var groupslt = $('#ddlGroup').val();
+            var statusslt = $('#sltStatus').val();
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("TraineePayMentList", "TraineePayMent")',
+                dataType: "json",
+                //async: false,
+                data: { preoidtxt: preoidtxt,
+                        name : nametxt,
+                    startD: startDatetxt,
+                    endD: endDatetxt,
+                        //group : groupslt,
+                        status : statusslt},
+                success: function (response) {
+
+                   lstData = response.result;
+                   lstDataOT = lstData.lstData_OT;
+                   lstDataAll = lstData.lstData_All;
+                   lstDataAutoPay = lstData.lstData_AutoPay;
+                   lstDataSummary = lstData.lstData_Sum;
+                   lstDataMemo = lstData.lstData_Memo;
+                    lstDataPerdiemTransport = lstData.lstData_PerdiemTransport;
+
+                    objModel = lstData;
+                    BindData(objModel);
+
+                    $('#sFrom').text(lstData.from);
+                    $('#sDate').text(lstData.date);
+                    $('#sSubject').text(lstData.subject);
+                    $('#sApprovedate').text(lstData.approvedate);
+
+                    if (lstDataAll == undefined || lstDataAll.length <= 0) {
+                            $('#gvwAllData').DataTable().clear().draw();
+                            $('#gvwAllData').dataTable().fnDraw();
+                            $('#gvwAllData').DataTable().columns.adjust().draw();
+
+                        }
+                        else {
+
+
+                            $('#gvwAllData').DataTable().clear().draw();
+                            $('#gvwAllData').dataTable().fnAddData(lstDataAll);
+                            $('#gvwAllData').dataTable().fnDraw();
+                            $('#gvwAllData').DataTable().columns.adjust().draw();
+
+                    }
+
+                    if (lstDataOT == undefined || lstDataOT.length <= 0) {
+                        $('#gvwSumOTData').DataTable().clear().draw();
+                        $('#gvwSumOTData').dataTable().fnDraw();
+                        $('#gvwSumOTData').DataTable().columns.adjust().draw();
+
+
+                    }
+                    else {
+
+
+                        $('#gvwSumOTData').DataTable().clear().draw();
+                        $('#gvwSumOTData').dataTable().fnAddData(lstDataOT);
+                        $('#gvwSumOTData').dataTable().fnDraw();
+                        $('#gvwSumOTData').DataTable().columns.adjust().draw();
+
+                    }
+
+                    if (lstDataAutoPay == undefined || lstDataAutoPay.length <= 0) {
+
+                        $('#gvwAutoPayData').DataTable().clear().draw();
+                        $('#gvwAutoPayData').dataTable().fnDraw();
+                        $('#gvwAutoPayData').DataTable().columns.adjust().draw();
+
+                    }
+                    else {
+
+
+                        $('#gvwAutoPayData').DataTable().clear().draw();
+                        $('#gvwAutoPayData').dataTable().fnAddData(lstDataAutoPay);
+                        $('#gvwAutoPayData').dataTable().fnDraw();
+                        $('#gvwAutoPayData').DataTable().columns.adjust().draw();
+
+                    }
+
+
+                    if (lstDataSummary == undefined || lstDataSummary.length <= 0) {
+
+                        $('#gvwSummaryData').DataTable().clear().draw();
+                        $('#gvwSummaryData').dataTable().fnDraw();
+                        $('#gvwSummaryData').DataTable().columns.adjust().draw();
+
+
+                    }
+                    else {
+                        $('#gvwSummaryData').DataTable().clear().draw();
+                        $('#gvwSummaryData').dataTable().fnAddData(lstDataSummary);
+                        $('#gvwSummaryData').dataTable().fnDraw();
+                        $('#gvwSummaryData').DataTable().columns.adjust().draw();
+                    }
+
+                    if (lstDataPerdiemTransport == undefined || lstDataPerdiemTransport.length <= 0) {
+
+                        $('#gvwPerdiem_transport').DataTable().clear().draw();
+                        $('#gvwPerdiem_transport').dataTable().fnDraw();
+                        $('#gvwPerdiem_transport').DataTable().columns.adjust().draw();
+
+
+                    }
+                    else {
+                        $('#gvwPerdiem_transport').DataTable().clear().draw();
+                        $('#gvwPerdiem_transport').dataTable().fnAddData(lstDataPerdiemTransport);
+                        $('#gvwPerdiem_transport').dataTable().fnDraw();
+                        $('#gvwPerdiem_transport').DataTable().columns.adjust().draw();
+
+                    }
+                    if (lstDataMemo == undefined || lstDataMemo.length <= 0) {
+
+                        $('#gvwMemoData').DataTable().clear().draw();
+                        $('#gvwMemoData').dataTable().fnDraw();
+                        $('#gvwMemoData').DataTable().columns.adjust().draw();
+
+
+                    }
+                    else {
+                        $('#gvwMemoData').DataTable().clear().draw();
+                        $('#gvwMemoData').dataTable().fnAddData(lstDataMemo);
+                        $('#gvwMemoData').dataTable().fnDraw();
+                        $('#gvwMemoData').DataTable().columns.adjust().draw();
+
+                    }
+                },
+                complete: function (jqXHR, status) {//finaly
+
+
+                    $('#gvwAllData').DataTable().columns.adjust().draw();
+                    $('#gvwSumOTData').DataTable().columns.adjust().draw();
+                    $('#gvwAutoPayData').DataTable().columns.adjust().draw();
+                    $('#gvwSummaryData').DataTable().columns.adjust().draw();
+                    $('#gvwPerdiem_transport').DataTable().columns.adjust().draw();
+                    $('#gvwMemoData').DataTable().columns.adjust().draw();
+
+
+                    $('#gvwAllData').DataTable().columns.adjust().draw();
+                    $('#gvwAllData').DataTable().columns.adjust().responsive.recalc();
+
+
+                    $('#gvwSumOTData').DataTable().columns.adjust().draw();
+                    $('#gvwSumOTData').DataTable().columns.adjust().responsive.recalc();
+
+                    $('#gvwMemoData').DataTable().columns.adjust().draw();
+                    $('#gvwMemoData').DataTable().columns.adjust().responsive.recalc();
+
+                    $('#gvwSummaryData').DataTable().columns.adjust().draw();
+                    $('#gvwSummaryData').DataTable().columns.adjust().responsive.recalc();
+
+                    $('#gvwPerdiem_transport').DataTable().columns.adjust().draw();
+                    $('#gvwPerdiem_transport').DataTable().columns.adjust().responsive.recalc();
+
+                    $('#gvwAutoPayData').DataTable().columns.adjust().draw();
+                    $('#gvwAutoPayData').DataTable().columns.adjust().responsive.recalc();
+                    UnblockUI();
+                }
+            });
+        }
+
+        function MergeGridCells(id) {
+            var dimension_cells = new Array();
+            var dimension_col = null;
+            var columnCount = $("#" + id +" tr:first th").length;
+            for (dimension_col = 0; dimension_col < 2; dimension_col++) {
+                // first_instance holds the first instance of identical td
+                var first_instance = null;
+                var rowspan = 1;
+                // iterate through rows
+                $("#"+id+"").find('tr').each(function () {
+
+                    // find the td of the correct column (determined by the dimension_col set above)
+                    var dimension_td = $(this).find('td:nth-child(' + dimension_col + ')');
+
+                    if (first_instance == null) {
+                        // must be the first row
+                        first_instance = dimension_td;
+                    } else if (dimension_td.text() == first_instance.text()) {
+                        // the current td is identical to the previous
+                        // remove the current td
+                        dimension_td.remove();
+                        ++rowspan;
+                        // increment the rowspan attribute of the first instance
+                        first_instance.attr('rowspan', rowspan);
+                    } else {
+                        // this cell is different from the last
+                        first_instance = dimension_td;
+                        rowspan = 1;
+                    }
+                });
+            }
+        }
+
+        function setnumbershow(value)
+        {
+            var n = value
+            var parts = n.toFixed(2).split(".");
+            var num = parts[0].replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") +
+                (parts[1] ? "." + parts[1] : "");
+            return num;
+        }
+
+        function RoundAwayFromZero(startValue, digits) {
+            var decimalValue = 0;
+            digits = digits || 0;
+            startValue *= parseFloat(Math.pow(10, (digits + 1)));
+            decimalValue = parseInt(Math.floor(startValue)) - (Math.floor(startValue / 10) * 10);
+            startValue = Math.floor(startValue / 10);
+            if (decimalValue >= 5) {
+                startValue += 1;
+            }
+            startValue /= parseFloat(Math.pow(10, (digits)));
+            return startValue;
+        }
+
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel.name == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+            if (objModel.lstData != undefined && objModel.lstData != null && objModel.lstData.length > 0) {
+                //$('#gvwSumOTData').DataTable().clear().draw();
+                //$('#gvwSumOTData').dataTable().fnAddData(objModel.lstData);
+                //$('#gvwSumOTData').dataTable().fnDraw();
+
+                setTimeout(function () {
+                    //$('#gvwSumOTData').DataTable().columns.adjust().draw();
+
+                }, 500);
+            }
+            else {
+                //$('#gvwSumOTData').DataTable().clear().draw();
+                //$('#gvwSumOTData').dataTable().fnDraw();
+            }
+
+        }
+
+    </script>
+}
+<!-- /.content -->

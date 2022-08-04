@@ -1,0 +1,2153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://th.kpmg.intranet/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://th.kpmg.intranet/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Viztopia Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://th.kpmg.intranet/">
+      <s:element name="WS_AssignmentCodeDataSet_No_Parameter">
+        <s:complexType />
+      </s:element>
+      <s:element name="WS_AssignmentCodeDataSet_No_ParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_AssignmentCodeDataSet_No_ParameterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssignmentCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_AssignmentCodeDataSet_With_Assignment_CodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_AssignmentCodeDataSet_With_Assignment_CodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClientList">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClientListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChargeCode">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChargeCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChargeCodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isActiveAssignment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssignmentCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isActiveAssignmentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isActiveAssignmentResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEngagementResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChargeCode_All">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChargeCode_AllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChargeCode_AllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChargeCode_TH">
+        <s:complexType />
+      </s:element>
+      <s:element name="ChargeCode_THResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChargeCode_THResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Internal_Chargecode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChargeCodeDesc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Internal_ChargecodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Internal_ChargecodeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Engagement_All">
+        <s:complexType />
+      </s:element>
+      <s:element name="Engagement_AllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Engagement_AllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllEngagement_TH">
+        <s:complexType />
+      </s:element>
+      <s:element name="AllEngagement_THResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllEngagement_THResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllEngagement_TH_param">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="column" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sort" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllEngagement_TH_paramResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllEngagement_TH_paramResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Engagement_TH">
+        <s:complexType />
+      </s:element>
+      <s:element name="Engagement_THResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Engagement_THResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Engagement_LA">
+        <s:complexType />
+      </s:element>
+      <s:element name="Engagement_LAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Engagement_LAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Engagement_MM">
+        <s:complexType />
+      </s:element>
+      <s:element name="Engagement_MMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Engagement_MMResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Client_All">
+        <s:complexType />
+      </s:element>
+      <s:element name="Client_AllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client_AllResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Client_TH">
+        <s:complexType />
+      </s:element>
+      <s:element name="Client_THResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client_THResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Client_LA">
+        <s:complexType />
+      </s:element>
+      <s:element name="Client_LAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client_LAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Client_MM">
+        <s:complexType />
+      </s:element>
+      <s:element name="Client_MMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Client_MMResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementFromSSIS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementStatusId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FunctionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfitCentreNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementTypeId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Employeeno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementManagerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementPartnerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateYearStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearEnd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementFromSSISResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEngagementFromSSISResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementDetailFromSSA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementStatusId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FunctionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfitCentreNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementTypeId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Employeeno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementManagerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementPartnerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SigningPartnerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementEQCRNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateYearStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearEnd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementDetailFromSSAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEngagementDetailFromSSAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementDetailFromSSA_WColumn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementStatusId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FunctionId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProfitCentreNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementTypeId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Employeeno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementManagerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementPartnerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SigningPartnerNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EngagementEQCRNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateYearStart" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="YearEnd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllEngagementDetailFromSSA_WColumnResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllEngagementDetailFromSSA_WColumnResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClientFromSSIS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ClientNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ClientGroupNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GisNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DirectParentNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GlobalUltimateParentNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllClientFromSSISResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllClientFromSSISResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_AssignmentCodeDataSet_No_Parameter" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_AssignmentCodeDataSet_No_ParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_AssignmentCodeDataSet_With_Assignment_Code" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClientListSoapIn">
+    <wsdl:part name="parameters" element="tns:ClientList" />
+  </wsdl:message>
+  <wsdl:message name="ClientListSoapOut">
+    <wsdl:part name="parameters" element="tns:ClientListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ChargeCode" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ChargeCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentSoapIn">
+    <wsdl:part name="parameters" element="tns:isActiveAssignment" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentSoapOut">
+    <wsdl:part name="parameters" element="tns:isActiveAssignmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEngagement" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_AllSoapIn">
+    <wsdl:part name="parameters" element="tns:ChargeCode_All" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_AllSoapOut">
+    <wsdl:part name="parameters" element="tns:ChargeCode_AllResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_THSoapIn">
+    <wsdl:part name="parameters" element="tns:ChargeCode_TH" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_THSoapOut">
+    <wsdl:part name="parameters" element="tns:ChargeCode_THResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Internal_Chargecode" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Internal_ChargecodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_AllSoapIn">
+    <wsdl:part name="parameters" element="tns:Engagement_All" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_AllSoapOut">
+    <wsdl:part name="parameters" element="tns:Engagement_AllResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_THSoapIn">
+    <wsdl:part name="parameters" element="tns:AllEngagement_TH" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_THSoapOut">
+    <wsdl:part name="parameters" element="tns:AllEngagement_THResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramSoapIn">
+    <wsdl:part name="parameters" element="tns:AllEngagement_TH_param" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramSoapOut">
+    <wsdl:part name="parameters" element="tns:AllEngagement_TH_paramResponse" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_THSoapIn">
+    <wsdl:part name="parameters" element="tns:Engagement_TH" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_THSoapOut">
+    <wsdl:part name="parameters" element="tns:Engagement_THResponse" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_LASoapIn">
+    <wsdl:part name="parameters" element="tns:Engagement_LA" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_LASoapOut">
+    <wsdl:part name="parameters" element="tns:Engagement_LAResponse" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_MMSoapIn">
+    <wsdl:part name="parameters" element="tns:Engagement_MM" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_MMSoapOut">
+    <wsdl:part name="parameters" element="tns:Engagement_MMResponse" />
+  </wsdl:message>
+  <wsdl:message name="Client_AllSoapIn">
+    <wsdl:part name="parameters" element="tns:Client_All" />
+  </wsdl:message>
+  <wsdl:message name="Client_AllSoapOut">
+    <wsdl:part name="parameters" element="tns:Client_AllResponse" />
+  </wsdl:message>
+  <wsdl:message name="Client_THSoapIn">
+    <wsdl:part name="parameters" element="tns:Client_TH" />
+  </wsdl:message>
+  <wsdl:message name="Client_THSoapOut">
+    <wsdl:part name="parameters" element="tns:Client_THResponse" />
+  </wsdl:message>
+  <wsdl:message name="Client_LASoapIn">
+    <wsdl:part name="parameters" element="tns:Client_LA" />
+  </wsdl:message>
+  <wsdl:message name="Client_LASoapOut">
+    <wsdl:part name="parameters" element="tns:Client_LAResponse" />
+  </wsdl:message>
+  <wsdl:message name="Client_MMSoapIn">
+    <wsdl:part name="parameters" element="tns:Client_MM" />
+  </wsdl:message>
+  <wsdl:message name="Client_MMSoapOut">
+    <wsdl:part name="parameters" element="tns:Client_MMResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementFromSSIS" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementFromSSISResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSASoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementDetailFromSSA" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSASoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementDetailFromSSAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementDetailFromSSA_WColumn" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllEngagementDetailFromSSA_WColumnResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllClientFromSSIS" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllClientFromSSISResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterHttpGetIn" />
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeHttpGetIn">
+    <wsdl:part name="AssignmentCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ClientListHttpGetIn" />
+  <wsdl:message name="ClientListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCodeHttpGetIn" />
+  <wsdl:message name="ChargeCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentHttpGetIn">
+    <wsdl:part name="AssignmentCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementHttpGetIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_AllHttpGetIn" />
+  <wsdl:message name="ChargeCode_AllHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_THHttpGetIn" />
+  <wsdl:message name="ChargeCode_THHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeHttpGetIn">
+    <wsdl:part name="ChargeCodeDesc" type="s:string" />
+    <wsdl:part name="CompanyName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_AllHttpGetIn" />
+  <wsdl:message name="Engagement_AllHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_THHttpGetIn" />
+  <wsdl:message name="AllEngagement_THHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramHttpGetIn">
+    <wsdl:part name="column" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+    <wsdl:part name="sort" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_THHttpGetIn" />
+  <wsdl:message name="Engagement_THHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_LAHttpGetIn" />
+  <wsdl:message name="Engagement_LAHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_MMHttpGetIn" />
+  <wsdl:message name="Engagement_MMHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_AllHttpGetIn" />
+  <wsdl:message name="Client_AllHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_THHttpGetIn" />
+  <wsdl:message name="Client_THHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_LAHttpGetIn" />
+  <wsdl:message name="Client_LAHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_MMHttpGetIn" />
+  <wsdl:message name="Client_MMHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISHttpGetIn">
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSAHttpGetIn">
+    <wsdl:part name="EngagementNo" type="s:string" />
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="SigningPartnerNo" type="s:string" />
+    <wsdl:part name="EngagementEQCRNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSAHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnHttpGetIn">
+    <wsdl:part name="EngagementNo" type="s:string" />
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="SigningPartnerNo" type="s:string" />
+    <wsdl:part name="EngagementEQCRNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+    <wsdl:part name="ColumnName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISHttpGetIn">
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientGroupNo" type="s:string" />
+    <wsdl:part name="GisNo" type="s:string" />
+    <wsdl:part name="DirectParentNo" type="s:string" />
+    <wsdl:part name="GlobalUltimateParentNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterHttpPostIn" />
+  <wsdl:message name="WS_AssignmentCodeDataSet_No_ParameterHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeHttpPostIn">
+    <wsdl:part name="AssignmentCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_AssignmentCodeDataSet_With_Assignment_CodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ClientListHttpPostIn" />
+  <wsdl:message name="ClientListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCodeHttpPostIn" />
+  <wsdl:message name="ChargeCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentHttpPostIn">
+    <wsdl:part name="AssignmentCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveAssignmentHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementHttpPostIn">
+    <wsdl:part name="Client" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_AllHttpPostIn" />
+  <wsdl:message name="ChargeCode_AllHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="ChargeCode_THHttpPostIn" />
+  <wsdl:message name="ChargeCode_THHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeHttpPostIn">
+    <wsdl:part name="ChargeCodeDesc" type="s:string" />
+    <wsdl:part name="CompanyName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_Internal_ChargecodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_AllHttpPostIn" />
+  <wsdl:message name="Engagement_AllHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_THHttpPostIn" />
+  <wsdl:message name="AllEngagement_THHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramHttpPostIn">
+    <wsdl:part name="column" type="s:string" />
+    <wsdl:part name="filter" type="s:string" />
+    <wsdl:part name="sort" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AllEngagement_TH_paramHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_THHttpPostIn" />
+  <wsdl:message name="Engagement_THHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_LAHttpPostIn" />
+  <wsdl:message name="Engagement_LAHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Engagement_MMHttpPostIn" />
+  <wsdl:message name="Engagement_MMHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_AllHttpPostIn" />
+  <wsdl:message name="Client_AllHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_THHttpPostIn" />
+  <wsdl:message name="Client_THHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_LAHttpPostIn" />
+  <wsdl:message name="Client_LAHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="Client_MMHttpPostIn" />
+  <wsdl:message name="Client_MMHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISHttpPostIn">
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementFromSSISHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSAHttpPostIn">
+    <wsdl:part name="EngagementNo" type="s:string" />
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="SigningPartnerNo" type="s:string" />
+    <wsdl:part name="EngagementEQCRNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSAHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnHttpPostIn">
+    <wsdl:part name="EngagementNo" type="s:string" />
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientName" type="s:string" />
+    <wsdl:part name="EngagementStatusId" type="s:string" />
+    <wsdl:part name="FunctionId" type="s:string" />
+    <wsdl:part name="ProfitCentreNo" type="s:string" />
+    <wsdl:part name="CompanyCode" type="s:string" />
+    <wsdl:part name="EngagementTypeId" type="s:string" />
+    <wsdl:part name="Employeeno" type="s:string" />
+    <wsdl:part name="EngagementManagerNo" type="s:string" />
+    <wsdl:part name="EngagementPartnerNo" type="s:string" />
+    <wsdl:part name="SigningPartnerNo" type="s:string" />
+    <wsdl:part name="EngagementEQCRNo" type="s:string" />
+    <wsdl:part name="CreateYearStart" type="s:string" />
+    <wsdl:part name="YearEnd" type="s:string" />
+    <wsdl:part name="ColumnName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllEngagementDetailFromSSA_WColumnHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISHttpPostIn">
+    <wsdl:part name="ClientNo" type="s:string" />
+    <wsdl:part name="ClientGroupNo" type="s:string" />
+    <wsdl:part name="GisNo" type="s:string" />
+    <wsdl:part name="DirectParentNo" type="s:string" />
+    <wsdl:part name="GlobalUltimateParentNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetAllClientFromSSISHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="ViztopiaSoap">
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all open assignment</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterSoapIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get open assignment by assignment code</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeSoapIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all clients</wsdl:documentation>
+      <wsdl:input name="ClientList" message="tns:ClientListSoapIn" />
+      <wsdl:output name="ClientList" message="tns:ClientListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all charge codes</wsdl:documentation>
+      <wsdl:input name="ChargeCode" message="tns:ChargeCodeSoapIn" />
+      <wsdl:output name="ChargeCode" message="tns:ChargeCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive assignment by AssignmentCode</wsdl:documentation>
+      <wsdl:input message="tns:isActiveAssignmentSoapIn" />
+      <wsdl:output message="tns:isActiveAssignmentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi clientid, status separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementSoapIn" />
+      <wsdl:output message="tns:GetAllEngagementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_AllSoapIn" />
+      <wsdl:output message="tns:ChargeCode_AllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_THSoapIn" />
+      <wsdl:output message="tns:ChargeCode_THSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Internal Chargecode</wsdl:documentation>
+      <wsdl:input message="tns:Get_Internal_ChargecodeSoapIn" />
+      <wsdl:output message="tns:Get_Internal_ChargecodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_AllSoapIn" />
+      <wsdl:output message="tns:Engagement_AllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:AllEngagement_THSoapIn" />
+      <wsdl:output message="tns:AllEngagement_THSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements with parameters</wsdl:documentation>
+      <wsdl:input name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramSoapIn" />
+      <wsdl:output name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_THSoapIn" />
+      <wsdl:output message="tns:Engagement_THSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Lao engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_LASoapIn" />
+      <wsdl:output message="tns:Engagement_LASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Burmese engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_MMSoapIn" />
+      <wsdl:output message="tns:Engagement_MMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_AllSoapIn" />
+      <wsdl:output message="tns:Client_AllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_THSoapIn" />
+      <wsdl:output message="tns:Client_THSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Lao Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_LASoapIn" />
+      <wsdl:output message="tns:Client_LASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Burmese Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_MMSoapIn" />
+      <wsdl:output message="tns:Client_MMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISSoapIn" />
+      <wsdl:output name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSASoapIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSA_WColumnSoapIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSA_WColumnSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, ClientGroupNo, GisNo, DirectParentNo, GlobalUltimateParentNo separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISSoapIn" />
+      <wsdl:output name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ViztopiaHttpGet">
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all open assignment</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterHttpGetIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get open assignment by assignment code</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeHttpGetIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all clients</wsdl:documentation>
+      <wsdl:input name="ClientList" message="tns:ClientListHttpGetIn" />
+      <wsdl:output name="ClientList" message="tns:ClientListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all charge codes</wsdl:documentation>
+      <wsdl:input name="ChargeCode" message="tns:ChargeCodeHttpGetIn" />
+      <wsdl:output name="ChargeCode" message="tns:ChargeCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive assignment by AssignmentCode</wsdl:documentation>
+      <wsdl:input message="tns:isActiveAssignmentHttpGetIn" />
+      <wsdl:output message="tns:isActiveAssignmentHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi clientid, status separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementHttpGetIn" />
+      <wsdl:output message="tns:GetAllEngagementHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_AllHttpGetIn" />
+      <wsdl:output message="tns:ChargeCode_AllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_THHttpGetIn" />
+      <wsdl:output message="tns:ChargeCode_THHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Internal Chargecode</wsdl:documentation>
+      <wsdl:input message="tns:Get_Internal_ChargecodeHttpGetIn" />
+      <wsdl:output message="tns:Get_Internal_ChargecodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_AllHttpGetIn" />
+      <wsdl:output message="tns:Engagement_AllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:AllEngagement_THHttpGetIn" />
+      <wsdl:output message="tns:AllEngagement_THHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements with parameters</wsdl:documentation>
+      <wsdl:input name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramHttpGetIn" />
+      <wsdl:output name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_THHttpGetIn" />
+      <wsdl:output message="tns:Engagement_THHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Lao engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_LAHttpGetIn" />
+      <wsdl:output message="tns:Engagement_LAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Burmese engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_MMHttpGetIn" />
+      <wsdl:output message="tns:Engagement_MMHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_AllHttpGetIn" />
+      <wsdl:output message="tns:Client_AllHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_THHttpGetIn" />
+      <wsdl:output message="tns:Client_THHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Lao Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_LAHttpGetIn" />
+      <wsdl:output message="tns:Client_LAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Burmese Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_MMHttpGetIn" />
+      <wsdl:output message="tns:Client_MMHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISHttpGetIn" />
+      <wsdl:output name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSAHttpGetIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSAHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSA_WColumnHttpGetIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSA_WColumnHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, ClientGroupNo, GisNo, DirectParentNo, GlobalUltimateParentNo separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISHttpGetIn" />
+      <wsdl:output name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ViztopiaHttpPost">
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all open assignment</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterHttpPostIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter" message="tns:WS_AssignmentCodeDataSet_No_ParameterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get open assignment by assignment code</wsdl:documentation>
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeHttpPostIn" />
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code" message="tns:WS_AssignmentCodeDataSet_With_Assignment_CodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all clients</wsdl:documentation>
+      <wsdl:input name="ClientList" message="tns:ClientListHttpPostIn" />
+      <wsdl:output name="ClientList" message="tns:ClientListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">(obsolete) Get all charge codes</wsdl:documentation>
+      <wsdl:input name="ChargeCode" message="tns:ChargeCodeHttpPostIn" />
+      <wsdl:output name="ChargeCode" message="tns:ChargeCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive assignment by AssignmentCode</wsdl:documentation>
+      <wsdl:input message="tns:isActiveAssignmentHttpPostIn" />
+      <wsdl:output message="tns:isActiveAssignmentHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi clientid, status separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementHttpPostIn" />
+      <wsdl:output message="tns:GetAllEngagementHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_AllHttpPostIn" />
+      <wsdl:output message="tns:ChargeCode_AllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai charge codes</wsdl:documentation>
+      <wsdl:input message="tns:ChargeCode_THHttpPostIn" />
+      <wsdl:output message="tns:ChargeCode_THHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Internal Chargecode</wsdl:documentation>
+      <wsdl:input message="tns:Get_Internal_ChargecodeHttpPostIn" />
+      <wsdl:output message="tns:Get_Internal_ChargecodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_AllHttpPostIn" />
+      <wsdl:output message="tns:Engagement_AllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:AllEngagement_THHttpPostIn" />
+      <wsdl:output message="tns:AllEngagement_THHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai engagements with parameters</wsdl:documentation>
+      <wsdl:input name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramHttpPostIn" />
+      <wsdl:output name="AllEngagement_TH_param" message="tns:AllEngagement_TH_paramHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Thai engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_THHttpPostIn" />
+      <wsdl:output message="tns:Engagement_THHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Lao engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_LAHttpPostIn" />
+      <wsdl:output message="tns:Engagement_LAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active Burmese engagements</wsdl:documentation>
+      <wsdl:input message="tns:Engagement_MMHttpPostIn" />
+      <wsdl:output message="tns:Engagement_MMHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_AllHttpPostIn" />
+      <wsdl:output message="tns:Client_AllHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Thai Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_THHttpPostIn" />
+      <wsdl:output message="tns:Client_THHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Lao Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_LAHttpPostIn" />
+      <wsdl:output message="tns:Client_LAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Burmese Clients</wsdl:documentation>
+      <wsdl:input message="tns:Client_MMHttpPostIn" />
+      <wsdl:output message="tns:Client_MMHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISHttpPostIn" />
+      <wsdl:output name="GetAllEngagementFromSSIS" message="tns:GetAllEngagementFromSSISHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSAHttpPostIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSAHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, EngagementStatusId, FunctionId, ProfitCentreNo, CompanyCode, EngagementTypeId separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:GetAllEngagementDetailFromSSA_WColumnHttpPostIn" />
+      <wsdl:output message="tns:GetAllEngagementDetailFromSSA_WColumnHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">multi ClientNo, ClientGroupNo, GisNo, DirectParentNo, GlobalUltimateParentNo separate by comma</wsdl:documentation>
+      <wsdl:input name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISHttpPostIn" />
+      <wsdl:output name="GetAllClientFromSSIS" message="tns:GetAllClientFromSSISHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ViztopiaSoap" type="tns:ViztopiaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <soap:operation soapAction="http://th.kpmg.intranet/WS_AssignmentCodeDataSet_No_Parameter" style="document" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <soap:operation soapAction="http://th.kpmg.intranet/WS_AssignmentCodeDataSet_With_Assignment_Code" style="document" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <soap:operation soapAction="http://th.kpmg.intranet/ClientList" style="document" />
+      <wsdl:input name="ClientList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ClientList">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <soap:operation soapAction="http://th.kpmg.intranet/ChargeCode" style="document" />
+      <wsdl:input name="ChargeCode">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChargeCode">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <soap:operation soapAction="http://th.kpmg.intranet/isActiveAssignment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <soap:operation soapAction="http://th.kpmg.intranet/GetAllEngagement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <soap:operation soapAction="http://th.kpmg.intranet/ChargeCode_All" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <soap:operation soapAction="http://th.kpmg.intranet/ChargeCode_TH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <soap:operation soapAction="http://th.kpmg.intranet/Get_Internal_Chargecode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <soap:operation soapAction="http://th.kpmg.intranet/Engagement_All" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <soap:operation soapAction="http://th.kpmg.intranet/AllEngagement_TH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <soap:operation soapAction="http://th.kpmg.intranet/AllEngagement_TH_param" style="document" />
+      <wsdl:input name="AllEngagement_TH_param">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AllEngagement_TH_param">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <soap:operation soapAction="http://th.kpmg.intranet/Engagement_TH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <soap:operation soapAction="http://th.kpmg.intranet/Engagement_LA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <soap:operation soapAction="http://th.kpmg.intranet/Engagement_MM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <soap:operation soapAction="http://th.kpmg.intranet/Client_All" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <soap:operation soapAction="http://th.kpmg.intranet/Client_TH" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <soap:operation soapAction="http://th.kpmg.intranet/Client_LA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <soap:operation soapAction="http://th.kpmg.intranet/Client_MM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <soap:operation soapAction="http://th.kpmg.intranet/GetAllEngagementFromSSIS" style="document" />
+      <wsdl:input name="GetAllEngagementFromSSIS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllEngagementFromSSIS">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <soap:operation soapAction="http://th.kpmg.intranet/GetAllEngagementDetailFromSSA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <soap:operation soapAction="http://th.kpmg.intranet/GetAllEngagementDetailFromSSA_WColumn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <soap:operation soapAction="http://th.kpmg.intranet/GetAllClientFromSSIS" style="document" />
+      <wsdl:input name="GetAllClientFromSSIS">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllClientFromSSIS">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ViztopiaSoap12" type="tns:ViztopiaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <soap12:operation soapAction="http://th.kpmg.intranet/WS_AssignmentCodeDataSet_No_Parameter" style="document" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <soap12:operation soapAction="http://th.kpmg.intranet/WS_AssignmentCodeDataSet_With_Assignment_Code" style="document" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ClientList" style="document" />
+      <wsdl:input name="ClientList">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ClientList">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ChargeCode" style="document" />
+      <wsdl:input name="ChargeCode">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="ChargeCode">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <soap12:operation soapAction="http://th.kpmg.intranet/isActiveAssignment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <soap12:operation soapAction="http://th.kpmg.intranet/GetAllEngagement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ChargeCode_All" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <soap12:operation soapAction="http://th.kpmg.intranet/ChargeCode_TH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Get_Internal_Chargecode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Engagement_All" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <soap12:operation soapAction="http://th.kpmg.intranet/AllEngagement_TH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <soap12:operation soapAction="http://th.kpmg.intranet/AllEngagement_TH_param" style="document" />
+      <wsdl:input name="AllEngagement_TH_param">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AllEngagement_TH_param">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Engagement_TH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Engagement_LA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Engagement_MM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Client_All" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Client_TH" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Client_LA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Client_MM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <soap12:operation soapAction="http://th.kpmg.intranet/GetAllEngagementFromSSIS" style="document" />
+      <wsdl:input name="GetAllEngagementFromSSIS">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllEngagementFromSSIS">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <soap12:operation soapAction="http://th.kpmg.intranet/GetAllEngagementDetailFromSSA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <soap12:operation soapAction="http://th.kpmg.intranet/GetAllEngagementDetailFromSSA_WColumn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <soap12:operation soapAction="http://th.kpmg.intranet/GetAllClientFromSSIS" style="document" />
+      <wsdl:input name="GetAllClientFromSSIS">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetAllClientFromSSIS">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ViztopiaHttpGet" type="tns:ViztopiaHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <http:operation location="/WS_AssignmentCodeDataSet_No_Parameter" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <http:operation location="/WS_AssignmentCodeDataSet_With_Assignment_Code" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <http:operation location="/ClientList" />
+      <wsdl:input name="ClientList">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ClientList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <http:operation location="/ChargeCode" />
+      <wsdl:input name="ChargeCode">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="ChargeCode">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <http:operation location="/isActiveAssignment" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <http:operation location="/GetAllEngagement" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <http:operation location="/ChargeCode_All" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <http:operation location="/ChargeCode_TH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <http:operation location="/Get_Internal_Chargecode" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <http:operation location="/Engagement_All" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <http:operation location="/AllEngagement_TH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <http:operation location="/AllEngagement_TH_param" />
+      <wsdl:input name="AllEngagement_TH_param">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="AllEngagement_TH_param">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <http:operation location="/Engagement_TH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <http:operation location="/Engagement_LA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <http:operation location="/Engagement_MM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <http:operation location="/Client_All" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <http:operation location="/Client_TH" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <http:operation location="/Client_LA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <http:operation location="/Client_MM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <http:operation location="/GetAllEngagementFromSSIS" />
+      <wsdl:input name="GetAllEngagementFromSSIS">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="GetAllEngagementFromSSIS">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <http:operation location="/GetAllEngagementDetailFromSSA" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <http:operation location="/GetAllEngagementDetailFromSSA_WColumn" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <http:operation location="/GetAllClientFromSSIS" />
+      <wsdl:input name="GetAllClientFromSSIS">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="GetAllClientFromSSIS">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ViztopiaHttpPost" type="tns:ViztopiaHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <http:operation location="/WS_AssignmentCodeDataSet_No_Parameter" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_No_Parameter">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_No_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_AssignmentCodeDataSet">
+      <http:operation location="/WS_AssignmentCodeDataSet_With_Assignment_Code" />
+      <wsdl:input name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="WS_AssignmentCodeDataSet_With_Assignment_Code">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllClients">
+      <http:operation location="/ClientList" />
+      <wsdl:input name="ClientList">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ClientList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllChargeCodes">
+      <http:operation location="/ChargeCode" />
+      <wsdl:input name="ChargeCode">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="ChargeCode">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveAssignment">
+      <http:operation location="/isActiveAssignment" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagement">
+      <http:operation location="/GetAllEngagement" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_All">
+      <http:operation location="/ChargeCode_All" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChargeCode_TH">
+      <http:operation location="/ChargeCode_TH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Internal_Chargecode">
+      <http:operation location="/Get_Internal_Chargecode" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_All">
+      <http:operation location="/Engagement_All" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <http:operation location="/AllEngagement_TH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllEngagement_TH">
+      <http:operation location="/AllEngagement_TH_param" />
+      <wsdl:input name="AllEngagement_TH_param">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="AllEngagement_TH_param">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_TH">
+      <http:operation location="/Engagement_TH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_LA">
+      <http:operation location="/Engagement_LA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Engagement_MM">
+      <http:operation location="/Engagement_MM" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_All">
+      <http:operation location="/Client_All" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_TH">
+      <http:operation location="/Client_TH" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_LA">
+      <http:operation location="/Client_LA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Client_MM">
+      <http:operation location="/Client_MM" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementFromSSA">
+      <http:operation location="/GetAllEngagementFromSSIS" />
+      <wsdl:input name="GetAllEngagementFromSSIS">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetAllEngagementFromSSIS">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA">
+      <http:operation location="/GetAllEngagementDetailFromSSA" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllEngagementDetailFromSSA_WColumn">
+      <http:operation location="/GetAllEngagementDetailFromSSA_WColumn" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllClientFromSSA">
+      <http:operation location="/GetAllClientFromSSIS" />
+      <wsdl:input name="GetAllClientFromSSIS">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="GetAllClientFromSSIS">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Viztopia">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Viztopia Web Service</wsdl:documentation>
+    <wsdl:port name="ViztopiaSoap" binding="tns:ViztopiaSoap">
+      <soap:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Viztopia.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ViztopiaSoap12" binding="tns:ViztopiaSoap12">
+      <soap12:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Viztopia.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ViztopiaHttpGet" binding="tns:ViztopiaHttpGet">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Viztopia.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ViztopiaHttpPost" binding="tns:ViztopiaHttpPost">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/Viztopia.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

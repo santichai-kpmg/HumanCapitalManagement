@@ -1,0 +1,233 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vCandidates_obj_update
+
+@if (!string.IsNullOrEmpty(Model.IdEncrypt))
+{
+
+    <div class="modal-body">
+        <form class="form-horizontal" autocomplete="off">
+            <div id="pvUpCandidate">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <dl class="dl-horizontal" style="font-size:12px; border:1px solid #00a65a;">
+                            <dt>Group :</dt>
+                            <dd data-bind='text: group_id'></dd>
+                            <dt>SubGroup :</dt>
+                            <dd data-bind='text: sub_group_id'></dd>
+                            <dt>Rank :</dt>
+                            <dd data-bind='text: rank_id'></dd>
+                            <dt>Position :</dt>
+                            <dd data-bind='text: position_id'>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Name :</label>
+                            <div class="col-md-6">
+                                <input type="text" id="pvUtxtgroup" name="pvUtxtgroup" class="form-control" data-bind='value: candidate_name' disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Rank Grade :</label>
+                            <div class="col-md-6">
+                                @{ Html.RenderAction("CreateddlCanRank", "HCMMasterData", new
+                                    {
+                                        id = "ddlRankGrade",
+                                        databind = "candidate_rank_id",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @if (Model.lstHisStatus.Any())
+                {
+                    foreach (var lst in Model.lstHisStatus)
+                    {
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-group-sm">
+                                    <label class="col-md-4 control-label text-right text-green">@lst.status_name :</label>
+                                    <div class="col-md-6">
+                                        <input class="form-control text-green" type="text"
+                                               value="@lst.status_date" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Next Status<font color=red>*</font> :</label>
+                            <div class="col-md-6">
+                                <select id="ddlStatus" name="ddlStatus" class="form-control" data-bind="options: lstStatus, optionsText: 'name', optionsValue: 'id',
+                                               value: status_id,
+                                               valueAllowUnset: true"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right">Action Date<font color=red>*</font> :</label>
+                            <div class="col-md-6">
+                                <div class="input-group form-inline" style="float: left;">
+                                    <input ID="txtDateAction" name="txtDateAction" class="form-control " type="text"
+                                           ToolTip="To" placeholder="-- / -- / ----" data-bind="value : action_date, valueUpdate: 'afterkeydown' " />
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Each Status Remark (only HR admin can see) :</label>
+                            <div class="col-md-6">
+                                <textarea type="text" rows="3" cols="50" id="txtStatusremark" name="txtStatusremark" class="form-control" data-bind='value: action_remark'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Remark (Everyone can see) :</label>
+                            <div class="col-md-6">
+                                <textarea type="text" rows="3" cols="50" id="txtReasons" name="txtReasons" class="form-control" data-bind='value: candidate_remark'></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Active/Inactive :</label>
+                            <div class="col-md-6">
+                                <label class="control-label">
+                                    <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="Y">Active<br>
+                                </label>
+                                <label class="control-label">
+                                    <input type="radio" name="Status" id="rdlStatus" class="flat-green radio radio-inline" data-bind='iCheck: { checked: active_status}' value="N">Inactive<br>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Recruitment Team<font color=red>*</font> :</label>
+                            <div class="col-md-6">
+                                @{ Html.RenderAction("CreateddlRecruitment_Team", "HCMMasterData", new
+                                    {
+                                        id = "ddlRecruitment",
+                                        databind = "recruitment_id",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group form-group-sm">
+                            <label class="col-md-4 control-label text-right ">Activity Form :</label>
+                            <div class="col-md-6">
+                                @{ Html.RenderAction("CreateActivitiesTrainee", "HCMMasterData", new
+                                    {
+                                        id = "ddlActivitiesTrainee",
+                                        databind = "activities_Id",
+                                        value = ""
+                                    });}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        @{
+            if (Model.status_addnew == "N")
+            {
+                <button id="btnUpdate" type="button" onclick="RollBackStatus()" class="btn btn-danger">Rollback Status</button>
+            }
+        }
+        <button id="btnUpdate" type="button" onclick="UpdateSt()" class="btn btn-primary">Save</button>
+        <button id="btnUpdate" type="button" onclick="UpdateStRemark()" class="btn btn-success">Save Remark & Activity</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+
+    <script type="text/javascript">
+        var objModelUpdate = @Html.Raw(Json.Encode(Model));
+        //function UpdateSt() {
+
+        //}
+        $(function () {
+            SetDatePicker(GetInputByID("txtDateAction"));
+            $("input[id$=txtDateAction]").change(function () {
+                $('#pvUpCandidate').bootstrapValidator('revalidateField', GetElementName("txtDateAction", objControl.txtbox));
+            }).keydown(function (e) {
+                if (e.which == 8 || e.which == 46) {
+                    $('#pvUpCandidate').bootstrapValidator('updateStatus', GetElementName("txtDateAction", objControl.txtbox), "INVALID");
+
+                }
+            });
+        });
+        function ValidateFormUpd() {
+            var objValidatePopUp = {};
+            objValidatePopUp[GetElementName("txtDateAction", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+            objValidatePopUp[GetElementName("ddlStatus", objControl.dropdown)] = addValidate_notEmpty("This value is not valid");
+            BindValidateBootstrap("pvUpCandidate", objValidatePopUp);
+        }
+    </script>
+}
+else
+{
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div id="pvUpCandidate">
+                <section class="content">
+                    <div class="error-page">
+                        <h2 class="headline text-yellow"> 404</h2>
+                        <div class="error-content">
+                            <h3><i class="fa fa-warning text-yellow"></i> Oops! Candidate not found.</h3>
+                            <p>
+                                <label class="control-label" data-bind='value: msg'></label>
+                                We could not find the page you were looking for.
+                                Meanwhile, you may....
+                            </p>
+                        </div>
+                        <!-- /.error-content -->
+                    </div>
+                    <!-- /.error-page -->
+                </section>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+
+}
+
+
+
+

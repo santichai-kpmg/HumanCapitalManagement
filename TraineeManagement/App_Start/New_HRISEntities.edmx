@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="New_HRISModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employeeno" />
+          </Key>
+          <Property Name="Employeeno" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Previous_EmployeeNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Prefix" Type="varchar" MaxLength="10" />
+          <Property Name="Employeename" Type="varchar" MaxLength="50" />
+          <Property Name="Employeemidname" Type="varchar" MaxLength="50" />
+          <Property Name="Employeesurname" Type="varchar" MaxLength="50" />
+          <Property Name="ThaiPrefix" Type="varchar" MaxLength="10" />
+          <Property Name="EmpThaiName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpThaiMidName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpThaiSurName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="StatusType" Type="int" />
+          <Property Name="RefID" Type="varchar" MaxLength="20" />
+          <Property Name="UserID" Type="varchar" MaxLength="50" />
+          <Property Name="Editor" Type="varchar" MaxLength="50" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="Remark" Type="varchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="Sex" Type="varchar" MaxLength="3" />
+          <Property Name="ActiveRetain" Type="bit" />
+          <Property Name="CalEleave" Type="datetime" />
+          <Property Name="Retain_Email" Type="varchar" MaxLength="75" />
+          <Property Name="GIS_Employment_Schedule" Type="int" />
+          <Property Name="CreatedDate_Employee" Type="datetime" />
+          <Property Name="UpdatedDate_Employee" Type="datetime" />
+          <Property Name="_Status" Type="varchar" MaxLength="1" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="KPMG-USER-GPID" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'New_HRIS.dbo.JobInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="JobInfo">
+          <Key>
+            <PropertyRef Name="Employeeno" />
+          </Key>
+          <Property Name="Employeeno" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="ResignedDate" Type="datetime" />
+          <Property Name="EffectiveDate" Type="datetime" />
+          <Property Name="Type" Type="varchar" MaxLength="20" />
+          <Property Name="Company" Type="varchar" MaxLength="100" />
+          <Property Name="Division" Type="varchar" MaxLength="50" />
+          <Property Name="Location" Type="varchar" MaxLength="20" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="EmpPosition" Type="varchar" MaxLength="50" />
+          <Property Name="LifeIns" Type="varchar" MaxLength="50" />
+          <Property Name="HealthIns" Type="varchar" MaxLength="50" />
+          <Property Name="Access" Type="varchar" MaxLength="50" />
+          <Property Name="Site" Type="varchar" MaxLength="50" />
+          <Property Name="Condition" Type="varchar" MaxLength="50" />
+          <Property Name="PF_Member" Type="varchar" MaxLength="50" />
+          <Property Name="PF" Type="varchar" MaxLength="50" />
+          <Property Name="PFPercent" Type="varchar" MaxLength="2" />
+          <Property Name="TaxStatus" Type="varchar" MaxLength="50" />
+          <Property Name="PI" Type="varchar" MaxLength="5" />
+          <Property Name="UnitGroup" Type="varchar" MaxLength="50" />
+          <Property Name="UnitGroup_IBS" Type="varchar" MaxLength="100" />
+          <Property Name="RankID" Type="varchar" MaxLength="20" />
+          <Property Name="Rank_IBS" Type="varchar" MaxLength="100" />
+          <Property Name="Pool" Type="varchar" MaxLength="20" />
+          <Property Name="Initial" Type="varchar" MaxLength="5" />
+          <Property Name="Editor" Type="varchar" MaxLength="50" />
+          <Property Name="YearHR" Type="varchar" MaxLength="5" />
+          <Property Name="RankHRID" Type="int" />
+          <Property Name="PositionHRID" Type="int" />
+          <Property Name="LE" Type="varchar" MaxLength="20" />
+          <Property Name="Approval1" Type="varchar" MaxLength="20" />
+          <Property Name="Approval2" Type="varchar" MaxLength="20" />
+          <Property Name="Approval3" Type="varchar" MaxLength="20" />
+          <Property Name="VacLeaveLastYear" Type="int" />
+          <Property Name="EarnVacThisYear" Type="int" />
+          <Property Name="SubYear_HR" Type="varchar" MaxLength="50" />
+          <Property Name="Box9" Type="nvarchar" MaxLength="5" />
+          <Property Name="DevelopPlan" Type="varchar" MaxLength="400" />
+          <Property Name="OldJoinDate" Type="datetime" />
+          <Property Name="PerformanceMGCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="createDate" Type="datetime" />
+          <Property Name="KPMG-User-GPID" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedDate_JobInfo" Type="datetime" />
+          <Property Name="UpdatedDate_JobInfo" Type="datetime" />
+          <Property Name="Job" Type="char" MaxLength="4" />
+          <Property Name="CountryCompute" Type="varchar" MaxLength="2" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="tbMaster_Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocalCompCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IBSCompCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_CompanyHead">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="EmployeeNo" />
+          </Key>
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Pool">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_PoolHead">
+          <Key>
+            <PropertyRef Name="PoolID" />
+            <PropertyRef Name="EmployeeNo" />
+          </Key>
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_RoleHead">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="EmployeeNo" />
+            <PropertyRef Name="UnitGroupID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="EmployeeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UnitGroupID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Unit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UnitGroupID" Type="int" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_UnitGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PoolID" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'New_HRIS.dbo.AllInfo_WS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AllInfo_WS">
+          <Key>
+            <PropertyRef Name="EmpNo" />
+            <PropertyRef Name="Previous_EmployeeNo" />
+          </Key>
+          <Property Name="EmpNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserID" Type="varchar" MaxLength="50" />
+          <Property Name="EmpTitle" Type="varchar" MaxLength="10" />
+          <Property Name="EmpFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpMiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpSurname" Type="varchar" MaxLength="50" />
+          <Property Name="EmpFullName" Type="varchar" MaxLength="8000" />
+          <Property Name="EmpName" Type="varchar" MaxLength="112" />
+          <Property Name="EmpThaiTitle" Type="varchar" MaxLength="10" />
+          <Property Name="EmpThaiFirstName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpThaiSurName" Type="varchar" MaxLength="50" />
+          <Property Name="EmpThaiName" Type="varchar" MaxLength="112" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="100" />
+          <Property Name="COMPANY" Type="varchar" MaxLength="33" />
+          <Property Name="PI" Type="varchar" MaxLength="5" />
+          <Property Name="Pool" Type="varchar" MaxLength="20" />
+          <Property Name="Division" Type="varchar" MaxLength="50" />
+          <Property Name="UnitGroup" Type="varchar" MaxLength="50" />
+          <Property Name="UnitGroupID" Type="int" />
+          <Property Name="UnitGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RankID" Type="varchar" MaxLength="20" />
+          <Property Name="RankHRID" Type="int" />
+          <Property Name="RankCode" Type="varchar" MaxLength="50" />
+          <Property Name="Rank" Type="varchar" MaxLength="100" />
+          <Property Name="JoinDate" Type="datetime" />
+          <Property Name="ResignedDate" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Mobile" Type="varchar" MaxLength="63" />
+          <Property Name="OfficePhone" Type="varchar" MaxLength="100" />
+          <Property Name="Assistant" Type="varchar" MaxLength="20" />
+          <Property Name="AssistantName" Type="varchar" MaxLength="112" />
+          <Property Name="AssistantEmail" Type="varchar" MaxLength="50" />
+          <Property Name="Previous_EmployeeNo" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbMaster_CompanyHead_tbMaster_CompanyHead">
+          <End Role="tbMaster_Company" Type="Self.tbMaster_Company" Multiplicity="1" />
+          <End Role="tbMaster_CompanyHead" Type="Self.tbMaster_CompanyHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_CompanyHead">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_RoleHead_tbMaster_Role">
+          <End Role="tbMaster_Role" Type="Self.tbMaster_Role" Multiplicity="1" />
+          <End Role="tbMaster_RoleHead" Type="Self.tbMaster_RoleHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_RoleHead">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_RoleHead_tbMaster_UnitGroup">
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="1" />
+          <End Role="tbMaster_RoleHead" Type="Self.tbMaster_RoleHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_UnitGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_RoleHead">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_Unit_tbMaster_Company">
+          <End Role="tbMaster_Company" Type="Self.tbMaster_Company" Multiplicity="1" />
+          <End Role="tbMaster_Unit" Type="Self.tbMaster_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_Unit">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_Unit_tbMaster_UnitGroup">
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="1" />
+          <End Role="tbMaster_Unit" Type="Self.tbMaster_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_UnitGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_Unit">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_UnitGroup_tbMaster_Pool">
+          <End Role="tbMaster_Pool" Type="Self.tbMaster_Pool" Multiplicity="1" />
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Pool">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_UnitGroup">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="New_HRISModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_Company" EntityType="Self.tbMaster_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_CompanyHead" EntityType="Self.tbMaster_CompanyHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_Job" EntityType="Self.tbMaster_Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_Pool" EntityType="Self.tbMaster_Pool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_PoolHead" EntityType="Self.tbMaster_PoolHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_Role" EntityType="Self.tbMaster_Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_RoleHead" EntityType="Self.tbMaster_RoleHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_Unit" EntityType="Self.tbMaster_Unit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbMaster_UnitGroup" EntityType="Self.tbMaster_UnitGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobInfo" EntityType="Self.JobInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [JobInfo].[Employeeno] AS [Employeeno], 
+    [JobInfo].[JoinDate] AS [JoinDate], 
+    [JobInfo].[ResignedDate] AS [ResignedDate], 
+    [JobInfo].[EffectiveDate] AS [EffectiveDate], 
+    [JobInfo].[Type] AS [Type], 
+    [JobInfo].[Company] AS [Company], 
+    [JobInfo].[Division] AS [Division], 
+    [JobInfo].[Location] AS [Location], 
+    [JobInfo].[Country] AS [Country], 
+    [JobInfo].[EmpPosition] AS [EmpPosition], 
+    [JobInfo].[LifeIns] AS [LifeIns], 
+    [JobInfo].[HealthIns] AS [HealthIns], 
+    [JobInfo].[Access] AS [Access], 
+    [JobInfo].[Site] AS [Site], 
+    [JobInfo].[Condition] AS [Condition], 
+    [JobInfo].[PF_Member] AS [PF_Member], 
+    [JobInfo].[PF] AS [PF], 
+    [JobInfo].[PFPercent] AS [PFPercent], 
+    [JobInfo].[TaxStatus] AS [TaxStatus], 
+    [JobInfo].[PI] AS [PI], 
+    [JobInfo].[UnitGroup] AS [UnitGroup], 
+    [JobInfo].[UnitGroup_IBS] AS [UnitGroup_IBS], 
+    [JobInfo].[RankID] AS [RankID], 
+    [JobInfo].[Rank_IBS] AS [Rank_IBS], 
+    [JobInfo].[Pool] AS [Pool], 
+    [JobInfo].[Initial] AS [Initial], 
+    [JobInfo].[Editor] AS [Editor], 
+    [JobInfo].[YearHR] AS [YearHR], 
+    [JobInfo].[RankHRID] AS [RankHRID], 
+    [JobInfo].[PositionHRID] AS [PositionHRID], 
+    [JobInfo].[LE] AS [LE], 
+    [JobInfo].[Approval1] AS [Approval1], 
+    [JobInfo].[Approval2] AS [Approval2], 
+    [JobInfo].[Approval3] AS [Approval3], 
+    [JobInfo].[VacLeaveLastYear] AS [VacLeaveLastYear], 
+    [JobInfo].[EarnVacThisYear] AS [EarnVacThisYear], 
+    [JobInfo].[SubYear_HR] AS [SubYear_HR], 
+    [JobInfo].[Box9] AS [Box9], 
+    [JobInfo].[DevelopPlan] AS [DevelopPlan], 
+    [JobInfo].[OldJoinDate] AS [OldJoinDate], 
+    [JobInfo].[PerformanceMGCode] AS [PerformanceMGCode], 
+    [JobInfo].[createDate] AS [createDate], 
+    [JobInfo].[KPMG-User-GPID] AS [KPMG-User-GPID], 
+    [JobInfo].[CreatedDate_JobInfo] AS [CreatedDate_JobInfo], 
+    [JobInfo].[UpdatedDate_JobInfo] AS [UpdatedDate_JobInfo], 
+    [JobInfo].[Job] AS [Job], 
+    [JobInfo].[CountryCompute] AS [CountryCompute]
+    FROM [dbo].[JobInfo] AS [JobInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AllInfo_WS" EntityType="Self.AllInfo_WS" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllInfo_WS].[EmpNo] AS [EmpNo], 
+    [AllInfo_WS].[UserID] AS [UserID], 
+    [AllInfo_WS].[EmpTitle] AS [EmpTitle], 
+    [AllInfo_WS].[EmpFirstName] AS [EmpFirstName], 
+    [AllInfo_WS].[EmpMiddleName] AS [EmpMiddleName], 
+    [AllInfo_WS].[EmpSurname] AS [EmpSurname], 
+    [AllInfo_WS].[EmpFullName] AS [EmpFullName], 
+    [AllInfo_WS].[EmpName] AS [EmpName], 
+    [AllInfo_WS].[EmpThaiTitle] AS [EmpThaiTitle], 
+    [AllInfo_WS].[EmpThaiFirstName] AS [EmpThaiFirstName], 
+    [AllInfo_WS].[EmpThaiSurName] AS [EmpThaiSurName], 
+    [AllInfo_WS].[EmpThaiName] AS [EmpThaiName], 
+    [AllInfo_WS].[Email] AS [Email], 
+    [AllInfo_WS].[CompanyCode] AS [CompanyCode], 
+    [AllInfo_WS].[COMPANY] AS [COMPANY], 
+    [AllInfo_WS].[PI] AS [PI], 
+    [AllInfo_WS].[Pool] AS [Pool], 
+    [AllInfo_WS].[Division] AS [Division], 
+    [AllInfo_WS].[UnitGroup] AS [UnitGroup], 
+    [AllInfo_WS].[UnitGroupID] AS [UnitGroupID], 
+    [AllInfo_WS].[UnitGroupName] AS [UnitGroupName], 
+    [AllInfo_WS].[RankID] AS [RankID], 
+    [AllInfo_WS].[RankHRID] AS [RankHRID], 
+    [AllInfo_WS].[RankCode] AS [RankCode], 
+    [AllInfo_WS].[Rank] AS [Rank], 
+    [AllInfo_WS].[JoinDate] AS [JoinDate], 
+    [AllInfo_WS].[ResignedDate] AS [ResignedDate], 
+    [AllInfo_WS].[Status] AS [Status], 
+    [AllInfo_WS].[Mobile] AS [Mobile], 
+    [AllInfo_WS].[OfficePhone] AS [OfficePhone], 
+    [AllInfo_WS].[Assistant] AS [Assistant], 
+    [AllInfo_WS].[AssistantName] AS [AssistantName], 
+    [AllInfo_WS].[AssistantEmail] AS [AssistantEmail], 
+    [AllInfo_WS].[Previous_EmployeeNo] AS [Previous_EmployeeNo]
+    FROM [dbo].[AllInfo_WS] AS [AllInfo_WS]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tbMaster_CompanyHead_tbMaster_CompanyHead" Association="Self.FK_tbMaster_CompanyHead_tbMaster_CompanyHead">
+            <End Role="tbMaster_Company" EntitySet="tbMaster_Company" />
+            <End Role="tbMaster_CompanyHead" EntitySet="tbMaster_CompanyHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_RoleHead_tbMaster_Role" Association="Self.FK_tbMaster_RoleHead_tbMaster_Role">
+            <End Role="tbMaster_Role" EntitySet="tbMaster_Role" />
+            <End Role="tbMaster_RoleHead" EntitySet="tbMaster_RoleHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_RoleHead_tbMaster_UnitGroup" Association="Self.FK_tbMaster_RoleHead_tbMaster_UnitGroup">
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+            <End Role="tbMaster_RoleHead" EntitySet="tbMaster_RoleHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_Unit_tbMaster_Company" Association="Self.FK_tbMaster_Unit_tbMaster_Company">
+            <End Role="tbMaster_Company" EntitySet="tbMaster_Company" />
+            <End Role="tbMaster_Unit" EntitySet="tbMaster_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_Unit_tbMaster_UnitGroup" Association="Self.FK_tbMaster_Unit_tbMaster_UnitGroup">
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+            <End Role="tbMaster_Unit" EntitySet="tbMaster_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_UnitGroup_tbMaster_Pool" Association="Self.FK_tbMaster_UnitGroup_tbMaster_Pool">
+            <End Role="tbMaster_Pool" EntitySet="tbMaster_Pool" />
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="New_HRISModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employeeno" />
+          </Key>
+          <Property Name="Employeeno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Previous_EmployeeNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Employeename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Employeemidname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Employeesurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ThaiPrefix" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiMidName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="StatusType" Type="Int32" />
+          <Property Name="RefID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Editor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="ActiveRetain" Type="Boolean" />
+          <Property Name="CalEleave" Type="DateTime" Precision="3" />
+          <Property Name="Retain_Email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="GIS_Employment_Schedule" Type="Int32" />
+          <Property Name="CreatedDate_Employee" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate_Employee" Type="DateTime" Precision="3" />
+          <Property Name="C_Status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="KPMG_USER_GPID" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbMaster_Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocalCompCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IBSCompCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_CompanyHead" Relationship="Self.FK_tbMaster_CompanyHead_tbMaster_CompanyHead" FromRole="tbMaster_Company" ToRole="tbMaster_CompanyHead" />
+          <NavigationProperty Name="tbMaster_Unit" Relationship="Self.FK_tbMaster_Unit_tbMaster_Company" FromRole="tbMaster_Company" ToRole="tbMaster_Unit" />
+        </EntityType>
+        <EntityType Name="tbMaster_CompanyHead">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+            <PropertyRef Name="EmployeeNo" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_Company" Relationship="Self.FK_tbMaster_CompanyHead_tbMaster_CompanyHead" FromRole="tbMaster_CompanyHead" ToRole="tbMaster_Company" />
+        </EntityType>
+        <EntityType Name="tbMaster_Job">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Pool">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_UnitGroup" Relationship="Self.FK_tbMaster_UnitGroup_tbMaster_Pool" FromRole="tbMaster_Pool" ToRole="tbMaster_UnitGroup" />
+        </EntityType>
+        <EntityType Name="tbMaster_PoolHead">
+          <Key>
+            <PropertyRef Name="PoolID" />
+            <PropertyRef Name="EmployeeNo" />
+          </Key>
+          <Property Name="PoolID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbMaster_Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_RoleHead" Relationship="Self.FK_tbMaster_RoleHead_tbMaster_Role" FromRole="tbMaster_Role" ToRole="tbMaster_RoleHead" />
+        </EntityType>
+        <EntityType Name="tbMaster_RoleHead">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="EmployeeNo" />
+            <PropertyRef Name="UnitGroupID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitGroupID" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_Role" Relationship="Self.FK_tbMaster_RoleHead_tbMaster_Role" FromRole="tbMaster_RoleHead" ToRole="tbMaster_Role" />
+          <NavigationProperty Name="tbMaster_UnitGroup" Relationship="Self.FK_tbMaster_RoleHead_tbMaster_UnitGroup" FromRole="tbMaster_RoleHead" ToRole="tbMaster_UnitGroup" />
+        </EntityType>
+        <EntityType Name="tbMaster_Unit">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UnitGroupID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_Company" Relationship="Self.FK_tbMaster_Unit_tbMaster_Company" FromRole="tbMaster_Unit" ToRole="tbMaster_Company" />
+          <NavigationProperty Name="tbMaster_UnitGroup" Relationship="Self.FK_tbMaster_Unit_tbMaster_UnitGroup" FromRole="tbMaster_Unit" ToRole="tbMaster_UnitGroup" />
+        </EntityType>
+        <EntityType Name="tbMaster_UnitGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PoolID" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tbMaster_Pool" Relationship="Self.FK_tbMaster_UnitGroup_tbMaster_Pool" FromRole="tbMaster_UnitGroup" ToRole="tbMaster_Pool" />
+          <NavigationProperty Name="tbMaster_RoleHead" Relationship="Self.FK_tbMaster_RoleHead_tbMaster_UnitGroup" FromRole="tbMaster_UnitGroup" ToRole="tbMaster_RoleHead" />
+          <NavigationProperty Name="tbMaster_Unit" Relationship="Self.FK_tbMaster_Unit_tbMaster_UnitGroup" FromRole="tbMaster_UnitGroup" ToRole="tbMaster_Unit" />
+        </EntityType>
+        <EntityType Name="JobInfo">
+          <Key>
+            <PropertyRef Name="Employeeno" />
+          </Key>
+          <Property Name="Employeeno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+          <Property Name="ResignedDate" Type="DateTime" Precision="3" />
+          <Property Name="EffectiveDate" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Company" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpPosition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LifeIns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HealthIns" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Access" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Condition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PF_Member" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PFPercent" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TaxStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PI" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGroup_IBS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RankID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Rank_IBS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Pool" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Initial" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Editor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YearHR" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="RankHRID" Type="Int32" />
+          <Property Name="PositionHRID" Type="Int32" />
+          <Property Name="LE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Approval1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Approval2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Approval3" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="VacLeaveLastYear" Type="Int32" />
+          <Property Name="EarnVacThisYear" Type="Int32" />
+          <Property Name="SubYear_HR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Box9" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DevelopPlan" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="OldJoinDate" Type="DateTime" Precision="3" />
+          <Property Name="PerformanceMGCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="createDate" Type="DateTime" Precision="3" />
+          <Property Name="KPMG_User_GPID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate_JobInfo" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate_JobInfo" Type="DateTime" Precision="3" />
+          <Property Name="Job" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CountryCompute" Type="String" MaxLength="2" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="AllInfo_WS">
+          <Key>
+            <PropertyRef Name="EmpNo" />
+            <PropertyRef Name="Previous_EmployeeNo" />
+          </Key>
+          <Property Name="EmpNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpTitle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmpFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpMiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpFullName" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="EmpName" Type="String" MaxLength="112" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiTitle" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiSurName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmpThaiName" Type="String" MaxLength="112" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="COMPANY" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+          <Property Name="PI" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Pool" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Division" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UnitGroupID" Type="Int32" />
+          <Property Name="UnitGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RankID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RankHRID" Type="Int32" />
+          <Property Name="RankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rank" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JoinDate" Type="DateTime" Precision="3" />
+          <Property Name="ResignedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Mobile" Type="String" MaxLength="63" FixedLength="false" Unicode="false" />
+          <Property Name="OfficePhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Assistant" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssistantName" Type="String" MaxLength="112" FixedLength="false" Unicode="false" />
+          <Property Name="AssistantEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Previous_EmployeeNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tbMaster_CompanyHead_tbMaster_CompanyHead">
+          <End Role="tbMaster_Company" Type="Self.tbMaster_Company" Multiplicity="1" />
+          <End Role="tbMaster_CompanyHead" Type="Self.tbMaster_CompanyHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_CompanyHead">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_Unit_tbMaster_Company">
+          <End Role="tbMaster_Company" Type="Self.tbMaster_Company" Multiplicity="1" />
+          <End Role="tbMaster_Unit" Type="Self.tbMaster_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Company">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_Unit">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_UnitGroup_tbMaster_Pool">
+          <End Role="tbMaster_Pool" Type="Self.tbMaster_Pool" Multiplicity="1" />
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Pool">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_UnitGroup">
+              <PropertyRef Name="PoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_RoleHead_tbMaster_Role">
+          <End Role="tbMaster_Role" Type="Self.tbMaster_Role" Multiplicity="1" />
+          <End Role="tbMaster_RoleHead" Type="Self.tbMaster_RoleHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_RoleHead">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_RoleHead_tbMaster_UnitGroup">
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="1" />
+          <End Role="tbMaster_RoleHead" Type="Self.tbMaster_RoleHead" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_UnitGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_RoleHead">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbMaster_Unit_tbMaster_UnitGroup">
+          <End Role="tbMaster_UnitGroup" Type="Self.tbMaster_UnitGroup" Multiplicity="1" />
+          <End Role="tbMaster_Unit" Type="Self.tbMaster_Unit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbMaster_UnitGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbMaster_Unit">
+              <PropertyRef Name="UnitGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="New_HRISEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="tbMaster_Company" EntityType="Self.tbMaster_Company" />
+          <EntitySet Name="tbMaster_CompanyHead" EntityType="Self.tbMaster_CompanyHead" />
+          <EntitySet Name="tbMaster_Job" EntityType="Self.tbMaster_Job" />
+          <EntitySet Name="tbMaster_Pool" EntityType="Self.tbMaster_Pool" />
+          <EntitySet Name="tbMaster_PoolHead" EntityType="Self.tbMaster_PoolHead" />
+          <EntitySet Name="tbMaster_Role" EntityType="Self.tbMaster_Role" />
+          <EntitySet Name="tbMaster_RoleHead" EntityType="Self.tbMaster_RoleHead" />
+          <EntitySet Name="tbMaster_Unit" EntityType="Self.tbMaster_Unit" />
+          <EntitySet Name="tbMaster_UnitGroup" EntityType="Self.tbMaster_UnitGroup" />
+          <EntitySet Name="JobInfo" EntityType="Self.JobInfo" />
+          <EntitySet Name="AllInfo_WS" EntityType="Self.AllInfo_WS" />
+          <AssociationSet Name="FK_tbMaster_CompanyHead_tbMaster_CompanyHead" Association="Self.FK_tbMaster_CompanyHead_tbMaster_CompanyHead">
+            <End Role="tbMaster_Company" EntitySet="tbMaster_Company" />
+            <End Role="tbMaster_CompanyHead" EntitySet="tbMaster_CompanyHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_Unit_tbMaster_Company" Association="Self.FK_tbMaster_Unit_tbMaster_Company">
+            <End Role="tbMaster_Company" EntitySet="tbMaster_Company" />
+            <End Role="tbMaster_Unit" EntitySet="tbMaster_Unit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_UnitGroup_tbMaster_Pool" Association="Self.FK_tbMaster_UnitGroup_tbMaster_Pool">
+            <End Role="tbMaster_Pool" EntitySet="tbMaster_Pool" />
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_RoleHead_tbMaster_Role" Association="Self.FK_tbMaster_RoleHead_tbMaster_Role">
+            <End Role="tbMaster_Role" EntitySet="tbMaster_Role" />
+            <End Role="tbMaster_RoleHead" EntitySet="tbMaster_RoleHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_RoleHead_tbMaster_UnitGroup" Association="Self.FK_tbMaster_RoleHead_tbMaster_UnitGroup">
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+            <End Role="tbMaster_RoleHead" EntitySet="tbMaster_RoleHead" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbMaster_Unit_tbMaster_UnitGroup" Association="Self.FK_tbMaster_Unit_tbMaster_UnitGroup">
+            <End Role="tbMaster_UnitGroup" EntitySet="tbMaster_UnitGroup" />
+            <End Role="tbMaster_Unit" EntitySet="tbMaster_Unit" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="New_HRISModelStoreContainer" CdmEntityContainer="New_HRISEntities">
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="New_HRISModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employeeno" ColumnName="Employeeno" />
+                <ScalarProperty Name="Previous_EmployeeNo" ColumnName="Previous_EmployeeNo" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="Employeename" ColumnName="Employeename" />
+                <ScalarProperty Name="Employeemidname" ColumnName="Employeemidname" />
+                <ScalarProperty Name="Employeesurname" ColumnName="Employeesurname" />
+                <ScalarProperty Name="ThaiPrefix" ColumnName="ThaiPrefix" />
+                <ScalarProperty Name="EmpThaiName" ColumnName="EmpThaiName" />
+                <ScalarProperty Name="EmpThaiMidName" ColumnName="EmpThaiMidName" />
+                <ScalarProperty Name="EmpThaiSurName" ColumnName="EmpThaiSurName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+                <ScalarProperty Name="RefID" ColumnName="RefID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Editor" ColumnName="Editor" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="ActiveRetain" ColumnName="ActiveRetain" />
+                <ScalarProperty Name="CalEleave" ColumnName="CalEleave" />
+                <ScalarProperty Name="Retain_Email" ColumnName="Retain_Email" />
+                <ScalarProperty Name="GIS_Employment_Schedule" ColumnName="GIS_Employment_Schedule" />
+                <ScalarProperty Name="CreatedDate_Employee" ColumnName="CreatedDate_Employee" />
+                <ScalarProperty Name="UpdatedDate_Employee" ColumnName="UpdatedDate_Employee" />
+                <ScalarProperty Name="C_Status" ColumnName="_Status" />
+                <ScalarProperty Name="KPMG_USER_GPID" ColumnName="KPMG-USER-GPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_Company">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_Company">
+              <MappingFragment StoreEntitySet="tbMaster_Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LocalCompCode" ColumnName="LocalCompCode" />
+                <ScalarProperty Name="IBSCompCode" ColumnName="IBSCompCode" />
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_CompanyHead">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_CompanyHead">
+              <MappingFragment StoreEntitySet="tbMaster_CompanyHead">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_Job">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_Job">
+              <MappingFragment StoreEntitySet="tbMaster_Job">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_Pool">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_Pool">
+              <MappingFragment StoreEntitySet="tbMaster_Pool">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_PoolHead">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_PoolHead">
+              <MappingFragment StoreEntitySet="tbMaster_PoolHead">
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_Role">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_Role">
+              <MappingFragment StoreEntitySet="tbMaster_Role">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_RoleHead">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_RoleHead">
+              <MappingFragment StoreEntitySet="tbMaster_RoleHead">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+                <ScalarProperty Name="UnitGroupID" ColumnName="UnitGroupID" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_Unit">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_Unit">
+              <MappingFragment StoreEntitySet="tbMaster_Unit">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UnitGroupID" ColumnName="UnitGroupID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbMaster_UnitGroup">
+            <EntityTypeMapping TypeName="New_HRISModel.tbMaster_UnitGroup">
+              <MappingFragment StoreEntitySet="tbMaster_UnitGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobInfo">
+            <EntityTypeMapping TypeName="New_HRISModel.JobInfo">
+              <MappingFragment StoreEntitySet="JobInfo">
+                <ScalarProperty Name="Employeeno" ColumnName="Employeeno" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="ResignedDate" ColumnName="ResignedDate" />
+                <ScalarProperty Name="EffectiveDate" ColumnName="EffectiveDate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EmpPosition" ColumnName="EmpPosition" />
+                <ScalarProperty Name="LifeIns" ColumnName="LifeIns" />
+                <ScalarProperty Name="HealthIns" ColumnName="HealthIns" />
+                <ScalarProperty Name="Access" ColumnName="Access" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="PF_Member" ColumnName="PF_Member" />
+                <ScalarProperty Name="PF" ColumnName="PF" />
+                <ScalarProperty Name="PFPercent" ColumnName="PFPercent" />
+                <ScalarProperty Name="TaxStatus" ColumnName="TaxStatus" />
+                <ScalarProperty Name="PI" ColumnName="PI" />
+                <ScalarProperty Name="UnitGroup" ColumnName="UnitGroup" />
+                <ScalarProperty Name="UnitGroup_IBS" ColumnName="UnitGroup_IBS" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="Rank_IBS" ColumnName="Rank_IBS" />
+                <ScalarProperty Name="Pool" ColumnName="Pool" />
+                <ScalarProperty Name="Initial" ColumnName="Initial" />
+                <ScalarProperty Name="Editor" ColumnName="Editor" />
+                <ScalarProperty Name="YearHR" ColumnName="YearHR" />
+                <ScalarProperty Name="RankHRID" ColumnName="RankHRID" />
+                <ScalarProperty Name="PositionHRID" ColumnName="PositionHRID" />
+                <ScalarProperty Name="LE" ColumnName="LE" />
+                <ScalarProperty Name="Approval1" ColumnName="Approval1" />
+                <ScalarProperty Name="Approval2" ColumnName="Approval2" />
+                <ScalarProperty Name="Approval3" ColumnName="Approval3" />
+                <ScalarProperty Name="VacLeaveLastYear" ColumnName="VacLeaveLastYear" />
+                <ScalarProperty Name="EarnVacThisYear" ColumnName="EarnVacThisYear" />
+                <ScalarProperty Name="SubYear_HR" ColumnName="SubYear_HR" />
+                <ScalarProperty Name="Box9" ColumnName="Box9" />
+                <ScalarProperty Name="DevelopPlan" ColumnName="DevelopPlan" />
+                <ScalarProperty Name="OldJoinDate" ColumnName="OldJoinDate" />
+                <ScalarProperty Name="PerformanceMGCode" ColumnName="PerformanceMGCode" />
+                <ScalarProperty Name="createDate" ColumnName="createDate" />
+                <ScalarProperty Name="KPMG_User_GPID" ColumnName="KPMG-User-GPID" />
+                <ScalarProperty Name="CreatedDate_JobInfo" ColumnName="CreatedDate_JobInfo" />
+                <ScalarProperty Name="UpdatedDate_JobInfo" ColumnName="UpdatedDate_JobInfo" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="CountryCompute" ColumnName="CountryCompute" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AllInfo_WS">
+            <EntityTypeMapping TypeName="New_HRISModel.AllInfo_WS">
+              <MappingFragment StoreEntitySet="AllInfo_WS">
+                <ScalarProperty Name="EmpNo" ColumnName="EmpNo" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EmpTitle" ColumnName="EmpTitle" />
+                <ScalarProperty Name="EmpFirstName" ColumnName="EmpFirstName" />
+                <ScalarProperty Name="EmpMiddleName" ColumnName="EmpMiddleName" />
+                <ScalarProperty Name="EmpSurname" ColumnName="EmpSurname" />
+                <ScalarProperty Name="EmpFullName" ColumnName="EmpFullName" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="EmpThaiTitle" ColumnName="EmpThaiTitle" />
+                <ScalarProperty Name="EmpThaiFirstName" ColumnName="EmpThaiFirstName" />
+                <ScalarProperty Name="EmpThaiSurName" ColumnName="EmpThaiSurName" />
+                <ScalarProperty Name="EmpThaiName" ColumnName="EmpThaiName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="COMPANY" ColumnName="COMPANY" />
+                <ScalarProperty Name="PI" ColumnName="PI" />
+                <ScalarProperty Name="Pool" ColumnName="Pool" />
+                <ScalarProperty Name="Division" ColumnName="Division" />
+                <ScalarProperty Name="UnitGroup" ColumnName="UnitGroup" />
+                <ScalarProperty Name="UnitGroupID" ColumnName="UnitGroupID" />
+                <ScalarProperty Name="UnitGroupName" ColumnName="UnitGroupName" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="RankHRID" ColumnName="RankHRID" />
+                <ScalarProperty Name="RankCode" ColumnName="RankCode" />
+                <ScalarProperty Name="Rank" ColumnName="Rank" />
+                <ScalarProperty Name="JoinDate" ColumnName="JoinDate" />
+                <ScalarProperty Name="ResignedDate" ColumnName="ResignedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+                <ScalarProperty Name="Assistant" ColumnName="Assistant" />
+                <ScalarProperty Name="AssistantName" ColumnName="AssistantName" />
+                <ScalarProperty Name="AssistantEmail" ColumnName="AssistantEmail" />
+                <ScalarProperty Name="Previous_EmployeeNo" ColumnName="Previous_EmployeeNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

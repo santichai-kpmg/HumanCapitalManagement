@@ -1,0 +1,282 @@
+﻿@model HumanCapitalManagement.ViewModel.MainVM.vCandidate_WorkExp_onchange
+<form class="form-horizontal">
+
+    <div id="pvCandidateWorkExpHistory">
+
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Company Name<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <input type="text" id="txtCompanyName" name="txtCompanyName" class="form-control" data-bind='value: CompanyName' />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require ">Job Position<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <input type="text" id="txtJobPosition" name="txtJobPosition" class="form-control" data-bind='value: JobPosition' />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right require ">Start/End Date<font color=red>*</font> :</label>
+                        <div class="col-md-8">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="input-sm form-control" ID="txtWorkExpStartDate" name="txtWorkExpStartDate"  data-bind="value: StartDate , valueUpdate: 'afterkeydown' " />
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="input-sm form-control" ID="txtWorkExpEndDate" name="txtWorkExpEndDate"  data-bind="value: EndDate  , valueUpdate: 'afterkeydown' " />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+
+                setDatePickerFromTo(GetInputByID("txtWorkExpStartDate"), GetInputByID("txtWorkExpEndDate"));
+
+                //$('.input-daterange').datepicker({
+                //    format: "dd-M-yyyy",
+                //    autoclose: true,
+                //    todayHighlight: true
+                //});
+            </script>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Type Of Related To Job
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                        <label class="control-label">
+                            <input type="radio" name="rdlRelatedToJob" id="rdlRelatedToJob" class="flat-green radio radio-inline" data-bind='iCheck: { checked: TypeOfRelatedToJob }' value="N" checked="checked"> Non-related to job<br>
+                        </label>
+                        <label class="control-label">
+                            <input type="radio" name="rdlRelatedToJob" id="rdlRelatedToJob" class="flat-green radio radio-inline" data-bind='iCheck: { checked: TypeOfRelatedToJob}' value="R"> Related to job<br>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Current / Latest Base Salary (THB)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtbase_salary" name="txtbase_salary" class="form-control" data-bind="value:base_salary " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Transportation Allowance (THB)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txttransportation" name="txttransportation" class="form-control" data-bind="value:transportation " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Mobile Allowance (THB)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtmobile_allowance" name="txtmobile_allowance" class="form-control" data-bind="value:mobile_allowance " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Position Allowance (THB)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtposition_allowance" name="txtposition_allowance" class="form-control" data-bind="value:position_allowance " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Other Allowances (THB)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtother_allowance" name="txtother_allowance" class="form-control" data-bind="value:other_allowance " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Annual Leave (Days)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtannual_leave" name="txtannual_leave" class="form-control" data-bind="value:annual_leave " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">
+                        Variable Bonus (Month)
+                        <font color=red>*</font> :
+                    </label>
+                    <div class="col-md-8">
+                       <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtvariable_bonus" name="txtvariable_bonus" class="form-control" data-bind="value:variable_bonus " />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @*<div class="row">
+                <div class="col-md-12">
+                    <div class="form-group form-group-sm">
+                        <label class="col-md-4 control-label text-right require">
+                            Fixed Bonus (Month)
+                            <font color=red>*</font> :
+                        </label>
+                        <div class="col-md-8">
+                           <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txt" name="txt" class="form-control" data-bind="value: " />
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="form-group form-group-sm">
+                    <label class="col-md-4 control-label text-right require">Expected Salary (THB)<font color=red>*</font> :</label>
+                    <div class="col-md-8">
+                        <input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"  id="txtexpected_salary" name="txtexpected_salary" class="form-control" data-bind="value:expected_salary " />
+                        @*min="1" max="12"*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+<script type="text/javascript">
+    var objModelPVWorkExp = @Html.Raw(Json.Encode(Model));
+    @* var viewModelPVEdu = {
+
+        };
+
+        function BindDataPVEdu(value2) {
+            if (viewModelPVEdu.faculty_id == undefined) {
+                viewModelPVEdu = ko.mapping.fromJS(value2);
+            }
+            else {
+                ko.mapping.fromJS(value2, {}, viewModelPVEdu);
+            }
+        }*@
+
+
+    $(function () {
+        ValidateFormPVWorkExp();
+
+        
+
+        //SetDatePicker(GetInputByID("txtWorkExpStartDate"));
+        $("input[id$=txtWorkExpStartDate]").change(function () {
+            $('#pvCandidateWorkExpHistory').bootstrapValidator('revalidateField', GetElementName("txtWorkExpStartDate", objControl.txtbox));
+        }).keydown(function (e) {
+            if (e.which == 8 || e.which == 46) {
+                $('#pvCandidateWorkExpHistory').bootstrapValidator('updateStatus', GetElementName("txtWorkExpStartDate", objControl.txtbox), "INVALID");
+
+            }
+            });
+
+
+        //SetDatePicker(GetInputByID("txtWorkExpEndDate"));
+        $("input[id$=txtWorkExpEndDate]").change(function () {
+            $('#pvCandidateWorkExpHistory').bootstrapValidator('revalidateField', GetElementName("txtWorkExpEndDate", objControl.txtbox));
+        }).keydown(function (e) {
+            if (e.which == 8 || e.which == 46) {
+                $('#pvCandidateWorkExpHistory').bootstrapValidator('updateStatus', GetElementName("txtWorkExpEndDate", objControl.txtbox), "INVALID");
+
+            }
+        });
+
+    });
+
+    function ValidateFormPVWorkExp() {
+        var objValidatePopUp = {};
+
+        objValidatePopUp[GetElementName("txtCompanyName", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtJobPosition", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtWorkExpStartDate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtWorkExpEndDate", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("rdlRelatedToJob", objControl.radio)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("txtactive_status",objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtbase_salary", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txttransportation", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtmobile_allowance", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtposition_allowance", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtother_allowance", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtannual_leave", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtvariable_bonus", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        objValidatePopUp[GetElementName("txtexpected_salary", objControl.txtbox)] = addValidate_notEmpty("This value is not valid");
+        //objValidatePopUp[GetElementName("rdlRelatedToJob", objControl.radio)] = addValidate_notEmpty("This value is not valid");
+
+        BindValidateBootstrap("pvCandidateWorkExpHistory", objValidatePopUp);
+    }
+
+
+
+</script>

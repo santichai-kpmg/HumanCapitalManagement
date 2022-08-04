@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsMemo" targetNamespace="http://tempuri.org/dsMemo.xsd" xmlns:mstns="http://tempuri.org/dsMemo.xsd" xmlns="http://tempuri.org/dsMemo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsMemo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsMemo" msprop:Generator_UserDSName="dsMemo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dsMain" msprop:Generator_TableClassName="dsMainDataTable" msprop:Generator_TableVarName="tabledsMain" msprop:Generator_RowChangedName="dsMainRowChanged" msprop:Generator_TablePropName="dsMain" msprop:Generator_RowDeletingName="dsMainRowDeleting" msprop:Generator_RowChangingName="dsMainRowChanging" msprop:Generator_RowEvHandlerName="dsMainRowChangeEventHandler" msprop:Generator_RowDeletedName="dsMainRowDeleted" msprop:Generator_RowClassName="dsMainRow" msprop:Generator_UserTableName="dsMain" msprop:Generator_RowEvArgName="dsMainRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="company" msprop:Generator_ColumnVarNameInTable="columncompany" msprop:Generator_ColumnPropNameInRow="company" msprop:Generator_ColumnPropNameInTable="companyColumn" msprop:Generator_UserColumnName="company" type="xs:string" minOccurs="0" />
+              <xs:element name="cost_center" msprop:Generator_ColumnVarNameInTable="columncost_center" msprop:Generator_ColumnPropNameInRow="cost_center" msprop:Generator_ColumnPropNameInTable="cost_centerColumn" msprop:Generator_UserColumnName="cost_center" type="xs:string" minOccurs="0" />
+              <xs:element name="ot" msprop:Generator_ColumnVarNameInTable="columnot" msprop:Generator_ColumnPropNameInRow="ot" msprop:Generator_ColumnPropNameInTable="otColumn" msprop:Generator_UserColumnName="ot" type="xs:decimal" minOccurs="0" />
+              <xs:element name="perdiem" msprop:Generator_ColumnVarNameInTable="columnperdiem" msprop:Generator_ColumnPropNameInRow="perdiem" msprop:Generator_ColumnPropNameInTable="perdiemColumn" msprop:Generator_UserColumnName="perdiem" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+              <xs:element name="standard" msprop:Generator_ColumnVarNameInTable="columnstandard" msprop:Generator_ColumnPropNameInRow="standard" msprop:Generator_ColumnPropNameInTable="standardColumn" msprop:Generator_UserColumnName="standard" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

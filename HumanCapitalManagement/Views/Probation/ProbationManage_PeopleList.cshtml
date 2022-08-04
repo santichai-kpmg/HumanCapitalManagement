@@ -1,0 +1,616 @@
+﻿
+@{
+    ViewBag.Title = "HCM | Probation Manage People List";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Probation Manage People List
+    </h1>
+    <div class="row">
+        <div class="box box-solid">
+            <div class="box-body no-border no-pad-top no-pad-bot">
+                <div class="col-xs-12">
+                    <div class="row" id="search">
+                        <br />
+
+                        <div class="row">
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Probation Start From</span>
+                                    <input ID="startDateFrom" name="startDateFrom" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4" style="display:none;">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Probation End</span>
+                                    <input ID="endDate" name="endDate" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Probation Start Until</span>
+                                    <input ID="startDateUntil" name="startDateUntil" class="form-control text-center" type="text" />
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Status</span>
+                                    <select id="sltStatus" class="form-control">
+                                        <option value="All">All</option>
+                                        <option value="Completed">Completed</option>
+                                        <option value="Incomplete">Incomplete</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Staff Name/ID</span>
+                                    <input type="text" class="form-control " style="display:none;" id="txtMGID" name="txtMGID" disabled>
+                                    <input type="text" id="txtSearch" name="txtSearch" class="form-control" />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon nomallabel">Name</span>
+                                    <input type="text" id="txtName" name="txtName" class="form-control" disabled />
+                                </div>
+                            </div>
+
+                            <div class="form-group form-group-sm col-sm-4  col-xs-4">
+                                <div class="input-group" style="background-color: white;width: 100%;padding: 4px;border: 1px solid lightgray;">
+                                    <input id="concludeY" type="checkbox" name="chkconclude" value="Y" class="square-green"> Include people without probation
+                                </div>
+                            </div>
+
+
+
+                            <div class="row" hidden>
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Group</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtgroup" name="txtgroup" class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" hidden>
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-sm">
+                                        <label class="col-md-4 control-label text-right nomallabel">Rank</label>
+                                        <div class="col-md-8">
+                                            <input type="text" id="txtposition" name="txtposition" class="form-control" disabled />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group form-group-sm col-xs-12  text-left">
+                            <button type="button" class="btn btn-primary" onclick="LoadData('');" style="width:150px;">Search</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Main content -->
+<div class="collapse in">
+    <section class="content no-pad-top ">
+        <form class="form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            Search Results
+                            <div class="box-tools pull-right">
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-body">
+                            <div class="col-md-12 ">
+                                <button id="btnExport" type="button" class="btn btn-success" onclick="ExportData();" style="width:150px;">Export</button>
+                            </div>
+                            <div class="col-md-12">
+
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover display" id="gvwData" width="100%">
+                                        <thead>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+    </section>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+
+    <script src="~/Scripts/plugins/moment/moment.js"></script>
+
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/dataTables.buttons.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.print.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.html5.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.bootstrap.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.flash.js"></script>
+    <script src="~/Scripts/plugins/DataTables2/Buttons-1.5.6/js/buttons.colVis.js"></script>
+    <script type="text/javascript">
+var objModel = @Html.Raw(Json.Encode(Model));
+
+        var objlstData = [];
+
+
+        function ExportData()
+        {
+            window.open('@Url.Action("ProbationExport", "Probation")', '_blank');
+        }
+
+        $(function () {
+        //LoadData('');
+          $('#startDateFrom,#startDateUntil,#endDate').datepicker({
+                format: "dd MM yyyy",
+
+                autoclose: true
+            });
+
+            SetAutocom("txtSearch");
+            SetTable();
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+            SetICheck();
+        });
+
+        function View(sVal) {
+             //   BlockUI();
+        window.open('@Url.Action("ProbationForm", "Probation")?qryStr=' + sVal);
+            //window.location.href = '@Url.Action("ProbationForm", "Probation")?qryStr=' + sVal;
+        }
+
+          function Edit(sVal) {
+          window.open('@Url.Action("ProbationManage_People", "Probation")?qryStr=' + sVal);
+          //  window.location.href = '@Url.Action("ProbationManage_People", "Probation")?qryStr=' + sVal;
+        }
+
+        function Update(sVal) {
+            $.ajax({
+                dataType: AjaxCall.dataType,
+                type: AjaxCall.type,
+                contentType: AjaxCall.contentType,
+                url: '@Url.Action("InactiveForm", "Probation")',
+                data: JSON.stringify({ nid: sVal }),
+                success: function (respone) {
+                    if (respone.result.Status == SysProcess.SessionExpired) {
+                        PopupLogin();
+                    } else if (respone.result.Status == SysProcess.Success) {
+                        LoadData("G");
+                        DialogSuccessOk(DialogHeader.success, "Inactive form completed.");
+                    }
+                    else if (respone.result.Status == SysProcess.Failed) {
+                        DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                    }
+                    else {
+                        DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                    }
+                },
+                error: AjaxCall.error,
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+            });
+
+        }
+
+        function LoadData(type) {
+
+           var startDateFromtxt = $('#startDateFrom').val();
+            var startDateUntiltxt = $('#startDateUntil').val();
+            var endDatetxt = $('#endDate').val();
+            var empNotxt = $('#txtSearch').val();
+            var nametxt = $('#txtName').val();
+            var lastnametxt = $('#txtLastName').val();
+            var statusslt = $('#sltStatus').val();
+            var includecb = GetValCheckBox('concludeY');
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Search_ProbationManage", "Probation")',
+                dataType: "json",
+                data: {
+                   startFrom: startDateFromtxt,
+                    startUntil: startDateUntiltxt,
+                    end: endDatetxt,
+                    status: statusslt,
+                    empno: empNotxt,
+                    type: statusslt,
+                    without: includecb,
+                    PageType: "A"
+                    //lastname: lastnametxt
+                },
+                success: function (respone) {
+
+
+                        var getdata = respone.result.lstDataManage;
+                        if (getdata != undefined && getdata != null && getdata.length > 0) {
+
+                            $('#gvwData').DataTable().clear().draw();
+
+                            $('#gvwData').dataTable().fnAddData(getdata);
+                            $('#gvwData').dataTable().fnDraw();
+                            $('#gvwData').DataTable().columns.adjust().draw();
+
+                            objlstData = getdata;
+
+                                 //setbutton ();
+
+                        }
+                        else {
+                            $('#gvwData').DataTable().clear().draw();
+                            $('#gvwData').dataTable().fnDraw();
+
+                            objlstData = [];
+                        }
+
+
+                },
+                complete: function (jqXHR, status) {//finaly
+                    UnblockUI();
+                }
+            });
+        }
+        function setbutton ()
+        {
+        $('#gvwData').DataTable({
+                                     destroy: true,
+                                     dom: "Bfrtip",
+                                     searching: false,
+                                     paging: false,
+                                     lengthChange: true,
+                                         buttons: [{
+                                         extend: 'csv',
+                                         text: 'Export',
+                                         exportOptions: {
+                                             modifier: {
+                                                 page: 'all'
+                                                         }
+                                                     }
+                                         }, 'copyHtml5'
+                                            ]
+                                     });
+        }
+        function SetTable() {
+
+            var objHeadClRequest = [
+                { "title": "View", "width": "2%", "className": "dt-center-ctm", "data": "View" },
+                { "title": "Edit", "width": "2%", "className": "dt-center-ctm", "data": "Edit" },
+                { "title": "Inactive", "width": "2%", "className": "dt-center-ctm", "data": "Update" },
+                { "title": " Staff No.", "width": "5%", "className": "dt-left-ctm", "data": "Staff_No" },
+                { "title": " Name", "width": "20%", "className": "dt-left-ctm", "data": "Staff_Name" },
+                { "title": " Company Code", "width": "10%", "className": "dt-left-ctm", "data": "Company" },
+                { "title": " Cost Center", "width": "10%", "className": "dt-left-ctm", "data": "Cost_Center" },
+                { "title": " Probation Start", "width": "10%", "className": "dt-center-ctm", "data": "Start_Pro" },
+                { "title": " Probation End", "width": "10%", "className": "dt-center-ctm", "data": "End_Pro" },
+                { "title": " PM", "width": "15%", "className": "dt-left-ctm", "data": "PM_Name" },
+                { "title": " Group Head", "width": "15%", "className": "dt-left-ctm", "data": "GroupHead_Name" },
+                { "title": " HOP", "width": "15%", "className": "dt-left-ctm", "data": "HOP_Name" },
+                { "title": " Create Date", "width": "10%", "className": "dt-left-ctm", "data": "Create_Date", "visible": false},
+                { "title": " Sent To", "width": "5%", "className": "dt-center-ctm", "data": "Status" },
+                { "title": " Status", "width": "5%", "className": "dt-center-ctm", "data": "Assessment" }
+
+
+            ];
+            var objTableRe = {
+                sTableID: "gvwData",
+
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                EmptyTable: EmptyTable,
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                nHeadFix: 5,
+                //rowGroup: {
+                //    dataSrc: 'Test_name_en'
+                //},
+                columnDefs: [
+                    {
+                        "type": "date",
+                        "targets": 7
+                    }, {
+                        "type": "date",
+                        "targets":8
+                    },
+                    {
+                        "render": function (data, type, row) {
+                            return data == "Completed" ? "<span class='text-success'>Completed</span>" : data == "Revise" ? "<span class='text-danger'>Revise</span>" : data== "Without" ? "<span class='text-warning'>Without</span>" : data;
+                        },
+                        "targets": 13
+                    }
+                ]
+            };
+            CreatTableJS(objTableRe);
+        }
+
+        function SaveData(){
+            var IsPass = true;
+            if (IsPass) {
+                $("#PopupSave").modal('hide');
+                BlockUI();
+                var lstParam = GetData();
+                $.ajax({
+                    dataType: AjaxCall.dataType,
+                    type: AjaxCall.type,
+                    contentType: AjaxCall.contentType,
+                    url:'@Url.Action("Approve_Feedback", "Feedbacks")',
+                    data: JSON.stringify({ lstid: lstParam}),
+                    success: function (respone) {
+                        if (respone.result.Status == SysProcess.SessionExpired) {
+                            PopupLogin();
+                        } else if (respone.result.Status == SysProcess.Success) {
+                            DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+
+                                LoadData("G");
+                            });
+                        }
+                        else if (respone.result.Status == SysProcess.Failed)
+                        {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                        else {
+                            DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                        }
+                    },
+                    error: AjaxCall.error,
+                    complete: function (jqXHR, status) {//finaly
+                        UnblockUI();
+                    }
+                });
+            }
+        }
+
+        function Save() {
+            var Acceptlst = [];
+            Enumerable.From(objlstData).ForEach(function (ed) { return ed.statusvalue = GetValueChkGroupSingelValue(ed.Id + ""); });
+
+            Acceptlst = Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ToArray();
+            var $Accept = GetLabelByID("lblAccept");
+
+            if (Acceptlst.length == 0) {
+                DialogWarning(DialogHeader.Warning, "Please select at least one item.");
+            }
+            else {
+
+                if (Acceptlst.length > 0) {
+                    //var AcceptNumber = Enumerable.From(Acceptlst).Sum(function (s) { return ConvertToIntNotnull(s.AMOUNT_AMT) });
+                    //var strReturnAccept = 'Do you want to print ' + Acceptlst.length + ' entries?';
+                    //$Accept.text(strReturnAccept);
+                }
+                else {
+                    // $Accept.text('Not specify.');
+                }
+                SaveData();
+                //$("#PopupSave").modal();
+            }
+        }
+
+        function GetData() {
+            var lstData = "";
+            Enumerable.From(objlstData).Where(function (w) { return w.statusvalue == "Y" }).ForEach(function (ed) {
+                lstData += ed.Id + ",";
+            });
+
+            return lstData;
+        }
+
+    </script>
+    @*Script for bind Data KnockOut*@
+    <script type="text/javascript">
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+
+                    });
+
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+        }
+        function BindData(value) {
+            if (viewModel == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+
+            }
+
+
+        }
+        function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+            $('.nameget').text(vName);
+            if (vID != "")
+            {
+                getimage(vID);
+            }
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+
+
+
+
+           function ClearAuto(vName, vGroup, vPosition, vID) {
+             GetInputByID("txtName").val(vName);
+             GetInputByID("txtgroup").val(vGroup);
+             GetInputByID("txtposition").val(vPosition);
+            GetInputByID("txtMGID").val(vID);
+
+         }
+
+        function SetAutocom(txtTarget) {
+            $("input[id$=" + txtTarget + "]").on("keyup", function () {
+                ClearAuto("", "", "", "");
+            });
+            $("input[id$=" + txtTarget + "]").autocomplete({
+                //disabled: true,
+                source: function (request, response) {
+                    $.ajax({
+                        dataType: AjaxCall.dataType,
+                        global: false,
+                        type: AjaxCall.type,
+                        contentType: AjaxCall.contentType,
+                        url: '@Url.Action("UserAutoCompleteAll", "HCMMasterData")',
+                        data: JSON.stringify({ SearchItem: request.term }),
+                        success: function (data) {
+                            UnblockUI();
+                            response($.map(data, function (item) {
+                                return {
+                                    value: item.id,
+                                    label: item.id + " : " + item.user_name,
+                                    user_id: item.user_id,
+                                    user_no: item.id,
+                                    user_name: item.user_name,
+                                    unit_name: item.unit_name,
+                                    user_rank: item.user_rank,
+                                }
+                            }));
+                        }
+                    });
+                },
+                minLength: 1,
+                select: function (event, ui) {
+                    ClearAuto(ui.item.user_name, ui.item.unit_name, ui.item.user_rank, ui.item.user_no);
+
+                }
+
+            });
+        }
+          function SetICheck() {
+
+
+            $('.square-green input[type="checkbox"],.square-green input[type="radio"]').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            $('input[type="checkbox"].square-green,input[type="radio"].square-green').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green'
+            });
+
+            }
+    </script>
+}
+<!-- /.content -->

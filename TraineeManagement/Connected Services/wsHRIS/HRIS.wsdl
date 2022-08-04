@@ -1,0 +1,2721 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://th.kpmg.intranet/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://th.kpmg.intranet/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">HRIS Web Service</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://th.kpmg.intranet/">
+      <s:element name="getEmployeeInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empIdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="active" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pool" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rank" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomEmployeeInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empIdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="active" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pool" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pi" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rank" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unitgroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCustomEmployeeInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCustomEmployeeInfoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllActiveStaff">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllActiveStaffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllActiveStaffResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllStaff">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllStaffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllStaffResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getActiveStaffByEmpNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getActiveStaffByEmpNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getActiveStaffByEmpNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getActiveStaffByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getActiveStaffByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getActiveStaffByUserIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByEmpNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByEmpNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeInfoByEmpNoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByEmpNoMultiple">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByEmpNoMultipleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeInfoByEmpNoMultipleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeInfoByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeInfoByUserIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeNoByUname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeNoByUnameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeNoByUnameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empIdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="middlename" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="prefix" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empIdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeEmailResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserIDByEmployeeNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUserIDByEmployeeNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUserIDByEmployeeNoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeNoByUserID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEmployeeNoByUserIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEmployeeNoByUserIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isActiveEmployee">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="empIdType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="empId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isActiveEmployeeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isActiveEmployeeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <s:complexType />
+      </s:element>
+      <s:element name="WS_GetEmployeeDetailDataSet_No_ParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_GetEmployeeDetailDataSet_No_ParameterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_GetEmployeeDetailDataSet_With_ParameterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_GetEmployeeDetailDataSet_With_ParameterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_CheckActiveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Param" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_CheckActiveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_CheckActiveUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompanyList">
+        <s:complexType />
+      </s:element>
+      <s:element name="CompanyListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DepartmentList">
+        <s:complexType />
+      </s:element>
+      <s:element name="DepartmentListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DepartmentListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getITOutsource">
+        <s:complexType />
+      </s:element>
+      <s:element name="getITOutsourceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getITOutsourceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllRank">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllRankResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllRankResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllRankJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoolID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RankID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllRankJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllRankJobResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllPool">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllPoolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllPoolResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnitGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoolID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnitGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllUnitGroupResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompanyID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PoolID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitGroupID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllUnitResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnitGroupHead">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoolID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitGroupID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ByRank" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllUnitGroupHeadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllUnitGroupHeadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllRoleHead">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoleID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllRoleHeadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllRoleHeadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllPoolHead">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PoolID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllPoolHeadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllPoolHeadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Holiday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Year" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_HolidayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_HolidayResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getEmployeeInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfo" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCustomEmployeeInfo" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCustomEmployeeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllActiveStaffSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllActiveStaff" />
+  </wsdl:message>
+  <wsdl:message name="getAllActiveStaffSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllActiveStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllStaffSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllStaff" />
+  </wsdl:message>
+  <wsdl:message name="getAllStaffSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllStaffResponse" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoSoapIn">
+    <wsdl:part name="parameters" element="tns:getActiveStaffByEmpNo" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoSoapOut">
+    <wsdl:part name="parameters" element="tns:getActiveStaffByEmpNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getActiveStaffByUserID" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getActiveStaffByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByEmpNo" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByEmpNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByEmpNoMultiple" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByEmpNoMultipleResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByUserID" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeInfoByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeNoByUname" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeNoByUnameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeName" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeEmail" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoSoapIn">
+    <wsdl:part name="parameters" element="tns:getUserIDByEmployeeNo" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoSoapOut">
+    <wsdl:part name="parameters" element="tns:getUserIDByEmployeeNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getEmployeeNoByUserID" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getEmployeeNoByUserIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeSoapIn">
+    <wsdl:part name="parameters" element="tns:isActiveEmployee" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeSoapOut">
+    <wsdl:part name="parameters" element="tns:isActiveEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_GetEmployeeDetailDataSet_No_Parameter" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_GetEmployeeDetailDataSet_No_ParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_GetEmployeeDetailDataSet_With_Parameter" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_GetEmployeeDetailDataSet_With_ParameterResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_CheckActiveUser" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_CheckActiveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompanyListSoapIn">
+    <wsdl:part name="parameters" element="tns:CompanyList" />
+  </wsdl:message>
+  <wsdl:message name="CompanyListSoapOut">
+    <wsdl:part name="parameters" element="tns:CompanyListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DepartmentListSoapIn">
+    <wsdl:part name="parameters" element="tns:DepartmentList" />
+  </wsdl:message>
+  <wsdl:message name="DepartmentListSoapOut">
+    <wsdl:part name="parameters" element="tns:DepartmentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getITOutsourceSoapIn">
+    <wsdl:part name="parameters" element="tns:getITOutsource" />
+  </wsdl:message>
+  <wsdl:message name="getITOutsourceSoapOut">
+    <wsdl:part name="parameters" element="tns:getITOutsourceResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllRank" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllRankResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllRankJob" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllRankJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllPool" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllPoolResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllUnitGroup" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllUnitGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllUnit" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllUnitGroupHead" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllUnitGroupHeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllRoleHead" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllRoleHeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllPoolHead" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllPoolHeadResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidaySoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Holiday" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidaySoapOut">
+    <wsdl:part name="parameters" element="tns:Get_HolidayResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoHttpGetIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="active" type="s:string" />
+    <wsdl:part name="pool" type="s:string" />
+    <wsdl:part name="pi" type="s:string" />
+    <wsdl:part name="comp" type="s:string" />
+    <wsdl:part name="rank" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoHttpGetIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="active" type="s:string" />
+    <wsdl:part name="pool" type="s:string" />
+    <wsdl:part name="pi" type="s:string" />
+    <wsdl:part name="comp" type="s:string" />
+    <wsdl:part name="rank" type="s:string" />
+    <wsdl:part name="unitgroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllActiveStaffHttpGetIn" />
+  <wsdl:message name="getAllActiveStaffHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllStaffHttpGetIn" />
+  <wsdl:message name="getAllStaffHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoHttpGetIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoHttpGetIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleHttpGetIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDHttpGetIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameHttpGetIn">
+    <wsdl:part name="uname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameHttpGetIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="middlename" type="s:string" />
+    <wsdl:part name="prefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailHttpGetIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoHttpGetIn">
+    <wsdl:part name="empNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDHttpGetIn">
+    <wsdl:part name="userID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeHttpGetIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterHttpGetIn" />
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterHttpGetIn">
+    <wsdl:part name="EmployeeNo" type="s:string" />
+    <wsdl:part name="ColumnName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserHttpGetIn">
+    <wsdl:part name="Param" type="s:string" />
+    <wsdl:part name="Type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CompanyListHttpGetIn" />
+  <wsdl:message name="CompanyListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="DepartmentListHttpGetIn" />
+  <wsdl:message name="DepartmentListHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getITOutsourceHttpGetIn" />
+  <wsdl:message name="getITOutsourceHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankHttpGetIn" />
+  <wsdl:message name="getAllRankHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobHttpGetIn">
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="RankID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHttpGetIn" />
+  <wsdl:message name="getAllPoolHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHttpGetIn">
+    <wsdl:part name="PoolID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitHttpGetIn">
+    <wsdl:part name="CompanyID" type="s:string" />
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="UnitGroupID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadHttpGetIn">
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="UnitGroupID" type="s:string" />
+    <wsdl:part name="ByRank" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadHttpGetIn">
+    <wsdl:part name="RoleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadHttpGetIn">
+    <wsdl:part name="PoolID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidayHttpGetIn">
+    <wsdl:part name="Year" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidayHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoHttpPostIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="active" type="s:string" />
+    <wsdl:part name="pool" type="s:string" />
+    <wsdl:part name="pi" type="s:string" />
+    <wsdl:part name="comp" type="s:string" />
+    <wsdl:part name="rank" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoHttpPostIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="active" type="s:string" />
+    <wsdl:part name="pool" type="s:string" />
+    <wsdl:part name="pi" type="s:string" />
+    <wsdl:part name="comp" type="s:string" />
+    <wsdl:part name="rank" type="s:string" />
+    <wsdl:part name="unitgroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getCustomEmployeeInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllActiveStaffHttpPostIn" />
+  <wsdl:message name="getAllActiveStaffHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllStaffHttpPostIn" />
+  <wsdl:message name="getAllStaffHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoHttpPostIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByEmpNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getActiveStaffByUserIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoHttpPostIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleHttpPostIn">
+    <wsdl:part name="empno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByEmpNoMultipleHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDHttpPostIn">
+    <wsdl:part name="userid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeInfoByUserIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameHttpPostIn">
+    <wsdl:part name="uname" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUnameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameHttpPostIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+    <wsdl:part name="middlename" type="s:string" />
+    <wsdl:part name="prefix" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailHttpPostIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeEmailHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoHttpPostIn">
+    <wsdl:part name="empNo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getUserIDByEmployeeNoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDHttpPostIn">
+    <wsdl:part name="userID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getEmployeeNoByUserIDHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeHttpPostIn">
+    <wsdl:part name="empIdType" type="s:string" />
+    <wsdl:part name="empId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="isActiveEmployeeHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterHttpPostIn" />
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_No_ParameterHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterHttpPostIn">
+    <wsdl:part name="EmployeeNo" type="s:string" />
+    <wsdl:part name="ColumnName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_GetEmployeeDetailDataSet_With_ParameterHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserHttpPostIn">
+    <wsdl:part name="Param" type="s:string" />
+    <wsdl:part name="Type" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="WS_CheckActiveUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="CompanyListHttpPostIn" />
+  <wsdl:message name="CompanyListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="DepartmentListHttpPostIn" />
+  <wsdl:message name="DepartmentListHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getITOutsourceHttpPostIn" />
+  <wsdl:message name="getITOutsourceHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankHttpPostIn" />
+  <wsdl:message name="getAllRankHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobHttpPostIn">
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="RankID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllRankJobHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHttpPostIn" />
+  <wsdl:message name="getAllPoolHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHttpPostIn">
+    <wsdl:part name="PoolID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitHttpPostIn">
+    <wsdl:part name="CompanyID" type="s:string" />
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="UnitGroupID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadHttpPostIn">
+    <wsdl:part name="PoolID" type="s:string" />
+    <wsdl:part name="UnitGroupID" type="s:string" />
+    <wsdl:part name="ByRank" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllUnitGroupHeadHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadHttpPostIn">
+    <wsdl:part name="RoleID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllRoleHeadHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadHttpPostIn">
+    <wsdl:part name="PoolID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getAllPoolHeadHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidayHttpPostIn">
+    <wsdl:part name="Year" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Get_HolidayHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="HRISSoap">
+    <wsdl:operation name="getEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoSoapIn" />
+      <wsdl:output message="tns:getEmployeeInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getCustomEmployeeInfoSoapIn" />
+      <wsdl:output message="tns:getCustomEmployeeInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all active staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllActiveStaffSoapIn" />
+      <wsdl:output message="tns:getAllActiveStaffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllStaffSoapIn" />
+      <wsdl:output message="tns:getAllStaffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by employee number</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByEmpNoSoapIn" />
+      <wsdl:output message="tns:getActiveStaffByEmpNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByUserIDSoapIn" />
+      <wsdl:output message="tns:getActiveStaffByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoSoapIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by Multiple EmployeeNo Separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoMultipleSoapIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoMultipleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByUserIDSoapIn" />
+      <wsdl:output message="tns:getEmployeeInfoByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUnameSoapIn" />
+      <wsdl:output message="tns:getEmployeeNoByUnameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNameSoapIn" />
+      <wsdl:output message="tns:getEmployeeNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee e-mail by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeEmailSoapIn" />
+      <wsdl:output message="tns:getEmployeeEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get UserID by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getUserIDByEmployeeNoSoapIn" />
+      <wsdl:output message="tns:getUserIDByEmployeeNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get EmployeeNo by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUserIDSoapIn" />
+      <wsdl:output message="tns:getEmployeeNoByUserIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check active user by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:isActiveEmployeeSoapIn" />
+      <wsdl:output message="tns:isActiveEmployeeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail: Return DataSet</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterSoapIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail By EmployeeNo: Return DataSet&lt;br/&gt;Column Name: Employeeno, Employeename, Employeesurname,RankID, RankName, UserID, Status, RankHRID, UnitGroup, Division,&lt;br/&gt; Company, BankID, Prefix, Pool, Email, fullname, PI, employeemidname, JoinDate</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterSoapIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive user by sending these as below &lt;br/&gt;Param: UserID or Staff Number&lt;br/&gt; Type: U or K</wsdl:documentation>
+      <wsdl:input message="tns:WS_CheckActiveUserSoapIn" />
+      <wsdl:output message="tns:WS_CheckActiveUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="CompanyList" message="tns:CompanyListSoapIn" />
+      <wsdl:output name="CompanyList" message="tns:CompanyListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="DepartmentList" message="tns:DepartmentListSoapIn" />
+      <wsdl:output name="DepartmentList" message="tns:DepartmentListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get IT Outsource</wsdl:documentation>
+      <wsdl:input message="tns:getITOutsourceSoapIn" />
+      <wsdl:output message="tns:getITOutsourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankSoapIn" />
+      <wsdl:output message="tns:getAllRankSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank level</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankJobSoapIn" />
+      <wsdl:output message="tns:getAllRankJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolSoapIn" />
+      <wsdl:output message="tns:getAllPoolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupSoapIn" />
+      <wsdl:output message="tns:getAllUnitGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitSoapIn" />
+      <wsdl:output message="tns:getAllUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group head (unitgroupid and poolid can be multiple that separate by comma, ByRank is true or false)</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupHeadSoapIn" />
+      <wsdl:output message="tns:getAllUnitGroupHeadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all role head (roleid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllRoleHeadSoapIn" />
+      <wsdl:output message="tns:getAllRoleHeadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool head (poolid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolHeadSoapIn" />
+      <wsdl:output message="tns:getAllPoolHeadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get holiday : multi year separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:Get_HolidaySoapIn" />
+      <wsdl:output message="tns:Get_HolidaySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HRISHttpGet">
+    <wsdl:operation name="getEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getCustomEmployeeInfoHttpGetIn" />
+      <wsdl:output message="tns:getCustomEmployeeInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all active staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllActiveStaffHttpGetIn" />
+      <wsdl:output message="tns:getAllActiveStaffHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllStaffHttpGetIn" />
+      <wsdl:output message="tns:getAllStaffHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by employee number</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByEmpNoHttpGetIn" />
+      <wsdl:output message="tns:getActiveStaffByEmpNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByUserIDHttpGetIn" />
+      <wsdl:output message="tns:getActiveStaffByUserIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by Multiple EmployeeNo Separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoMultipleHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoMultipleHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByUserIDHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeInfoByUserIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUnameHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeNoByUnameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNameHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee e-mail by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeEmailHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeEmailHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get UserID by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getUserIDByEmployeeNoHttpGetIn" />
+      <wsdl:output message="tns:getUserIDByEmployeeNoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get EmployeeNo by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUserIDHttpGetIn" />
+      <wsdl:output message="tns:getEmployeeNoByUserIDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check active user by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:isActiveEmployeeHttpGetIn" />
+      <wsdl:output message="tns:isActiveEmployeeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail: Return DataSet</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterHttpGetIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail By EmployeeNo: Return DataSet&lt;br/&gt;Column Name: Employeeno, Employeename, Employeesurname,RankID, RankName, UserID, Status, RankHRID, UnitGroup, Division,&lt;br/&gt; Company, BankID, Prefix, Pool, Email, fullname, PI, employeemidname, JoinDate</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterHttpGetIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive user by sending these as below &lt;br/&gt;Param: UserID or Staff Number&lt;br/&gt; Type: U or K</wsdl:documentation>
+      <wsdl:input message="tns:WS_CheckActiveUserHttpGetIn" />
+      <wsdl:output message="tns:WS_CheckActiveUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="CompanyList" message="tns:CompanyListHttpGetIn" />
+      <wsdl:output name="CompanyList" message="tns:CompanyListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="DepartmentList" message="tns:DepartmentListHttpGetIn" />
+      <wsdl:output name="DepartmentList" message="tns:DepartmentListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get IT Outsource</wsdl:documentation>
+      <wsdl:input message="tns:getITOutsourceHttpGetIn" />
+      <wsdl:output message="tns:getITOutsourceHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankHttpGetIn" />
+      <wsdl:output message="tns:getAllRankHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank level</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankJobHttpGetIn" />
+      <wsdl:output message="tns:getAllRankJobHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolHttpGetIn" />
+      <wsdl:output message="tns:getAllPoolHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupHttpGetIn" />
+      <wsdl:output message="tns:getAllUnitGroupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitHttpGetIn" />
+      <wsdl:output message="tns:getAllUnitHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group head (unitgroupid and poolid can be multiple that separate by comma, ByRank is true or false)</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupHeadHttpGetIn" />
+      <wsdl:output message="tns:getAllUnitGroupHeadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all role head (roleid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllRoleHeadHttpGetIn" />
+      <wsdl:output message="tns:getAllRoleHeadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool head (poolid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolHeadHttpGetIn" />
+      <wsdl:output message="tns:getAllPoolHeadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get holiday : multi year separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:Get_HolidayHttpGetIn" />
+      <wsdl:output message="tns:Get_HolidayHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HRISHttpPost">
+    <wsdl:operation name="getEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all Thai employee records, included resign staff (indicated (Resign) for field EmpName/EmpFullName). **Input empty string for non-filter.</wsdl:documentation>
+      <wsdl:input message="tns:getCustomEmployeeInfoHttpPostIn" />
+      <wsdl:output message="tns:getCustomEmployeeInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all active staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllActiveStaffHttpPostIn" />
+      <wsdl:output message="tns:getAllActiveStaffHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all staff</wsdl:documentation>
+      <wsdl:input message="tns:getAllStaffHttpPostIn" />
+      <wsdl:output message="tns:getAllStaffHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by employee number</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByEmpNoHttpPostIn" />
+      <wsdl:output message="tns:getActiveStaffByEmpNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get active staff by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getActiveStaffByUserIDHttpPostIn" />
+      <wsdl:output message="tns:getActiveStaffByUserIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by Multiple EmployeeNo Separate by comma</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByEmpNoMultipleHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeInfoByEmpNoMultipleHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee info by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeInfoByUserIDHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeInfoByUserIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUnameHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeNoByUnameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee full name with by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNameHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get employee e-mail by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeEmailHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeEmailHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get UserID by EmployeeNo</wsdl:documentation>
+      <wsdl:input message="tns:getUserIDByEmployeeNoHttpPostIn" />
+      <wsdl:output message="tns:getUserIDByEmployeeNoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get EmployeeNo by UserID</wsdl:documentation>
+      <wsdl:input message="tns:getEmployeeNoByUserIDHttpPostIn" />
+      <wsdl:output message="tns:getEmployeeNoByUserIDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check active user by EmployeeNo or UserID</wsdl:documentation>
+      <wsdl:input message="tns:isActiveEmployeeHttpPostIn" />
+      <wsdl:output message="tns:isActiveEmployeeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail: Return DataSet</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterHttpPostIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter" message="tns:WS_GetEmployeeDetailDataSet_No_ParameterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get All Active Employee Detail By EmployeeNo: Return DataSet&lt;br/&gt;Column Name: Employeeno, Employeename, Employeesurname,RankID, RankName, UserID, Status, RankHRID, UnitGroup, Division,&lt;br/&gt; Company, BankID, Prefix, Pool, Email, fullname, PI, employeemidname, JoinDate</wsdl:documentation>
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterHttpPostIn" />
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter" message="tns:WS_GetEmployeeDetailDataSet_With_ParameterHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check Active or Inactive user by sending these as below &lt;br/&gt;Param: UserID or Staff Number&lt;br/&gt; Type: U or K</wsdl:documentation>
+      <wsdl:input message="tns:WS_CheckActiveUserHttpPostIn" />
+      <wsdl:output message="tns:WS_CheckActiveUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="CompanyList" message="tns:CompanyListHttpPostIn" />
+      <wsdl:output name="CompanyList" message="tns:CompanyListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get legal company name</wsdl:documentation>
+      <wsdl:input name="DepartmentList" message="tns:DepartmentListHttpPostIn" />
+      <wsdl:output name="DepartmentList" message="tns:DepartmentListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get IT Outsource</wsdl:documentation>
+      <wsdl:input message="tns:getITOutsourceHttpPostIn" />
+      <wsdl:output message="tns:getITOutsourceHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankHttpPostIn" />
+      <wsdl:output message="tns:getAllRankHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all rank level</wsdl:documentation>
+      <wsdl:input message="tns:getAllRankJobHttpPostIn" />
+      <wsdl:output message="tns:getAllRankJobHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolHttpPostIn" />
+      <wsdl:output message="tns:getAllPoolHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupHttpPostIn" />
+      <wsdl:output message="tns:getAllUnitGroupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitHttpPostIn" />
+      <wsdl:output message="tns:getAllUnitHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all unit group head (unitgroupid and poolid can be multiple that separate by comma, ByRank is true or false)</wsdl:documentation>
+      <wsdl:input message="tns:getAllUnitGroupHeadHttpPostIn" />
+      <wsdl:output message="tns:getAllUnitGroupHeadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all role head (roleid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllRoleHeadHttpPostIn" />
+      <wsdl:output message="tns:getAllRoleHeadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get all pool head (poolid can be multiple that separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:getAllPoolHeadHttpPostIn" />
+      <wsdl:output message="tns:getAllPoolHeadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get holiday : multi year separate by comma)</wsdl:documentation>
+      <wsdl:input message="tns:Get_HolidayHttpPostIn" />
+      <wsdl:output message="tns:Get_HolidayHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HRISSoap" type="tns:HRISSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getEmployeeInfo">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <soap:operation soapAction="http://th.kpmg.intranet/getCustomEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllActiveStaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllStaff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <soap:operation soapAction="http://th.kpmg.intranet/getActiveStaffByEmpNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <soap:operation soapAction="http://th.kpmg.intranet/getActiveStaffByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByEmpNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByEmpNoMultiple" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeNoByUname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <soap:operation soapAction="http://th.kpmg.intranet/getUserIDByEmployeeNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <soap:operation soapAction="http://th.kpmg.intranet/getEmployeeNoByUserID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <soap:operation soapAction="http://th.kpmg.intranet/isActiveEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <soap:operation soapAction="http://th.kpmg.intranet/WS_GetEmployeeDetailDataSet_No_Parameter" style="document" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <soap:operation soapAction="http://th.kpmg.intranet/WS_GetEmployeeDetailDataSet_With_Parameter" style="document" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <soap:operation soapAction="http://th.kpmg.intranet/WS_CheckActiveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <soap:operation soapAction="http://th.kpmg.intranet/CompanyList" style="document" />
+      <wsdl:input name="CompanyList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CompanyList">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <soap:operation soapAction="http://th.kpmg.intranet/DepartmentList" style="document" />
+      <wsdl:input name="DepartmentList">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DepartmentList">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <soap:operation soapAction="http://th.kpmg.intranet/getITOutsource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllRank" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllRankJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllPool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllUnitGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllUnitGroupHead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllRoleHead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <soap:operation soapAction="http://th.kpmg.intranet/getAllPoolHead" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <soap:operation soapAction="http://th.kpmg.intranet/Get_Holiday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HRISSoap12" type="tns:HRISSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getEmployeeInfo">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getCustomEmployeeInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllActiveStaff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllStaff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getActiveStaffByEmpNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getActiveStaffByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByEmpNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByEmpNoMultiple" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeInfoByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeNoByUname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getUserIDByEmployeeNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getEmployeeNoByUserID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <soap12:operation soapAction="http://th.kpmg.intranet/isActiveEmployee" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <soap12:operation soapAction="http://th.kpmg.intranet/WS_GetEmployeeDetailDataSet_No_Parameter" style="document" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <soap12:operation soapAction="http://th.kpmg.intranet/WS_GetEmployeeDetailDataSet_With_Parameter" style="document" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <soap12:operation soapAction="http://th.kpmg.intranet/WS_CheckActiveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <soap12:operation soapAction="http://th.kpmg.intranet/CompanyList" style="document" />
+      <wsdl:input name="CompanyList">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CompanyList">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <soap12:operation soapAction="http://th.kpmg.intranet/DepartmentList" style="document" />
+      <wsdl:input name="DepartmentList">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DepartmentList">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getITOutsource" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllRank" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllRankJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllPool" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllUnitGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllUnitGroupHead" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllRoleHead" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <soap12:operation soapAction="http://th.kpmg.intranet/getAllPoolHead" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <soap12:operation soapAction="http://th.kpmg.intranet/Get_Holiday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HRISHttpGet" type="tns:HRISHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getEmployeeInfo">
+      <http:operation location="/getEmployeeInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <http:operation location="/getCustomEmployeeInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <http:operation location="/getAllActiveStaff" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <http:operation location="/getAllStaff" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <http:operation location="/getActiveStaffByEmpNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <http:operation location="/getActiveStaffByUserID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <http:operation location="/getEmployeeInfoByEmpNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <http:operation location="/getEmployeeInfoByEmpNoMultiple" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <http:operation location="/getEmployeeInfoByUserID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <http:operation location="/getEmployeeNoByUname" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <http:operation location="/getEmployeeName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <http:operation location="/getEmployeeEmail" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <http:operation location="/getUserIDByEmployeeNo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <http:operation location="/getEmployeeNoByUserID" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <http:operation location="/isActiveEmployee" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <http:operation location="/WS_GetEmployeeDetailDataSet_No_Parameter" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <http:operation location="/WS_GetEmployeeDetailDataSet_With_Parameter" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <http:operation location="/WS_CheckActiveUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <http:operation location="/CompanyList" />
+      <wsdl:input name="CompanyList">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="CompanyList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <http:operation location="/DepartmentList" />
+      <wsdl:input name="DepartmentList">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="DepartmentList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <http:operation location="/getITOutsource" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <http:operation location="/getAllRank" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <http:operation location="/getAllRankJob" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <http:operation location="/getAllPool" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <http:operation location="/getAllUnitGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <http:operation location="/getAllUnit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <http:operation location="/getAllUnitGroupHead" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <http:operation location="/getAllRoleHead" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <http:operation location="/getAllPoolHead" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <http:operation location="/Get_Holiday" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HRISHttpPost" type="tns:HRISHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getEmployeeInfo">
+      <http:operation location="/getEmployeeInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCustomEmployeeInfo">
+      <http:operation location="/getCustomEmployeeInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllActiveStaff">
+      <http:operation location="/getAllActiveStaff" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllStaff">
+      <http:operation location="/getAllStaff" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByEmpNo">
+      <http:operation location="/getActiveStaffByEmpNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getActiveStaffByUserID">
+      <http:operation location="/getActiveStaffByUserID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNo">
+      <http:operation location="/getEmployeeInfoByEmpNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByEmpNoMultiple">
+      <http:operation location="/getEmployeeInfoByEmpNoMultiple" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeInfoByUserID">
+      <http:operation location="/getEmployeeInfoByUserID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUname">
+      <http:operation location="/getEmployeeNoByUname" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeName">
+      <http:operation location="/getEmployeeName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeEmail">
+      <http:operation location="/getEmployeeEmail" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserIDByEmployeeNo">
+      <http:operation location="/getUserIDByEmployeeNo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployeeNoByUserID">
+      <http:operation location="/getEmployeeNoByUserID" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isActiveEmployee">
+      <http:operation location="/isActiveEmployee" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <http:operation location="/WS_GetEmployeeDetailDataSet_No_Parameter" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_No_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_GetEmployeeDetailDataSet">
+      <http:operation location="/WS_GetEmployeeDetailDataSet_With_Parameter" />
+      <wsdl:input name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="WS_GetEmployeeDetailDataSet_With_Parameter">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_CheckActiveUser">
+      <http:operation location="/WS_CheckActiveUser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCompany">
+      <http:operation location="/CompanyList" />
+      <wsdl:input name="CompanyList">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="CompanyList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartment">
+      <http:operation location="/DepartmentList" />
+      <wsdl:input name="DepartmentList">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="DepartmentList">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getITOutsource">
+      <http:operation location="/getITOutsource" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRank">
+      <http:operation location="/getAllRank" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRankJob">
+      <http:operation location="/getAllRankJob" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPool">
+      <http:operation location="/getAllPool" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroup">
+      <http:operation location="/getAllUnitGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnit">
+      <http:operation location="/getAllUnit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllUnitGroupHead">
+      <http:operation location="/getAllUnitGroupHead" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllRoleHead">
+      <http:operation location="/getAllRoleHead" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPoolHead">
+      <http:operation location="/getAllPoolHead" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Holiday">
+      <http:operation location="/Get_Holiday" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HRIS">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">HRIS Web Service</wsdl:documentation>
+    <wsdl:port name="HRISSoap" binding="tns:HRISSoap">
+      <soap:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/HRIS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HRISSoap12" binding="tns:HRISSoap12">
+      <soap12:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/HRIS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HRISHttpGet" binding="tns:HRISHttpGet">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/HRIS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HRISHttpPost" binding="tns:HRISHttpPost">
+      <http:address location="http://www.app.th.kworld.kpmg.com/KPMG-THWebServices/HRIS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

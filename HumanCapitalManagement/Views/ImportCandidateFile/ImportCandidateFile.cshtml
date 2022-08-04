@@ -1,0 +1,477 @@
+﻿@{
+    ViewBag.Title = "HCM | Import Candidate";
+    Layout = "~/Views/Shared/_LPMaster.cshtml";
+}
+@model HumanCapitalManagement.ViewModel.MainVM.vCan_file
+<section class="content-header">
+
+    <h1>
+        Update Personal Data (Excel) : <br /><small style="    color: #f5f5f5;
+    background-color: red;
+    border-radius: 20px;
+    padding: 9px;
+    margin-top: 10px;
+    font-weight: 600;">Cannot add NEW candidate!</small>
+    </h1>
+</section>
+
+
+
+<section class="content">
+    <form class="form-horizontal">
+        <div id="divContent">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- general form elements -->
+                            <div class="box box-solid box-ctmPR">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Detail</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <div class="box-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 " id="divUploadDoc" style="margin-top:30px;">
+                                                <div class="form-group form-group-sm">
+                                                    <label class="col-sm-4 control-label text-right require">Import xlsx file</label>
+                                                    <div class="col-sm-8  form-inline">
+                                                        <div class="input-group input-group-sm">
+                                                            <label class="input-group-btn">
+                                                                <span class="btn btn-primary">
+                                                                    Browse&hellip;
+
+                                                                    <input type="file" id="btnUpload3" name="files[]" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                                                                </span>
+                                                            </label>
+                                                            <input type="text" class="form-control" readonly />
+                                                        </div>
+                                                        <span class="help-block" style="line-height:40px;font-size:12px;margin-top:20px;"><a href="~/Image/Sample_Import_Candidate.xlsx" target="_blank" tooltip="File Example" flow="left" style="padding-right:10px;">
+                                                            <span class="fa fa-file-excel-o text-success" style="font-size:30px;" ></span></a> Support .xlsx,  Only</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="box-footer text-center">
+                                        <button type="button" class="btn btn-primary" onclick="SaveData();">Save</button>
+                                        <button type="button" class="btn btn-warning" onclick="Cancel();">Back</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="box box-solid box-ctmPR4">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Personal Data of All Candidates / Employees</h3>
+                            <div class="box-tools pull-right">
+                                <button id="btnRefeshTable" type="button" class="btn btn-box-tool" onclick="RefreshTable(this)">
+                                    <i class="fa fa-refresh"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+
+                        <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab_1" data-toggle="tab">Data</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="tab-pane active" id="tab_1">
+                                                <div id="divContent1">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="table-responsive">
+                                                                <table class="table table-striped table-bordered table-hover display" id="gvwDataOld" width="100%">
+                                                                    <thead>
+                                                                    </thead>
+                                                                    <tbody></tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- /.box-body -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    @*<%--[modal] before Add--%>*@
+    <div id="PopupSave" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog widthPOP">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337ab7;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title"><b style="color: white;">Saving Confirmation</b></span>
+                </div>
+                <div class="modal-body">
+                    <div id="divCreatePopUp">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12 text-center">
+                                        <label class="control-label" id="lblAccept"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="col-md-12 text-center">Do you want to save?</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal-footer">
+                    <button id="btnOK" type="button" onclick="SaveData()" class="btn btn-primary">OK</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="hfdSessFile" name="hfdSessFile" class="form-control" data-bind='value: Session' />
+</section>
+
+
+
+
+
+@section style{
+    <link href="~/Scripts/plugins/bootstrapValidate/dist/css/bootstrapValidator.css" rel="stylesheet" />
+}
+
+@section scripts{
+
+    @*<script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+        <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+        <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+        <script src="~/Scripts/SystemFunc/sysUploadFile.js"></script>
+        <script src="~/Scripts/plugins/DataTables2/datetimeSort.js"></script>*@
+    <script src="~/Scripts/plugins/bootstrapValidate/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Scripts/plugins/knockout-3.4.2.js"></script>
+    <script src="~/Scripts/plugins/knockout.mapping-latest.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/inputmask.numeric.extensions.min.js"></script>
+    <script src="~/Scripts/plugins/jquery-inputmask/min/inputmask/jquery.inputmask.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/linq.min.js"></script>
+    <script src="~/Scripts/plugins/jsLinq/jquery.linq.min.js"></script>
+    <script src="~/Scripts/SystemFunc/sysImportCandidate.js"></script>
+    <script src="~/Scripts/SystemFunc/sysImportFileBypassCan.js"></script>
+
+    @*<script type="text/javascript">
+            var url = document.URL;
+
+
+                function getParameterByName(name) {
+                    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+                    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                        results = regex.exec(location.search);
+
+                    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+                }
+        </script>*@
+
+
+
+    <script type="text/javascript">
+
+        var objlstData = [];
+        var url = document.URL;
+
+
+        function getParameterByName(name) {
+
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+                 var objModel = @Html.Raw(Json.Encode(Model));
+
+    $(function () {
+        SetTableExcelTable();
+
+             @if (Request.QueryString["bUrl"] != null)
+                {
+            <text>
+                sUrlBack += "?qryStr=" + '@Uri.EscapeDataString(Request.QueryString["bUrl"])';
+            </text>
+            }
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        var objMaxLength = [
+            { ctrlID: "txttemp_description", ctrlType: "area", MaxLength: 1000 }];
+        var save_Status = "";
+
+        $(function () {
+
+
+            BindData(objModel);
+            ko.applyBindings(viewModel);
+
+
+            SetImportCandidate("btnUpload3", "", "hfdSessFile", '@Url.Action("UploadFileBypass", "ImportCandidateFile")');
+
+        });
+
+
+
+    </script>
+
+    <script type="text/javascript">
+        function Cancel() {
+            window.location.href = sUrlBack;
+        }
+        var viewModel = {
+
+        };
+        function ViewModel() {
+            var self = this;
+            self.conditionChecked = ko.observable(false);
+            self.loadCondition = function () {
+                //ajax request to get condition value. Suppose ajax request returned value "used". so
+                self.conditionChecked("used");
+            }
+            self.loadCondition();
+            ko.bindingHandlers.iCheck = { // integrating icheck plugin using bh
+                init: function (element, valueAccessor) {
+                    var ctrl = $(element);
+                    var sID = ctrl[0].id;
+                    //initialize icheck to the element
+                    $(element).iCheck({
+                        radioClass: 'iradio_flat-green'
+                    });
+                    $(element).on('ifChecked', function (event) {
+
+                        var observable = valueAccessor();
+                        observable.checked(event.target.defaultValue); //assigning selected value
+                    });
+                },
+                update: function (element, valueAccessor) {
+                    var observable = valueAccessor();
+                }
+            };
+
+        }
+        function BindData(value) {
+
+
+            if (viewModel.Id == undefined) {
+                viewModel = ko.mapping.fromJS(value);
+                ViewModel();
+
+            }
+            else {
+                ko.mapping.fromJS(value, {}, viewModel);
+            }
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        function SaveData() {
+              var IsPass = true;
+              if (IsPass ) {
+                  BlockUI();
+                  var Param = ko.toJS(viewModel);
+                  $.ajax({
+                      dataType: AjaxCall.dataType,
+                      type: AjaxCall.type,
+                      contentType: AjaxCall.contentType,
+                      url: '@Url.Action("UpdateExcelCandidate", "ImportCandidateFile")',
+                      data: JSON.stringify({ ItemData: Param }),
+                      success: function (respone) {
+                          if (respone.result.Status == SysProcess.SessionExpired) {
+                              PopupLogin('@Url.Action("Index", "Home")');
+                          } else if (respone.result.Status == SysProcess.Success) {
+                              DialogSuccessOk(DialogHeader.Info, respone.result.Msg, 'func', function () {
+
+                                  window.location.href = window.location.href;
+                              });
+
+                          }
+                          else {
+                              DialogWarning(DialogHeader.Warning, respone.result.Msg);
+                          }
+                      },
+                      error: AjaxCall.error,
+                      complete: function (jqXHR, status) {//finaly
+                          UnblockUI();
+                      }
+                  });
+              }
+        }
+    </script>
+
+
+    <script type="text/javascript">
+
+        function AddCandidateXls(sVal) {
+            var Param = {
+                IdEncrypt: sVal,
+            };
+
+            $.ajax({
+                url: '@Url.Action("AddCandidateByExcel", "ImportCandidateFile")',
+                dataType: 'html',
+                cache: false,
+                data: Param
+                , success: function (data) {
+
+                    $('#divUpdateExcel').html(data);
+
+                 }, complete: function (jqXHR, status) {//finally
+                    $("#PopupExcel").modal({ backdrop: 'static', keyboard: false });
+                    SetImportCandidate("btnUpload3", "", "hfdSessFile", '@Url.Action("UploadFile", "ImportCandidateFile")');
+                    SetTableExcelTable();
+                    setTimeout(function () {
+                        $('#gvwDataOld').DataTable().columns.adjust().draw();
+                        $('#gvwDataOld').DataTable().columns.adjust().responsive.recalc();
+                    }, 500);
+                }
+            });
+        }
+
+        function SetTableExcelTable() {
+            var objHeadClRequest = [
+
+
+                //{ "title": "(EN)Prefix", "width": "8%", "className": "dt-left-ctm", "data": "EN_Prefix" },
+                { "title": "(EN)First Name", "width": "40%", "className": "dt-left-ctm", "data": "EN_fistname" },
+                { "title": "(EN)Last Name", "width": "40%", "className": "dt-left-ctm", "data": "EN_lastname" },
+                { "title": "(EN)Nickname", "width": "20%", "className": "dt-left-ctm", "data": "EN_nickname" },
+                { "title": "Identification Number", "width": "40%", "className": "dt-left-ctm", "data": "IdentificationNumber" },
+
+                /*
+                { "title": "Mobile", "width": "30%", "className": "dt-left-ctm", "data": "Mobile" },
+                { "title": "Email", "width": "40%", "className": "dt-left-ctm", "data": "email" },
+
+                { "title": "(TH)Prefix", "width": "8%", "className": "dt-left-ctm", "data": "TH_Prefix" },
+                { "title": "(TH)First Name", "width": "60%", "className": "dt-left-ctm", "data": "TH_FirstName" },
+                { "title": "(TH)Last Name", "width": "60%", "className": "dt-left-ctm", "data": "TH_LastName" },
+                { "title": "(TH) Name", "width": "10%", "className": "dt-left-ctm", "data": "TH_Name" },
+
+                { "title": "Gender", "width": "40%", "className": "dt-left-ctm", "data": "Gender" },
+                { "title": "Date of Birth", "width": "10%", "className": "dt-left-ctm", "data": "DateOfBirth" },
+                { "title": "Age", "width": "30%", "className": "dt-left-ctm", "data": "Age" },
+                { "title": "Birthplace", "width": "40%", "className": "dt-left-ctm", "data": "Birthplace" },
+                { "title": "Country of Birth", "width": "40%", "className": "dt-left-ctm", "data": "CountryOfBirth" },
+                { "title": "Marital Status", "width": "30%", "className": "dt-left-ctm", "data": "MaritualStatus" },
+                { "title": "Nationality", "width": "15%", "className": "dt-left-ctm", "data": "Nationality" },
+                { "title": "Current / Latest Degree", "width": "30%", "className": "dt-left-ctm", "data": "CurrentOrLatestDegree" },
+                { "title": "ProfessionalQualification", "width": "40%", "className": "dt-left-ctm", "data": "ProfessionalQualification" },
+                */
+            ];
+
+            var objTableRe = {
+                sTableID: "gvwDataOld",
+                nDis: [],
+                sProperty: "<'top col-md-6'>rt<'bottom col-md-6'><'bottom col-md-6 text-right'><'clear'>",
+                objHeadCl: objHeadClRequest,//Table Headder
+                objDataSet: [], //dataset
+                nHeadFix: 1,// fix clr
+                EmptyTable: EmptyTable,
+                order: [[0, "asc"]],
+                objBeforeClRender: false,
+                lengthMN: [[-1], ["All"]],
+                scrollY: '50vh',
+                fixedHeader: {
+                header: true,
+
+                },
+            };
+            var table = CreatTableJS(objTableRe);
+
+        }
+
+
+
+          function AddExcelCandidate() {
+              var IsPass = true;
+
+
+                  BlockUI();
+                  var Param = {
+                      IdEncrypt: ko.toJS(viewModel.IdEncrypt) + "",
+                      Session: ko.toJS(viewModel.Session) + "",
+
+                  };
+
+                  $.ajax({
+                      dataType: AjaxCall.dataType,
+                      type: AjaxCall.type,
+                      contentType: AjaxCall.contentType,
+                      url: '@Url.Action("AddExcelCandidate", "PRCandidate")',
+                      data: JSON.stringify({ ItemData: Param }),
+                      success: function (respone) {
+                          //$("#PopupExcel").modal("hide");
+                      },
+                      error: AjaxCall.error,
+                      complete: function (jqXHR, status) {//finaly
+                          UnblockUI();
+
+                          //$("#PopupExcel").modal("hide");
+                      }
+                  });
+
+    }
+       @*$(function () {
+            $(window).bind('beforeunload', function () {
+
+                var aSession = [$('input[id$=hfdSessFile]').val()];
+
+                //var sValHdf = $('input[id$=hfdSess]').val();
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ClearSession", "Base")',
+                    cache: false,
+                    dataType: "html",
+                    data: {
+                        sVal: encodeURIComponent(aSession)
+                    },
+                    complete: function (jqXHR, status) {//finaly
+                    }
+                });
+            });
+        });*@
+    </script>
+
+
+}

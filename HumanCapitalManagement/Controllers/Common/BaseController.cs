@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace HumanCapitalManagement.Controllers.Common
 {
-    public class BaseController : Controller
+    public class BaseController : Controller  
     {
         // GET: Base
         public BaseController()
